@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { GoodExpiredNealyListCodeResult } from "../models"
 import type { MaterialPriceDtoListCodeResult } from "../models"
 import type { OrderInfoForStockInListCodeResult } from "../models"

@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AccompanyMealDtoCodeResult } from "../models"
 import type { AccompanyUserDtoCodeResult } from "../models"
 import type { GuidCodeResult } from "../models"
@@ -68,60 +68,6 @@ export class SchoolAccompanyForAccompanyUserApi {
         return send({
             url: `/accompany/suggestion`,
             method: 'POST',
-            forms: {
-                Kind: kind,
-                Suggestion: suggestion,
-                SchoolCode: schoolCode,
-                Store: store,
-                MealIds: mealIds,
-                FavoriteMealIds: favoriteMealIds,
-                files: files,
-            },
-            forms: {
-                Kind: kind,
-                Suggestion: suggestion,
-                SchoolCode: schoolCode,
-                Store: store,
-                MealIds: mealIds,
-                FavoriteMealIds: favoriteMealIds,
-                files: files,
-            },
-            forms: {
-                Kind: kind,
-                Suggestion: suggestion,
-                SchoolCode: schoolCode,
-                Store: store,
-                MealIds: mealIds,
-                FavoriteMealIds: favoriteMealIds,
-                files: files,
-            },
-            forms: {
-                Kind: kind,
-                Suggestion: suggestion,
-                SchoolCode: schoolCode,
-                Store: store,
-                MealIds: mealIds,
-                FavoriteMealIds: favoriteMealIds,
-                files: files,
-            },
-            forms: {
-                Kind: kind,
-                Suggestion: suggestion,
-                SchoolCode: schoolCode,
-                Store: store,
-                MealIds: mealIds,
-                FavoriteMealIds: favoriteMealIds,
-                files: files,
-            },
-            forms: {
-                Kind: kind,
-                Suggestion: suggestion,
-                SchoolCode: schoolCode,
-                Store: store,
-                MealIds: mealIds,
-                FavoriteMealIds: favoriteMealIds,
-                files: files,
-            },
             forms: {
                 Kind: kind,
                 Suggestion: suggestion,

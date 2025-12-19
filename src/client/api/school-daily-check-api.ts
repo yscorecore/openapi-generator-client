@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { BooleanCodeResult } from "../models"
 import type { CheckType } from "../models"
 import type { CreateDailyCheckDto } from "../models"
@@ -79,60 +79,6 @@ export class SchoolDailyCheckApi {
         return send({
             url: `/morningcheck`,
             method: 'POST',
-            forms: {
-                File: file,
-                FrontFile: frontFile,
-                UserId: userId,
-                Temperature: temperature,
-                CreateTime: createTime,
-                Exceptions: exceptions,
-                IsPersonReport: isPersonReport,
-            },
-            forms: {
-                File: file,
-                FrontFile: frontFile,
-                UserId: userId,
-                Temperature: temperature,
-                CreateTime: createTime,
-                Exceptions: exceptions,
-                IsPersonReport: isPersonReport,
-            },
-            forms: {
-                File: file,
-                FrontFile: frontFile,
-                UserId: userId,
-                Temperature: temperature,
-                CreateTime: createTime,
-                Exceptions: exceptions,
-                IsPersonReport: isPersonReport,
-            },
-            forms: {
-                File: file,
-                FrontFile: frontFile,
-                UserId: userId,
-                Temperature: temperature,
-                CreateTime: createTime,
-                Exceptions: exceptions,
-                IsPersonReport: isPersonReport,
-            },
-            forms: {
-                File: file,
-                FrontFile: frontFile,
-                UserId: userId,
-                Temperature: temperature,
-                CreateTime: createTime,
-                Exceptions: exceptions,
-                IsPersonReport: isPersonReport,
-            },
-            forms: {
-                File: file,
-                FrontFile: frontFile,
-                UserId: userId,
-                Temperature: temperature,
-                CreateTime: createTime,
-                Exceptions: exceptions,
-                IsPersonReport: isPersonReport,
-            },
             forms: {
                 File: file,
                 FrontFile: frontFile,

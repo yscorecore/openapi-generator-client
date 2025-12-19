@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AssignByRoleInfo } from "../models"
 import type { CodeResult } from "../models"
 import type { FunctionMockTreeInfoCodeResult } from "../models"

@@ -94,6 +94,7 @@ api/tts-api.ts
 api/user-setting-api.ts
 api/visual-data-api.ts
 api/wechat-setting-api.ts
+base.ts
 models/abnormal-inspection.ts
 models/ac-info-code-result.ts
 models/ac-info.ts

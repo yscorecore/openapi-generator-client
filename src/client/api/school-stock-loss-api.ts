@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { OrderType } from "../models"
 import type { StockLossDtoPaginationDataCodeResult } from "../models"
 import type { StockLossRecoreDetailDtoPagedListCodeResult } from "../models"

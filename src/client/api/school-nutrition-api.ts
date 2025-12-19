@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { Grade } from "../models"
 import type { IngredientTypeInfoDtoCodeResult } from "../models"
 import type { IngredientsNutritionStandardDtoListCodeResult } from "../models"

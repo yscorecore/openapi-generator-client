@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { GroupValueInfo } from "../models"
 import type { LayerValueInfoListCodeResult } from "../models"

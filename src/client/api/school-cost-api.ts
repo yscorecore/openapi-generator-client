@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { CostInfoCostSummaryPaginationDataCodeResult } from "../models"
 import type { DinningOutDtoListCodeResult } from "../models"
 import type { MealKind } from "../models"

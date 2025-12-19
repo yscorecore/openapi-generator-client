@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AreaInfoListCodeResult } from "../models"
 import type { BooleanCodeResult } from "../models"
 import type { FreeSchoolDto } from "../models"

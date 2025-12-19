@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AlarmEventDtoListCodeResult } from "../models"
 import type { AlarmEventDtoPaginationDataCodeResult } from "../models"
 import type { AlarmType } from "../models"

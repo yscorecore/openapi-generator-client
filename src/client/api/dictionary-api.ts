@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { Int32StringDictionaryCodeResult } from "../models"
 import type { StringInt32StringDictionaryDictionaryCodeResult } from "../models"
 import type { StringStringDictionaryCodeResult } from "../models"

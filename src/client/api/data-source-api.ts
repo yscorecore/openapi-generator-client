@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AppResourceInfoCodeResult } from "../models"
 import type { AppResourceInfoListCodeResult } from "../models"
 import type { AppResourceInfoPagedListCodeResult } from "../models"

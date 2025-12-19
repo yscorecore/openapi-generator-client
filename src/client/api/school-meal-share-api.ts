@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AddAccompanyDto } from "../models"
 import type { AddMenuDto } from "../models"
 import type { DaliyMealShareDtoCodeResult } from "../models"

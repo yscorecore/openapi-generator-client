@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AutoPurchaseConfigDtoListCodeResult } from "../models"
 import type { AutoPurchaseConfigForEditReqDto } from "../models"
 import type { AutoPurchaseConfigForSetReq } from "../models"

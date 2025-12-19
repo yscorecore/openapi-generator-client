@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { FixSpecPriceReq } from "../models"
 import type { FixedPriceSpecDtoPaginationDataCodeResult } from "../models"

@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { BooleanCodeResult } from "../models"
 import type { ClassDtoListCodeResult } from "../models"
 import type { DinnerDtoListCodeResult } from "../models"

@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 {{#imports}}
 import type { {{classname}} } from "../models"
 {{/imports}}
@@ -37,13 +37,13 @@ export class {{classname}} {
             {{#bodyParam}}
             body: {{#bodyParam}}{{paramName}}{{/bodyParam}},
             {{/bodyParam}}
-            {{#formParams}}
+            {{#hasFormParams}}
             forms: {
                 {{#formParams}}
                 {{baseName}}: {{paramName}},
                 {{/formParams}}
             },
-            {{/formParams}}
+            {{/hasFormParams}}
             {{#headerParams}}
             headers: {
                 {{#headerParams}}

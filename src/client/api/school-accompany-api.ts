@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { AccompanyKind } from "../models"
 import type { AccompanyRecordDtoListCodeResult } from "../models"
 import type { AccompanyRecordDtoPaginationDataCodeResult } from "../models"

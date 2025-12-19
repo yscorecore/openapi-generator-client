@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { send } from "../base2"
+import { send } from "../base"
 import type { MaterialAmountInfo } from "../models"
 import type { MaterialAmountInfo2 } from "../models"
 import type { MaterialAmountWithSpcesDtoListCodeResult } from "../models"
