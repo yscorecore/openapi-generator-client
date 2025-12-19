@@ -1,0 +1,298 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "StudentMeal.GlobalService",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/config": {
+      "get": {
+        "tags": [
+          "Config"
+        ],
+        "summary": "查询配置信息",
+        "parameters": [
+          {
+            "name": "hwcode",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": { },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": { },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": { },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": { },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": { },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/HeartBeat": {
+      "get": {
+        "tags": [
+          "HeartBeat"
+        ],
+        "summary": "心跳检查",
+        "parameters": [
+          {
+            "name": "hwcode",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/route": {
+      "get": {
+        "tags": [
+          "Route"
+        ],
+        "summary": "获取硬件的配置信息",
+        "parameters": [
+          {
+            "name": "hwcode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteInfo"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteInfo"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/upgrade": {
+      "get": {
+        "tags": [
+          "Upgrade"
+        ],
+        "summary": "获取最近一次的升级的版本信息",
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          {
+            "name": "hwcode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          {
+            "name": "manual",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "boolean",
+              "description": "",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppversionInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppversionInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppversionInfo"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppversionInfo"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppversionInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RouteInfo": {
+        "type": "object",
+        "properties": {
+          "baseUrl": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "publicUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "appUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "supplierUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageProxyUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "appImageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "hardwareCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "hardwareType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppversionInfo": {
+        "type": "object",
+        "properties": {
+          "latestVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "latestVersionCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "downLoadUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "appName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "autoUpgrade": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
