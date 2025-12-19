@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate:models": "docker run --rm -v \"c:/Users/Lenovo/Documents/trae_projects/openapitest:/local\" openapitools/openapi-generator-cli generate -i /local/swagger.json -g typescript-axios -o /local/src/models-only -t /local/templates -p withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api",
-    "generate:client": "docker run --rm -v \"c:/Users/Lenovo/Documents/trae_projects/openapitest:/local\" openapitools/openapi-generator-cli generate -i /local/swagger.json  -g typescript-axios -o /local/src/client -t /local/templates -p withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api"
+    "generate:client": "docker run --rm -v \"c:/Users/Lenovo/Documents/trae_projects/openapitest:/local\" openapitools/openapi-generator-cli generate -i https://test-school.xueshengxiaocanan.cn/swagger/StudentMeal.SchoolApi/swagger.json -g typescript-axios -o /local/src/client -t /local/templates -p withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api"
   },
   "keywords": [],
   "author": "",

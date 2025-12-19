@@ -1,24 +1,11 @@
 {{#withSeparateModelsAndApi}}
 /* tslint:disable */
 /* eslint-disable */
-{{>licenseInfo}}
-
 
 import { send } from "../base2"
-{{#operations}}
-  {{#operation}}
-    {{#returnType}}
-      {{^returnTypeIsPrimitive}}
-import type { {{returnType}} } from "../models"
-      {{/returnTypeIsPrimitive}}
-    {{/returnType}}
-    {{#allParams}}
-      {{^isPrimitiveType}}
-import type { {{dataType}} } from "../models"
-      {{/isPrimitiveType}}
-    {{/allParams}}
-  {{/operation}}
-{{/operations}}
+{{#imports}}
+import type { {{classname}} } from "../models"
+{{/imports}}
 
 {{#operations}}
 /**
@@ -34,15 +21,11 @@ export class {{classname}} {
      {{#allParams}}
      * @param {{{dataType}}}{{^required}}?{{/required}} {{paramName}} {{description}}
      {{/allParams}}
-     * DEBUG: baseName={{baseName}}, nickname={{nickname}}, operationId={{operationId}}
      */
-    public {{baseName}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}{{^-last}}, {{/-last}}{{/allParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
+    public {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}{{^-last}}, {{/-last}}{{/allParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
         return send({
-            url: '{{{path}}}'{{#pathParams}}
-                {{#pathParams}}
-                    .replace(`{${baseName}}`, encodeURIComponent(String({{paramName}})))
-                {{/pathParams}}
-            {{/pathParams}},
+            url: `{{{path}}}`{{#pathParams}}
+                .replace(`{${"{{baseName}}"}}`, encodeURIComponent(String({{paramName}}))){{/pathParams}},
             method: '{{httpMethod}}',
             {{#hasQueryParams}}
             params: {

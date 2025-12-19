@@ -1,0 +1,90 @@
+/* tslint:disable */
+/* eslint-disable */
+
+import { send } from "../base2"
+import type { AddShoppingCart } from "../models"
+import type { BooleanCodeResult } from "../models"
+import type { CodeResult } from "../models"
+import type { GuidCodeResult } from "../models"
+import type { ShopCarOrder } from "../models"
+import type { ShoppingCartDtoCodeResult } from "../models"
+import type { StringCodeResult } from "../models"
+import type { UpdateShoppingCart } from "../models"
+
+/**
+ * ShopApi - API class
+ */
+export class ShopApi {
+    /**
+     * 
+     * @param Array<AddShoppingCart>? addShoppingCart 
+     */
+    public apiShopCreateBatchPost(addShoppingCart?: Array<AddShoppingCart> | null): Promise<StringCodeResult> {
+        return send({
+            url: `/api/Shop/createBatch`,
+            method: 'POST',
+            body: addShoppingCart,
+        });
+    }
+    /**
+     * 
+     * @param AddShoppingCart? addShoppingCart 
+     */
+    public apiShopCreatePost(addShoppingCart?: AddShoppingCart): Promise<GuidCodeResult> {
+        return send({
+            url: `/api/Shop/create`,
+            method: 'POST',
+            body: addShoppingCart,
+        });
+    }
+    /**
+     * 
+     * @param ShopCarOrder? shopCarOrder 
+     */
+    public apiShopCreateShopOrderPost(shopCarOrder?: ShopCarOrder): Promise<CodeResult> {
+        return send({
+            url: `/api/Shop/createShopOrder`,
+            method: 'POST',
+            body: shopCarOrder,
+        });
+    }
+    /**
+     * 
+     * @param string id 
+     */
+    public apiShopDelIdDelete(id: string): Promise<BooleanCodeResult> {
+        return send({
+            url: `/api/Shop/del/{Id}`
+                .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
+            method: 'DELETE',
+        });
+    }
+    /**
+     * 
+     * @param UpdateShoppingCart? updateShoppingCart 
+     */
+    public apiShopEditPost(updateShoppingCart?: UpdateShoppingCart): Promise<CodeResult> {
+        return send({
+            url: `/api/Shop/edit`,
+            method: 'POST',
+            body: updateShoppingCart,
+        });
+    }
+    /**
+     * 
+     * @param string id 
+     */
+    public apiShopQueryShopCartByGoodsIdIdGet(id: string): Promise<ShoppingCartDtoCodeResult> {
+        return send({
+            url: `/api/Shop/queryShopCartByGoodsId/{Id}`
+                .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
+            method: 'GET',
+        });
+    }
+}
+
+/**
+ * ShopApi - instance
+ */
+export const ShopApiInstance = new ShopApi();
+
