@@ -15,7 +15,7 @@ export class SchoolAIMealApi {
      */
     public smartrecipesGetPost(dishRequestInfo?: DishRequestInfo): Promise<DishInfoListCodeResult> {
         return send({
-            url: `/smartrecipes/get`,
+            url: '/smartrecipes/get',
             method: 'POST',
             body: dishRequestInfo,
         });

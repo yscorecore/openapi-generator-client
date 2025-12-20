@@ -21,7 +21,7 @@ export class ShopApi {
      */
     public apiShopCreateBatchPost(addShoppingCart?: Array<AddShoppingCart> | null): Promise<StringCodeResult> {
         return send({
-            url: `/api/Shop/createBatch`,
+            url: '/api/Shop/createBatch',
             method: 'POST',
             body: addShoppingCart,
         });
@@ -32,7 +32,7 @@ export class ShopApi {
      */
     public apiShopCreatePost(addShoppingCart?: AddShoppingCart): Promise<GuidCodeResult> {
         return send({
-            url: `/api/Shop/create`,
+            url: '/api/Shop/create',
             method: 'POST',
             body: addShoppingCart,
         });
@@ -43,7 +43,7 @@ export class ShopApi {
      */
     public apiShopCreateShopOrderPost(shopCarOrder?: ShopCarOrder): Promise<CodeResult> {
         return send({
-            url: `/api/Shop/createShopOrder`,
+            url: '/api/Shop/createShopOrder',
             method: 'POST',
             body: shopCarOrder,
         });
@@ -54,7 +54,7 @@ export class ShopApi {
      */
     public apiShopDelIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/api/Shop/del/{Id}`
+            url: '/api/Shop/del/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -65,7 +65,7 @@ export class ShopApi {
      */
     public apiShopEditPost(updateShoppingCart?: UpdateShoppingCart): Promise<CodeResult> {
         return send({
-            url: `/api/Shop/edit`,
+            url: '/api/Shop/edit',
             method: 'POST',
             body: updateShoppingCart,
         });
@@ -76,7 +76,7 @@ export class ShopApi {
      */
     public apiShopQueryShopCartByGoodsIdIdGet(id: string): Promise<ShoppingCartDtoCodeResult> {
         return send({
-            url: `/api/Shop/queryShopCartByGoodsId/{Id}`
+            url: '/api/Shop/queryShopCartByGoodsId/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });

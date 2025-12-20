@@ -17,7 +17,7 @@ export class SchoolStockApi {
      */
     public stockinListGet(materialSpecId?: string | null, offset?: number, limit?: number): Promise<StockItemInfoPaginationDataCodeResult> {
         return send({
-            url: `/stockin/list`,
+            url: '/stockin/list',
             method: 'GET',
             params: {
                 MaterialSpecId: materialSpecId,

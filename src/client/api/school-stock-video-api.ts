@@ -15,7 +15,7 @@ export class SchoolStockVideoApi {
      */
     public stockVideoEarliestTimeGet(startTime?: string): Promise<DateTimeCodeResult> {
         return send({
-            url: `/stock/video/earliest-time`,
+            url: '/stock/video/earliest-time',
             method: 'GET',
             params: {
                 startTime: startTime,
@@ -29,7 +29,7 @@ export class SchoolStockVideoApi {
      */
     public stockVideoNewGet(startTime?: string): Promise<StockEventItemDtoListCodeResult> {
         return send({
-            url: `/stock/video/new`,
+            url: '/stock/video/new',
             method: 'GET',
             params: {
                 startTime: startTime,

@@ -19,7 +19,7 @@ export class SchoolScaleApi {
      */
     public scaleStockAllListGet(onlyStock?: boolean, orderType?: OrderType): Promise<StockSummaryDtoListCodeResult> {
         return send({
-            url: `/Scale/stock/all_list`,
+            url: '/Scale/stock/all_list',
             method: 'GET',
             params: {
                 onlyStock: onlyStock,
@@ -34,7 +34,7 @@ export class SchoolScaleApi {
      */
     public scaleStockDetailGet(stockInId?: string): Promise<StockDtoCodeResult> {
         return send({
-            url: `/Scale/stock/detail`,
+            url: '/Scale/stock/detail',
             method: 'GET',
             params: {
                 stockInId: stockInId,
@@ -55,7 +55,7 @@ export class SchoolScaleApi {
      */
     public scaleStockinitemInfoGet(startDate?: string | null, endDate?: string | null, supplier?: Array<string> | null, orderType?: OrderType, materialName?: string | null, isSupplerNameNull?: boolean, offset?: number, limit?: number): Promise<StockInItemModelInfoStockInItemModelSummaryPaginationDataCodeResult> {
         return send({
-            url: `/Scale/stockinitem_info`,
+            url: '/Scale/stockinitem_info',
             method: 'GET',
             params: {
                 StartDate: startDate,

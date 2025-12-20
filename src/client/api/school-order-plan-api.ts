@@ -41,7 +41,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersCompletedGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<CompletedStockInInfoListCodeResult> {
         return send({
-            url: `/orders/completed`,
+            url: '/orders/completed',
             method: 'GET',
             params: {
                 LastOrderCode: lastOrderCode,
@@ -59,7 +59,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersCompletedIdGet(id: string): Promise<CompletedStockInInfoCodeResult> {
         return send({
-            url: `/orders/completed/{id}`
+            url: '/orders/completed/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -75,7 +75,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersCompletedPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<CompletedStockInInfoPaginationDataCodeResult> {
         return send({
-            url: `/orders/completed/page`,
+            url: '/orders/completed/page',
             method: 'GET',
             params: {
                 StartTime: startTime,
@@ -93,7 +93,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersConfirmPost(confirmReplyInfo?: ConfirmReplyInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/confirm`,
+            url: '/orders/confirm',
             method: 'POST',
             body: confirmReplyInfo,
         });
@@ -109,7 +109,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersConfirmedGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<ConfirmedOrderInfoListCodeResult> {
         return send({
-            url: `/orders/confirmed`,
+            url: '/orders/confirmed',
             method: 'GET',
             params: {
                 LastOrderCode: lastOrderCode,
@@ -127,7 +127,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersConfirmedIdGet(id: string): Promise<ConfirmedOrderInfoCodeResult> {
         return send({
-            url: `/orders/confirmed/{id}`
+            url: '/orders/confirmed/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -143,7 +143,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersConfirmedPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<ConfirmedOrderInfoPaginationDataCodeResult> {
         return send({
-            url: `/orders/confirmed/page`,
+            url: '/orders/confirmed/page',
             method: 'GET',
             params: {
                 StartTime: startTime,
@@ -161,7 +161,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersCreateFromRequirementPost(createOrderPlanFromRequirementReq?: CreateOrderPlanFromRequirementReq): Promise<OrderPlanCreatedDto2CodeResult> {
         return send({
-            url: `/orders/create-from-requirement`,
+            url: '/orders/create-from-requirement',
             method: 'POST',
             body: createOrderPlanFromRequirementReq,
         });
@@ -173,7 +173,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersCreatePost(createOrderPlanReq?: CreateOrderPlanReq): Promise<OrderPlanCreatedDto2CodeResult> {
         return send({
-            url: `/orders/create`,
+            url: '/orders/create',
             method: 'POST',
             body: createOrderPlanReq,
         });
@@ -185,7 +185,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersCreateV3Post(createOrderPlanReqV3?: CreateOrderPlanReqV3): Promise<OrderPlanCreatedDtoV4CodeResult> {
         return send({
-            url: `/orders/create/v3`,
+            url: '/orders/create/v3',
             method: 'POST',
             body: createOrderPlanReqV3,
         });
@@ -197,7 +197,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersCreateV4Post(createOrderPlanReqV3?: Array<CreateOrderPlanReqV3> | null): Promise<OrderPlanCreatedDtoV4CodeResult> {
         return send({
-            url: `/orders/create/v4`,
+            url: '/orders/create/v4',
             method: 'POST',
             body: createOrderPlanReqV3,
         });
@@ -209,7 +209,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersDetailForSupplierByOrderCodeOrderCodeGet(orderCode: string | null): Promise<NewOrderPlanInfoCodeResult> {
         return send({
-            url: `/orders/detail_for_supplier_by_orderCode/{orderCode}`
+            url: '/orders/detail_for_supplier_by_orderCode/{orderCode}'
                 .replace(`{${"orderCode"}}`, encodeURIComponent(String(orderCode))),
             method: 'GET',
         });
@@ -221,7 +221,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersDetailForSupplierOrderPlanIdGet(orderPlanId: string): Promise<NewOrderPlanInfoCodeResult> {
         return send({
-            url: `/orders/detail_for_supplier/{orderPlanId}`
+            url: '/orders/detail_for_supplier/{orderPlanId}'
                 .replace(`{${"orderPlanId"}}`, encodeURIComponent(String(orderPlanId))),
             method: 'GET',
         });
@@ -233,7 +233,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersItemDeleteOrderPlanItemIdDelete(orderPlanItemId: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/item/delete/{orderPlanItemId}`
+            url: '/orders/item/delete/{orderPlanItemId}'
                 .replace(`{${"orderPlanItemId"}}`, encodeURIComponent(String(orderPlanItemId))),
             method: 'DELETE',
         });
@@ -244,7 +244,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersModifyOrderplanItemRemarkPost(modifyRemark?: Array<ModifyRemark> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/modify-orderplan-item-remark`,
+            url: '/orders/modify-orderplan-item-remark',
             method: 'POST',
             body: modifyRemark,
         });
@@ -255,7 +255,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersModifyOrderplanItemRequirementPost(modifyRequirementReq?: ModifyRequirementReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/modify-orderplan-item-requirement`,
+            url: '/orders/modify-orderplan-item-requirement',
             method: 'POST',
             body: modifyRequirementReq,
         });
@@ -267,7 +267,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersModifyTimePost(modifyOrderTimeReq?: ModifyOrderTimeReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/modify-time`,
+            url: '/orders/modify-time',
             method: 'POST',
             body: modifyOrderTimeReq,
         });
@@ -279,7 +279,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersNeedShareGet(ids?: Array<string> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/need-share`,
+            url: '/orders/need-share',
             method: 'GET',
             params: {
                 ids: ids,
@@ -297,7 +297,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersNewGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<NewOrderPlanInfoListCodeResult> {
         return send({
-            url: `/orders/new`,
+            url: '/orders/new',
             method: 'GET',
             params: {
                 LastOrderCode: lastOrderCode,
@@ -315,7 +315,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersNewIdGet(id: string): Promise<NewOrderPlanInfoCodeResult> {
         return send({
-            url: `/orders/new/{id}`
+            url: '/orders/new/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -331,7 +331,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersNewPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<NewOrderPlanInfoPaginationDataCodeResult> {
         return send({
-            url: `/orders/new/page`,
+            url: '/orders/new/page',
             method: 'GET',
             params: {
                 StartTime: startTime,
@@ -349,7 +349,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersOrderPlanDeleteOrderPlanIdDelete(orderPlanId: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/orderPlan/delete/{orderPlanId}`
+            url: '/orders/orderPlan/delete/{orderPlanId}'
                 .replace(`{${"orderPlanId"}}`, encodeURIComponent(String(orderPlanId))),
             method: 'DELETE',
         });
@@ -361,7 +361,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersReplyDetailsOrderPlanIdGet(orderPlanId: string): Promise<ConfirmDetailsCodeResult> {
         return send({
-            url: `/orders/reply-details/{orderPlanId}`
+            url: '/orders/reply-details/{orderPlanId}'
                 .replace(`{${"orderPlanId"}}`, encodeURIComponent(String(orderPlanId))),
             method: 'GET',
         });
@@ -373,7 +373,7 @@ export class SchoolOrderPlanApi {
      */
     public ordersShareOrderPlanOrderCodeGet(orderCode: string | null): Promise<QrCodeImageCodeResult> {
         return send({
-            url: `/orders/share/orderPlan/{orderCode}`
+            url: '/orders/share/orderPlan/{orderCode}'
                 .replace(`{${"orderCode"}}`, encodeURIComponent(String(orderCode))),
             method: 'GET',
         });

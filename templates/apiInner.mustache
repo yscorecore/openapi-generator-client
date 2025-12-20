@@ -24,7 +24,7 @@ export class {{classname}} {
      */
     public {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}{{^-last}}, {{/-last}}{{/allParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
         return send({
-            url: `{{{path}}}`{{#pathParams}}
+            url: '{{{path}}}'{{#pathParams}}
                 .replace(`{${"{{baseName}}"}}`, encodeURIComponent(String({{paramName}}))){{/pathParams}},
             method: '{{httpMethod}}',
             {{#hasQueryParams}}

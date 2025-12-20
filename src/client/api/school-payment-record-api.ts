@@ -26,7 +26,7 @@ export class SchoolPaymentRecordApi {
      */
     public paymentRecordGet(startDate?: string | null, endDate?: string | null, supplierName?: string | null, paymentType?: PaymentType, schoolId?: string | null, offset?: number, limit?: number): Promise<PaymentRecordWithTotalAmountCodeResult> {
         return send({
-            url: `/payment_record`,
+            url: '/payment_record',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -46,7 +46,7 @@ export class SchoolPaymentRecordApi {
      */
     public paymentRecordIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/payment_record/{id}`
+            url: '/payment_record/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -58,7 +58,7 @@ export class SchoolPaymentRecordApi {
      */
     public paymentRecordIdGet(id: string): Promise<PaymentRecordDtoCodeResult> {
         return send({
-            url: `/payment_record/{id}`
+            url: '/payment_record/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -70,7 +70,7 @@ export class SchoolPaymentRecordApi {
      */
     public paymentRecordPost(createPaymentRecordReq?: CreatePaymentRecordReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/payment_record`,
+            url: '/payment_record',
             method: 'POST',
             body: createPaymentRecordReq,
         });
@@ -82,7 +82,7 @@ export class SchoolPaymentRecordApi {
      */
     public paymentRecordPut(updatePaymentRecordReq?: UpdatePaymentRecordReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/payment_record`,
+            url: '/payment_record',
             method: 'PUT',
             body: updatePaymentRecordReq,
         });

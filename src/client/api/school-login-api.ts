@@ -18,7 +18,7 @@ export class SchoolLoginApi {
      */
     public schoolLoginBeginGet(): Promise<QrCodeImageCodeResult> {
         return send({
-            url: `/schoolLogin/begin`,
+            url: '/schoolLogin/begin',
             method: 'GET',
         });
     }
@@ -29,7 +29,7 @@ export class SchoolLoginApi {
      */
     public schoolLoginConfirmPost(confirmLoginInfo: ConfirmLoginInfo): Promise<CodeResult> {
         return send({
-            url: `/schoolLogin/confirm`,
+            url: '/schoolLogin/confirm',
             method: 'POST',
             body: confirmLoginInfo,
         });
@@ -39,7 +39,7 @@ export class SchoolLoginApi {
      */
     public schoolLoginLogoutPost(): Promise<CodeResult> {
         return send({
-            url: `/schoolLogin/logout`,
+            url: '/schoolLogin/logout',
             method: 'POST',
         });
     }
@@ -49,7 +49,7 @@ export class SchoolLoginApi {
      */
     public schoolLoginMeGet(): Promise<UserLoginInfoCodeResult> {
         return send({
-            url: `/schoolLogin/me`,
+            url: '/schoolLogin/me',
             method: 'GET',
         });
     }
@@ -60,7 +60,7 @@ export class SchoolLoginApi {
      */
     public schoolLoginQueryGet(scene?: string | null): Promise<UserLoginInfoCodeResult> {
         return send({
-            url: `/schoolLogin/query`,
+            url: '/schoolLogin/query',
             method: 'GET',
             params: {
                 scene: scene,
@@ -74,7 +74,7 @@ export class SchoolLoginApi {
      */
     public schoolLoginSyncOpenIdPageGet(school?: string, isHyaline?: boolean): Promise<void> {
         return send({
-            url: `/schoolLogin/syncOpenIdPage`,
+            url: '/schoolLogin/syncOpenIdPage',
             method: 'GET',
             params: {
                 school: school,
@@ -88,7 +88,7 @@ export class SchoolLoginApi {
      */
     public schoolLoginSyncOpenIdPost(syncWechatInfo?: SyncWechatInfo): Promise<CodeResult> {
         return send({
-            url: `/schoolLogin/syncOpenId`,
+            url: '/schoolLogin/syncOpenId',
             method: 'POST',
             body: syncWechatInfo,
         });

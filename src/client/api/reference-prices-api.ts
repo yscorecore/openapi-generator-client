@@ -18,7 +18,7 @@ export class ReferencePricesApi {
      */
     public referencepricePriceGet(materialName?: string | null, date?: string, isWholesale?: boolean, materialPriceIds?: Array<string> | null): Promise<ReferencePriceDtoListCodeResult> {
         return send({
-            url: `/referenceprice/price`,
+            url: '/referenceprice/price',
             method: 'GET',
             params: {
                 MaterialName: materialName,

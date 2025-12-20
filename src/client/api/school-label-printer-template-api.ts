@@ -21,7 +21,7 @@ export class SchoolLabelPrinterTemplateApi {
      */
     public labelTemplatesListGet(type?: string | null, size?: string | null, brand?: string | null, name?: string | null, offset?: number, limit?: number): Promise<LabelTemplateDtoPaginationDataCodeResult> {
         return send({
-            url: `/label-templates/list`,
+            url: '/label-templates/list',
             method: 'GET',
             params: {
                 Type: type,
@@ -40,7 +40,7 @@ export class SchoolLabelPrinterTemplateApi {
      */
     public labelTemplatesNameGet(name: string | null): Promise<StringCodeResult> {
         return send({
-            url: `/label-templates/{name}`
+            url: '/label-templates/{name}'
                 .replace(`{${"name"}}`, encodeURIComponent(String(name))),
             method: 'GET',
         });

@@ -23,7 +23,7 @@ export class SchoolOperationAuditApi {
      */
     public operationauditGetGet(startTime?: string | null, endTime?: string | null, state?: AuditState, offset?: number, limit?: number): Promise<OperationAuditResPaginationDataCodeResult> {
         return send({
-            url: `/operationaudit/get`,
+            url: '/operationaudit/get',
             method: 'GET',
             params: {
                 StartTime: startTime,
@@ -41,7 +41,7 @@ export class SchoolOperationAuditApi {
      */
     public operationauditIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/operationaudit/{id}`
+            url: '/operationaudit/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -53,7 +53,7 @@ export class SchoolOperationAuditApi {
      */
     public operationauditPostPost(operationAuditDto?: OperationAuditDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/operationaudit/post`,
+            url: '/operationaudit/post',
             method: 'POST',
             body: operationAuditDto,
         });
@@ -65,7 +65,7 @@ export class SchoolOperationAuditApi {
      */
     public operationauditUpdateoperationauditPut(operationAuditInfo?: OperationAuditInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/operationaudit/updateoperationaudit`,
+            url: '/operationaudit/updateoperationaudit',
             method: 'PUT',
             body: operationAuditInfo,
         });

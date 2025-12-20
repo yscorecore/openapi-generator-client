@@ -21,7 +21,7 @@ export class SchoolAlarmApi {
      */
     public alarmGet(topN?: number, dateTime?: string | null, sort?: boolean): Promise<AlarmEventDtoListCodeResult> {
         return send({
-            url: `/alarm`,
+            url: '/alarm',
             method: 'GET',
             params: {
                 topN: topN,
@@ -41,7 +41,7 @@ export class SchoolAlarmApi {
      */
     public alarmListGet(alarmType?: AlarmType, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<AlarmEventDtoPaginationDataCodeResult> {
         return send({
-            url: `/alarm/list`,
+            url: '/alarm/list',
             method: 'GET',
             params: {
                 AlarmType: alarmType,
@@ -59,7 +59,7 @@ export class SchoolAlarmApi {
      */
     public alarmPost(uploadAlarmEventReq?: UploadAlarmEventReq): Promise<CodeResult> {
         return send({
-            url: `/alarm`,
+            url: '/alarm',
             method: 'POST',
             body: uploadAlarmEventReq,
         });

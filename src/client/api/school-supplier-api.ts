@@ -17,7 +17,7 @@ export class SchoolSupplierApi {
      */
     public suppliersBlackSupplierIdDelete(supplierId: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/suppliers/black/{supplierId}`
+            url: '/suppliers/black/{supplierId}'
                 .replace(`{${"supplierId"}}`, encodeURIComponent(String(supplierId))),
             method: 'DELETE',
         });
@@ -29,7 +29,7 @@ export class SchoolSupplierApi {
      */
     public suppliersBlackSupplierIdPost(supplierId: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/suppliers/black/{supplierId}`
+            url: '/suppliers/black/{supplierId}'
                 .replace(`{${"supplierId"}}`, encodeURIComponent(String(supplierId))),
             method: 'POST',
         });
@@ -42,7 +42,7 @@ export class SchoolSupplierApi {
      */
     public suppliersGet(offset?: number, limit?: number): Promise<SchoolSupplierDtoPaginationDataCodeResult> {
         return send({
-            url: `/suppliers`,
+            url: '/suppliers',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -57,7 +57,7 @@ export class SchoolSupplierApi {
      */
     public suppliersIdGet(id: string): Promise<SchoolSupplierDetailCodeResult> {
         return send({
-            url: `/suppliers/{id}`
+            url: '/suppliers/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });

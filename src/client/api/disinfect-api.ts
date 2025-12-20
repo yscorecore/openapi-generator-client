@@ -25,7 +25,7 @@ export class DisinfectApi {
      */
     public disinfectGet(startDate?: string, endDate?: string, target?: DisinfectTarget, way?: DisinfectWay, schoolId?: string | null, offset?: number, limit?: number): Promise<DisinfectDtoPaginationDataCodeResult> {
         return send({
-            url: `/disinfect`,
+            url: '/disinfect',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -45,7 +45,7 @@ export class DisinfectApi {
      */
     public disinfectIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/disinfect/{id}`
+            url: '/disinfect/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -57,7 +57,7 @@ export class DisinfectApi {
      */
     public disinfectPost(disinfectReq?: DisinfectReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/disinfect`,
+            url: '/disinfect',
             method: 'POST',
             body: disinfectReq,
         });

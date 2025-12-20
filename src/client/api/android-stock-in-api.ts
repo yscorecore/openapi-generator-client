@@ -16,7 +16,7 @@ export class AndroidStockInApi {
      */
     public scaleExpiredNealyGet(): Promise<GoodExpiredNealyListCodeResult> {
         return send({
-            url: `/Scale/expiredNealy`,
+            url: '/Scale/expiredNealy',
             method: 'GET',
         });
     }
@@ -27,7 +27,7 @@ export class AndroidStockInApi {
      */
     public scaleStockInPricesGet(materialName?: string | null): Promise<MaterialPriceDtoListCodeResult> {
         return send({
-            url: `/Scale/stockIn/prices`,
+            url: '/Scale/stockIn/prices',
             method: 'GET',
             params: {
                 MaterialName: materialName,
@@ -41,7 +41,7 @@ export class AndroidStockInApi {
      */
     public scaleStockinOrderListGet(orderId?: string | null): Promise<OrderInfoForStockInListCodeResult> {
         return send({
-            url: `/Scale/stockin/order_list`,
+            url: '/Scale/stockin/order_list',
             method: 'GET',
             params: {
                 orderId: orderId,

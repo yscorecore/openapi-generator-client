@@ -31,7 +31,7 @@ export class SchoolReportApi {
      */
     public reportStockDeepGet(startDate?: string | null, endDate?: string | null, status?: DeepProcessingStatus, materialName?: string | null, deepMaterialName?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<StockDeepItemReportDtoCodeResult> {
         return send({
-            url: `/Report/stock_deep`,
+            url: '/Report/stock_deep',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -63,7 +63,7 @@ export class SchoolReportApi {
      */
     public reportStockInGet(schoolId?: string | null, startDate?: string | null, endDate?: string | null, supplier?: Array<string> | null, orderType?: OrderType, isEvidence?: boolean | null, materialName?: string | null, isSupplerNameNull?: boolean, needPay?: boolean | null, materialType?: number | null, offset?: number, limit?: number): Promise<StockInItemReportDtoCodeResult> {
         return send({
-            url: `/Report/stock_in`,
+            url: '/Report/stock_in',
             method: 'GET',
             params: {
                 SchoolId: schoolId,
@@ -88,7 +88,7 @@ export class SchoolReportApi {
      */
     public reportStockInReportGet(orderId?: string): Promise<StockInIReportDtoCodeResult> {
         return send({
-            url: `/Report/stock_in_report`,
+            url: '/Report/stock_in_report',
             method: 'GET',
             params: {
                 orderId: orderId,
@@ -112,7 +112,7 @@ export class SchoolReportApi {
      */
     public reportStockOutGet(schoolId?: string | null, startDate?: string | null, endDate?: string | null, kind?: MealKind, materialName?: string | null, supplier?: Array<string> | null, isNutritious?: boolean | null, orderType?: OrderType, materialType?: number | null, offset?: number, limit?: number): Promise<StockOutItemReportDtoCodeResult> {
         return send({
-            url: `/Report/stock_out`,
+            url: '/Report/stock_out',
             method: 'GET',
             params: {
                 SchoolId: schoolId,
@@ -142,7 +142,7 @@ export class SchoolReportApi {
      */
     public reportStockOutV2Get(schoolId?: string | null, offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<StockOutItemDtoV2PagedListCodeResult> {
         return send({
-            url: `/Report/stock_out/v2`,
+            url: '/Report/stock_out/v2',
             method: 'GET',
             params: {
                 SchoolId: schoolId,
@@ -170,7 +170,7 @@ export class SchoolReportApi {
      */
     public reportStockReturnGet(schoolId?: string | null, startDate?: string | null, endDate?: string | null, supplier?: Array<string> | null, materialName?: string | null, isSupplerNameNull?: boolean, offset?: number, limit?: number): Promise<StockReturnItemReportDtoCodeResult> {
         return send({
-            url: `/Report/stock_return`,
+            url: '/Report/stock_return',
             method: 'GET',
             params: {
                 SchoolId: schoolId,
@@ -191,7 +191,7 @@ export class SchoolReportApi {
      */
     public reportStockReturnReportGet(returnId?: string): Promise<StockReturnReportDtoCodeResult> {
         return send({
-            url: `/Report/stock_return_report`,
+            url: '/Report/stock_return_report',
             method: 'GET',
             params: {
                 returnId: returnId,

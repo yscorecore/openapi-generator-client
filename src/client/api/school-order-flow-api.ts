@@ -21,7 +21,7 @@ export class SchoolOrderFlowApi {
      */
     public orderFlowsDetailsCodeGet(code: string | null): Promise<OrderPlanDetailDtoCodeResult> {
         return send({
-            url: `/order-flows/details/{code}`
+            url: '/order-flows/details/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
             method: 'GET',
         });
@@ -42,7 +42,7 @@ export class SchoolOrderFlowApi {
      */
     public orderFlowsListGet(startDate?: string | null, endDate?: string | null, orderType?: OrderType, category?: OrderCategory, channel?: OrderChannel, status?: OrderPlanStatus, orderCode?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<OrderPlanListDtoPaginationDataCodeResult> {
         return send({
-            url: `/order-flows/list`,
+            url: '/order-flows/list',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -65,7 +65,7 @@ export class SchoolOrderFlowApi {
      */
     public orderFlowsSummaryCodeGet(code: string | null): Promise<OrderPlanSummaryDtoCodeResult> {
         return send({
-            url: `/order-flows/summary/{code}`
+            url: '/order-flows/summary/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
             method: 'GET',
         });

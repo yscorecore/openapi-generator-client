@@ -25,7 +25,7 @@ export class SchoolReceiptRecordApi {
      */
     public receiptGet(startDate?: string | null, endDate?: string | null, receiptChannel?: ReceiptChannel, schoolId?: string | null, offset?: number, limit?: number): Promise<ReceiptRecordWithTotalAmountCodeResult> {
         return send({
-            url: `/receipt`,
+            url: '/receipt',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -44,7 +44,7 @@ export class SchoolReceiptRecordApi {
      */
     public receiptIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/receipt/{id}`
+            url: '/receipt/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -56,7 +56,7 @@ export class SchoolReceiptRecordApi {
      */
     public receiptIdGet(id: string): Promise<ReceiptRecordDtoCodeResult> {
         return send({
-            url: `/receipt/{id}`
+            url: '/receipt/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -68,7 +68,7 @@ export class SchoolReceiptRecordApi {
      */
     public receiptPost(createNewReceiptReq?: CreateNewReceiptReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/receipt`,
+            url: '/receipt',
             method: 'POST',
             body: createNewReceiptReq,
         });
@@ -80,7 +80,7 @@ export class SchoolReceiptRecordApi {
      */
     public receiptPut(updateReceiptReq?: UpdateReceiptReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/receipt`,
+            url: '/receipt',
             method: 'PUT',
             body: updateReceiptReq,
         });

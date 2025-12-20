@@ -21,7 +21,7 @@ export class SchoolMenu2Api {
      */
     public menuCheckReferencedMealGet(mealId?: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/menu/check-referenced-meal`,
+            url: '/menu/check-referenced-meal',
             method: 'GET',
             params: {
                 mealId: mealId,
@@ -40,7 +40,7 @@ export class SchoolMenu2Api {
      */
     public menuQueryMenuSummaryGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<MenuSummaryPagedListCodeResult> {
         return send({
-            url: `/menu/query-menu-summary`,
+            url: '/menu/query-menu-summary',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -61,7 +61,7 @@ export class SchoolMenu2Api {
      */
     public menuSavePost(mergeOnly?: boolean, menuCreateInfo?: Array<MenuCreateInfo> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/menu/save`,
+            url: '/menu/save',
             method: 'POST',
             params: {
                 mergeOnly: mergeOnly,
@@ -76,7 +76,7 @@ export class SchoolMenu2Api {
      */
     public menuSetVisiblePut(menuVisibleInfo?: MenuVisibleInfo): Promise<CodeResult> {
         return send({
-            url: `/menu/set-visible`,
+            url: '/menu/set-visible',
             method: 'PUT',
             body: menuVisibleInfo,
         });
@@ -88,7 +88,7 @@ export class SchoolMenu2Api {
      */
     public menuSyncMealToMenusPost(mealId?: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/menu/sync-meal-to-menus`,
+            url: '/menu/sync-meal-to-menus',
             method: 'POST',
             params: {
                 mealId: mealId,
@@ -102,7 +102,7 @@ export class SchoolMenu2Api {
      */
     public menuUpdatePlanedCountPut(menuPlanedCountInfo?: MenuPlanedCountInfo): Promise<CodeResult> {
         return send({
-            url: `/menu/update-planed-count`,
+            url: '/menu/update-planed-count',
             method: 'PUT',
             body: menuPlanedCountInfo,
         });
@@ -114,7 +114,7 @@ export class SchoolMenu2Api {
      */
     public menuUpdatePut(menuImageInfo?: MenuImageInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/menu/update`,
+            url: '/menu/update',
             method: 'PUT',
             body: menuImageInfo,
         });

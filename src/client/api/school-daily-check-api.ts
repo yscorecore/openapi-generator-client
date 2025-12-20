@@ -19,7 +19,7 @@ export class SchoolDailyCheckApi {
      */
     public morningcheckAddPost(createDailyCheckDto?: CreateDailyCheckDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/morningcheck/add`,
+            url: '/morningcheck/add',
             method: 'POST',
             body: createDailyCheckDto,
         });
@@ -31,7 +31,7 @@ export class SchoolDailyCheckApi {
      */
     public morningcheckIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/morningcheck/{id}`
+            url: '/morningcheck/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -50,7 +50,7 @@ export class SchoolDailyCheckApi {
      */
     public morningcheckListGet(startDate?: string | null, endDate?: string | null, name?: string | null, checkType?: CheckType, passed?: boolean | null, schoolId?: string | null, offset?: number, limit?: number): Promise<DailyCheckDtoPaginationDataCodeResult> {
         return send({
-            url: `/morningcheck/list`,
+            url: '/morningcheck/list',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -77,7 +77,7 @@ export class SchoolDailyCheckApi {
      */
     public morningcheckPost(file: File, userId: string, temperature: number, frontFile?: File | null, createTime?: string | null, exceptions?: Array<string> | null, isPersonReport?: boolean | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/morningcheck`,
+            url: '/morningcheck',
             method: 'POST',
             forms: {
                 File: file,
@@ -97,7 +97,7 @@ export class SchoolDailyCheckApi {
      */
     public morningcheckPut(updateDailyCheckDto?: UpdateDailyCheckDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/morningcheck`,
+            url: '/morningcheck',
             method: 'PUT',
             body: updateDailyCheckDto,
         });

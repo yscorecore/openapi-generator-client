@@ -15,7 +15,7 @@ export class DailyExceptionApi {
      */
     public dailyexceptionExceptionGet(): Promise<DailyExceptionModelCodeResult> {
         return send({
-            url: `/dailyexception/exception`,
+            url: '/dailyexception/exception',
             method: 'GET',
         });
     }
@@ -25,7 +25,7 @@ export class DailyExceptionApi {
      */
     public dailyexceptionTodotodayGet(): Promise<TodoOperateCodeResult> {
         return send({
-            url: `/dailyexception/todotoday`,
+            url: '/dailyexception/todotoday',
             method: 'GET',
         });
     }

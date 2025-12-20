@@ -18,7 +18,7 @@ export class SchoolSettingApi {
      */
     public apiSchoolSettingKeyDelete(key: string | null): Promise<CodeResult> {
         return send({
-            url: `/api/SchoolSetting/{key}`
+            url: '/api/SchoolSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'DELETE',
         });
@@ -29,7 +29,7 @@ export class SchoolSettingApi {
      */
     public apiSchoolSettingKeyGet(key: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/SchoolSetting/{key}`
+            url: '/api/SchoolSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'GET',
         });
@@ -41,7 +41,7 @@ export class SchoolSettingApi {
      */
     public apiSchoolSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<CodeResult> {
         return send({
-            url: `/api/SchoolSetting`,
+            url: '/api/SchoolSetting',
             method: 'POST',
             params: {
                 keepstring: keepstring,
@@ -56,7 +56,7 @@ export class SchoolSettingApi {
      */
     public schoolsettingKeyDelete(key: string | null): Promise<CodeResult> {
         return send({
-            url: `/schoolsetting/{key}`
+            url: '/schoolsetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'DELETE',
         });
@@ -68,7 +68,7 @@ export class SchoolSettingApi {
      */
     public schoolsettingKeyGet(key: string | null): Promise<StringCodeResult> {
         return send({
-            url: `/schoolsetting/{key}`
+            url: '/schoolsetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'GET',
         });
@@ -80,7 +80,7 @@ export class SchoolSettingApi {
      */
     public schoolsettingPost(stringStringKeyValuePair?: StringStringKeyValuePair): Promise<CodeResult> {
         return send({
-            url: `/schoolsetting`,
+            url: '/schoolsetting',
             method: 'POST',
             body: stringStringKeyValuePair,
         });

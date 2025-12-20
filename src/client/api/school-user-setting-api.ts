@@ -16,7 +16,7 @@ export class SchoolUserSettingApi {
      */
     public apiSchoolUserSettingKeyDelete(key: string | null): Promise<CodeResult> {
         return send({
-            url: `/api/SchoolUserSetting/{key}`
+            url: '/api/SchoolUserSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'DELETE',
         });
@@ -27,7 +27,7 @@ export class SchoolUserSettingApi {
      */
     public apiSchoolUserSettingKeyGet(key: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/SchoolUserSetting/{key}`
+            url: '/api/SchoolUserSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'GET',
         });
@@ -39,7 +39,7 @@ export class SchoolUserSettingApi {
      */
     public apiSchoolUserSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<CodeResult> {
         return send({
-            url: `/api/SchoolUserSetting`,
+            url: '/api/SchoolUserSetting',
             method: 'POST',
             params: {
                 keepstring: keepstring,

@@ -25,7 +25,7 @@ export class SchoolStockLossApi {
      */
     public stocklossAllGet(stockInItemId?: string | null, startDate?: string | null, endDate?: string | null, ignoreZero?: boolean | null, materialName?: string | null, orderType?: OrderType, schoolId?: string | null, offset?: number, limit?: number): Promise<StockLossDtoPaginationDataCodeResult> {
         return send({
-            url: `/stockloss/all`,
+            url: '/stockloss/all',
             method: 'GET',
             params: {
                 StockInItemId: stockInItemId,
@@ -53,7 +53,7 @@ export class SchoolStockLossApi {
      */
     public stocklossQueryLossGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<StockLossRecoreDetailDtoPagedListCodeResult> {
         return send({
-            url: `/stockloss/queryLoss`,
+            url: '/stockloss/queryLoss',
             method: 'GET',
             params: {
                 Offset: offset,

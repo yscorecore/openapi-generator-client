@@ -19,7 +19,7 @@ export class SchoolNoticeMessageApi {
      */
     public noticeMessageLatestGet(): Promise<NoticeMessageDtoCodeResult> {
         return send({
-            url: `/notice-message/latest`,
+            url: '/notice-message/latest',
             method: 'GET',
         });
     }
@@ -36,7 +36,7 @@ export class SchoolNoticeMessageApi {
      */
     public noticeMessageListGet(isRead?: boolean | null, messageType?: NoticeMessageType, startDate?: string | null, endDate?: string | null, isExpire?: boolean | null, offset?: number, limit?: number): Promise<NoticeMessageDetailDtoPaginationDataCodeResult> {
         return send({
-            url: `/notice-message/list`,
+            url: '/notice-message/list',
             method: 'GET',
             params: {
                 IsRead: isRead,
@@ -55,7 +55,7 @@ export class SchoolNoticeMessageApi {
      */
     public noticeMessageQueryReplyIdGet(id: string): Promise<ReplyMessageDetailResListCodeResult> {
         return send({
-            url: `/notice-message/queryReply/{Id}`
+            url: '/notice-message/queryReply/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -66,7 +66,7 @@ export class SchoolNoticeMessageApi {
      */
     public noticeMessageReplyMessagePost(replyMessageDetail?: ReplyMessageDetail): Promise<CodeResult> {
         return send({
-            url: `/notice-message/replyMessage`,
+            url: '/notice-message/replyMessage',
             method: 'POST',
             body: replyMessageDetail,
         });
@@ -78,7 +78,7 @@ export class SchoolNoticeMessageApi {
      */
     public noticeMessageSetReadIdPost(id: string): Promise<CodeResult> {
         return send({
-            url: `/notice-message/setRead/{Id}`
+            url: '/notice-message/setRead/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
             method: 'POST',
         });

@@ -16,7 +16,7 @@ export class FreeSchoolApi {
      */
     public freeAreasGet(): Promise<AreaInfoListCodeResult> {
         return send({
-            url: `/free/areas`,
+            url: '/free/areas',
             method: 'GET',
         });
     }
@@ -27,7 +27,7 @@ export class FreeSchoolApi {
      */
     public freeRegisterPost(freeSchoolDto?: FreeSchoolDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/free/register`,
+            url: '/free/register',
             method: 'POST',
             body: freeSchoolDto,
         });
@@ -39,7 +39,7 @@ export class FreeSchoolApi {
      */
     public freeShowcodeGet(isHyaline?: boolean): Promise<void> {
         return send({
-            url: `/free/showcode`,
+            url: '/free/showcode',
             method: 'GET',
             params: {
                 is_hyaline: isHyaline,

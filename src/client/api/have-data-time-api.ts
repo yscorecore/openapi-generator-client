@@ -14,7 +14,7 @@ export class HaveDataTimeApi {
      */
     public havedatatimeDinnercountDateGet(): Promise<DateTimeArrayCodeResult> {
         return send({
-            url: `/havedatatime/dinnercount_date`,
+            url: '/havedatatime/dinnercount_date',
             method: 'GET',
         });
     }
@@ -24,7 +24,7 @@ export class HaveDataTimeApi {
      */
     public havedatatimeMenuDateGet(): Promise<DateTimeArrayCodeResult> {
         return send({
-            url: `/havedatatime/menu_date`,
+            url: '/havedatatime/menu_date',
             method: 'GET',
         });
     }
@@ -34,7 +34,7 @@ export class HaveDataTimeApi {
      */
     public havedatatimeMorningDateGet(): Promise<DateTimeArrayCodeResult> {
         return send({
-            url: `/havedatatime/morning_date`,
+            url: '/havedatatime/morning_date',
             method: 'GET',
         });
     }

@@ -24,7 +24,7 @@ export class SchoolMealApi {
      */
     public mealBatchAddMealPost(addMealDto?: Array<AddMealDto> | null): Promise<CodeResult> {
         return send({
-            url: `/meal/batchAddMeal`,
+            url: '/meal/batchAddMeal',
             method: 'POST',
             body: addMealDto,
         });
@@ -38,7 +38,7 @@ export class SchoolMealApi {
      */
     public mealGet(mealKind?: MealKind, page?: number, size?: number): Promise<MealDtoPaginationResCodeResult> {
         return send({
-            url: `/meal`,
+            url: '/meal',
             method: 'GET',
             params: {
                 MealKind: mealKind,
@@ -56,7 +56,7 @@ export class SchoolMealApi {
      */
     public mealGetMealsGet(mealKind?: MealKind, offset?: number, limit?: number): Promise<MealDtoPaginationDataCodeResult> {
         return send({
-            url: `/meal/getMeals`,
+            url: '/meal/getMeals',
             method: 'GET',
             params: {
                 MealKind: mealKind,
@@ -72,7 +72,7 @@ export class SchoolMealApi {
      */
     public mealIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/meal/{id}`
+            url: '/meal/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -84,7 +84,7 @@ export class SchoolMealApi {
      */
     public mealPost(addMealDto?: AddMealDto): Promise<GuidCodeResult> {
         return send({
-            url: `/meal`,
+            url: '/meal',
             method: 'POST',
             body: addMealDto,
         });
@@ -96,7 +96,7 @@ export class SchoolMealApi {
      */
     public mealPut(editMealDto?: EditMealDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/meal`,
+            url: '/meal',
             method: 'PUT',
             body: editMealDto,
         });
@@ -107,7 +107,7 @@ export class SchoolMealApi {
      */
     public mealQueryMealDetailsIdGet(id: string): Promise<MenuItemDetailListCodeResult> {
         return send({
-            url: `/meal/query-meal-details/{Id}`
+            url: '/meal/query-meal-details/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -119,7 +119,7 @@ export class SchoolMealApi {
      */
     public mealSummaryGet(hasPrice?: boolean): Promise<MealWithSummaryListCodeResult> {
         return send({
-            url: `/meal/summary`,
+            url: '/meal/summary',
             method: 'GET',
             params: {
                 hasPrice: hasPrice,

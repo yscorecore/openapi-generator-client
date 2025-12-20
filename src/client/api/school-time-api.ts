@@ -14,7 +14,7 @@ export class SchoolTimeApi {
      */
     public timeNowGet(): Promise<DateTimeCodeResult> {
         return send({
-            url: `/time/now`,
+            url: '/time/now',
             method: 'GET',
         });
     }

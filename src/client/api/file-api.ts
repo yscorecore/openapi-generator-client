@@ -14,7 +14,7 @@ export class FileApi {
      */
     public apiFileUploadCategoryPost(category: string | null): Promise<FileUploadObjectCodeResult> {
         return send({
-            url: `/api/File/upload/{category}`
+            url: '/api/File/upload/{category}'
                 .replace(`{${"category"}}`, encodeURIComponent(String(category))),
             method: 'POST',
         });

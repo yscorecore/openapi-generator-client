@@ -17,7 +17,7 @@ export class LoginApi {
      */
     public loginBeginGet(): Promise<QrCodeImageCodeResult> {
         return send({
-            url: `/login/begin`,
+            url: '/login/begin',
             method: 'GET',
         });
     }
@@ -28,7 +28,7 @@ export class LoginApi {
      */
     public loginConfirmPost(confirmLoginInfo: ConfirmLoginInfo): Promise<CodeResult> {
         return send({
-            url: `/login/confirm`,
+            url: '/login/confirm',
             method: 'POST',
             body: confirmLoginInfo,
         });
@@ -39,7 +39,7 @@ export class LoginApi {
      */
     public loginQueryGet(): Promise<UserLoginInfoCodeResult> {
         return send({
-            url: `/login/query`,
+            url: '/login/query',
             method: 'GET',
         });
     }

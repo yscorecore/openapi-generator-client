@@ -22,7 +22,7 @@ export class SchoolOrderSampleApi {
      */
     public orderSamplesAddPost(addSampleDto2?: AddSampleDto2): Promise<OrderSampleTemplateCodeResult> {
         return send({
-            url: `/order/samples/add`,
+            url: '/order/samples/add',
             method: 'POST',
             body: addSampleDto2,
         });
@@ -34,7 +34,7 @@ export class SchoolOrderSampleApi {
      */
     public orderSamplesBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/order/samples/bind-image`,
+            url: '/order/samples/bind-image',
             method: 'POST',
             body: imageBindInfo,
         });
@@ -46,7 +46,7 @@ export class SchoolOrderSampleApi {
      */
     public orderSamplesIdDelete(id: string): Promise<Int32CodeResult> {
         return send({
-            url: `/order/samples/{id}`
+            url: '/order/samples/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -64,7 +64,7 @@ export class SchoolOrderSampleApi {
      */
     public orderSamplesListGet(startDate?: string | null, endDate?: string | null, orderType?: OrderType, materialName?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<OrderSampleDtoPaginationDataCodeResult> {
         return send({
-            url: `/order/samples/list`,
+            url: '/order/samples/list',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -84,7 +84,7 @@ export class SchoolOrderSampleApi {
      */
     public orderSamplesTemplatesGet(date?: string | null): Promise<OrderSampleEntryListCodeResult> {
         return send({
-            url: `/order/samples/templates`,
+            url: '/order/samples/templates',
             method: 'GET',
             params: {
                 date: date,
@@ -97,7 +97,7 @@ export class SchoolOrderSampleApi {
      */
     public orderSamplesTodayGet(): Promise<OrderSampleEntryListCodeResult> {
         return send({
-            url: `/order/samples/today`,
+            url: '/order/samples/today',
             method: 'GET',
         });
     }

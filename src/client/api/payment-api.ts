@@ -16,7 +16,7 @@ export class PaymentApi {
      */
     public paymentCountingPost(countRequestDto?: CountRequestDto): Promise<CountResponseDtoCodeResult> {
         return send({
-            url: `/payment/counting`,
+            url: '/payment/counting',
             method: 'POST',
             body: countRequestDto,
         });

@@ -20,7 +20,7 @@ export class SchoolTopicApi {
      */
     public topicAcceptPost(topicId?: string): Promise<CodeResult> {
         return send({
-            url: `/topic/accept`,
+            url: '/topic/accept',
             method: 'POST',
             params: {
                 topicId: topicId,
@@ -34,7 +34,7 @@ export class SchoolTopicApi {
      */
     public topicCompletePost(completeTopicDto?: CompleteTopicDto): Promise<CodeResult> {
         return send({
-            url: `/topic/complete`,
+            url: '/topic/complete',
             method: 'POST',
             body: completeTopicDto,
         });
@@ -46,7 +46,7 @@ export class SchoolTopicApi {
      */
     public topicDetailGet(id?: string): Promise<TopicDtoCodeResult> {
         return send({
-            url: `/topic/detail`,
+            url: '/topic/detail',
             method: 'GET',
             params: {
                 id: id,
@@ -62,7 +62,7 @@ export class SchoolTopicApi {
      */
     public topicListGet(status?: TopicStatus, startTime?: string | null, pageSize?: number): Promise<TopicDtoListCodeResult> {
         return send({
-            url: `/topic/list`,
+            url: '/topic/list',
             method: 'GET',
             params: {
                 status: status,
@@ -78,7 +78,7 @@ export class SchoolTopicApi {
      */
     public topicRejectPost(rejectTopicDto?: RejectTopicDto): Promise<CodeResult> {
         return send({
-            url: `/topic/reject`,
+            url: '/topic/reject',
             method: 'POST',
             body: rejectTopicDto,
         });

@@ -18,7 +18,7 @@ export class FunctionAssignApi {
      */
     public functionsAssignPost(assignByRoleInfo?: AssignByRoleInfo): Promise<CodeResult> {
         return send({
-            url: `/functions/assign`,
+            url: '/functions/assign',
             method: 'POST',
             body: assignByRoleInfo,
         });
@@ -30,7 +30,7 @@ export class FunctionAssignApi {
      */
     public functionsMockAppIdGet(appId: string | null, roleCode?: Array<string> | null): Promise<FunctionMockTreeInfoCodeResult> {
         return send({
-            url: `/functions/mock/{appId}`
+            url: '/functions/mock/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),
             method: 'GET',
             params: {
@@ -45,7 +45,7 @@ export class FunctionAssignApi {
      */
     public functionsQueryAssignByRoleAppIdGet(appId: string | null, roleCode?: string | null): Promise<StringFunctionAssignObjectInfoDictionaryCodeResult> {
         return send({
-            url: `/functions/query-assign-by-role/{appId}`
+            url: '/functions/query-assign-by-role/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),
             method: 'GET',
             params: {
@@ -60,7 +60,7 @@ export class FunctionAssignApi {
      */
     public functionsQueryAssignFunctionsByRoleAppIdGet(appId: string | null, roleCode?: string | null): Promise<StringListCodeResult> {
         return send({
-            url: `/functions/query-assign-functions-by-role/{appId}`
+            url: '/functions/query-assign-functions-by-role/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),
             method: 'GET',
             params: {

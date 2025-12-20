@@ -16,7 +16,7 @@ export class SchoolHelpCenterApi {
      */
     public helpVideoGet(title?: string | null): Promise<HelpVideoDtoCodeResult> {
         return send({
-            url: `/help/video`,
+            url: '/help/video',
             method: 'GET',
             params: {
                 title: title,
@@ -29,7 +29,7 @@ export class SchoolHelpCenterApi {
      */
     public helpVideosGet(): Promise<HelpVideoDtoListCodeResult> {
         return send({
-            url: `/help/videos`,
+            url: '/help/videos',
             method: 'GET',
         });
     }

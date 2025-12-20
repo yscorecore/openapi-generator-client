@@ -21,7 +21,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsAnonymousCreatePost(togetherPersonByAnonymous?: TogetherPersonByAnonymous): Promise<CodeResult> {
         return send({
-            url: `/TogetherMealPersons/anonymous/create`,
+            url: '/TogetherMealPersons/anonymous/create',
             method: 'POST',
             body: togetherPersonByAnonymous,
         });
@@ -33,7 +33,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsBatchCreatePost(togetherMealPersonCreateDto?: Array<TogetherMealPersonCreateDto> | null): Promise<CodeResult> {
         return send({
-            url: `/TogetherMealPersons/batch-create`,
+            url: '/TogetherMealPersons/batch-create',
             method: 'POST',
             body: togetherMealPersonCreateDto,
         });
@@ -45,7 +45,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsBatchDelete(requestBody?: Array<string> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/TogetherMealPersons/batch`,
+            url: '/TogetherMealPersons/batch',
             method: 'DELETE',
             body: requestBody,
         });
@@ -57,7 +57,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsCreatePost(togetherMealPersonCreateDto?: TogetherMealPersonCreateDto): Promise<GuidCodeResult> {
         return send({
-            url: `/TogetherMealPersons/create`,
+            url: '/TogetherMealPersons/create',
             method: 'POST',
             body: togetherMealPersonCreateDto,
         });
@@ -69,7 +69,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/TogetherMealPersons/{id}`
+            url: '/TogetherMealPersons/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -83,7 +83,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsListGet(schoolId?: string | null, offset?: number, limit?: number): Promise<TogetherMealPersonDtoPaginationDataCodeResult> {
         return send({
-            url: `/TogetherMealPersons/list`,
+            url: '/TogetherMealPersons/list',
             method: 'GET',
             params: {
                 SchoolId: schoolId,
@@ -99,7 +99,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsPut(togetherMealPersonDto?: TogetherMealPersonDto): Promise<CodeResult> {
         return send({
-            url: `/TogetherMealPersons`,
+            url: '/TogetherMealPersons',
             method: 'PUT',
             body: togetherMealPersonDto,
         });
@@ -112,7 +112,7 @@ export class SchoolTogetherMealPersonApi {
      */
     public togetherMealPersonsShowTogetherCodeGet(school?: string, isHyaline?: boolean): Promise<void> {
         return send({
-            url: `/TogetherMealPersons/showTogetherCode`,
+            url: '/TogetherMealPersons/showTogetherCode',
             method: 'GET',
             params: {
                 school: school,

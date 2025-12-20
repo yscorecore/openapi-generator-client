@@ -14,7 +14,7 @@ export class LayerSettingApi {
      */
     public layerSettingsValueGroupGet(group: string | null): Promise<StringObjectDictionaryCodeResult> {
         return send({
-            url: `/layer-settings/value/{group}`
+            url: '/layer-settings/value/{group}'
                 .replace(`{${"group"}}`, encodeURIComponent(String(group))),
             method: 'GET',
         });

@@ -21,7 +21,7 @@ export class SchoolParentAccompanyApi {
      */
     public parentAccompanyAuditPost(auditRequestDto?: AuditRequestDto): Promise<CodeResult> {
         return send({
-            url: `/parent-accompany/audit`,
+            url: '/parent-accompany/audit',
             method: 'POST',
             body: auditRequestDto,
         });
@@ -33,7 +33,7 @@ export class SchoolParentAccompanyApi {
      */
     public parentAccompanyPlanIdGet(id: string): Promise<ParentAccompanyPlanDetailDtoCodeResult> {
         return send({
-            url: `/parent-accompany/plan/{id}`
+            url: '/parent-accompany/plan/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -47,7 +47,7 @@ export class SchoolParentAccompanyApi {
      */
     public parentAccompanyPlanListGet(startTime?: string | null, offset?: number, limit?: number): Promise<ParentAccompanyPlanDtoPaginationDataCodeResult> {
         return send({
-            url: `/parent-accompany/plan/list`,
+            url: '/parent-accompany/plan/list',
             method: 'GET',
             params: {
                 StartTime: startTime,
@@ -63,7 +63,7 @@ export class SchoolParentAccompanyApi {
      */
     public parentAccompanyPlanPost(addParentAccompanyDto?: AddParentAccompanyDto): Promise<GuidCodeResult> {
         return send({
-            url: `/parent-accompany/plan`,
+            url: '/parent-accompany/plan',
             method: 'POST',
             body: addParentAccompanyDto,
         });
@@ -75,7 +75,7 @@ export class SchoolParentAccompanyApi {
      */
     public parentAccompanyPlanPut(editParentAccompanyDto?: EditParentAccompanyDto): Promise<CodeResult> {
         return send({
-            url: `/parent-accompany/plan`,
+            url: '/parent-accompany/plan',
             method: 'PUT',
             body: editParentAccompanyDto,
         });

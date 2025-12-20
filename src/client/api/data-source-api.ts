@@ -31,7 +31,7 @@ export class DataSourceApi {
      */
     public apiDataSourceAreaFilesAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/area-files/agg`,
+            url: '/api/DataSource/area-files/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -45,7 +45,7 @@ export class DataSourceApi {
      */
     public apiDataSourceAreaFilesCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/area-files/count`,
+            url: '/api/DataSource/area-files/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -59,7 +59,7 @@ export class DataSourceApi {
      */
     public apiDataSourceAreaFilesFindByKeyValueGet(key: string | null, value: string | null): Promise<GuidFileDtoCodeResult> {
         return send({
-            url: `/api/DataSource/area-files/find-by-{key}/{value}`
+            url: '/api/DataSource/area-files/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -74,7 +74,7 @@ export class DataSourceApi {
      */
     public apiDataSourceAreaFilesListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<GuidFileDtoListCodeResult> {
         return send({
-            url: `/api/DataSource/area-files/list-all`,
+            url: '/api/DataSource/area-files/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -96,7 +96,7 @@ export class DataSourceApi {
      */
     public apiDataSourceAreaFilesLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<GuidFileDtoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/area-files/load-data`,
+            url: '/api/DataSource/area-files/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -116,7 +116,7 @@ export class DataSourceApi {
      */
     public apiDataSourceCloudFilesAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/cloud-files/agg`,
+            url: '/api/DataSource/cloud-files/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -130,7 +130,7 @@ export class DataSourceApi {
      */
     public apiDataSourceCloudFilesCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/cloud-files/count`,
+            url: '/api/DataSource/cloud-files/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -144,7 +144,7 @@ export class DataSourceApi {
      */
     public apiDataSourceCloudFilesFindByKeyValueGet(key: string | null, value: string | null): Promise<GuidFileDtoCodeResult> {
         return send({
-            url: `/api/DataSource/cloud-files/find-by-{key}/{value}`
+            url: '/api/DataSource/cloud-files/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -159,7 +159,7 @@ export class DataSourceApi {
      */
     public apiDataSourceCloudFilesListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<GuidFileDtoListCodeResult> {
         return send({
-            url: `/api/DataSource/cloud-files/list-all`,
+            url: '/api/DataSource/cloud-files/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -181,7 +181,7 @@ export class DataSourceApi {
      */
     public apiDataSourceCloudFilesLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<GuidFileDtoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/cloud-files/load-data`,
+            url: '/api/DataSource/cloud-files/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -201,7 +201,7 @@ export class DataSourceApi {
      */
     public apiDataSourceDailyReportsAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/DailyReports/agg`,
+            url: '/api/DataSource/DailyReports/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -215,7 +215,7 @@ export class DataSourceApi {
      */
     public apiDataSourceDailyReportsCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/DailyReports/count`,
+            url: '/api/DataSource/DailyReports/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -229,7 +229,7 @@ export class DataSourceApi {
      */
     public apiDataSourceDailyReportsFindByKeyValueGet(key: string | null, value: string | null): Promise<AppResourceInfoCodeResult> {
         return send({
-            url: `/api/DataSource/DailyReports/find-by-{key}/{value}`
+            url: '/api/DataSource/DailyReports/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -244,7 +244,7 @@ export class DataSourceApi {
      */
     public apiDataSourceDailyReportsListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoListCodeResult> {
         return send({
-            url: `/api/DataSource/DailyReports/list-all`,
+            url: '/api/DataSource/DailyReports/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -266,7 +266,7 @@ export class DataSourceApi {
      */
     public apiDataSourceDailyReportsLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/DailyReports/load-data`,
+            url: '/api/DataSource/DailyReports/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -286,7 +286,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerBigScreenAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerBigScreen/agg`,
+            url: '/api/DataSource/ManagerBigScreen/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -300,7 +300,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerBigScreenCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/ManagerBigScreen/count`,
+            url: '/api/DataSource/ManagerBigScreen/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -314,7 +314,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerBigScreenFindByKeyValueGet(key: string | null, value: string | null): Promise<AppResourceInfoCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerBigScreen/find-by-{key}/{value}`
+            url: '/api/DataSource/ManagerBigScreen/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -329,7 +329,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerBigScreenListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoListCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerBigScreen/list-all`,
+            url: '/api/DataSource/ManagerBigScreen/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -351,7 +351,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerBigScreenLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerBigScreen/load-data`,
+            url: '/api/DataSource/ManagerBigScreen/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -371,7 +371,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerReportsAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerReports/agg`,
+            url: '/api/DataSource/ManagerReports/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -385,7 +385,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerReportsCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/ManagerReports/count`,
+            url: '/api/DataSource/ManagerReports/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -399,7 +399,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerReportsFindByKeyValueGet(key: string | null, value: string | null): Promise<AppResourceInfoCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerReports/find-by-{key}/{value}`
+            url: '/api/DataSource/ManagerReports/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -414,7 +414,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerReportsListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoListCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerReports/list-all`,
+            url: '/api/DataSource/ManagerReports/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -436,7 +436,7 @@ export class DataSourceApi {
      */
     public apiDataSourceManagerReportsLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/ManagerReports/load-data`,
+            url: '/api/DataSource/ManagerReports/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -456,7 +456,7 @@ export class DataSourceApi {
      */
     public apiDataSourceMonthReportsAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/MonthReports/agg`,
+            url: '/api/DataSource/MonthReports/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -470,7 +470,7 @@ export class DataSourceApi {
      */
     public apiDataSourceMonthReportsCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/MonthReports/count`,
+            url: '/api/DataSource/MonthReports/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -484,7 +484,7 @@ export class DataSourceApi {
      */
     public apiDataSourceMonthReportsFindByKeyValueGet(key: string | null, value: string | null): Promise<AppResourceInfoCodeResult> {
         return send({
-            url: `/api/DataSource/MonthReports/find-by-{key}/{value}`
+            url: '/api/DataSource/MonthReports/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -499,7 +499,7 @@ export class DataSourceApi {
      */
     public apiDataSourceMonthReportsListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoListCodeResult> {
         return send({
-            url: `/api/DataSource/MonthReports/list-all`,
+            url: '/api/DataSource/MonthReports/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -521,7 +521,7 @@ export class DataSourceApi {
      */
     public apiDataSourceMonthReportsLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/MonthReports/load-data`,
+            url: '/api/DataSource/MonthReports/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -541,7 +541,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySchoolShoppingCartAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySchoolShoppingCart/agg`,
+            url: '/api/DataSource/QuerySchoolShoppingCart/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -555,7 +555,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySchoolShoppingCartCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/QuerySchoolShoppingCart/count`,
+            url: '/api/DataSource/QuerySchoolShoppingCart/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -569,7 +569,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySchoolShoppingCartFindByKeyValueGet(key: string | null, value: string | null): Promise<ShoppingCartDtoCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySchoolShoppingCart/find-by-{key}/{value}`
+            url: '/api/DataSource/QuerySchoolShoppingCart/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -584,7 +584,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySchoolShoppingCartListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<ShoppingCartDtoListCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySchoolShoppingCart/list-all`,
+            url: '/api/DataSource/QuerySchoolShoppingCart/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -606,7 +606,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySchoolShoppingCartLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<ShoppingCartDtoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySchoolShoppingCart/load-data`,
+            url: '/api/DataSource/QuerySchoolShoppingCart/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -626,7 +626,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySupplierGoodsAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySupplierGoods/agg`,
+            url: '/api/DataSource/QuerySupplierGoods/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -640,7 +640,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySupplierGoodsCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/QuerySupplierGoods/count`,
+            url: '/api/DataSource/QuerySupplierGoods/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -654,7 +654,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySupplierGoodsFindByKeyValueGet(key: string | null, value: string | null): Promise<GoodsDtoCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySupplierGoods/find-by-{key}/{value}`
+            url: '/api/DataSource/QuerySupplierGoods/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -669,7 +669,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySupplierGoodsListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<GoodsDtoListCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySupplierGoods/list-all`,
+            url: '/api/DataSource/QuerySupplierGoods/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -691,7 +691,7 @@ export class DataSourceApi {
      */
     public apiDataSourceQuerySupplierGoodsLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<GoodsDtoPagedListCodeResult> {
         return send({
-            url: `/api/DataSource/QuerySupplierGoods/load-data`,
+            url: '/api/DataSource/QuerySupplierGoods/load-data',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -711,7 +711,7 @@ export class DataSourceApi {
      */
     public apiDataSourceStockOutItemAggGet(filter?: string | null, agg?: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/DataSource/StockOutItem/agg`,
+            url: '/api/DataSource/StockOutItem/agg',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -725,7 +725,7 @@ export class DataSourceApi {
      */
     public apiDataSourceStockOutItemCountGet(filter?: string | null): Promise<Int64CodeResult> {
         return send({
-            url: `/api/DataSource/StockOutItem/count`,
+            url: '/api/DataSource/StockOutItem/count',
             method: 'GET',
             params: {
                 filter: filter,
@@ -739,7 +739,7 @@ export class DataSourceApi {
      */
     public apiDataSourceStockOutItemFindByKeyValueGet(key: string | null, value: string | null): Promise<StockOutItemDtoV2CodeResult> {
         return send({
-            url: `/api/DataSource/StockOutItem/find-by-{key}/{value}`
+            url: '/api/DataSource/StockOutItem/find-by-{key}/{value}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)))
                 .replace(`{${"value"}}`, encodeURIComponent(String(value))),
             method: 'GET',
@@ -754,7 +754,7 @@ export class DataSourceApi {
      */
     public apiDataSourceStockOutItemListAllGet(filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<StockOutItemDtoV2ListCodeResult> {
         return send({
-            url: `/api/DataSource/StockOutItem/list-all`,
+            url: '/api/DataSource/StockOutItem/list-all',
             method: 'GET',
             params: {
                 Filter: filter,
@@ -776,7 +776,7 @@ export class DataSourceApi {
      */
     public apiDataSourceStockOutItemLoadDataGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<StockOutItemDtoV2PagedListCodeResult> {
         return send({
-            url: `/api/DataSource/StockOutItem/load-data`,
+            url: '/api/DataSource/StockOutItem/load-data',
             method: 'GET',
             params: {
                 Offset: offset,

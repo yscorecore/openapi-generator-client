@@ -22,7 +22,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseConfigGet(): Promise<SchoolConfigForAutoPurchaseDtoCodeResult> {
         return send({
-            url: `/auto_purchase/config`,
+            url: '/auto_purchase/config',
             method: 'GET',
         });
     }
@@ -33,7 +33,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseConfigSetPost(schoolConfigForAutoPurchaseDto?: SchoolConfigForAutoPurchaseDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/auto_purchase/config/set`,
+            url: '/auto_purchase/config/set',
             method: 'POST',
             body: schoolConfigForAutoPurchaseDto,
         });
@@ -44,7 +44,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseMainSupplierMaterialsGet(): Promise<MainSupplierWithMaterialsDtoListCodeResult> {
         return send({
-            url: `/auto_purchase/mainSupplier_materials`,
+            url: '/auto_purchase/mainSupplier_materials',
             method: 'GET',
         });
     }
@@ -55,7 +55,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseSafeMinStockConfigPost(autoPurchaseMinStockConfigReq?: AutoPurchaseMinStockConfigReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/auto_purchase/safe_min_stock_config`,
+            url: '/auto_purchase/safe_min_stock_config',
             method: 'POST',
             body: autoPurchaseMinStockConfigReq,
         });
@@ -67,7 +67,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseSafeStockInConfigPost(autoPurchaseConfigForSetReq?: AutoPurchaseConfigForSetReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/auto_purchase/safe_stockIn_config`,
+            url: '/auto_purchase/safe_stockIn_config',
             method: 'POST',
             body: autoPurchaseConfigForSetReq,
         });
@@ -79,7 +79,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseSafeStockInConfigsDelete(requestBody?: Array<string> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/auto_purchase/safe_stockIn_configs`,
+            url: '/auto_purchase/safe_stockIn_configs',
             method: 'DELETE',
             body: requestBody,
         });
@@ -91,7 +91,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseSafeStockInConfigsEditPut(autoPurchaseConfigForEditReqDto?: AutoPurchaseConfigForEditReqDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/auto_purchase/safe_stockIn_configs/edit`,
+            url: '/auto_purchase/safe_stockIn_configs/edit',
             method: 'PUT',
             body: autoPurchaseConfigForEditReqDto,
         });
@@ -102,7 +102,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseSafeStockInConfigsGet(): Promise<AutoPurchaseConfigDtoListCodeResult> {
         return send({
-            url: `/auto_purchase/safe_stockIn_configs`,
+            url: '/auto_purchase/safe_stockIn_configs',
             method: 'GET',
         });
     }
@@ -113,7 +113,7 @@ export class AutoPurchaseApi {
      */
     public autoPurchaseSafeStockInConfigsPost(autoPurchaseConfigReqDto?: Array<AutoPurchaseConfigReqDto> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/auto_purchase/safe_stockIn_configs`,
+            url: '/auto_purchase/safe_stockIn_configs',
             method: 'POST',
             body: autoPurchaseConfigReqDto,
         });

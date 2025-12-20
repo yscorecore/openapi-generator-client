@@ -18,7 +18,7 @@ export class SchoolMealShareApi {
      */
     public shareAddAccompanyPost(addAccompanyDto?: AddAccompanyDto): Promise<GuidCodeResult> {
         return send({
-            url: `/share/add-accompany`,
+            url: '/share/add-accompany',
             method: 'POST',
             body: addAccompanyDto,
         });
@@ -30,7 +30,7 @@ export class SchoolMealShareApi {
      */
     public shareAddMenuPost(addMenuDto?: AddMenuDto): Promise<GuidCodeResult> {
         return send({
-            url: `/share/add-menu`,
+            url: '/share/add-menu',
             method: 'POST',
             body: addMenuDto,
         });
@@ -41,7 +41,7 @@ export class SchoolMealShareApi {
      */
     public shareTodayGet(): Promise<DaliyMealShareDtoCodeResult> {
         return send({
-            url: `/share/today`,
+            url: '/share/today',
             method: 'GET',
         });
     }

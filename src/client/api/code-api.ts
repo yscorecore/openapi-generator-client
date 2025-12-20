@@ -13,7 +13,7 @@ export class CodeApi {
      */
     public codesAllGet(): Promise<StringCodeInfoListDictionaryCodeResult> {
         return send({
-            url: `/codes/all`,
+            url: '/codes/all',
             method: 'GET',
         });
     }

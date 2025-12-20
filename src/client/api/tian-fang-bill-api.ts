@@ -18,7 +18,7 @@ export class TianFangBillApi {
      */
     public tianfangGetBillGet(startDate?: string, endDate?: string): Promise<BillItemListCodeResult> {
         return send({
-            url: `/tianfang/get-bill`,
+            url: '/tianfang/get-bill',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -33,7 +33,7 @@ export class TianFangBillApi {
      */
     public tianfangUploadBillPost(uploadBillDto?: UploadBillDto): Promise<CodeResult> {
         return send({
-            url: `/tianfang/upload-bill`,
+            url: '/tianfang/upload-bill',
             method: 'POST',
             body: uploadBillDto,
         });

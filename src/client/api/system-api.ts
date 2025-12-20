@@ -19,7 +19,7 @@ export class SystemApi {
      */
     public systemAllimagersGet(): Promise<ImageStatusInfoListCodeResult> {
         return send({
-            url: `/System/allimagers`,
+            url: '/System/allimagers',
             method: 'GET',
         });
     }
@@ -30,7 +30,7 @@ export class SystemApi {
      */
     public systemImagesGroupGet(group: SchoolImageType): Promise<ImageDtoCodeResult> {
         return send({
-            url: `/System/images/{group}`
+            url: '/System/images/{group}'
                 .replace(`{${"group"}}`, encodeURIComponent(String(group))),
             method: 'GET',
         });
@@ -42,7 +42,7 @@ export class SystemApi {
      */
     public systemSchoolimageAddPost(schoolImageAddDto?: Array<SchoolImageAddDto> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/System/schoolimage/add`,
+            url: '/System/schoolimage/add',
             method: 'POST',
             body: schoolImageAddDto,
         });
@@ -54,7 +54,7 @@ export class SystemApi {
      */
     public systemSchoolimageDeleteDelete(id?: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/System/schoolimage/delete`,
+            url: '/System/schoolimage/delete',
             method: 'DELETE',
             params: {
                 id: id,
@@ -68,7 +68,7 @@ export class SystemApi {
      */
     public systemSchoolimageUpdatePut(schoolImageUpdateDto?: SchoolImageUpdateDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/System/schoolimage/update`,
+            url: '/System/schoolimage/update',
             method: 'PUT',
             body: schoolImageUpdateDto,
         });

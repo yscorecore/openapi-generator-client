@@ -17,7 +17,7 @@ export class LayerSettingAssignApi {
      */
     public layerSettingsAssignPost(groupValueInfo?: GroupValueInfo): Promise<CodeResult> {
         return send({
-            url: `/layer-settings/assign`,
+            url: '/layer-settings/assign',
             method: 'POST',
             body: groupValueInfo,
         });
@@ -29,7 +29,7 @@ export class LayerSettingAssignApi {
      */
     public layerSettingsMockGroupGet(group: string | null, roleCode?: Array<string> | null): Promise<LayerValueInfoListCodeResult> {
         return send({
-            url: `/layer-settings/mock/{group}`
+            url: '/layer-settings/mock/{group}'
                 .replace(`{${"group"}}`, encodeURIComponent(String(group))),
             method: 'GET',
             params: {
@@ -44,7 +44,7 @@ export class LayerSettingAssignApi {
      */
     public layerSettingsQueryAssignByRoleGroupGet(group: string | null, roleCode?: string | null): Promise<StringStringDictionaryCodeResult> {
         return send({
-            url: `/layer-settings/query-assign-by-role/{group}`
+            url: '/layer-settings/query-assign-by-role/{group}'
                 .replace(`{${"group"}}`, encodeURIComponent(String(group))),
             method: 'GET',
             params: {

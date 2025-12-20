@@ -23,7 +23,7 @@ export class SchoolBuinessReportApi {
      */
     public apiSchoolBuinessReportGet(status?: BuinessReportStatus, startDate?: string | null, endDate?: string | null, typeName?: string | null, offset?: number, limit?: number): Promise<QueryReportDtoPaginationDataCodeResult> {
         return send({
-            url: `/api/SchoolBuinessReport`,
+            url: '/api/SchoolBuinessReport',
             method: 'GET',
             params: {
                 Status: status,
@@ -41,7 +41,7 @@ export class SchoolBuinessReportApi {
      */
     public apiSchoolBuinessReportPost(createReport?: CreateReport): Promise<CodeResult> {
         return send({
-            url: `/api/SchoolBuinessReport`,
+            url: '/api/SchoolBuinessReport',
             method: 'POST',
             body: createReport,
         });
@@ -52,7 +52,7 @@ export class SchoolBuinessReportApi {
      */
     public apiSchoolBuinessReportPut(editReport?: EditReport): Promise<CodeResult> {
         return send({
-            url: `/api/SchoolBuinessReport`,
+            url: '/api/SchoolBuinessReport',
             method: 'PUT',
             body: editReport,
         });

@@ -18,7 +18,7 @@ export class SchoolInventoryApi {
      */
     public inventoryAvailableDiningOutsStockInItemIdGet(stockInItemId: string): Promise<DinnerOutDtoListCodeResult> {
         return send({
-            url: `/inventory/available-diningOuts/{stockInItemId}`
+            url: '/inventory/available-diningOuts/{stockInItemId}'
                 .replace(`{${"stockInItemId"}}`, encodeURIComponent(String(stockInItemId))),
             method: 'GET',
         });
@@ -30,7 +30,7 @@ export class SchoolInventoryApi {
      */
     public inventoryCompletePost(completeInfo?: Array<CompleteInfo> | null): Promise<CodeResult> {
         return send({
-            url: `/inventory/complete`,
+            url: '/inventory/complete',
             method: 'POST',
             body: completeInfo,
         });
@@ -42,7 +42,7 @@ export class SchoolInventoryApi {
      */
     public inventoryIdGet(id: string): Promise<InventoryStatusCodeResult> {
         return send({
-            url: `/inventory/{id}`
+            url: '/inventory/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -53,7 +53,7 @@ export class SchoolInventoryApi {
      */
     public inventoryNearlyGet(id?: Array<string> | null): Promise<StockInventoryInfoListCodeResult> {
         return send({
-            url: `/inventory/nearly`,
+            url: '/inventory/nearly',
             method: 'GET',
             params: {
                 id: id,
@@ -67,7 +67,7 @@ export class SchoolInventoryApi {
      */
     public inventoryRevertIdPost(id: string): Promise<CodeResult> {
         return send({
-            url: `/inventory/revert/{id}`
+            url: '/inventory/revert/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'POST',
         });

@@ -20,7 +20,7 @@ export class SchoolFixedPriceApi {
      */
     public schoolFixedPriceGet(name?: string | null, materialType?: number | null, offset?: number, limit?: number): Promise<FixedPriceSpecDtoPaginationDataCodeResult> {
         return send({
-            url: `/SchoolFixedPrice`,
+            url: '/SchoolFixedPrice',
             method: 'GET',
             params: {
                 Name: name,
@@ -37,7 +37,7 @@ export class SchoolFixedPriceApi {
      */
     public schoolFixedPricePost(fixSpecPriceReq?: Array<FixSpecPriceReq> | null): Promise<CodeResult> {
         return send({
-            url: `/SchoolFixedPrice`,
+            url: '/SchoolFixedPrice',
             method: 'POST',
             body: fixSpecPriceReq,
         });

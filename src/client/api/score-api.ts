@@ -14,7 +14,7 @@ export class ScoreApi {
      */
     public scoreGet(): Promise<ScoreDtoCodeResult> {
         return send({
-            url: `/score`,
+            url: '/score',
             method: 'GET',
         });
     }

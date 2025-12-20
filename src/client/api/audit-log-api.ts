@@ -15,7 +15,7 @@ export class AuditLogApi {
      */
     public auditlogGettypenamesGet(): Promise<ParamsOfAuditLogIEnumerableCodeResult> {
         return send({
-            url: `/auditlog/gettypenames`,
+            url: '/auditlog/gettypenames',
             method: 'GET',
         });
     }
@@ -34,7 +34,7 @@ export class AuditLogApi {
      */
     public auditlogSchoolauditlogGet(startDate?: string | null, endDate?: string | null, typeName?: string | null, requestIP?: string | null, desciptipn?: string | null, createUser?: string | null, success?: boolean | null, offset?: number, limit?: number): Promise<AuditLogDtoPaginationDataCodeResult> {
         return send({
-            url: `/auditlog/schoolauditlog`,
+            url: '/auditlog/schoolauditlog',
             method: 'GET',
             params: {
                 StartDate: startDate,

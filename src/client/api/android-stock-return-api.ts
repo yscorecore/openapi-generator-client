@@ -25,7 +25,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/scale/return/bind-image`,
+            url: '/scale/return/bind-image',
             method: 'POST',
             body: imageBindInfo,
         });
@@ -37,7 +37,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnBySoftPost(stockReturnAddBySoftReq?: StockReturnAddBySoftReq): Promise<GuidCodeResult> {
         return send({
-            url: `/scale/return-by-soft`,
+            url: '/scale/return-by-soft',
             method: 'POST',
             body: stockReturnAddBySoftReq,
         });
@@ -48,7 +48,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnCarryOverPost(addCarryOverReq?: AddCarryOverReq): Promise<CodeResult> {
         return send({
-            url: `/scale/return/carry-over`,
+            url: '/scale/return/carry-over',
             method: 'POST',
             body: addCarryOverReq,
         });
@@ -59,7 +59,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnChecksGet(stockInId?: string): Promise<CheckDetailResListCodeResult> {
         return send({
-            url: `/scale/return/checks`,
+            url: '/scale/return/checks',
             method: 'GET',
             params: {
                 stockInId: stockInId,
@@ -73,7 +73,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnChecksIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/scale/return/checks/{id}`
+            url: '/scale/return/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -84,7 +84,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailResCodeResult> {
         return send({
-            url: `/scale/return/checks`,
+            url: '/scale/return/checks',
             method: 'POST',
             body: checkDetailReq,
         });
@@ -95,7 +95,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
         return send({
-            url: `/scale/return/modifyCheckMultiple`,
+            url: '/scale/return/modifyCheckMultiple',
             method: 'POST',
             body: modifyCheckMultipleReq,
         });
@@ -105,7 +105,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnOrdersGet(): Promise<StockInForReturnDtoListCodeResult> {
         return send({
-            url: `/scale/return_orders`,
+            url: '/scale/return_orders',
             method: 'GET',
         });
     }
@@ -116,7 +116,7 @@ export class AndroidStockReturnApi {
      */
     public scaleReturnPost(stockReturnAddReq?: StockReturnAddReq): Promise<GuidCodeResult> {
         return send({
-            url: `/scale/return`,
+            url: '/scale/return',
             method: 'POST',
             body: stockReturnAddReq,
         });

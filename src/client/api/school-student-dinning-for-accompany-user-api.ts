@@ -21,7 +21,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      */
     public studentDinningClassesGet(date?: string, schoolCode?: string | null): Promise<ClassDtoListCodeResult> {
         return send({
-            url: `/student-dinning/classes`,
+            url: '/student-dinning/classes',
             method: 'GET',
             params: {
                 date: date,
@@ -38,7 +38,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      */
     public studentDinningDinnersGet(startDate?: string, endDate?: string, schoolCode?: string | null): Promise<DinnerDtoListCodeResult> {
         return send({
-            url: `/student-dinning/dinners`,
+            url: '/student-dinning/dinners',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -57,7 +57,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      */
     public studentDinningListGet(startDate?: string, endDate?: string, classId?: string, schoolCode?: string | null): Promise<StudentDinningDtoListCodeResult> {
         return send({
-            url: `/student-dinning/list`,
+            url: '/student-dinning/list',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -78,7 +78,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      */
     public studentDinningSavePost(startDate?: string, endDate?: string, classId?: string, schoolCode?: string | null, studentDinningDto1?: Array<StudentDinningDto1> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/student-dinning/save`,
+            url: '/student-dinning/save',
             method: 'POST',
             params: {
                 startDate: startDate,
@@ -97,7 +97,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      */
     public studentDinningStudentsGet(classId?: string, schoolCode?: string | null): Promise<StudentDtoListCodeResult> {
         return send({
-            url: `/student-dinning/students`,
+            url: '/student-dinning/students',
             method: 'GET',
             params: {
                 classId: classId,

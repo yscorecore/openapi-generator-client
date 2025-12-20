@@ -22,7 +22,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionAddSamplePost(addMenuSampleDto1?: AddMenuSampleDto1): Promise<MenuSampleTemplateCodeResult1> {
         return send({
-            url: `/sample-position/add-sample`,
+            url: '/sample-position/add-sample',
             method: 'POST',
             body: addMenuSampleDto1,
         });
@@ -34,7 +34,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionDeleteSampleIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/sample-position/delete-sample/{id}`
+            url: '/sample-position/delete-sample/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -46,7 +46,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionForceUnlockPost(forceUnLockInfo?: ForceUnLockInfo): Promise<CodeResult> {
         return send({
-            url: `/sample-position/force-unlock`,
+            url: '/sample-position/force-unlock',
             method: 'POST',
             body: forceUnLockInfo,
         });
@@ -57,7 +57,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionListAllGet(): Promise<SamplePositionInfoListCodeResult> {
         return send({
-            url: `/sample-position/list-all`,
+            url: '/sample-position/list-all',
             method: 'GET',
         });
     }
@@ -67,7 +67,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionListUsersGet(): Promise<UserInfoListCodeResult> {
         return send({
-            url: `/sample-position/list-users`,
+            url: '/sample-position/list-users',
             method: 'GET',
         });
     }
@@ -78,7 +78,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionLockPost(eventInfo?: EventInfo): Promise<CodeResult> {
         return send({
-            url: `/sample-position/lock`,
+            url: '/sample-position/lock',
             method: 'POST',
             body: eventInfo,
         });
@@ -89,7 +89,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionQueryTodayGet(): Promise<Int32MenuSampleTemplateListDictionaryCodeResult1> {
         return send({
-            url: `/sample-position/query-today`,
+            url: '/sample-position/query-today',
             method: 'GET',
         });
     }
@@ -100,7 +100,7 @@ export class SchoolSamplePositionApi {
      */
     public samplePositionUnlockPost(eventInfo?: EventInfo): Promise<CodeResult> {
         return send({
-            url: `/sample-position/unlock`,
+            url: '/sample-position/unlock',
             method: 'POST',
             body: eventInfo,
         });

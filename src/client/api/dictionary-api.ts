@@ -17,7 +17,7 @@ export class DictionaryApi {
      */
     public dictionaryAllNameMappingsGet(): Promise<StringStringStringDictionaryDictionaryCodeResult> {
         return send({
-            url: `/dictionary/all/nameMappings`,
+            url: '/dictionary/all/nameMappings',
             method: 'GET',
         });
     }
@@ -27,7 +27,7 @@ export class DictionaryApi {
      */
     public dictionaryAllValueMappingsGet(): Promise<StringInt32StringDictionaryDictionaryCodeResult> {
         return send({
-            url: `/dictionary/all/valueMappings`,
+            url: '/dictionary/all/valueMappings',
             method: 'GET',
         });
     }
@@ -38,7 +38,7 @@ export class DictionaryApi {
      */
     public dictionaryNameMappingGet(enumName?: string | null): Promise<StringStringDictionaryCodeResult> {
         return send({
-            url: `/dictionary/nameMapping`,
+            url: '/dictionary/nameMapping',
             method: 'GET',
             params: {
                 enumName: enumName,
@@ -52,7 +52,7 @@ export class DictionaryApi {
      */
     public dictionaryValueMappingGet(enumName?: string | null): Promise<Int32StringDictionaryCodeResult> {
         return send({
-            url: `/dictionary/valueMapping`,
+            url: '/dictionary/valueMapping',
             method: 'GET',
             params: {
                 enumName: enumName,

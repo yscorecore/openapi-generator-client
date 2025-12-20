@@ -28,7 +28,7 @@ export class SchoolMenuApi {
      */
     public menuCapitaInfoGet(startDate?: string | null, endDate?: string | null, mealKind?: MealKind, isEstimated?: boolean, mealIds?: Array<string> | null, day?: number): Promise<MenuCapitaInfoDtoCodeResult> {
         return send({
-            url: `/menu/capita_info`,
+            url: '/menu/capita_info',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -50,7 +50,7 @@ export class SchoolMenuApi {
      */
     public menuCapitaInfoNewGet(startDate?: string | null, endDate?: string | null, mealKind?: MealKind, isEstimated?: boolean, mealIds?: Array<string> | null): Promise<MenuCapitalInfoResCodeResult> {
         return send({
-            url: `/menu/capita_info/new`,
+            url: '/menu/capita_info/new',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -68,7 +68,7 @@ export class SchoolMenuApi {
      */
     public menuCopyPost(menuWeekCopies?: MenuWeekCopies): Promise<Int32CodeResult> {
         return send({
-            url: `/menu/copy`,
+            url: '/menu/copy',
             method: 'POST',
             body: menuWeekCopies,
         });
@@ -80,7 +80,7 @@ export class SchoolMenuApi {
      */
     public menuDeleteMenuIdDelete(menuId: string): Promise<Int32CodeResult> {
         return send({
-            url: `/menu/delete/{menuId}`
+            url: '/menu/delete/{menuId}'
                 .replace(`{${"menuId"}}`, encodeURIComponent(String(menuId))),
             method: 'DELETE',
         });
@@ -92,7 +92,7 @@ export class SchoolMenuApi {
      */
     public menuListGet(dateSelected?: string | null): Promise<MenuListCodeResult> {
         return send({
-            url: `/menu/list`,
+            url: '/menu/list',
             method: 'GET',
             params: {
                 dateSelected: dateSelected,
@@ -111,7 +111,7 @@ export class SchoolMenuApi {
      */
     public menuNutritiousInfoGet(startDate?: string | null, endDate?: string | null, mealKind?: MealKind, isEstimated?: boolean, mealIds?: Array<string> | null, day?: number): Promise<MenuNutritiousInfoDtoCodeResult> {
         return send({
-            url: `/menu/nutritious_info`,
+            url: '/menu/nutritious_info',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -132,7 +132,7 @@ export class SchoolMenuApi {
      */
     public menuPerCapitaMealCostGet(startDate?: string, endDate?: string, kind?: MealKind): Promise<PerCapitaMealCostDtoListCodeResult> {
         return send({
-            url: `/menu/per_capita_meal_cost`,
+            url: '/menu/per_capita_meal_cost',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -149,7 +149,7 @@ export class SchoolMenuApi {
      */
     public menuPerCapitaMealCostNewGet(startDate?: string, endDate?: string, kind?: MealKind): Promise<PerCapitaMealCostDtoListCodeResult> {
         return send({
-            url: `/menu/per_capita_meal_cost/new`,
+            url: '/menu/per_capita_meal_cost/new',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -166,7 +166,7 @@ export class SchoolMenuApi {
      */
     public menuQueryGet(startDate?: string | null, endDate?: string | null): Promise<MenuDto2ListCodeResult> {
         return send({
-            url: `/menu/query`,
+            url: '/menu/query',
             method: 'GET',
             params: {
                 startDate: startDate,

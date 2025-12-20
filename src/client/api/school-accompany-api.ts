@@ -29,7 +29,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyBatchCreateAccompanyPost(createAccompanyDto?: Array<CreateAccompanyDto> | null): Promise<CodeResult> {
         return send({
-            url: `/accompany/batch-create-accompany`,
+            url: '/accompany/batch-create-accompany',
             method: 'POST',
             body: createAccompanyDto,
         });
@@ -42,7 +42,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyBatchCreatePost(mode?: UpdateMode, batchCreateAccompanyDto?: Array<BatchCreateAccompanyDto> | null): Promise<CodeResult> {
         return send({
-            url: `/accompany/batch-create`,
+            url: '/accompany/batch-create',
             method: 'POST',
             params: {
                 mode: mode,
@@ -57,7 +57,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyBatchDeletePost(requestBody?: Array<string> | null): Promise<Int32CodeResult> {
         return send({
-            url: `/accompany/batch-delete`,
+            url: '/accompany/batch-delete',
             method: 'POST',
             body: requestBody,
         });
@@ -69,7 +69,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyDelete(id?: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/accompany`,
+            url: '/accompany',
             method: 'DELETE',
             params: {
                 id: id,
@@ -82,7 +82,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyDeleteAccompantUsersIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/accompany/deleteAccompantUsers/{Id}`
+            url: '/accompany/deleteAccompantUsers/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -96,7 +96,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyListGet(startDate?: string, endDate?: string, accompanyKind?: AccompanyKind): Promise<AccompanyRecordDtoListCodeResult> {
         return send({
-            url: `/accompany/list`,
+            url: '/accompany/list',
             method: 'GET',
             params: {
                 startDate: startDate,
@@ -121,7 +121,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyPaginationQueryGet(accompanyKinds?: Array<AccompanyKind> | null, startDate?: string | null, endDate?: string | null, kind?: MealKind, isNutritious?: boolean | null, score?: LeaderMealComment, isPublic?: boolean | null, schoolId?: string | null, offset?: number, limit?: number): Promise<AccompanyRecordDtoPaginationDataCodeResult> {
         return send({
-            url: `/accompany/pagination-query`,
+            url: '/accompany/pagination-query',
             method: 'GET',
             params: {
                 AccompanyKinds: accompanyKinds,
@@ -144,7 +144,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyPost(createAccompanyDto?: CreateAccompanyDto): Promise<GuidCodeResult> {
         return send({
-            url: `/accompany`,
+            url: '/accompany',
             method: 'POST',
             body: createAccompanyDto,
         });
@@ -157,7 +157,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyPublicListGet(lastTime?: string | null, limit?: number): Promise<AccompanyRecordDtoListCodeResult> {
         return send({
-            url: `/accompany/public/list`,
+            url: '/accompany/public/list',
             method: 'GET',
             params: {
                 lastTime: lastTime,
@@ -172,7 +172,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyPublicPost(createPublicAccompanyDto?: CreatePublicAccompanyDto): Promise<GuidCodeResult> {
         return send({
-            url: `/accompany/public`,
+            url: '/accompany/public',
             method: 'POST',
             body: createPublicAccompanyDto,
         });
@@ -185,7 +185,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyShowcodeGet(school?: string, isHyaline?: boolean): Promise<void> {
         return send({
-            url: `/accompany/showcode`,
+            url: '/accompany/showcode',
             method: 'GET',
             params: {
                 school: school,
@@ -200,7 +200,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyUpdateUserPut(putAccompanyDto?: PutAccompanyDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/accompany/update-user`,
+            url: '/accompany/update-user',
             method: 'PUT',
             body: putAccompanyDto,
         });
@@ -212,7 +212,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyUsersCountGet(accompanyKind?: AccompanyKind): Promise<Int32CodeResult> {
         return send({
-            url: `/accompany/users/count`,
+            url: '/accompany/users/count',
             method: 'GET',
             params: {
                 accompanyKind: accompanyKind,
@@ -225,7 +225,7 @@ export class SchoolAccompanyApi {
      */
     public accompanyUsersGet(): Promise<AccompanyUserDtoListCodeResult> {
         return send({
-            url: `/accompany/users`,
+            url: '/accompany/users',
             method: 'GET',
         });
     }

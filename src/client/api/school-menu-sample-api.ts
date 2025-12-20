@@ -23,7 +23,7 @@ export class SchoolMenuSampleApi {
      */
     public menuSamplesAddPost(addMenuSampleDto?: AddMenuSampleDto): Promise<MenuSampleTemplateCodeResult> {
         return send({
-            url: `/menu/samples/add`,
+            url: '/menu/samples/add',
             method: 'POST',
             body: addMenuSampleDto,
         });
@@ -35,7 +35,7 @@ export class SchoolMenuSampleApi {
      */
     public menuSamplesBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/menu/samples/bind-image`,
+            url: '/menu/samples/bind-image',
             method: 'POST',
             body: imageBindInfo,
         });
@@ -46,7 +46,7 @@ export class SchoolMenuSampleApi {
      */
     public menuSamplesEditPost(editSample?: EditSample): Promise<BooleanCodeResult> {
         return send({
-            url: `/menu/samples/edit`,
+            url: '/menu/samples/edit',
             method: 'POST',
             body: editSample,
         });
@@ -58,7 +58,7 @@ export class SchoolMenuSampleApi {
      */
     public menuSamplesIdDelete(id: string): Promise<Int32CodeResult> {
         return send({
-            url: `/menu/samples/{id}`
+            url: '/menu/samples/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -76,7 +76,7 @@ export class SchoolMenuSampleApi {
      */
     public menuSamplesListGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, materialName?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<MenuSampleDtoPaginationDataCodeResult> {
         return send({
-            url: `/menu/samples/list`,
+            url: '/menu/samples/list',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -96,7 +96,7 @@ export class SchoolMenuSampleApi {
      */
     public menuSamplesTemplatesGet(date?: string | null): Promise<Int32MenuSampleTemplateListDictionaryCodeResult> {
         return send({
-            url: `/menu/samples/templates`,
+            url: '/menu/samples/templates',
             method: 'GET',
             params: {
                 date: date,
@@ -109,7 +109,7 @@ export class SchoolMenuSampleApi {
      */
     public menuSamplesTodayGet(): Promise<Int32MenuSampleTemplateListDictionaryCodeResult> {
         return send({
-            url: `/menu/samples/today`,
+            url: '/menu/samples/today',
             method: 'GET',
         });
     }

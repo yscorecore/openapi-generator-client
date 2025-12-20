@@ -25,7 +25,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutAvailableDinneroutsGet(): Promise<MealkindDinerListCodeResult> {
         return send({
-            url: `/dinningout/available-dinnerouts`,
+            url: '/dinningout/available-dinnerouts',
             method: 'GET',
         });
     }
@@ -36,7 +36,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutBatchDetailsPost(requestBody?: Array<string> | null): Promise<DiningOutDetailsDtoListCodeResult> {
         return send({
-            url: `/dinningout/batch-details`,
+            url: '/dinningout/batch-details',
             method: 'POST',
             body: requestBody,
         });
@@ -47,7 +47,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutBatchSaveStudentDiningPost(batchStudentDiningDto?: Array<BatchStudentDiningDto> | null): Promise<CodeResult> {
         return send({
-            url: `/dinningout/batch-save-student-dining`,
+            url: '/dinningout/batch-save-student-dining',
             method: 'POST',
             body: batchStudentDiningDto,
         });
@@ -59,7 +59,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutDetailsGet(id?: string): Promise<DiningOutDetailsDtoCodeResult> {
         return send({
-            url: `/dinningout/details`,
+            url: '/dinningout/details',
             method: 'GET',
             params: {
                 id: id,
@@ -73,7 +73,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/dinningout/{id}`
+            url: '/dinningout/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -91,7 +91,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutListByOrderTypeGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, orderType?: OrderType, schoolId?: string | null, offset?: number, limit?: number): Promise<DiningCostDtoByOrderTypePaginationDataCodeResult> {
         return send({
-            url: `/dinningout/listByOrderType`,
+            url: '/dinningout/listByOrderType',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -116,7 +116,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutListGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, schoolId?: string | null, offset?: number, limit?: number): Promise<DiningOutDtoPaginationDataCodeResult> {
         return send({
-            url: `/dinningout/list`,
+            url: '/dinningout/list',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -135,7 +135,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutModifyCountPost(modifyTotalCountReq?: ModifyTotalCountReq): Promise<CodeResult> {
         return send({
-            url: `/dinningout/modify-count`,
+            url: '/dinningout/modify-count',
             method: 'POST',
             body: modifyTotalCountReq,
         });
@@ -147,7 +147,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutReportTo3rdPost(reportReq?: ReportReq): Promise<CodeResult> {
         return send({
-            url: `/dinningout/report-to-3rd`,
+            url: '/dinningout/report-to-3rd',
             method: 'POST',
             body: reportReq,
         });
@@ -159,7 +159,7 @@ export class SchoolDinningOutApi {
      */
     public dinningoutSaveStudentDinningPost(saveStudentDinningDto?: SaveStudentDinningDto): Promise<CodeResult> {
         return send({
-            url: `/dinningout/save-student-dinning`,
+            url: '/dinningout/save-student-dinning',
             method: 'POST',
             body: saveStudentDinningDto,
         });

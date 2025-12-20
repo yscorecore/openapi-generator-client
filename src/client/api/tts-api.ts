@@ -14,7 +14,7 @@ export class TtsApi {
      */
     public ttsDownloadGet(text?: string | null): Promise<void> {
         return send({
-            url: `/Tts/download`,
+            url: '/Tts/download',
             method: 'GET',
             params: {
                 Text: text,
@@ -27,7 +27,7 @@ export class TtsApi {
      */
     public ttsGet(text?: string | null): Promise<TextSpeechResCodeResult> {
         return send({
-            url: `/Tts`,
+            url: '/Tts',
             method: 'GET',
             params: {
                 Text: text,

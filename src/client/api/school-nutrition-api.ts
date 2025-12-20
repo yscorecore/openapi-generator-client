@@ -25,7 +25,7 @@ export class SchoolNutritionApi {
      */
     public nutritionIngredienttypeinfoGet(dateTime?: string | null, endDate?: string | null, mealKind?: MealKind, mealIds?: Array<string> | null, day?: number): Promise<IngredientTypeInfoDtoCodeResult> {
         return send({
-            url: `/nutrition/ingredienttypeinfo`,
+            url: '/nutrition/ingredienttypeinfo',
             method: 'GET',
             params: {
                 dateTime: dateTime,
@@ -47,7 +47,7 @@ export class SchoolNutritionApi {
      */
     public nutritionNutritioninfoGet(dateTime?: string | null, endDate?: string | null, mealKind?: MealKind, mealIds?: Array<string> | null, day?: number): Promise<NutritionInfoDtoCodeResult> {
         return send({
-            url: `/nutrition/nutritioninfo`,
+            url: '/nutrition/nutritioninfo',
             method: 'GET',
             params: {
                 dateTime: dateTime,
@@ -66,7 +66,7 @@ export class SchoolNutritionApi {
      */
     public nutritionStandardingredienttypeInfoGradeGet(grade: Grade, mealKind?: MealKind): Promise<IngredientsTypeStandardDtoCodeResult> {
         return send({
-            url: `/nutrition/standardingredienttypeInfo/{grade}`
+            url: '/nutrition/standardingredienttypeInfo/{grade}'
                 .replace(`{${"grade"}}`, encodeURIComponent(String(grade))),
             method: 'GET',
             params: {
@@ -82,7 +82,7 @@ export class SchoolNutritionApi {
      */
     public nutritionStandardnutritioninfoGradeGet(grade: Grade, mealKind?: MealKind): Promise<MealNutritionsStandardDtoCodeResult> {
         return send({
-            url: `/nutrition/standardnutritioninfo/{grade}`
+            url: '/nutrition/standardnutritioninfo/{grade}'
                 .replace(`{${"grade"}}`, encodeURIComponent(String(grade))),
             method: 'GET',
             params: {
@@ -96,7 +96,7 @@ export class SchoolNutritionApi {
      */
     public nutritionStandardsGet(): Promise<IngredientsNutritionStandardDtoListCodeResult> {
         return send({
-            url: `/nutrition/standards`,
+            url: '/nutrition/standards',
             method: 'GET',
         });
     }

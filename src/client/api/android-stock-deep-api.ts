@@ -23,7 +23,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepAllstockitemsGet(): Promise<StockInItemCodesListCodeResult> {
         return send({
-            url: `/scale/deep/allstockitems`,
+            url: '/scale/deep/allstockitems',
             method: 'GET',
         });
     }
@@ -33,7 +33,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/scale/deep/bind-image`,
+            url: '/scale/deep/bind-image',
             method: 'POST',
             body: imageBindInfo,
         });
@@ -43,7 +43,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepChecksGet(): Promise<CheckDetailResListCodeResult> {
         return send({
-            url: `/scale/deep/checks`,
+            url: '/scale/deep/checks',
             method: 'GET',
         });
     }
@@ -53,7 +53,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepChecksIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/scale/deep/checks/{id}`
+            url: '/scale/deep/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -64,7 +64,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailResCodeResult> {
         return send({
-            url: `/scale/deep/checks`,
+            url: '/scale/deep/checks',
             method: 'POST',
             body: checkDetailReq,
         });
@@ -75,7 +75,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
         return send({
-            url: `/scale/deep/modifyCheckMultiple`,
+            url: '/scale/deep/modifyCheckMultiple',
             method: 'POST',
             body: modifyCheckMultipleReq,
         });
@@ -86,7 +86,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepPost(stockDeepAddReq?: StockDeepAddReq): Promise<GuidCodeResult> {
         return send({
-            url: `/scale/deep`,
+            url: '/scale/deep',
             method: 'POST',
             body: stockDeepAddReq,
         });
@@ -97,7 +97,7 @@ export class AndroidStockDeepApi {
      */
     public scaleDeepSoftPost(stockDeepAddReq2?: StockDeepAddReq2): Promise<GuidCodeResult> {
         return send({
-            url: `/scale/deep/soft`,
+            url: '/scale/deep/soft',
             method: 'POST',
             body: stockDeepAddReq2,
         });

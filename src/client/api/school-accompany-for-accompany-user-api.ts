@@ -20,7 +20,7 @@ export class SchoolAccompanyForAccompanyUserApi {
      */
     public accompanyCurrentUserGet(schoolCode?: string | null): Promise<AccompanyUserDtoCodeResult> {
         return send({
-            url: `/accompany/current-user`,
+            url: '/accompany/current-user',
             method: 'GET',
             params: {
                 schoolCode: schoolCode,
@@ -34,7 +34,7 @@ export class SchoolAccompanyForAccompanyUserApi {
      */
     public accompanyMealInfoGet(schoolCode?: string | null): Promise<AccompanyMealDtoCodeResult> {
         return send({
-            url: `/accompany/meal-info`,
+            url: '/accompany/meal-info',
             method: 'GET',
             params: {
                 schoolCode: schoolCode,
@@ -48,7 +48,7 @@ export class SchoolAccompanyForAccompanyUserApi {
      */
     public accompanyRegisterUserPost(resigterAccompanyUserDto?: ResigterAccompanyUserDto): Promise<GuidCodeResult> {
         return send({
-            url: `/accompany/register-user`,
+            url: '/accompany/register-user',
             method: 'POST',
             body: resigterAccompanyUserDto,
         });
@@ -66,7 +66,7 @@ export class SchoolAccompanyForAccompanyUserApi {
      */
     public accompanySuggestionPost(schoolCode: string, kind?: MealKind, suggestion?: string | null, store?: LeaderMealComment, mealIds?: string | null, favoriteMealIds?: Array<string> | null, files?: Array<File> | null): Promise<GuidCodeResult> {
         return send({
-            url: `/accompany/suggestion`,
+            url: '/accompany/suggestion',
             method: 'POST',
             forms: {
                 Kind: kind,

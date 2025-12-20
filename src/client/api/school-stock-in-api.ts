@@ -33,7 +33,7 @@ export class SchoolStockInApi {
      */
     public stockCerificateUrlIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/stock/cerificateUrl/{id}`
+            url: '/stock/cerificateUrl/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -45,7 +45,7 @@ export class SchoolStockInApi {
      */
     public stockEvaluatePost(stockInRatingInfo?: StockInRatingInfo): Promise<CodeResult> {
         return send({
-            url: `/stock/evaluate`,
+            url: '/stock/evaluate',
             method: 'POST',
             body: stockInRatingInfo,
         });
@@ -57,7 +57,7 @@ export class SchoolStockInApi {
      */
     public stockHistoryPeelingsPost(materialSpecId?: string, stockInItemId?: string): Promise<HistoryPeelingInfoListCodeResult> {
         return send({
-            url: `/stock/history-peelings`,
+            url: '/stock/history-peelings',
             method: 'POST',
             params: {
                 MaterialSpecId: materialSpecId,
@@ -72,7 +72,7 @@ export class SchoolStockInApi {
      */
     public stockInBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/stock/in/bind-image`,
+            url: '/stock/in/bind-image',
             method: 'POST',
             body: imageBindInfo,
         });
@@ -84,7 +84,7 @@ export class SchoolStockInApi {
      */
     public stockInBySoftPost(stockInAddReq2?: StockInAddReq2): Promise<GuidCodeResult> {
         return send({
-            url: `/stock/in-by-soft`,
+            url: '/stock/in-by-soft',
             method: 'POST',
             body: stockInAddReq2,
         });
@@ -96,7 +96,7 @@ export class SchoolStockInApi {
      */
     public stockInChecksIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/stock/in/checks/{id}`
+            url: '/stock/in/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -108,7 +108,7 @@ export class SchoolStockInApi {
      */
     public stockInChecksPost(orderItemCheckInDetailReq?: OrderItemCheckInDetailReq): Promise<OrderItemCheckInDetailResCodeResult> {
         return send({
-            url: `/stock/in/checks`,
+            url: '/stock/in/checks',
             method: 'POST',
             body: orderItemCheckInDetailReq,
         });
@@ -120,7 +120,7 @@ export class SchoolStockInApi {
      */
     public stockInDetailsGet(orderId?: string): Promise<OrderItemCodeListCodeResult> {
         return send({
-            url: `/stock/in/details`,
+            url: '/stock/in/details',
             method: 'GET',
             params: {
                 orderId: orderId,
@@ -134,7 +134,7 @@ export class SchoolStockInApi {
      */
     public stockInFormDeepPost(stockInAddFromDeepReq?: StockInAddFromDeepReq): Promise<GuidCodeResult> {
         return send({
-            url: `/stock/in-form-deep`,
+            url: '/stock/in-form-deep',
             method: 'POST',
             body: stockInAddFromDeepReq,
         });
@@ -146,7 +146,7 @@ export class SchoolStockInApi {
      */
     public stockInFromDeepPost(stockInAddFromDeepReq?: StockInAddFromDeepReq): Promise<GuidCodeResult> {
         return send({
-            url: `/stock/in-from-deep`,
+            url: '/stock/in-from-deep',
             method: 'POST',
             body: stockInAddFromDeepReq,
         });
@@ -157,7 +157,7 @@ export class SchoolStockInApi {
      */
     public stockInModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
         return send({
-            url: `/stock/in/modifyCheckMultiple`,
+            url: '/stock/in/modifyCheckMultiple',
             method: 'POST',
             body: modifyCheckMultipleReq,
         });
@@ -169,7 +169,7 @@ export class SchoolStockInApi {
      */
     public stockInOrderitemMarkOutOfStockPost(orderItemId?: string): Promise<CodeResult> {
         return send({
-            url: `/stock/in/orderitem/mark-out-of-stock`,
+            url: '/stock/in/orderitem/mark-out-of-stock',
             method: 'POST',
             params: {
                 orderItemId: orderItemId,
@@ -183,7 +183,7 @@ export class SchoolStockInApi {
      */
     public stockInOrderitemResetOutOfStockPost(orderItemId?: string): Promise<CodeResult> {
         return send({
-            url: `/stock/in/orderitem/reset-out-of-stock`,
+            url: '/stock/in/orderitem/reset-out-of-stock',
             method: 'POST',
             params: {
                 orderItemId: orderItemId,
@@ -197,7 +197,7 @@ export class SchoolStockInApi {
      */
     public stockInPost(stockInAddReq?: StockInAddReq): Promise<GuidCodeResult> {
         return send({
-            url: `/stock/in`,
+            url: '/stock/in',
             method: 'POST',
             body: stockInAddReq,
         });
@@ -209,7 +209,7 @@ export class SchoolStockInApi {
      */
     public stockInSummaryIdGet(id: string): Promise<StockInSummaryInfoCodeResult> {
         return send({
-            url: `/stock/in/summary/{id}`
+            url: '/stock/in/summary/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -221,7 +221,7 @@ export class SchoolStockInApi {
      */
     public stockModifyCerificateUrlPost(stockInItemModify?: StockInItemModify): Promise<CodeResult> {
         return send({
-            url: `/stock/modifyCerificateUrl`,
+            url: '/stock/modifyCerificateUrl',
             method: 'POST',
             body: stockInItemModify,
         });
@@ -233,7 +233,7 @@ export class SchoolStockInApi {
      */
     public stockModifyMaterialTypePost(stockInItemModifyMaterialType?: StockInItemModifyMaterialType): Promise<CodeResult> {
         return send({
-            url: `/stock/modifyMaterialType`,
+            url: '/stock/modifyMaterialType',
             method: 'POST',
             body: stockInItemModifyMaterialType,
         });
@@ -245,7 +245,7 @@ export class SchoolStockInApi {
      */
     public stockStockImagesPost(updateAfterStockImagesReq?: UpdateAfterStockImagesReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/stock/stock_images`,
+            url: '/stock/stock_images',
             method: 'POST',
             body: updateAfterStockImagesReq,
         });
@@ -257,7 +257,7 @@ export class SchoolStockInApi {
      */
     public stockUpdatePricePost(orderItemPriceInfo?: OrderItemPriceInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/stock/update-price`,
+            url: '/stock/update-price',
             method: 'POST',
             body: orderItemPriceInfo,
         });
@@ -269,7 +269,7 @@ export class SchoolStockInApi {
      */
     public stockUpdateQgpPost(orderItemQgpInfo?: OrderItemQgpInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/stock/update-qgp`,
+            url: '/stock/update-qgp',
             method: 'POST',
             body: orderItemQgpInfo,
         });

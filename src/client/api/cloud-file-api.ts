@@ -18,7 +18,7 @@ export class CloudFileApi {
      */
     public apiCloudFileDelete(requestBody?: Array<string> | null): Promise<CodeResult> {
         return send({
-            url: `/api/CloudFile`,
+            url: '/api/CloudFile',
             method: 'DELETE',
             body: requestBody,
         });
@@ -29,7 +29,7 @@ export class CloudFileApi {
      */
     public apiCloudFileFoldersPost(guidCreateFolderDto?: Array<GuidCreateFolderDto> | null): Promise<GuidArrayCodeResult> {
         return send({
-            url: `/api/CloudFile/folders`,
+            url: '/api/CloudFile/folders',
             method: 'POST',
             body: guidCreateFolderDto,
         });
@@ -40,7 +40,7 @@ export class CloudFileApi {
      */
     public apiCloudFilePost(guidCreateFileDto?: Array<GuidCreateFileDto> | null): Promise<GuidArrayCodeResult> {
         return send({
-            url: `/api/CloudFile`,
+            url: '/api/CloudFile',
             method: 'POST',
             body: guidCreateFileDto,
         });
@@ -51,7 +51,7 @@ export class CloudFileApi {
      */
     public apiCloudFileRenamePost(guidRenameFileDto?: GuidRenameFileDto): Promise<CodeResult> {
         return send({
-            url: `/api/CloudFile/rename`,
+            url: '/api/CloudFile/rename',
             method: 'POST',
             body: guidRenameFileDto,
         });

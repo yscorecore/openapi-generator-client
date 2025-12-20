@@ -30,7 +30,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutAllstockitemsGet(stockInId?: string | null, stockInItemId?: string | null): Promise<StockInItemCodesListCodeResult> {
         return send({
-            url: `/scale/out/allstockitems`,
+            url: '/scale/out/allstockitems',
             method: 'GET',
             params: {
                 StockInId: stockInId,
@@ -44,7 +44,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/scale/out/bind-image`,
+            url: '/scale/out/bind-image',
             method: 'POST',
             body: imageBindInfo,
         });
@@ -55,7 +55,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutBySoftPost(stockOutAddReq2?: StockOutAddReq2): Promise<GuidCodeResult> {
         return send({
-            url: `/scale/out-by-soft`,
+            url: '/scale/out-by-soft',
             method: 'POST',
             body: stockOutAddReq2,
         });
@@ -65,7 +65,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutChecksGet(): Promise<CheckDetailResListCodeResult> {
         return send({
-            url: `/scale/out/checks`,
+            url: '/scale/out/checks',
             method: 'GET',
         });
     }
@@ -75,7 +75,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutChecksIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/scale/out/checks/{id}`
+            url: '/scale/out/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -86,7 +86,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailResCodeResult> {
         return send({
-            url: `/scale/out/checks`,
+            url: '/scale/out/checks',
             method: 'POST',
             body: checkDetailReq,
         });
@@ -97,7 +97,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutFromInPost(stockOutFromStockInAddReq?: StockOutFromStockInAddReq): Promise<GuidCodeResult> {
         return send({
-            url: `/scale/out-from-in`,
+            url: '/scale/out-from-in',
             method: 'POST',
             body: stockOutFromStockInAddReq,
         });
@@ -108,7 +108,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutFromInV2Post(stockOutFromStockInAddReq2?: StockOutFromStockInAddReq2): Promise<CodeResult> {
         return send({
-            url: `/scale/out-from-in/v2`,
+            url: '/scale/out-from-in/v2',
             method: 'POST',
             body: stockOutFromStockInAddReq2,
         });
@@ -119,7 +119,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
         return send({
-            url: `/scale/out/modifyCheckMultiple`,
+            url: '/scale/out/modifyCheckMultiple',
             method: 'POST',
             body: modifyCheckMultipleReq,
         });
@@ -130,7 +130,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutPost(stockOutAddReq?: StockOutAddReq): Promise<GuidCodeResult> {
         return send({
-            url: `/scale/out`,
+            url: '/scale/out',
             method: 'POST',
             body: stockOutAddReq,
         });
@@ -141,7 +141,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutSummaryAmountPost(mealKindWithDate?: Array<MealKindWithDate> | null): Promise<StockOutItemInfoListCodeResult> {
         return send({
-            url: `/scale/out/summary-amount`,
+            url: '/scale/out/summary-amount',
             method: 'POST',
             body: mealKindWithDate,
         });
@@ -152,7 +152,7 @@ export class AndroidStockOutApi {
      */
     public scaleOutV3Post(stockOutFromStockInAddReq3?: StockOutFromStockInAddReq3): Promise<CodeResult> {
         return send({
-            url: `/scale/out/v3`,
+            url: '/scale/out/v3',
             method: 'POST',
             body: stockOutFromStockInAddReq3,
         });

@@ -16,7 +16,7 @@ export class FunctionPermissionApi {
      */
     public functionsAppIdCheckFunctionCodeGet(appId: string | null, functionCode: string | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/functions/{appId}/check/{functionCode}`
+            url: '/functions/{appId}/check/{functionCode}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId)))
                 .replace(`{${"functionCode"}}`, encodeURIComponent(String(functionCode))),
             method: 'GET',
@@ -29,7 +29,7 @@ export class FunctionPermissionApi {
      */
     public functionsAppIdGet(appId: string | null, functionCode?: string | null): Promise<FunctionTreeInfoCodeResult> {
         return send({
-            url: `/functions/{appId}`
+            url: '/functions/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),
             method: 'GET',
             params: {

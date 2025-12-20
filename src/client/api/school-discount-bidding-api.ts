@@ -20,7 +20,7 @@ export class SchoolDiscountBiddingApi {
      */
     public discountBiddingConfirmPost(confirmReplyReq?: ConfirmReplyReq): Promise<GuidCodeResult> {
         return send({
-            url: `/discount-bidding/confirm`,
+            url: '/discount-bidding/confirm',
             method: 'POST',
             body: confirmReplyReq,
         });
@@ -32,7 +32,7 @@ export class SchoolDiscountBiddingApi {
      */
     public discountBiddingIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/discount-bidding/{id}`
+            url: '/discount-bidding/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -44,7 +44,7 @@ export class SchoolDiscountBiddingApi {
      */
     public discountBiddingIdGet(id: string): Promise<DiscountBiddingPlanDetailDtoCodeResult> {
         return send({
-            url: `/discount-bidding/{id}`
+            url: '/discount-bidding/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -57,7 +57,7 @@ export class SchoolDiscountBiddingApi {
      */
     public discountBiddingListGet(offset?: number, limit?: number): Promise<DiscountBiddingPlanDtoPaginationDataCodeResult> {
         return send({
-            url: `/discount-bidding/list`,
+            url: '/discount-bidding/list',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -72,7 +72,7 @@ export class SchoolDiscountBiddingApi {
      */
     public discountBiddingPost(createDiscountBiddingPlanDto?: CreateDiscountBiddingPlanDto): Promise<GuidCodeResult> {
         return send({
-            url: `/discount-bidding`,
+            url: '/discount-bidding',
             method: 'POST',
             body: createDiscountBiddingPlanDto,
         });

@@ -14,7 +14,7 @@ export class TianFangOAuthApi {
      */
     public oauthTianfangCallbackGet(idToken?: string | null): Promise<void> {
         return send({
-            url: `/oauth/tianfang/callback`,
+            url: '/oauth/tianfang/callback',
             method: 'GET',
             params: {
                 id_token: idToken,
@@ -27,7 +27,7 @@ export class TianFangOAuthApi {
      */
     public oauthTianfangLoginPost(session?: string | null): Promise<RootObjectCodeResult> {
         return send({
-            url: `/oauth/tianfang/login`,
+            url: '/oauth/tianfang/login',
             method: 'POST',
             params: {
                 session: session,

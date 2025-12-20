@@ -18,7 +18,7 @@ export class SchoolMainSupplierApi {
      */
     public mainSupplierCrossConfigsGet(offset?: number, limit?: number): Promise<MainSupplierMaterialTypeCrossConfigDtoPaginationDataCodeResult> {
         return send({
-            url: `/main-supplier/cross-configs`,
+            url: '/main-supplier/cross-configs',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -32,7 +32,7 @@ export class SchoolMainSupplierApi {
      */
     public mainSupplierCrossConfigsPost(mainSupplierMaterialTypeCrossConfigSaveDto?: Array<MainSupplierMaterialTypeCrossConfigSaveDto> | null): Promise<CodeResult> {
         return send({
-            url: `/main-supplier/cross-configs`,
+            url: '/main-supplier/cross-configs',
             method: 'POST',
             body: mainSupplierMaterialTypeCrossConfigSaveDto,
         });
@@ -45,7 +45,7 @@ export class SchoolMainSupplierApi {
      */
     public mainSupplierGet(offset?: number, limit?: number): Promise<AreaMainSupplierDtoPaginationDataCodeResult> {
         return send({
-            url: `/main-supplier`,
+            url: '/main-supplier',
             method: 'GET',
             params: {
                 Offset: offset,

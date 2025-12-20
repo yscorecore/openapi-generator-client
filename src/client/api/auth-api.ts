@@ -15,7 +15,7 @@ export class AuthApi {
      */
     public authCode2sessionGet(code: string): Promise<Code2SessionDtoCodeResult> {
         return send({
-            url: `/auth/code2session`,
+            url: '/auth/code2session',
             method: 'GET',
             params: {
                 code: code,

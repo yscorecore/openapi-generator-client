@@ -18,7 +18,7 @@ export class SchoolMenuAmountApi {
      */
     public menuMaterialAmountPost(materialAmountInfo?: MaterialAmountInfo): Promise<MaterialAmountWithSpcesDtoListCodeResult> {
         return send({
-            url: `/menu/material_amount`,
+            url: '/menu/material_amount',
             method: 'POST',
             body: materialAmountInfo,
         });
@@ -30,7 +30,7 @@ export class SchoolMenuAmountApi {
      */
     public menuMaterialAmountV2Post(materialAmountInfo2?: MaterialAmountInfo2): Promise<MaterialAmountWithSpcesDtoListCodeResult> {
         return send({
-            url: `/menu/material_amount/v2`,
+            url: '/menu/material_amount/v2',
             method: 'POST',
             body: materialAmountInfo2,
         });
@@ -42,7 +42,7 @@ export class SchoolMenuAmountApi {
      */
     public menuMaterialAmountV3Post(mealWithDate3?: Array<MealWithDate3> | null): Promise<MaterialAmountWithSpcesDtoListCodeResult> {
         return send({
-            url: `/menu/material_amount/v3`,
+            url: '/menu/material_amount/v3',
             method: 'POST',
             body: mealWithDate3,
         });

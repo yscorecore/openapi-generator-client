@@ -21,7 +21,7 @@ export class SchoolHardwareApi {
      */
     public hardwareConfigGet(): Promise<StringObjectDictionaryCodeResult> {
         return send({
-            url: `/hardware/config`,
+            url: '/hardware/config',
             method: 'GET',
         });
     }
@@ -32,7 +32,7 @@ export class SchoolHardwareApi {
      */
     public hardwareConfigPost(requestBody: { [key: string]: any; }): Promise<BooleanCodeResult> {
         return send({
-            url: `/hardware/config`,
+            url: '/hardware/config',
             method: 'POST',
             body: requestBody,
         });
@@ -44,7 +44,7 @@ export class SchoolHardwareApi {
      */
     public hardwareControllingCaremaPost(caremaControl?: CaremaControl): Promise<CodeResult> {
         return send({
-            url: `/hardware/controllingCarema`,
+            url: '/hardware/controllingCarema',
             method: 'POST',
             body: caremaControl,
         });
@@ -55,7 +55,7 @@ export class SchoolHardwareApi {
      */
     public hardwareNvrChannelsGet(): Promise<NvrChannelDtoListCodeResult> {
         return send({
-            url: `/hardware/nvr/channels`,
+            url: '/hardware/nvr/channels',
             method: 'GET',
         });
     }
@@ -69,7 +69,7 @@ export class SchoolHardwareApi {
      */
     public hardwareNvrPlayurlSnChannelGet(sn: string | null, channel: number, protocal?: StreamProtocol, type?: StreamType): Promise<StringCodeResult> {
         return send({
-            url: `/hardware/nvr/playurl/{sn}/{channel}`
+            url: '/hardware/nvr/playurl/{sn}/{channel}'
                 .replace(`{${"sn"}}`, encodeURIComponent(String(sn)))
                 .replace(`{${"channel"}}`, encodeURIComponent(String(channel))),
             method: 'GET',
@@ -86,7 +86,7 @@ export class SchoolHardwareApi {
      */
     public hardwareNvrSnGet(sn: string | null): Promise<NvrChannelDtoListCodeResult> {
         return send({
-            url: `/hardware/nvr/{sn}`
+            url: '/hardware/nvr/{sn}'
                 .replace(`{${"sn"}}`, encodeURIComponent(String(sn))),
             method: 'GET',
         });
@@ -98,7 +98,7 @@ export class SchoolHardwareApi {
      */
     public hardwareTalkUrlsGet(indexCode?: string | null): Promise<StringCodeResult> {
         return send({
-            url: `/hardware/talkUrls`,
+            url: '/hardware/talkUrls',
             method: 'GET',
             params: {
                 indexCode: indexCode,

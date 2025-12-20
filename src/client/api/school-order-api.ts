@@ -20,7 +20,7 @@ export class SchoolOrderApi {
      */
     public ordersMendCreateV3Post(createOrderReqV3?: CreateOrderReqV3): Promise<GuidCodeResult> {
         return send({
-            url: `/orders/mend/create/v3`,
+            url: '/orders/mend/create/v3',
             method: 'POST',
             body: createOrderReqV3,
         });
@@ -31,7 +31,7 @@ export class SchoolOrderApi {
      */
     public ordersModifyCerificateUrlPost(orderItemCerificateUrl?: OrderItemCerificateUrl): Promise<CodeResult> {
         return send({
-            url: `/orders/modifyCerificateUrl`,
+            url: '/orders/modifyCerificateUrl',
             method: 'POST',
             body: orderItemCerificateUrl,
         });
@@ -43,7 +43,7 @@ export class SchoolOrderApi {
      */
     public ordersOrderDeleteDelete(id?: Array<string> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/order/delete`,
+            url: '/orders/order/delete',
             method: 'DELETE',
             params: {
                 id: id,
@@ -56,7 +56,7 @@ export class SchoolOrderApi {
      */
     public ordersShowredirectcodeGet(): Promise<void> {
         return send({
-            url: `/orders/showredirectcode`,
+            url: '/orders/showredirectcode',
             method: 'GET',
         });
     }
@@ -66,7 +66,7 @@ export class SchoolOrderApi {
      */
     public ordersShowstockadditionalGet(): Promise<void> {
         return send({
-            url: `/orders/showstockadditional`,
+            url: '/orders/showstockadditional',
             method: 'GET',
         });
     }
@@ -77,7 +77,7 @@ export class SchoolOrderApi {
      */
     public ordersStockImagesPost(updateBeforeStockImagesReq?: UpdateBeforeStockImagesReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/orders/stock_images`,
+            url: '/orders/stock_images',
             method: 'POST',
             body: updateBeforeStockImagesReq,
         });

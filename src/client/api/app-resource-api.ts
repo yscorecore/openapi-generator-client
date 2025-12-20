@@ -21,7 +21,7 @@ export class AppResourceApi {
      */
     public appResourceGroupGet(group: string | null, offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoPagedListCodeResult> {
         return send({
-            url: `/app-resource/{group}`
+            url: '/app-resource/{group}'
                 .replace(`{${"group"}}`, encodeURIComponent(String(group))),
             method: 'GET',
             params: {

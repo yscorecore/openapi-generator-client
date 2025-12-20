@@ -14,7 +14,7 @@ export class SchoolAcApi {
      */
     public acIdGet(id: string): Promise<AcInfoCodeResult> {
         return send({
-            url: `/ac/{id}`
+            url: '/ac/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });

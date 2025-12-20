@@ -24,7 +24,7 @@ export class SchoolEventApi {
      */
     public schooleventCertExpiredDetailsGet(id?: string, type?: ExceptionType): Promise<CertExpiredDetailsCodeResult> {
         return send({
-            url: `/schoolevent/certExpiredDetails`,
+            url: '/schoolevent/certExpiredDetails',
             method: 'GET',
             params: {
                 id: id,
@@ -45,7 +45,7 @@ export class SchoolEventApi {
      */
     public schooleventDataGet(starTime?: string | null, endTime?: string | null, category?: ExceptionType, detailCount?: number | null, summaryClassification?: string | null, offset?: number, limit?: number): Promise<SchoolEventDtoPaginationDataCodeResult> {
         return send({
-            url: `/schoolevent/data`,
+            url: '/schoolevent/data',
             method: 'GET',
             params: {
                 StarTime: starTime,
@@ -66,7 +66,7 @@ export class SchoolEventApi {
      */
     public schooleventDataexceptiondetailsGet(id?: string, type?: ExceptionType): Promise<DataExceptionDetailsCodeResult> {
         return send({
-            url: `/schoolevent/dataexceptiondetails`,
+            url: '/schoolevent/dataexceptiondetails',
             method: 'GET',
             params: {
                 id: id,
@@ -82,7 +82,7 @@ export class SchoolEventApi {
      */
     public schooleventOperationexceptionGet(id?: string, type?: ExceptionType): Promise<OperationExceptionDetailsCodeResult> {
         return send({
-            url: `/schoolevent/operationexception`,
+            url: '/schoolevent/operationexception',
             method: 'GET',
             params: {
                 id: id,
@@ -98,7 +98,7 @@ export class SchoolEventApi {
      */
     public schooleventOutofdatedetailsGet(id?: string, type?: ExceptionType): Promise<OutOfDateDetailsCodeResult> {
         return send({
-            url: `/schoolevent/outofdatedetails`,
+            url: '/schoolevent/outofdatedetails',
             method: 'GET',
             params: {
                 id: id,
@@ -113,7 +113,7 @@ export class SchoolEventApi {
      */
     public schooleventProcessPost(schoolEventProcessDto?: SchoolEventProcessDto): Promise<CodeResult> {
         return send({
-            url: `/schoolevent/process`,
+            url: '/schoolevent/process',
             method: 'POST',
             body: schoolEventProcessDto,
         });
@@ -126,7 +126,7 @@ export class SchoolEventApi {
      */
     public schooleventSystemanomailyGet(id?: string, type?: ExceptionType): Promise<SystemAnomalyCodeResult> {
         return send({
-            url: `/schoolevent/systemanomaily`,
+            url: '/schoolevent/systemanomaily',
             method: 'GET',
             params: {
                 id: id,

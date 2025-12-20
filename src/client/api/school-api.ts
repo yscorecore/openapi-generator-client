@@ -20,7 +20,7 @@ export class SchoolApi {
      */
     public schoolChildrenSchoolGet(): Promise<ChildrenSchoolDtoListCodeResult> {
         return send({
-            url: `/school/childrenSchool`,
+            url: '/school/childrenSchool',
             method: 'GET',
         });
     }
@@ -30,7 +30,7 @@ export class SchoolApi {
      */
     public schoolConfigGet(): Promise<SchoolConfigForAreaSchoolDtoCodeResult> {
         return send({
-            url: `/school/config`,
+            url: '/school/config',
             method: 'GET',
         });
     }
@@ -41,7 +41,7 @@ export class SchoolApi {
      */
     public schoolConfigPost(requestBody?: { [key: string]: any; } | null): Promise<Int32CodeResult> {
         return send({
-            url: `/school/config`,
+            url: '/school/config',
             method: 'POST',
             body: requestBody,
         });
@@ -52,7 +52,7 @@ export class SchoolApi {
      */
     public schoolDetailGet(): Promise<DetailCodeResult> {
         return send({
-            url: `/school/detail`,
+            url: '/school/detail',
             method: 'GET',
         });
     }
@@ -63,7 +63,7 @@ export class SchoolApi {
      */
     public schoolDetailPost(detail?: Detail): Promise<CodeResult> {
         return send({
-            url: `/school/detail`,
+            url: '/school/detail',
             method: 'POST',
             body: detail,
         });
@@ -74,7 +74,7 @@ export class SchoolApi {
      */
     public schoolLoginInfoGet(): Promise<UserLoginInfoCodeResult> {
         return send({
-            url: `/school/loginInfo`,
+            url: '/school/loginInfo',
             method: 'GET',
         });
     }

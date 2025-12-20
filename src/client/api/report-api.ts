@@ -16,7 +16,7 @@ export class ReportApi {
      */
     public reportExportExcelGet(templateName: string, title?: string | null): Promise<void> {
         return send({
-            url: `/report/export-excel`,
+            url: '/report/export-excel',
             method: 'GET',
             params: {
                 templateName: templateName,
@@ -30,7 +30,7 @@ export class ReportApi {
      */
     public reportMetaGet(templateName: string): Promise<ReportMetaCodeResult> {
         return send({
-            url: `/report/meta`,
+            url: '/report/meta',
             method: 'GET',
             params: {
                 templateName: templateName,
@@ -44,7 +44,7 @@ export class ReportApi {
      */
     public reportPreviewGet(templateName: string, title?: string | null): Promise<ExcelPreviewInfoCodeResult> {
         return send({
-            url: `/report/preview`,
+            url: '/report/preview',
             method: 'GET',
             params: {
                 templateName: templateName,
@@ -59,7 +59,7 @@ export class ReportApi {
      */
     public reportPreviewUrlGet(url: string, title?: string | null): Promise<ExcelPreviewInfoCodeResult> {
         return send({
-            url: `/report/preview-url`,
+            url: '/report/preview-url',
             method: 'GET',
             params: {
                 url: url,

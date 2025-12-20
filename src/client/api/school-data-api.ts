@@ -22,7 +22,7 @@ export class SchoolDataApi {
      */
     public schoolDataDeepprocessingItemGet(start?: string | null, end?: string | null): Promise<DeepProcessingItemModelListCodeResult> {
         return send({
-            url: `/school_data/deepprocessing_item`,
+            url: '/school_data/deepprocessing_item',
             method: 'GET',
             params: {
                 start: start,
@@ -38,7 +38,7 @@ export class SchoolDataApi {
      */
     public schoolDataMenuSampleGet(start?: string | null, end?: string | null): Promise<MenuSampleModelListCodeResult> {
         return send({
-            url: `/school_data/menu_sample`,
+            url: '/school_data/menu_sample',
             method: 'GET',
             params: {
                 start: start,
@@ -54,7 +54,7 @@ export class SchoolDataApi {
      */
     public schoolDataOrderSampleGet(start?: string | null, end?: string | null): Promise<OrderSampleModelListCodeResult> {
         return send({
-            url: `/school_data/order_sample`,
+            url: '/school_data/order_sample',
             method: 'GET',
             params: {
                 start: start,
@@ -70,7 +70,7 @@ export class SchoolDataApi {
      */
     public schoolDataSchoolInfoGet(start?: string | null, end?: string | null): Promise<SchoolWithMealInfoModelCodeResult> {
         return send({
-            url: `/school_data/school_info`,
+            url: '/school_data/school_info',
             method: 'GET',
             params: {
                 start: start,
@@ -86,7 +86,7 @@ export class SchoolDataApi {
      */
     public schoolDataStockInGet(start?: string | null, end?: string | null): Promise<StockInModelListCodeResult> {
         return send({
-            url: `/school_data/stock_in`,
+            url: '/school_data/stock_in',
             method: 'GET',
             params: {
                 start: start,
@@ -102,7 +102,7 @@ export class SchoolDataApi {
      */
     public schoolDataStockOutGet(start?: string | null, end?: string | null): Promise<StockOutItemModelListCodeResult> {
         return send({
-            url: `/school_data/stock_out`,
+            url: '/school_data/stock_out',
             method: 'GET',
             params: {
                 start: start,
@@ -118,7 +118,7 @@ export class SchoolDataApi {
      */
     public schoolDataStockReturnGet(start?: string | null, end?: string | null): Promise<StockReturnItemModelListCodeResult> {
         return send({
-            url: `/school_data/stock_return`,
+            url: '/school_data/stock_return',
             method: 'GET',
             params: {
                 start: start,

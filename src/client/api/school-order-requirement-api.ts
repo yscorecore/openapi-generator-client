@@ -25,7 +25,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementBatchPost(batchCreateOrderRequirementReq?: BatchCreateOrderRequirementReq): Promise<CodeResult> {
         return send({
-            url: `/order-requirement/batch`,
+            url: '/order-requirement/batch',
             method: 'POST',
             body: batchCreateOrderRequirementReq,
         });
@@ -41,7 +41,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementGet(status?: OrderRequirementStatus, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<OrderRequirementResPaginationDataCodeResult> {
         return send({
-            url: `/order-requirement`,
+            url: '/order-requirement',
             method: 'GET',
             params: {
                 Status: status,
@@ -59,7 +59,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/order-requirement/{id}`
+            url: '/order-requirement/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -71,7 +71,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementIdGet(id: string): Promise<OrderRequirementDetailResCodeResult> {
         return send({
-            url: `/order-requirement/{id}`
+            url: '/order-requirement/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -83,7 +83,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementPost(createOrderRequirementReq?: CreateOrderRequirementReq): Promise<GuidCodeResult> {
         return send({
-            url: `/order-requirement`,
+            url: '/order-requirement',
             method: 'POST',
             body: createOrderRequirementReq,
         });
@@ -95,7 +95,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementPut(modifyOrderRequirementReq?: ModifyOrderRequirementReq): Promise<BooleanCodeResult> {
         return send({
-            url: `/order-requirement`,
+            url: '/order-requirement',
             method: 'PUT',
             body: modifyOrderRequirementReq,
         });
@@ -107,7 +107,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementRejectedPost(rejectRequirement?: RejectRequirement): Promise<CodeResult> {
         return send({
-            url: `/order-requirement/rejected`,
+            url: '/order-requirement/rejected',
             method: 'POST',
             body: rejectRequirement,
         });
@@ -119,7 +119,7 @@ export class SchoolOrderRequirementApi {
      */
     public orderRequirementUploadRequirementPost(uploadRequirementReq?: UploadRequirementReq): Promise<CodeResult> {
         return send({
-            url: `/order-requirement/uploadRequirement`,
+            url: '/order-requirement/uploadRequirement',
             method: 'POST',
             body: uploadRequirementReq,
         });

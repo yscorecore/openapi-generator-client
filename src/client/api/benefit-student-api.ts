@@ -29,7 +29,7 @@ export class BenefitStudentApi {
      */
     public benefitsAddBenefitStudentsTermPost(schoolYear: number, schoolSession: SchoolYearSession, contentType?: string | null, contentDisposition?: string | null, headers?: { [key: string]: Array<string>; } | null, length?: number, name?: string | null, fileName?: string | null): Promise<BenefitStudentBatchEntryDtoCodeResult> {
         return send({
-            url: `/benefits/AddBenefitStudentsTerm`,
+            url: '/benefits/AddBenefitStudentsTerm',
             method: 'POST',
             forms: {
                 ContentType: contentType,
@@ -50,7 +50,7 @@ export class BenefitStudentApi {
      */
     public benefitsAddPost(benefitStudentDto?: BenefitStudentDto): Promise<Int32CodeResult> {
         return send({
-            url: `/benefits/add`,
+            url: '/benefits/add',
             method: 'POST',
             body: benefitStudentDto,
         });
@@ -62,7 +62,7 @@ export class BenefitStudentApi {
      */
     public benefitsBatchNoGet(batchNo: string): Promise<BenefitStudentBatchDtoCodeResult> {
         return send({
-            url: `/benefits/{batchNo}`
+            url: '/benefits/{batchNo}'
                 .replace(`{${"batchNo"}}`, encodeURIComponent(String(batchNo))),
             method: 'GET',
         });
@@ -75,7 +75,7 @@ export class BenefitStudentApi {
      */
     public benefitsGet(startTime?: string | null, limit?: number): Promise<BenefitStudentBatchEntryDtoListCodeResult> {
         return send({
-            url: `/benefits`,
+            url: '/benefits',
             method: 'GET',
             params: {
                 startTime: startTime,
@@ -90,7 +90,7 @@ export class BenefitStudentApi {
      */
     public benefitsIdDelete(id: string): Promise<Int32CodeResult> {
         return send({
-            url: `/benefits/{id}`
+            url: '/benefits/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -102,7 +102,7 @@ export class BenefitStudentApi {
      */
     public benefitsItemsIdDelete(id: string): Promise<Int32CodeResult> {
         return send({
-            url: `/benefits/items/{id}`
+            url: '/benefits/items/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -113,7 +113,7 @@ export class BenefitStudentApi {
      */
     public benefitsLatestGet(): Promise<BenefitStudentBatchDtoCodeResult> {
         return send({
-            url: `/benefits/latest`,
+            url: '/benefits/latest',
             method: 'GET',
         });
     }
@@ -130,7 +130,7 @@ export class BenefitStudentApi {
      */
     public benefitsPost(schoolYear: number, contentType?: string | null, contentDisposition?: string | null, headers?: { [key: string]: Array<string>; } | null, length?: number, name?: string | null, fileName?: string | null): Promise<BenefitStudentBatchEntryDtoCodeResult> {
         return send({
-            url: `/benefits`,
+            url: '/benefits',
             method: 'POST',
             forms: {
                 ContentType: contentType,
@@ -150,7 +150,7 @@ export class BenefitStudentApi {
      */
     public benefitsPut(benefitStudentDto?: BenefitStudentDto): Promise<Int32CodeResult> {
         return send({
-            url: `/benefits`,
+            url: '/benefits',
             method: 'PUT',
             body: benefitStudentDto,
         });
@@ -165,7 +165,7 @@ export class BenefitStudentApi {
      */
     public benefitsStudentitemsGet(schoolYear?: number | null, className?: string | null, page?: number, size?: number): Promise<BenefitStudentItemInfoPaginationResCodeResult> {
         return send({
-            url: `/benefits/studentitems`,
+            url: '/benefits/studentitems',
             method: 'GET',
             params: {
                 SchoolYear: schoolYear,
@@ -181,7 +181,7 @@ export class BenefitStudentApi {
      */
     public benefitsYearAllclassGet(): Promise<SchoolYearsAndAllClassDtoListCodeResult> {
         return send({
-            url: `/benefits/year_allclass`,
+            url: '/benefits/year_allclass',
             method: 'GET',
         });
     }

@@ -20,7 +20,7 @@ export class SchoolPointPatrolApi {
      */
     public pointPatrolAuditIdPost(id: string): Promise<CodeResult> {
         return send({
-            url: `/point-patrol/audit/{id}`
+            url: '/point-patrol/audit/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'POST',
         });
@@ -32,7 +32,7 @@ export class SchoolPointPatrolApi {
      */
     public pointPatrolIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/point-patrol/{id}`
+            url: '/point-patrol/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -44,7 +44,7 @@ export class SchoolPointPatrolApi {
      */
     public pointPatrolPost(createPatrolRecordDto?: CreatePatrolRecordDto): Promise<GuidCodeResult> {
         return send({
-            url: `/point-patrol`,
+            url: '/point-patrol',
             method: 'POST',
             body: createPatrolRecordDto,
         });
@@ -56,7 +56,7 @@ export class SchoolPointPatrolApi {
      */
     public pointPatrolPut(modifyPatrolRecordDto?: ModifyPatrolRecordDto): Promise<CodeResult> {
         return send({
-            url: `/point-patrol`,
+            url: '/point-patrol',
             method: 'PUT',
             body: modifyPatrolRecordDto,
         });
@@ -72,7 +72,7 @@ export class SchoolPointPatrolApi {
      */
     public pointPatrolRecordsGet(type?: number | null, startTime?: string | null, endTime?: string | null, offset?: number, limit?: number): Promise<PointPatrolRecordDtoPaginationDataCodeResult> {
         return send({
-            url: `/point-patrol/records`,
+            url: '/point-patrol/records',
             method: 'GET',
             params: {
                 Type: type,
@@ -91,7 +91,7 @@ export class SchoolPointPatrolApi {
      */
     public pointPatrolTypesGet(offset?: number, limit?: number): Promise<PointPatrolTypeDtoPaginationDataCodeResult> {
         return send({
-            url: `/point-patrol/types`,
+            url: '/point-patrol/types',
             method: 'GET',
             params: {
                 Offset: offset,

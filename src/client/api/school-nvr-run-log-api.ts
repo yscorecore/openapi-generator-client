@@ -19,7 +19,7 @@ export class SchoolNvrRunLogApi {
      */
     public nvrrunlogSchoolNvrrunlogGet(nvrCode?: string | null, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<SchoolNvrRunLogPaginationDataCodeResult> {
         return send({
-            url: `/nvrrunlog/school/nvrrunlog`,
+            url: '/nvrrunlog/school/nvrrunlog',
             method: 'GET',
             params: {
                 NvrCode: nvrCode,

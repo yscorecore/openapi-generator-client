@@ -15,7 +15,7 @@ export class SchoolStudentDinningApi {
      */
     public studentDinningShowcodeGet(school?: string, isHyaline?: boolean): Promise<void> {
         return send({
-            url: `/student-dinning/showcode`,
+            url: '/student-dinning/showcode',
             method: 'GET',
             params: {
                 school: school,

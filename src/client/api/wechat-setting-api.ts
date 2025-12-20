@@ -16,7 +16,7 @@ export class WechatSettingApi {
      */
     public apiWechatSettingKeyDelete(key: string | null): Promise<CodeResult> {
         return send({
-            url: `/api/WechatSetting/{key}`
+            url: '/api/WechatSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'DELETE',
         });
@@ -27,7 +27,7 @@ export class WechatSettingApi {
      */
     public apiWechatSettingKeyGet(key: string | null): Promise<ObjectCodeResult> {
         return send({
-            url: `/api/WechatSetting/{key}`
+            url: '/api/WechatSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
             method: 'GET',
         });
@@ -39,7 +39,7 @@ export class WechatSettingApi {
      */
     public apiWechatSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<CodeResult> {
         return send({
-            url: `/api/WechatSetting`,
+            url: '/api/WechatSetting',
             method: 'POST',
             params: {
                 keepstring: keepstring,

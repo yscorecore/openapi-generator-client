@@ -16,7 +16,7 @@ export class VisualDataApi {
      */
     public visualdataAllGet(day?: number, maxCount?: number): Promise<AllDataDtoCodeResult> {
         return send({
-            url: `/visualdata/All`,
+            url: '/visualdata/All',
             method: 'GET',
             params: {
                 day: day,

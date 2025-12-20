@@ -25,7 +25,7 @@ export class SchoolUserApi {
      */
     public schooluserAddFirstUserPost(firstUserInfo?: FirstUserInfo): Promise<GuidCodeResult> {
         return send({
-            url: `/schooluser/add-first-user`,
+            url: '/schooluser/add-first-user',
             method: 'POST',
             body: firstUserInfo,
         });
@@ -36,7 +36,7 @@ export class SchoolUserApi {
      */
     public schooluserChangeChildrenOrgVisiblePost(editUserInfo?: EditUserInfo): Promise<CodeResult> {
         return send({
-            url: `/schooluser/changeChildrenOrgVisible`,
+            url: '/schooluser/changeChildrenOrgVisible',
             method: 'POST',
             body: editUserInfo,
         });
@@ -48,7 +48,7 @@ export class SchoolUserApi {
      */
     public schooluserEmptySchoolsGet(areaCode: string): Promise<EmptySchoolInfoListCodeResult> {
         return send({
-            url: `/schooluser/empty-schools`,
+            url: '/schooluser/empty-schools',
             method: 'GET',
             params: {
                 areaCode: areaCode,
@@ -65,7 +65,7 @@ export class SchoolUserApi {
      */
     public schooluserFinanceSystemGet(currentSchoolCode?: string | null, currentSchoolName?: string | null, userName?: string | null, userNo?: string | null, userRole?: number): Promise<StringCodeResult> {
         return send({
-            url: `/schooluser/financeSystem`,
+            url: '/schooluser/financeSystem',
             method: 'GET',
             params: {
                 CurrentSchoolCode: currentSchoolCode,
@@ -83,7 +83,7 @@ export class SchoolUserApi {
      */
     public schooluserIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/schooluser/{id}`
+            url: '/schooluser/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -96,7 +96,7 @@ export class SchoolUserApi {
      */
     public schooluserIdPut(id: string, editUserDto?: EditUserDto): Promise<CodeResult> {
         return send({
-            url: `/schooluser/{id}`
+            url: '/schooluser/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'PUT',
             body: editUserDto,
@@ -108,7 +108,7 @@ export class SchoolUserApi {
      */
     public schooluserListGet(): Promise<UserInfoListCodeResult1> {
         return send({
-            url: `/schooluser/list`,
+            url: '/schooluser/list',
             method: 'GET',
         });
     }
@@ -119,7 +119,7 @@ export class SchoolUserApi {
      */
     public schooluserNewusersGet(sence?: string | null): Promise<UserInfoListCodeResult1> {
         return send({
-            url: `/schooluser/newusers`,
+            url: '/schooluser/newusers',
             method: 'GET',
             params: {
                 sence: sence,
@@ -133,7 +133,7 @@ export class SchoolUserApi {
      */
     public schooluserPost(userInfo1?: UserInfo1): Promise<GuidCodeResult> {
         return send({
-            url: `/schooluser`,
+            url: '/schooluser',
             method: 'POST',
             body: userInfo1,
         });
@@ -145,7 +145,7 @@ export class SchoolUserApi {
      */
     public schooluserRegisterPost(registerUserDto: RegisterUserDto): Promise<CodeResult> {
         return send({
-            url: `/schooluser/register`,
+            url: '/schooluser/register',
             method: 'POST',
             body: registerUserDto,
         });
@@ -156,7 +156,7 @@ export class SchoolUserApi {
      */
     public schooluserRegistersysadminGet(): Promise<void> {
         return send({
-            url: `/schooluser/registersysadmin`,
+            url: '/schooluser/registersysadmin',
             method: 'GET',
         });
     }
@@ -167,7 +167,7 @@ export class SchoolUserApi {
      */
     public schooluserShowFirstUserImageGet(areaCode: string): Promise<void> {
         return send({
-            url: `/schooluser/show-first-user-image`,
+            url: '/schooluser/show-first-user-image',
             method: 'GET',
             params: {
                 areaCode: areaCode,
@@ -180,7 +180,7 @@ export class SchoolUserApi {
      */
     public schooluserShowcodeGet(): Promise<QrCodeImageCodeResult> {
         return send({
-            url: `/schooluser/showcode`,
+            url: '/schooluser/showcode',
             method: 'GET',
         });
     }

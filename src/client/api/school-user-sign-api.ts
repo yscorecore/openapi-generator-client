@@ -17,7 +17,7 @@ export class SchoolUserSignApi {
      */
     public usersignQueryCodeGet(code: string | null): Promise<CodeUserCodeResult> {
         return send({
-            url: `/usersign/query/{code}`
+            url: '/usersign/query/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
             method: 'GET',
         });
@@ -28,7 +28,7 @@ export class SchoolUserSignApi {
      */
     public usersignReleaseCodeCodePost(code: string | null): Promise<CodeResult> {
         return send({
-            url: `/usersign/release-code/{code}`
+            url: '/usersign/release-code/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
             method: 'POST',
         });
@@ -38,7 +38,7 @@ export class SchoolUserSignApi {
      */
     public usersignRequestCodePost(): Promise<CodeImageCodeResult> {
         return send({
-            url: `/usersign/request-code`,
+            url: '/usersign/request-code',
             method: 'POST',
         });
     }
@@ -48,7 +48,7 @@ export class SchoolUserSignApi {
      */
     public usersignSignCodePost(code: string | null): Promise<CodeResult> {
         return send({
-            url: `/usersign/sign/{code}`
+            url: '/usersign/sign/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
             method: 'POST',
         });

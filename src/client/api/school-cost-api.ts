@@ -20,7 +20,7 @@ export class SchoolCostApi {
      */
     public costDailyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationDataCodeResult> {
         return send({
-            url: `/cost/daily`,
+            url: '/cost/daily',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -39,7 +39,7 @@ export class SchoolCostApi {
      */
     public costDetailsGet(date?: string, kind?: MealKind): Promise<DinningOutDtoListCodeResult> {
         return send({
-            url: `/cost/details`,
+            url: '/cost/details',
             method: 'GET',
             params: {
                 date: date,
@@ -58,7 +58,7 @@ export class SchoolCostApi {
      */
     public costMonthlyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationDataCodeResult> {
         return send({
-            url: `/cost/monthly`,
+            url: '/cost/monthly',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -80,7 +80,7 @@ export class SchoolCostApi {
      */
     public costWeeklyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationDataCodeResult> {
         return send({
-            url: `/cost/weekly`,
+            url: '/cost/weekly',
             method: 'GET',
             params: {
                 StartDate: startDate,

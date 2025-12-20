@@ -28,7 +28,7 @@ export class SchoolMaterialApi {
      */
     public materialBatchSetMaterialWarningThresholdPost(stockWarningReq?: Array<StockWarningReq> | null): Promise<CodeResult> {
         return send({
-            url: `/material/batch-set-material-warning-threshold`,
+            url: '/material/batch-set-material-warning-threshold',
             method: 'POST',
             body: stockWarningReq,
         });
@@ -39,7 +39,7 @@ export class SchoolMaterialApi {
      */
     public materialDeleteWarningConfigIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/material/delete-warning-config/{Id}`
+            url: '/material/delete-warning-config/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -55,7 +55,7 @@ export class SchoolMaterialApi {
      */
     public materialGet(type?: number | null, name?: string | null, isManaged?: boolean | null, page?: number, size?: number): Promise<MaterialDetailDtoPaginationResCodeResult> {
         return send({
-            url: `/material`,
+            url: '/material',
             method: 'GET',
             params: {
                 Type: type,
@@ -73,7 +73,7 @@ export class SchoolMaterialApi {
      */
     public materialIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/material/{id}`
+            url: '/material/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -85,7 +85,7 @@ export class SchoolMaterialApi {
      */
     public materialIdGet(id: string): Promise<MaterialDetailDtoCodeResult> {
         return send({
-            url: `/material/{id}`
+            url: '/material/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -97,7 +97,7 @@ export class SchoolMaterialApi {
      */
     public materialPost(materialAddDto?: MaterialAddDto): Promise<GuidCodeResult> {
         return send({
-            url: `/material`,
+            url: '/material',
             method: 'POST',
             body: materialAddDto,
         });
@@ -109,7 +109,7 @@ export class SchoolMaterialApi {
      */
     public materialPut(materialEditDto?: MaterialEditDto): Promise<BooleanCodeResult> {
         return send({
-            url: `/material`,
+            url: '/material',
             method: 'PUT',
             body: materialEditDto,
         });
@@ -124,7 +124,7 @@ export class SchoolMaterialApi {
      */
     public materialQueryWarningConfigGet(isMaterial?: boolean | null, enabled?: boolean | null, name?: string | null, offset?: number, limit?: number): Promise<StockWarningResponsePaginationDataCodeResult> {
         return send({
-            url: `/material/query-warning-config`,
+            url: '/material/query-warning-config',
             method: 'GET',
             params: {
                 IsMaterial: isMaterial,
@@ -143,7 +143,7 @@ export class SchoolMaterialApi {
      */
     public materialSpecGet(isDeep?: boolean | null, isMain?: boolean | null): Promise<MaterialSpecListDtoListCodeResult> {
         return send({
-            url: `/material/spec`,
+            url: '/material/spec',
             method: 'GET',
             params: {
                 IsDeep: isDeep,
@@ -158,7 +158,7 @@ export class SchoolMaterialApi {
      */
     public materialSpecIdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/material/spec/{id}`
+            url: '/material/spec/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -170,7 +170,7 @@ export class SchoolMaterialApi {
      */
     public materialStockInItemCodeLifecycleGet(stockInItemCode: string | null): Promise<MaterialLifecycleDtoListCodeResult> {
         return send({
-            url: `/material/{stockInItemCode}/lifecycle`
+            url: '/material/{stockInItemCode}/lifecycle'
                 .replace(`{${"stockInItemCode"}}`, encodeURIComponent(String(stockInItemCode))),
             method: 'GET',
         });
@@ -181,7 +181,7 @@ export class SchoolMaterialApi {
      */
     public materialTypesGet(): Promise<MaterialTypeDtoListCodeResult> {
         return send({
-            url: `/material/types`,
+            url: '/material/types',
             method: 'GET',
         });
     }
@@ -191,7 +191,7 @@ export class SchoolMaterialApi {
      */
     public materialUpdateWarningConfigPost(editConfig?: EditConfig): Promise<CodeResult> {
         return send({
-            url: `/material/update-warning-config`,
+            url: '/material/update-warning-config',
             method: 'POST',
             body: editConfig,
         });
@@ -201,7 +201,7 @@ export class SchoolMaterialApi {
      */
     public materialUsualGet(): Promise<SchoolUsualMaterialDtoListCodeResult> {
         return send({
-            url: `/material/usual`,
+            url: '/material/usual',
             method: 'GET',
         });
     }
@@ -210,7 +210,7 @@ export class SchoolMaterialApi {
      */
     public materialUsualSpecGet(): Promise<SchoolUsualMaterialSpecDtoListCodeResult> {
         return send({
-            url: `/material/usual-spec`,
+            url: '/material/usual-spec',
             method: 'GET',
         });
     }

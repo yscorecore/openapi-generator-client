@@ -25,7 +25,7 @@ export class SchoolMonth2Api {
      */
     public monthV2CompleteIdPost(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/month/v2/complete/{id}`
+            url: '/month/v2/complete/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'POST',
         });
@@ -37,7 +37,7 @@ export class SchoolMonth2Api {
      */
     public monthV2DeepItemsGet(stockInId?: string): Promise<DeepItemInfoListCodeResult> {
         return send({
-            url: `/month/v2/deep-items`,
+            url: '/month/v2/deep-items',
             method: 'GET',
             params: {
                 stockInId: stockInId,
@@ -51,7 +51,7 @@ export class SchoolMonth2Api {
      */
     public monthV2IdDelete(id: string): Promise<BooleanCodeResult> {
         return send({
-            url: `/month/v2/{id}`
+            url: '/month/v2/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -63,7 +63,7 @@ export class SchoolMonth2Api {
      */
     public monthV2IdGet(id: string): Promise<MonthSummaryDetailDtoCodeResult> {
         return send({
-            url: `/month/v2/{id}`
+            url: '/month/v2/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -77,7 +77,7 @@ export class SchoolMonth2Api {
      */
     public monthV2InvoicesGet(startDate?: string, endDate?: string, monthType?: MonthSummaryScope): Promise<InvoiceInfoListCodeResult> {
         return send({
-            url: `/month/v2/invoices`,
+            url: '/month/v2/invoices',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -94,7 +94,7 @@ export class SchoolMonth2Api {
      */
     public monthV2InvoicesIdPost(id: string, requestBody?: Array<string> | null): Promise<BooleanCodeResult> {
         return send({
-            url: `/month/v2/invoices/{id}`
+            url: '/month/v2/invoices/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'POST',
             body: requestBody,
@@ -108,7 +108,7 @@ export class SchoolMonth2Api {
      */
     public monthV2ListGet(offset?: number, limit?: number): Promise<MonthSummaryDtoPaginationDataCodeResult> {
         return send({
-            url: `/month/v2/list`,
+            url: '/month/v2/list',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -123,7 +123,7 @@ export class SchoolMonth2Api {
      */
     public monthV2MigrateToNewPost(migrationInfo?: MigrationInfo): Promise<BooleanCodeResult> {
         return send({
-            url: `/month/v2/migrate-to-new`,
+            url: '/month/v2/migrate-to-new',
             method: 'POST',
             body: migrationInfo,
         });
@@ -136,7 +136,7 @@ export class SchoolMonth2Api {
      */
     public monthV2StockinReportGet(offset?: number, limit?: number): Promise<MonthStockInReportRecordPaginationDataCodeResult> {
         return send({
-            url: `/month/v2/stockin-report`,
+            url: '/month/v2/stockin-report',
             method: 'GET',
             params: {
                 Offset: offset,
@@ -153,7 +153,7 @@ export class SchoolMonth2Api {
      */
     public monthV2StocksGet(startDate?: string, endDate?: string, monthType?: MonthSummaryScope): Promise<StockInfoListCodeResult> {
         return send({
-            url: `/month/v2/stocks`,
+            url: '/month/v2/stocks',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -169,7 +169,7 @@ export class SchoolMonth2Api {
      */
     public monthV2SubmitPost(monthSubmitInfo?: MonthSubmitInfo): Promise<GuidCodeResult> {
         return send({
-            url: `/month/v2/submit`,
+            url: '/month/v2/submit',
             method: 'POST',
             body: monthSubmitInfo,
         });

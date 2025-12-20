@@ -17,7 +17,7 @@ export class JiuQiBillApi {
      */
     public jiuqiGetBillGet(startDate?: string, endDate?: string): Promise<ObjectListCodeResult> {
         return send({
-            url: `/jiuqi/get-bill`,
+            url: '/jiuqi/get-bill',
             method: 'GET',
             params: {
                 StartDate: startDate,
@@ -31,7 +31,7 @@ export class JiuQiBillApi {
      */
     public jiuqiUploadBillPost(queryFilter?: QueryFilter): Promise<CodeResult> {
         return send({
-            url: `/jiuqi/upload-bill`,
+            url: '/jiuqi/upload-bill',
             method: 'POST',
             body: queryFilter,
         });

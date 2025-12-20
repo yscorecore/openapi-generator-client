@@ -22,7 +22,7 @@ export class SchoolRoleApi {
      */
     public schoolrolesGet(name?: string | null, offset?: number, limit?: number): Promise<RoleInfoPaginationDataCodeResult> {
         return send({
-            url: `/schoolroles`,
+            url: '/schoolroles',
             method: 'GET',
             params: {
                 Name: name,
@@ -38,7 +38,7 @@ export class SchoolRoleApi {
      */
     public schoolrolesIdDelete(id: string): Promise<CodeResult> {
         return send({
-            url: `/schoolroles/{id}`
+            url: '/schoolroles/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'DELETE',
         });
@@ -50,7 +50,7 @@ export class SchoolRoleApi {
      */
     public schoolrolesIdGet(id: string): Promise<RoleInfoCodeResult> {
         return send({
-            url: `/schoolroles/{id}`
+            url: '/schoolroles/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'GET',
         });
@@ -63,7 +63,7 @@ export class SchoolRoleApi {
      */
     public schoolrolesIdPut(id: string, updateRoleInfo?: UpdateRoleInfo): Promise<CodeResult> {
         return send({
-            url: `/schoolroles/{id}`
+            url: '/schoolroles/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
             method: 'PUT',
             body: updateRoleInfo,
@@ -76,7 +76,7 @@ export class SchoolRoleApi {
      */
     public schoolrolesPost(addRoleInfo?: AddRoleInfo): Promise<GuidCodeResult> {
         return send({
-            url: `/schoolroles`,
+            url: '/schoolroles',
             method: 'POST',
             body: addRoleInfo,
         });

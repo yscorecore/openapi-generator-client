@@ -14,7 +14,7 @@ export class MetadataApi {
      */
     public apiMetadataListAllGet(): Promise<StringListCodeResult> {
         return send({
-            url: `/api/Metadata/list-all`,
+            url: '/api/Metadata/list-all',
             method: 'GET',
         });
     }
@@ -24,7 +24,7 @@ export class MetadataApi {
      */
     public apiMetadataNameGet(name: string | null): Promise<MetadataInfoCodeResult> {
         return send({
-            url: `/api/Metadata/{name}`
+            url: '/api/Metadata/{name}'
                 .replace(`{${"name"}}`, encodeURIComponent(String(name))),
             method: 'GET',
         });
