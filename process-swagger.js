@@ -145,9 +145,7 @@ function processSwagger(swaggerData, includePaths) {
     return swaggerData;
 }
 
-function getConfig() {
-    const workDir = path.resolve(process.cwd(), process.argv[2]);
-    // 读取配置文件路径（从命令行参数获取，默认值为./src/client/config.json）
+function getConfig(workDir) {
     const configPath = path.resolve(workDir, './config.json');
     const configData = fs.readFileSync(configPath, 'utf8');
     const config = JSON.parse(configData);
@@ -162,24 +160,19 @@ function getConfig() {
 
 
 // 生成命令：Docker模式
-function generateWithDocker(openapiGenerator, dockerWorkerDir, swaggerProcessedPath) {
-    const dockerInputPath = `${dockerWorkerDir}/${swaggerProcessedPath.replace('./', '')}`;
-    const defaultOpenapiGenerator = {
-        dockerVolumes: `${process.cwd()}:/local`,
-        generatorImage: 'openapitools/openapi-generator-cli',
-        outputDir: dockerWorkerDir,
-        templatesDir: '/local/templates',
-    };
-    openapiGenerator = {...defaultOpenapiGenerator,...openapiGenerator}
+function generateWithDocker(config, inputDir) {
+    const openapiGenerator = config.openapiGenerator;
+    const rootDir ="/local";
+    const dockerWorkDir = path.posix.join(rootDir,inputDir);
     return {
         command: 'docker',
         args: [
-            'run', '--rm', '-v', openapiGenerator.dockerVolumes,
-            openapiGenerator.generatorImage, 'generate',
-            '-i', dockerInputPath,
+            'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
+            'openapitools/openapi-generator-cli', 'generate',
+            '-i',  path.posix.join(dockerWorkDir,config.swagger.processedPath),
             '-g', openapiGenerator.generator,
-            '-o', openapiGenerator.outputDir,
-            '-t', openapiGenerator.templatesDir,
+            '-o', dockerWorkDir,
+            '-t',  '/local/templates',
             '-p', openapiGenerator.additionalProperties
         ]
     };
@@ -199,48 +192,45 @@ function generateLocal(openapiGenerator, processedSwaggerPath, workDir) {
         ]
     };
 }
-
+function tryDeleteFile(filePath) {
+    try {
+        if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+            fs.unlinkSync(filePath);
+            console.log(`成功删除文件: ${filePath}`);
+        }
+    } catch (err) {
+        console.error(`删除文件 ${filePath} 时出错: ${err.message}`);
+    }
+}
 
 // 主函数
 async function main() {
     try {
         const rootDir = path.resolve(process.cwd());
-        const workDir = path.resolve(rootDir, process.argv[2]);
-        
-        // 默认配置
-        const dockerRootDir = '/local';
-        // 直接构造Linux格式的Docker工作目录路径
-        const dockerWorkerDir = `${dockerRootDir}/${process.argv[2].replace('./', '')}`;
-
+        const relativeInputDir = process.argv[2];
+        const workDir = path.resolve(rootDir, relativeInputDir);
         // 合并配置，实际配置覆盖默认配置
-
-        const { swagger, filter, openapiGenerator } = getConfig();
+        const config = getConfig(workDir);
 
         // 解析swagger文件的路径（相对于config.json所在目录）
-        const originalSwaggerPath = path.resolve(workDir, swagger.originalPath);
-        const processedSwaggerPath = path.resolve(workDir, swagger.processedPath);
+        const originalSwaggerPath = path.resolve(workDir, config.swagger.originalPath);
+        const processedSwaggerPath = path.resolve(workDir,  config.swagger.processedPath);
 
         // 下载原始swagger文件或读取本地文件
-        const swaggerData = await downloadSwagger(swagger.url, originalSwaggerPath, workDir);
+        const swaggerData = await downloadSwagger(config.swagger.url, originalSwaggerPath, workDir);
 
         // 处理swagger文件（包含路径过滤）
-        const processedData = processSwagger(swaggerData, filter.includePaths);
+        const processedData = processSwagger(swaggerData, config.filter.includePaths);
 
         // 保存处理后的swagger文件
         fs.writeFileSync(processedSwaggerPath, JSON.stringify(processedData, null, 2), 'utf8');
         console.log(`处理后的swagger文件已保存到: ${processedSwaggerPath}`);
 
-        let commandConfig;
 
-        // 确保outputDir和dockerVolumes是动态设置的
-        if (openapiGenerator.useDocker) {
-            commandConfig = generateWithDocker(openapiGenerator, dockerWorkerDir, swagger.processedPath);
-        } else {
-            // 不使用Docker模式，直接调用openapi-generator-cli
-            commandConfig = generateLocal(openapiGenerator, processedSwaggerPath, workDir);
-        }
 
-        const { command, args } = commandConfig;
+        const { command, args } = config.openapiGenerator.useDocker ?
+            generateWithDocker(config, relativeInputDir) :
+            generateLocal(config, workDir);
 
         // 调用生成命令
         console.log('\n开始生成客户端代码...');
@@ -252,13 +242,8 @@ async function main() {
         });
 
         generateProcess.on('close', (code) => {
-            try {
-                fs.unlinkSync(originalSwaggerPath);
-                fs.unlinkSync(processedSwaggerPath);
-                console.log('临时swagger文件已删除');
-            } catch (error) {
-                console.error('删除临时文件时出错:', error);
-            }
+            tryDeleteFile(processedSwaggerPath);
+            tryDeleteFile(originalSwaggerPath);
             if (code === 0) {
                 console.log('\n客户端代码生成成功!');
             } else {
