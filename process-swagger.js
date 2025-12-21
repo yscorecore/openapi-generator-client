@@ -6,39 +6,44 @@ const path = require('path');
 async function downloadSwagger(url, outputPath, configDir) {
     return new Promise((resolve, reject) => {
         try {
-            if (url.startsWith('http://') || url.startsWith('https://')) {
+            if (isHttpsOrHttp(url)) {
                 // 远程URL，使用https.get下载
-                https.get(url, (response) => {
-                    let data = '';
-                    
-                    response.on('data', (chunk) => {
-                        data += chunk;
-                    });
-                    
-                    response.on('end', () => {
-                        fs.writeFileSync(outputPath, data, 'utf8');
-                        console.log(`Swagger文件已下载到: ${outputPath}`);
-                        resolve(JSON.parse(data));
-                    });
-                    
-                    response.on('error', (error) => {
-                        reject(error);
-                    });
-                }).on('error', (error) => {
-                    reject(error);
-                });
+                downloadFromRemote();
             } else {
                 // 本地文件，直接读取
                 const localFilePath = path.resolve(configDir, url);
                 const data = fs.readFileSync(localFilePath, 'utf8');
-                fs.writeFileSync(outputPath, data, 'utf8');
-                console.log(`Swagger文件已从本地读取并保存到: ${outputPath}`);
                 resolve(JSON.parse(data));
             }
         } catch (error) {
             reject(error);
         }
+
+        function downloadFromRemote() {
+            https.get(url, (response) => {
+                let data = '';
+
+                response.on('data', (chunk) => {
+                    data += chunk;
+                });
+
+                response.on('end', () => {
+                    fs.writeFileSync(outputPath, data, 'utf8');
+                    console.log(`Swagger文件已下载到: ${outputPath}`);
+                    resolve(JSON.parse(data));
+                });
+
+                response.on('error', (error) => {
+                    reject(error);
+                });
+            }).on('error', (error) => {
+                reject(error);
+            });
+        }
     });
+    function isHttpsOrHttp(url) {
+        return url.startsWith('https://') || url.startsWith('http://');
+    }   
 }
 
 // 过滤路径函数
@@ -132,7 +137,33 @@ async function main() {
         const configData = fs.readFileSync(configPath, 'utf8');
         const config = JSON.parse(configData);
         
-        const { swagger, filter, openapiGenerator } = config;
+        // 默认配置
+        const defaultConfig = {
+            swagger: {
+                originalPath: './swagger-original.json',
+                processedPath: './swagger-processed.json'
+            },
+            filter: {
+                includePaths: []
+            },
+            openapiGenerator: {
+                dockerVolumes: `${process.cwd()}:/local`,
+                generatorImage: 'openapitools/openapi-generator-cli',
+                generator: 'typescript-axios',
+                outputDir: '/local/src/client',
+                templatesDir: '/local/templates',
+                additionalProperties: 'withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api,skipFormModel=true'
+            }
+        };
+        
+        // 合并配置，实际配置覆盖默认配置
+        const mergedConfig = {
+            swagger: { ...defaultConfig.swagger, ...config.swagger },
+            filter: { ...defaultConfig.filter, ...config.filter },
+            openapiGenerator: { ...defaultConfig.openapiGenerator, ...config.openapiGenerator }
+        };
+        
+        const { swagger, filter, openapiGenerator } = mergedConfig;
         
         // 获取config.json所在的目录
         const configDir = path.dirname(configPath);
