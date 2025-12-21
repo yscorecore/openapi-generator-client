@@ -1,8 +1,6 @@
 {
   "swagger": {
-    "url": "https://test-school.xueshengxiaocanan.cn/swagger/StudentMeal.SchoolApi/swagger.json",
-    "originalPath": "./swagger-original.json",
-    "processedPath": "./swagger-processed.json"
+    "url": "https://test-school.xueshengxiaocanan.cn/swagger/StudentMeal.SchoolApi/swagger.json"
   },
   "filter": {
     "includePaths": []

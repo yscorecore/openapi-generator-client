@@ -204,7 +204,7 @@ export class SchoolAccompanyApi {
     }
     /**
      * 
-     * @summary 陪��用户数量
+     * @summary 陪餐用户数量
      * @param AccompanyKind? accompanyKind 
      */
     public accompanyUsersCountGet(accompanyKind?: AccompanyKind): Promise<number> {
