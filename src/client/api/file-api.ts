@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { FileUploadObjectCodeResult } from "../models"
+import type { FileUploadObject } from "../models"
 
 /**
  * FileApi - API class
@@ -12,7 +12,7 @@ export class FileApi {
      * 
      * @param string category 
      */
-    public apiFileUploadCategoryPost(category: string | null): Promise<FileUploadObjectCodeResult> {
+    public apiFileUploadCategoryPost(category: string | null): Promise<FileUploadObject> {
         return send({
             url: '/api/File/upload/{category}'
                 .replace(`{${"category"}}`, encodeURIComponent(String(category))),

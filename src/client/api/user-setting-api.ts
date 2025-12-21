@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { CodeResult } from "../models"
-import type { ObjectCodeResult } from "../models"
 import type { StringObjectKeyValuePair } from "../models"
 
 /**
@@ -25,7 +24,7 @@ export class UserSettingApi {
      * 
      * @param string key 
      */
-    public apiUserSettingKeyGet(key: string | null): Promise<ObjectCodeResult> {
+    public apiUserSettingKeyGet(key: string | null): Promise<any> {
         return send({
             url: '/api/UserSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),

@@ -3,12 +3,9 @@
 
 import { send } from "../base"
 import type { AddShoppingCart } from "../models"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { ShopCarOrder } from "../models"
-import type { ShoppingCartDtoCodeResult } from "../models"
-import type { StringCodeResult } from "../models"
+import type { ShoppingCartDto } from "../models"
 import type { UpdateShoppingCart } from "../models"
 
 /**
@@ -19,7 +16,7 @@ export class ShopApi {
      * 
      * @param Array<AddShoppingCart>? addShoppingCart 
      */
-    public apiShopCreateBatchPost(addShoppingCart?: Array<AddShoppingCart> | null): Promise<StringCodeResult> {
+    public apiShopCreateBatchPost(addShoppingCart?: Array<AddShoppingCart> | null): Promise<string> {
         return send({
             url: '/api/Shop/createBatch',
             method: 'POST',
@@ -30,7 +27,7 @@ export class ShopApi {
      * 
      * @param AddShoppingCart? addShoppingCart 
      */
-    public apiShopCreatePost(addShoppingCart?: AddShoppingCart): Promise<GuidCodeResult> {
+    public apiShopCreatePost(addShoppingCart?: AddShoppingCart): Promise<string> {
         return send({
             url: '/api/Shop/create',
             method: 'POST',
@@ -52,7 +49,7 @@ export class ShopApi {
      * 
      * @param string id 
      */
-    public apiShopDelIdDelete(id: string): Promise<BooleanCodeResult> {
+    public apiShopDelIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/api/Shop/del/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
@@ -74,7 +71,7 @@ export class ShopApi {
      * 
      * @param string id 
      */
-    public apiShopQueryShopCartByGoodsIdIdGet(id: string): Promise<ShoppingCartDtoCodeResult> {
+    public apiShopQueryShopCartByGoodsIdIdGet(id: string): Promise<ShoppingCartDto> {
         return send({
             url: '/api/Shop/queryShopCartByGoodsId/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),

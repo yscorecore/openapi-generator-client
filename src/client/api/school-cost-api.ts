@@ -2,8 +2,8 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CostInfoCostSummaryPaginationDataCodeResult } from "../models"
-import type { DinningOutDtoListCodeResult } from "../models"
+import type { CostInfoCostSummaryPaginationData } from "../models"
+import type { DinningOutDto } from "../models"
 import type { MealKind } from "../models"
 
 /**
@@ -18,7 +18,7 @@ export class SchoolCostApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public costDailyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationDataCodeResult> {
+    public costDailyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationData> {
         return send({
             url: '/cost/daily',
             method: 'GET',
@@ -37,7 +37,7 @@ export class SchoolCostApi {
      * @param string? date 
      * @param MealKind? kind 
      */
-    public costDetailsGet(date?: string, kind?: MealKind): Promise<DinningOutDtoListCodeResult> {
+    public costDetailsGet(date?: string, kind?: MealKind): Promise<Array<DinningOutDto>> {
         return send({
             url: '/cost/details',
             method: 'GET',
@@ -56,7 +56,7 @@ export class SchoolCostApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public costMonthlyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationDataCodeResult> {
+    public costMonthlyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationData> {
         return send({
             url: '/cost/monthly',
             method: 'GET',
@@ -78,7 +78,7 @@ export class SchoolCostApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public costWeeklyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationDataCodeResult> {
+    public costWeeklyGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, offset?: number, limit?: number): Promise<CostInfoCostSummaryPaginationData> {
         return send({
             url: '/cost/weekly',
             method: 'GET',

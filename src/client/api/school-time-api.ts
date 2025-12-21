@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { DateTimeCodeResult } from "../models"
 
 /**
  * SchoolTimeApi - API class
@@ -12,7 +11,7 @@ export class SchoolTimeApi {
      * 
      * @summary 获取当前时间
      */
-    public timeNowGet(): Promise<DateTimeCodeResult> {
+    public timeNowGet(): Promise<string> {
         return send({
             url: '/time/now',
             method: 'GET',

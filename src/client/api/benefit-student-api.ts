@@ -2,14 +2,12 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BenefitStudentBatchDtoCodeResult } from "../models"
-import type { BenefitStudentBatchEntryDtoCodeResult } from "../models"
-import type { BenefitStudentBatchEntryDtoListCodeResult } from "../models"
+import type { BenefitStudentBatchDto } from "../models"
+import type { BenefitStudentBatchEntryDto } from "../models"
 import type { BenefitStudentDto } from "../models"
-import type { BenefitStudentItemInfoPaginationResCodeResult } from "../models"
-import type { Int32CodeResult } from "../models"
+import type { BenefitStudentItemInfoPaginationRes } from "../models"
 import type { SchoolYearSession } from "../models"
-import type { SchoolYearsAndAllClassDtoListCodeResult } from "../models"
+import type { SchoolYearsAndAllClassDto } from "../models"
 
 /**
  * BenefitStudentApi - API class
@@ -27,7 +25,7 @@ export class BenefitStudentApi {
      * @param string? name 
      * @param string? fileName 
      */
-    public benefitsAddBenefitStudentsTermPost(schoolYear: number, schoolSession: SchoolYearSession, contentType?: string | null, contentDisposition?: string | null, headers?: { [key: string]: Array<string>; } | null, length?: number, name?: string | null, fileName?: string | null): Promise<BenefitStudentBatchEntryDtoCodeResult> {
+    public benefitsAddBenefitStudentsTermPost(schoolYear: number, schoolSession: SchoolYearSession, contentType?: string | null, contentDisposition?: string | null, headers?: { [key: string]: Array<string>; } | null, length?: number, name?: string | null, fileName?: string | null): Promise<BenefitStudentBatchEntryDto> {
         return send({
             url: '/benefits/AddBenefitStudentsTerm',
             method: 'POST',
@@ -48,7 +46,7 @@ export class BenefitStudentApi {
      * @summary 新增受益学生
      * @param BenefitStudentDto? benefitStudentDto 
      */
-    public benefitsAddPost(benefitStudentDto?: BenefitStudentDto): Promise<Int32CodeResult> {
+    public benefitsAddPost(benefitStudentDto?: BenefitStudentDto): Promise<number> {
         return send({
             url: '/benefits/add',
             method: 'POST',
@@ -60,7 +58,7 @@ export class BenefitStudentApi {
      * @summary 根据批次号获取信息收益学生
      * @param string batchNo 批次号
      */
-    public benefitsBatchNoGet(batchNo: string): Promise<BenefitStudentBatchDtoCodeResult> {
+    public benefitsBatchNoGet(batchNo: string): Promise<BenefitStudentBatchDto> {
         return send({
             url: '/benefits/{batchNo}'
                 .replace(`{${"batchNo"}}`, encodeURIComponent(String(batchNo))),
@@ -73,7 +71,7 @@ export class BenefitStudentApi {
      * @param string? startTime 开始时间
      * @param number? limit 最大条数
      */
-    public benefitsGet(startTime?: string | null, limit?: number): Promise<BenefitStudentBatchEntryDtoListCodeResult> {
+    public benefitsGet(startTime?: string | null, limit?: number): Promise<Array<BenefitStudentBatchEntryDto>> {
         return send({
             url: '/benefits',
             method: 'GET',
@@ -88,7 +86,7 @@ export class BenefitStudentApi {
      * @summary 删除学年批次
      * @param string id 
      */
-    public benefitsIdDelete(id: string): Promise<Int32CodeResult> {
+    public benefitsIdDelete(id: string): Promise<number> {
         return send({
             url: '/benefits/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -100,7 +98,7 @@ export class BenefitStudentApi {
      * @summary 删除受益学生
      * @param string id 
      */
-    public benefitsItemsIdDelete(id: string): Promise<Int32CodeResult> {
+    public benefitsItemsIdDelete(id: string): Promise<number> {
         return send({
             url: '/benefits/items/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -111,7 +109,7 @@ export class BenefitStudentApi {
      * 
      * @summary 获取最后一次收益学生
      */
-    public benefitsLatestGet(): Promise<BenefitStudentBatchDtoCodeResult> {
+    public benefitsLatestGet(): Promise<BenefitStudentBatchDto> {
         return send({
             url: '/benefits/latest',
             method: 'GET',
@@ -128,7 +126,7 @@ export class BenefitStudentApi {
      * @param string? name 
      * @param string? fileName 
      */
-    public benefitsPost(schoolYear: number, contentType?: string | null, contentDisposition?: string | null, headers?: { [key: string]: Array<string>; } | null, length?: number, name?: string | null, fileName?: string | null): Promise<BenefitStudentBatchEntryDtoCodeResult> {
+    public benefitsPost(schoolYear: number, contentType?: string | null, contentDisposition?: string | null, headers?: { [key: string]: Array<string>; } | null, length?: number, name?: string | null, fileName?: string | null): Promise<BenefitStudentBatchEntryDto> {
         return send({
             url: '/benefits',
             method: 'POST',
@@ -148,7 +146,7 @@ export class BenefitStudentApi {
      * @summary 修改受益学生
      * @param BenefitStudentDto? benefitStudentDto 
      */
-    public benefitsPut(benefitStudentDto?: BenefitStudentDto): Promise<Int32CodeResult> {
+    public benefitsPut(benefitStudentDto?: BenefitStudentDto): Promise<number> {
         return send({
             url: '/benefits',
             method: 'PUT',
@@ -163,7 +161,7 @@ export class BenefitStudentApi {
      * @param number? page 
      * @param number? size 
      */
-    public benefitsStudentitemsGet(schoolYear?: number | null, className?: string | null, page?: number, size?: number): Promise<BenefitStudentItemInfoPaginationResCodeResult> {
+    public benefitsStudentitemsGet(schoolYear?: number | null, className?: string | null, page?: number, size?: number): Promise<BenefitStudentItemInfoPaginationRes> {
         return send({
             url: '/benefits/studentitems',
             method: 'GET',
@@ -179,7 +177,7 @@ export class BenefitStudentApi {
      * 
      * @summary 获取所有的班级
      */
-    public benefitsYearAllclassGet(): Promise<SchoolYearsAndAllClassDtoListCodeResult> {
+    public benefitsYearAllclassGet(): Promise<Array<SchoolYearsAndAllClassDto>> {
         return send({
             url: '/benefits/year_allclass',
             method: 'GET',

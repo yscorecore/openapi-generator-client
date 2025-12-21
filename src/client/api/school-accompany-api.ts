@@ -3,16 +3,13 @@
 
 import { send } from "../base"
 import type { AccompanyKind } from "../models"
-import type { AccompanyRecordDtoListCodeResult } from "../models"
-import type { AccompanyRecordDtoPaginationDataCodeResult } from "../models"
-import type { AccompanyUserDtoListCodeResult } from "../models"
+import type { AccompanyRecordDto } from "../models"
+import type { AccompanyRecordDtoPaginationData } from "../models"
+import type { AccompanyUserDto } from "../models"
 import type { BatchCreateAccompanyDto } from "../models"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
 import type { CreateAccompanyDto } from "../models"
 import type { CreatePublicAccompanyDto } from "../models"
-import type { GuidCodeResult } from "../models"
-import type { Int32CodeResult } from "../models"
 import type { LeaderMealComment } from "../models"
 import type { MealKind } from "../models"
 import type { PutAccompanyDto } from "../models"
@@ -55,7 +52,7 @@ export class SchoolAccompanyApi {
      * @summary 批量删除陪餐/共餐记录
      * @param Array<string>? requestBody 
      */
-    public accompanyBatchDeletePost(requestBody?: Array<string> | null): Promise<Int32CodeResult> {
+    public accompanyBatchDeletePost(requestBody?: Array<string> | null): Promise<number> {
         return send({
             url: '/accompany/batch-delete',
             method: 'POST',
@@ -67,7 +64,7 @@ export class SchoolAccompanyApi {
      * @summary \"删除陪餐/共餐记录
      * @param string? id 
      */
-    public accompanyDelete(id?: string): Promise<BooleanCodeResult> {
+    public accompanyDelete(id?: string): Promise<boolean> {
         return send({
             url: '/accompany',
             method: 'DELETE',
@@ -80,7 +77,7 @@ export class SchoolAccompanyApi {
      * 
      * @param string id 
      */
-    public accompanyDeleteAccompantUsersIdDelete(id: string): Promise<BooleanCodeResult> {
+    public accompanyDeleteAccompantUsersIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/accompany/deleteAccompantUsers/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
@@ -94,7 +91,7 @@ export class SchoolAccompanyApi {
      * @param string? endDate 
      * @param AccompanyKind? accompanyKind 
      */
-    public accompanyListGet(startDate?: string, endDate?: string, accompanyKind?: AccompanyKind): Promise<AccompanyRecordDtoListCodeResult> {
+    public accompanyListGet(startDate?: string, endDate?: string, accompanyKind?: AccompanyKind): Promise<Array<AccompanyRecordDto>> {
         return send({
             url: '/accompany/list',
             method: 'GET',
@@ -119,7 +116,7 @@ export class SchoolAccompanyApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public accompanyPaginationQueryGet(accompanyKinds?: Array<AccompanyKind> | null, startDate?: string | null, endDate?: string | null, kind?: MealKind, isNutritious?: boolean | null, score?: LeaderMealComment, isPublic?: boolean | null, schoolId?: string | null, offset?: number, limit?: number): Promise<AccompanyRecordDtoPaginationDataCodeResult> {
+    public accompanyPaginationQueryGet(accompanyKinds?: Array<AccompanyKind> | null, startDate?: string | null, endDate?: string | null, kind?: MealKind, isNutritious?: boolean | null, score?: LeaderMealComment, isPublic?: boolean | null, schoolId?: string | null, offset?: number, limit?: number): Promise<AccompanyRecordDtoPaginationData> {
         return send({
             url: '/accompany/pagination-query',
             method: 'GET',
@@ -142,7 +139,7 @@ export class SchoolAccompanyApi {
      * @summary 创建陪餐/共餐记录
      * @param CreateAccompanyDto? createAccompanyDto 
      */
-    public accompanyPost(createAccompanyDto?: CreateAccompanyDto): Promise<GuidCodeResult> {
+    public accompanyPost(createAccompanyDto?: CreateAccompanyDto): Promise<string> {
         return send({
             url: '/accompany',
             method: 'POST',
@@ -155,7 +152,7 @@ export class SchoolAccompanyApi {
      * @param string? lastTime 
      * @param number? limit 
      */
-    public accompanyPublicListGet(lastTime?: string | null, limit?: number): Promise<AccompanyRecordDtoListCodeResult> {
+    public accompanyPublicListGet(lastTime?: string | null, limit?: number): Promise<Array<AccompanyRecordDto>> {
         return send({
             url: '/accompany/public/list',
             method: 'GET',
@@ -170,7 +167,7 @@ export class SchoolAccompanyApi {
      * @summary 创建外部陪餐
      * @param CreatePublicAccompanyDto? createPublicAccompanyDto 
      */
-    public accompanyPublicPost(createPublicAccompanyDto?: CreatePublicAccompanyDto): Promise<GuidCodeResult> {
+    public accompanyPublicPost(createPublicAccompanyDto?: CreatePublicAccompanyDto): Promise<string> {
         return send({
             url: '/accompany/public',
             method: 'POST',
@@ -198,7 +195,7 @@ export class SchoolAccompanyApi {
      * @summary 更新陪餐用户信息
      * @param PutAccompanyDto? putAccompanyDto 
      */
-    public accompanyUpdateUserPut(putAccompanyDto?: PutAccompanyDto): Promise<BooleanCodeResult> {
+    public accompanyUpdateUserPut(putAccompanyDto?: PutAccompanyDto): Promise<boolean> {
         return send({
             url: '/accompany/update-user',
             method: 'PUT',
@@ -210,7 +207,7 @@ export class SchoolAccompanyApi {
      * @summary 陪餐用户数量
      * @param AccompanyKind? accompanyKind 
      */
-    public accompanyUsersCountGet(accompanyKind?: AccompanyKind): Promise<Int32CodeResult> {
+    public accompanyUsersCountGet(accompanyKind?: AccompanyKind): Promise<number> {
         return send({
             url: '/accompany/users/count',
             method: 'GET',
@@ -223,7 +220,7 @@ export class SchoolAccompanyApi {
      * 
      * @summary 获取所有的陪餐用户
      */
-    public accompanyUsersGet(): Promise<AccompanyUserDtoListCodeResult> {
+    public accompanyUsersGet(): Promise<Array<AccompanyUserDto>> {
         return send({
             url: '/accompany/users',
             method: 'GET',

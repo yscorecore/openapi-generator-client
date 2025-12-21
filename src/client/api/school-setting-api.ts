@@ -3,8 +3,6 @@
 
 import { send } from "../base"
 import type { CodeResult } from "../models"
-import type { ObjectCodeResult } from "../models"
-import type { StringCodeResult } from "../models"
 import type { StringObjectKeyValuePair } from "../models"
 import type { StringStringKeyValuePair } from "../models"
 
@@ -27,7 +25,7 @@ export class SchoolSettingApi {
      * 
      * @param string key 
      */
-    public apiSchoolSettingKeyGet(key: string | null): Promise<ObjectCodeResult> {
+    public apiSchoolSettingKeyGet(key: string | null): Promise<any> {
         return send({
             url: '/api/SchoolSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
@@ -66,7 +64,7 @@ export class SchoolSettingApi {
      * @summary 获取配置
      * @param string key 
      */
-    public schoolsettingKeyGet(key: string | null): Promise<StringCodeResult> {
+    public schoolsettingKeyGet(key: string | null): Promise<string> {
         return send({
             url: '/schoolsetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),

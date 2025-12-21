@@ -4,9 +4,8 @@
 import { send } from "../base"
 import type { AddRoleInfo } from "../models"
 import type { CodeResult } from "../models"
-import type { GuidCodeResult } from "../models"
-import type { RoleInfoCodeResult } from "../models"
-import type { RoleInfoPaginationDataCodeResult } from "../models"
+import type { RoleInfo } from "../models"
+import type { RoleInfoPaginationData } from "../models"
 import type { UpdateRoleInfo } from "../models"
 
 /**
@@ -20,7 +19,7 @@ export class SchoolRoleApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public schoolrolesGet(name?: string | null, offset?: number, limit?: number): Promise<RoleInfoPaginationDataCodeResult> {
+    public schoolrolesGet(name?: string | null, offset?: number, limit?: number): Promise<RoleInfoPaginationData> {
         return send({
             url: '/schoolroles',
             method: 'GET',
@@ -48,7 +47,7 @@ export class SchoolRoleApi {
      * @summary 获取单个的岗位
      * @param string id 
      */
-    public schoolrolesIdGet(id: string): Promise<RoleInfoCodeResult> {
+    public schoolrolesIdGet(id: string): Promise<RoleInfo> {
         return send({
             url: '/schoolroles/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -74,7 +73,7 @@ export class SchoolRoleApi {
      * @summary 新增岗位
      * @param AddRoleInfo? addRoleInfo 
      */
-    public schoolrolesPost(addRoleInfo?: AddRoleInfo): Promise<GuidCodeResult> {
+    public schoolrolesPost(addRoleInfo?: AddRoleInfo): Promise<string> {
         return send({
             url: '/schoolroles',
             method: 'POST',

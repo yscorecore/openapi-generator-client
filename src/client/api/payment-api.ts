@@ -3,7 +3,7 @@
 
 import { send } from "../base"
 import type { CountRequestDto } from "../models"
-import type { CountResponseDtoCodeResult } from "../models"
+import type { CountResponseDto } from "../models"
 
 /**
  * PaymentApi - API class
@@ -14,7 +14,7 @@ export class PaymentApi {
      * @summary 刷脸仪人数统计
      * @param CountRequestDto? countRequestDto 
      */
-    public paymentCountingPost(countRequestDto?: CountRequestDto): Promise<CountResponseDtoCodeResult> {
+    public paymentCountingPost(countRequestDto?: CountRequestDto): Promise<CountResponseDto> {
         return send({
             url: '/payment/counting',
             method: 'POST',

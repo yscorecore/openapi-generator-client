@@ -4,9 +4,9 @@
 import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { CompleteInfo } from "../models"
-import type { DinnerOutDtoListCodeResult } from "../models"
-import type { InventoryStatusCodeResult } from "../models"
-import type { StockInventoryInfoListCodeResult } from "../models"
+import type { DinnerOutDto } from "../models"
+import type { InventoryStatus } from "../models"
+import type { StockInventoryInfo } from "../models"
 
 /**
  * SchoolInventoryApi - API class
@@ -16,7 +16,7 @@ export class SchoolInventoryApi {
      * 
      * @param string stockInItemId 
      */
-    public inventoryAvailableDiningOutsStockInItemIdGet(stockInItemId: string): Promise<DinnerOutDtoListCodeResult> {
+    public inventoryAvailableDiningOutsStockInItemIdGet(stockInItemId: string): Promise<Array<DinnerOutDto>> {
         return send({
             url: '/inventory/available-diningOuts/{stockInItemId}'
                 .replace(`{${"stockInItemId"}}`, encodeURIComponent(String(stockInItemId))),
@@ -40,7 +40,7 @@ export class SchoolInventoryApi {
      * @summary 获取食材批次的状态
      * @param string id 
      */
-    public inventoryIdGet(id: string): Promise<InventoryStatusCodeResult> {
+    public inventoryIdGet(id: string): Promise<InventoryStatus> {
         return send({
             url: '/inventory/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -51,7 +51,7 @@ export class SchoolInventoryApi {
      * 
      * @param Array<string>? id 
      */
-    public inventoryNearlyGet(id?: Array<string> | null): Promise<StockInventoryInfoListCodeResult> {
+    public inventoryNearlyGet(id?: Array<string> | null): Promise<Array<StockInventoryInfo>> {
         return send({
             url: '/inventory/nearly',
             method: 'GET',

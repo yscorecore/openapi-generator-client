@@ -2,9 +2,9 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeImageCodeResult } from "../models"
+import type { CodeImage } from "../models"
 import type { CodeResult } from "../models"
-import type { CodeUserCodeResult } from "../models"
+import type { CodeUser } from "../models"
 
 /**
  * SchoolUserSignApi - API class
@@ -15,7 +15,7 @@ export class SchoolUserSignApi {
      * @summary 查询用户
      * @param string code 
      */
-    public usersignQueryCodeGet(code: string | null): Promise<CodeUserCodeResult> {
+    public usersignQueryCodeGet(code: string | null): Promise<CodeUser> {
         return send({
             url: '/usersign/query/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
@@ -36,7 +36,7 @@ export class SchoolUserSignApi {
     /**
      * 
      */
-    public usersignRequestCodePost(): Promise<CodeImageCodeResult> {
+    public usersignRequestCodePost(): Promise<CodeImage> {
         return send({
             url: '/usersign/request-code',
             method: 'POST',

@@ -2,8 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { HelpVideoDtoCodeResult } from "../models"
-import type { HelpVideoDtoListCodeResult } from "../models"
+import type { HelpVideoDto } from "../models"
 
 /**
  * SchoolHelpCenterApi - API class
@@ -14,7 +13,7 @@ export class SchoolHelpCenterApi {
      * @summary 帮助中心的单个视频
      * @param string? title 
      */
-    public helpVideoGet(title?: string | null): Promise<HelpVideoDtoCodeResult> {
+    public helpVideoGet(title?: string | null): Promise<HelpVideoDto> {
         return send({
             url: '/help/video',
             method: 'GET',
@@ -27,7 +26,7 @@ export class SchoolHelpCenterApi {
      * 
      * @summary 获取帮助中心的视频
      */
-    public helpVideosGet(): Promise<HelpVideoDtoListCodeResult> {
+    public helpVideosGet(): Promise<Array<HelpVideoDto>> {
         return send({
             url: '/help/videos',
             method: 'GET',

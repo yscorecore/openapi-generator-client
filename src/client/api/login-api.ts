@@ -4,8 +4,8 @@
 import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { ConfirmLoginInfo } from "../models"
-import type { QrCodeImageCodeResult } from "../models"
-import type { UserLoginInfoCodeResult } from "../models"
+import type { QrCodeImage } from "../models"
+import type { UserLoginInfo } from "../models"
 
 /**
  * LoginApi - API class
@@ -15,7 +15,7 @@ export class LoginApi {
      * 
      * @summary 获取login的二维码
      */
-    public loginBeginGet(): Promise<QrCodeImageCodeResult> {
+    public loginBeginGet(): Promise<QrCodeImage> {
         return send({
             url: '/login/begin',
             method: 'GET',
@@ -37,7 +37,7 @@ export class LoginApi {
      * 
      * @summary 查询login的信息
      */
-    public loginQueryGet(): Promise<UserLoginInfoCodeResult> {
+    public loginQueryGet(): Promise<UserLoginInfo> {
         return send({
             url: '/login/query',
             method: 'GET',

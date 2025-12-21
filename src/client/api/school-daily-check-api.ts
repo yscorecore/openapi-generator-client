@@ -2,10 +2,9 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CheckType } from "../models"
 import type { CreateDailyCheckDto } from "../models"
-import type { DailyCheckDtoPaginationDataCodeResult } from "../models"
+import type { DailyCheckDtoPaginationData } from "../models"
 import type { UpdateDailyCheckDto } from "../models"
 
 /**
@@ -17,7 +16,7 @@ export class SchoolDailyCheckApi {
      * @summary 新增每日检查
      * @param CreateDailyCheckDto? createDailyCheckDto 
      */
-    public morningcheckAddPost(createDailyCheckDto?: CreateDailyCheckDto): Promise<BooleanCodeResult> {
+    public morningcheckAddPost(createDailyCheckDto?: CreateDailyCheckDto): Promise<boolean> {
         return send({
             url: '/morningcheck/add',
             method: 'POST',
@@ -29,7 +28,7 @@ export class SchoolDailyCheckApi {
      * @summary 删除每日检查
      * @param string id 
      */
-    public morningcheckIdDelete(id: string): Promise<BooleanCodeResult> {
+    public morningcheckIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/morningcheck/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -48,7 +47,7 @@ export class SchoolDailyCheckApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public morningcheckListGet(startDate?: string | null, endDate?: string | null, name?: string | null, checkType?: CheckType, passed?: boolean | null, schoolId?: string | null, offset?: number, limit?: number): Promise<DailyCheckDtoPaginationDataCodeResult> {
+    public morningcheckListGet(startDate?: string | null, endDate?: string | null, name?: string | null, checkType?: CheckType, passed?: boolean | null, schoolId?: string | null, offset?: number, limit?: number): Promise<DailyCheckDtoPaginationData> {
         return send({
             url: '/morningcheck/list',
             method: 'GET',
@@ -75,7 +74,7 @@ export class SchoolDailyCheckApi {
      * @param Array<string>? exceptions 
      * @param boolean? isPersonReport 
      */
-    public morningcheckPost(file: File, userId: string, temperature: number, frontFile?: File | null, createTime?: string | null, exceptions?: Array<string> | null, isPersonReport?: boolean | null): Promise<BooleanCodeResult> {
+    public morningcheckPost(file: File, userId: string, temperature: number, frontFile?: File | null, createTime?: string | null, exceptions?: Array<string> | null, isPersonReport?: boolean | null): Promise<boolean> {
         return send({
             url: '/morningcheck',
             method: 'POST',
@@ -95,7 +94,7 @@ export class SchoolDailyCheckApi {
      * @summary 检查上报
      * @param UpdateDailyCheckDto? updateDailyCheckDto 
      */
-    public morningcheckPut(updateDailyCheckDto?: UpdateDailyCheckDto): Promise<BooleanCodeResult> {
+    public morningcheckPut(updateDailyCheckDto?: UpdateDailyCheckDto): Promise<boolean> {
         return send({
             url: '/morningcheck',
             method: 'PUT',

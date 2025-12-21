@@ -2,9 +2,9 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { AreaMainSupplierDtoPaginationDataCodeResult } from "../models"
+import type { AreaMainSupplierDtoPaginationData } from "../models"
 import type { CodeResult } from "../models"
-import type { MainSupplierMaterialTypeCrossConfigDtoPaginationDataCodeResult } from "../models"
+import type { MainSupplierMaterialTypeCrossConfigDtoPaginationData } from "../models"
 import type { MainSupplierMaterialTypeCrossConfigSaveDto } from "../models"
 
 /**
@@ -16,7 +16,7 @@ export class SchoolMainSupplierApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public mainSupplierCrossConfigsGet(offset?: number, limit?: number): Promise<MainSupplierMaterialTypeCrossConfigDtoPaginationDataCodeResult> {
+    public mainSupplierCrossConfigsGet(offset?: number, limit?: number): Promise<MainSupplierMaterialTypeCrossConfigDtoPaginationData> {
         return send({
             url: '/main-supplier/cross-configs',
             method: 'GET',
@@ -43,7 +43,7 @@ export class SchoolMainSupplierApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public mainSupplierGet(offset?: number, limit?: number): Promise<AreaMainSupplierDtoPaginationDataCodeResult> {
+    public mainSupplierGet(offset?: number, limit?: number): Promise<AreaMainSupplierDtoPaginationData> {
         return send({
             url: '/main-supplier',
             method: 'GET',

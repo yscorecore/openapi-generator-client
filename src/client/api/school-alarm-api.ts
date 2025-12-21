@@ -2,8 +2,8 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { AlarmEventDtoListCodeResult } from "../models"
-import type { AlarmEventDtoPaginationDataCodeResult } from "../models"
+import type { AlarmEventDto } from "../models"
+import type { AlarmEventDtoPaginationData } from "../models"
 import type { AlarmType } from "../models"
 import type { CodeResult } from "../models"
 import type { UploadAlarmEventReq } from "../models"
@@ -19,7 +19,7 @@ export class SchoolAlarmApi {
      * @param string? dateTime 
      * @param boolean? sort 
      */
-    public alarmGet(topN?: number, dateTime?: string | null, sort?: boolean): Promise<AlarmEventDtoListCodeResult> {
+    public alarmGet(topN?: number, dateTime?: string | null, sort?: boolean): Promise<Array<AlarmEventDto>> {
         return send({
             url: '/alarm',
             method: 'GET',
@@ -39,7 +39,7 @@ export class SchoolAlarmApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public alarmListGet(alarmType?: AlarmType, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<AlarmEventDtoPaginationDataCodeResult> {
+    public alarmListGet(alarmType?: AlarmType, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<AlarmEventDtoPaginationData> {
         return send({
             url: '/alarm/list',
             method: 'GET',

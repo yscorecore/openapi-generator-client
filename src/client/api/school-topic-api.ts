@@ -5,8 +5,7 @@ import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { CompleteTopicDto } from "../models"
 import type { RejectTopicDto } from "../models"
-import type { TopicDtoCodeResult } from "../models"
-import type { TopicDtoListCodeResult } from "../models"
+import type { TopicDto } from "../models"
 import type { TopicStatus } from "../models"
 
 /**
@@ -44,7 +43,7 @@ export class SchoolTopicApi {
      * @summary 获取投诉详情
      * @param string? id 
      */
-    public topicDetailGet(id?: string): Promise<TopicDtoCodeResult> {
+    public topicDetailGet(id?: string): Promise<TopicDto> {
         return send({
             url: '/topic/detail',
             method: 'GET',
@@ -60,7 +59,7 @@ export class SchoolTopicApi {
      * @param string? startTime 
      * @param number? pageSize 
      */
-    public topicListGet(status?: TopicStatus, startTime?: string | null, pageSize?: number): Promise<TopicDtoListCodeResult> {
+    public topicListGet(status?: TopicStatus, startTime?: string | null, pageSize?: number): Promise<Array<TopicDto>> {
         return send({
             url: '/topic/list',
             method: 'GET',

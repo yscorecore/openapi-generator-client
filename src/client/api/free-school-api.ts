@@ -2,8 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { AreaInfoListCodeResult } from "../models"
-import type { BooleanCodeResult } from "../models"
+import type { AreaInfo } from "../models"
 import type { FreeSchoolDto } from "../models"
 
 /**
@@ -14,7 +13,7 @@ export class FreeSchoolApi {
      * 
      * @summary 获取所有的免费区域
      */
-    public freeAreasGet(): Promise<AreaInfoListCodeResult> {
+    public freeAreasGet(): Promise<Array<AreaInfo>> {
         return send({
             url: '/free/areas',
             method: 'GET',
@@ -25,7 +24,7 @@ export class FreeSchoolApi {
      * @summary 注册免费的学校
      * @param FreeSchoolDto? freeSchoolDto 
      */
-    public freeRegisterPost(freeSchoolDto?: FreeSchoolDto): Promise<BooleanCodeResult> {
+    public freeRegisterPost(freeSchoolDto?: FreeSchoolDto): Promise<boolean> {
         return send({
             url: '/free/register',
             method: 'POST',

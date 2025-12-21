@@ -4,7 +4,7 @@
 import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { FixSpecPriceReq } from "../models"
-import type { FixedPriceSpecDtoPaginationDataCodeResult } from "../models"
+import type { FixedPriceSpecDtoPaginationData } from "../models"
 
 /**
  * SchoolFixedPriceApi - API class
@@ -18,7 +18,7 @@ export class SchoolFixedPriceApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public schoolFixedPriceGet(name?: string | null, materialType?: number | null, offset?: number, limit?: number): Promise<FixedPriceSpecDtoPaginationDataCodeResult> {
+    public schoolFixedPriceGet(name?: string | null, materialType?: number | null, offset?: number, limit?: number): Promise<FixedPriceSpecDtoPaginationData> {
         return send({
             url: '/SchoolFixedPrice',
             method: 'GET',

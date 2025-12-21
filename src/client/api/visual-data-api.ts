@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { AllDataDtoCodeResult } from "../models"
+import type { AllDataDto } from "../models"
 
 /**
  * VisualDataApi - API class
@@ -14,7 +14,7 @@ export class VisualDataApi {
      * @param number? day 从今天开始往前几天的数据
      * @param number? maxCount 告警数据条数
      */
-    public visualdataAllGet(day?: number, maxCount?: number): Promise<AllDataDtoCodeResult> {
+    public visualdataAllGet(day?: number, maxCount?: number): Promise<AllDataDto> {
         return send({
             url: '/visualdata/All',
             method: 'GET',

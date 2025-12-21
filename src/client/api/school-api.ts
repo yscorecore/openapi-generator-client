@@ -2,13 +2,11 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { ChildrenSchoolDtoListCodeResult } from "../models"
+import type { ChildrenSchoolDto } from "../models"
 import type { CodeResult } from "../models"
 import type { Detail } from "../models"
-import type { DetailCodeResult } from "../models"
-import type { Int32CodeResult } from "../models"
-import type { SchoolConfigForAreaSchoolDtoCodeResult } from "../models"
-import type { UserLoginInfoCodeResult } from "../models"
+import type { SchoolConfigForAreaSchoolDto } from "../models"
+import type { UserLoginInfo } from "../models"
 
 /**
  * SchoolApi - API class
@@ -18,7 +16,7 @@ export class SchoolApi {
      * 
      * @summary 获取子组织
      */
-    public schoolChildrenSchoolGet(): Promise<ChildrenSchoolDtoListCodeResult> {
+    public schoolChildrenSchoolGet(): Promise<Array<ChildrenSchoolDto>> {
         return send({
             url: '/school/childrenSchool',
             method: 'GET',
@@ -28,7 +26,7 @@ export class SchoolApi {
      * 
      * @summary 获取学校配置
      */
-    public schoolConfigGet(): Promise<SchoolConfigForAreaSchoolDtoCodeResult> {
+    public schoolConfigGet(): Promise<SchoolConfigForAreaSchoolDto> {
         return send({
             url: '/school/config',
             method: 'GET',
@@ -39,7 +37,7 @@ export class SchoolApi {
      * @summary 修改学校配置
      * @param { [key: string]: any; }? requestBody 
      */
-    public schoolConfigPost(requestBody?: { [key: string]: any; } | null): Promise<Int32CodeResult> {
+    public schoolConfigPost(requestBody?: { [key: string]: any; } | null): Promise<number> {
         return send({
             url: '/school/config',
             method: 'POST',
@@ -50,7 +48,7 @@ export class SchoolApi {
      * 
      * @summary 获取学校详情
      */
-    public schoolDetailGet(): Promise<DetailCodeResult> {
+    public schoolDetailGet(): Promise<Detail> {
         return send({
             url: '/school/detail',
             method: 'GET',
@@ -72,7 +70,7 @@ export class SchoolApi {
      * 
      * @summary 获取当前用户登录信息
      */
-    public schoolLoginInfoGet(): Promise<UserLoginInfoCodeResult> {
+    public schoolLoginInfoGet(): Promise<UserLoginInfo> {
         return send({
             url: '/school/loginInfo',
             method: 'GET',

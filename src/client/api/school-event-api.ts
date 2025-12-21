@@ -2,15 +2,15 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CertExpiredDetailsCodeResult } from "../models"
+import type { CertExpiredDetails } from "../models"
 import type { CodeResult } from "../models"
-import type { DataExceptionDetailsCodeResult } from "../models"
+import type { DataExceptionDetails } from "../models"
 import type { ExceptionType } from "../models"
-import type { OperationExceptionDetailsCodeResult } from "../models"
-import type { OutOfDateDetailsCodeResult } from "../models"
-import type { SchoolEventDtoPaginationDataCodeResult } from "../models"
+import type { OperationExceptionDetails } from "../models"
+import type { OutOfDateDetails } from "../models"
+import type { SchoolEventDtoPaginationData } from "../models"
 import type { SchoolEventProcessDto } from "../models"
-import type { SystemAnomalyCodeResult } from "../models"
+import type { SystemAnomaly } from "../models"
 
 /**
  * SchoolEventApi - API class
@@ -22,7 +22,7 @@ export class SchoolEventApi {
      * @param string? id 
      * @param ExceptionType? type 
      */
-    public schooleventCertExpiredDetailsGet(id?: string, type?: ExceptionType): Promise<CertExpiredDetailsCodeResult> {
+    public schooleventCertExpiredDetailsGet(id?: string, type?: ExceptionType): Promise<CertExpiredDetails> {
         return send({
             url: '/schoolevent/certExpiredDetails',
             method: 'GET',
@@ -43,7 +43,7 @@ export class SchoolEventApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public schooleventDataGet(starTime?: string | null, endTime?: string | null, category?: ExceptionType, detailCount?: number | null, summaryClassification?: string | null, offset?: number, limit?: number): Promise<SchoolEventDtoPaginationDataCodeResult> {
+    public schooleventDataGet(starTime?: string | null, endTime?: string | null, category?: ExceptionType, detailCount?: number | null, summaryClassification?: string | null, offset?: number, limit?: number): Promise<SchoolEventDtoPaginationData> {
         return send({
             url: '/schoolevent/data',
             method: 'GET',
@@ -64,7 +64,7 @@ export class SchoolEventApi {
      * @param string? id 
      * @param ExceptionType? type 
      */
-    public schooleventDataexceptiondetailsGet(id?: string, type?: ExceptionType): Promise<DataExceptionDetailsCodeResult> {
+    public schooleventDataexceptiondetailsGet(id?: string, type?: ExceptionType): Promise<DataExceptionDetails> {
         return send({
             url: '/schoolevent/dataexceptiondetails',
             method: 'GET',
@@ -80,7 +80,7 @@ export class SchoolEventApi {
      * @param string? id 
      * @param ExceptionType? type 
      */
-    public schooleventOperationexceptionGet(id?: string, type?: ExceptionType): Promise<OperationExceptionDetailsCodeResult> {
+    public schooleventOperationexceptionGet(id?: string, type?: ExceptionType): Promise<OperationExceptionDetails> {
         return send({
             url: '/schoolevent/operationexception',
             method: 'GET',
@@ -96,7 +96,7 @@ export class SchoolEventApi {
      * @param string? id 
      * @param ExceptionType? type 
      */
-    public schooleventOutofdatedetailsGet(id?: string, type?: ExceptionType): Promise<OutOfDateDetailsCodeResult> {
+    public schooleventOutofdatedetailsGet(id?: string, type?: ExceptionType): Promise<OutOfDateDetails> {
         return send({
             url: '/schoolevent/outofdatedetails',
             method: 'GET',
@@ -124,7 +124,7 @@ export class SchoolEventApi {
      * @param string? id 
      * @param ExceptionType? type 
      */
-    public schooleventSystemanomailyGet(id?: string, type?: ExceptionType): Promise<SystemAnomalyCodeResult> {
+    public schooleventSystemanomailyGet(id?: string, type?: ExceptionType): Promise<SystemAnomaly> {
         return send({
             url: '/schoolevent/systemanomaily',
             method: 'GET',

@@ -2,8 +2,8 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { ExcelPreviewInfoCodeResult } from "../models"
-import type { ReportMetaCodeResult } from "../models"
+import type { ExcelPreviewInfo } from "../models"
+import type { ReportMeta } from "../models"
 
 /**
  * ReportApi - API class
@@ -28,7 +28,7 @@ export class ReportApi {
      * 
      * @param string templateName 
      */
-    public reportMetaGet(templateName: string): Promise<ReportMetaCodeResult> {
+    public reportMetaGet(templateName: string): Promise<ReportMeta> {
         return send({
             url: '/report/meta',
             method: 'GET',
@@ -42,7 +42,7 @@ export class ReportApi {
      * @param string templateName 
      * @param string? title 
      */
-    public reportPreviewGet(templateName: string, title?: string | null): Promise<ExcelPreviewInfoCodeResult> {
+    public reportPreviewGet(templateName: string, title?: string | null): Promise<ExcelPreviewInfo> {
         return send({
             url: '/report/preview',
             method: 'GET',
@@ -57,7 +57,7 @@ export class ReportApi {
      * @param string url 
      * @param string? title 
      */
-    public reportPreviewUrlGet(url: string, title?: string | null): Promise<ExcelPreviewInfoCodeResult> {
+    public reportPreviewUrlGet(url: string, title?: string | null): Promise<ExcelPreviewInfo> {
         return send({
             url: '/report/preview-url',
             method: 'GET',

@@ -3,8 +3,8 @@
 
 import { send } from "../base"
 import type { OrderType } from "../models"
-import type { StockLossDtoPaginationDataCodeResult } from "../models"
-import type { StockLossRecoreDetailDtoPagedListCodeResult } from "../models"
+import type { StockLossDtoPaginationData } from "../models"
+import type { StockLossRecoreDetailDtoPagedList } from "../models"
 
 /**
  * SchoolStockLossApi - API class
@@ -23,7 +23,7 @@ export class SchoolStockLossApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public stocklossAllGet(stockInItemId?: string | null, startDate?: string | null, endDate?: string | null, ignoreZero?: boolean | null, materialName?: string | null, orderType?: OrderType, schoolId?: string | null, offset?: number, limit?: number): Promise<StockLossDtoPaginationDataCodeResult> {
+    public stocklossAllGet(stockInItemId?: string | null, startDate?: string | null, endDate?: string | null, ignoreZero?: boolean | null, materialName?: string | null, orderType?: OrderType, schoolId?: string | null, offset?: number, limit?: number): Promise<StockLossDtoPaginationData> {
         return send({
             url: '/stockloss/all',
             method: 'GET',
@@ -51,7 +51,7 @@ export class SchoolStockLossApi {
      * @param string? select 
      * @param boolean? distinct 
      */
-    public stocklossQueryLossGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<StockLossRecoreDetailDtoPagedListCodeResult> {
+    public stocklossQueryLossGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<StockLossRecoreDetailDtoPagedList> {
         return send({
             url: '/stockloss/queryLoss',
             method: 'GET',

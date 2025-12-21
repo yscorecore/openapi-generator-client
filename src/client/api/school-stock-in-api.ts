@@ -2,15 +2,13 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
-import type { GuidCodeResult } from "../models"
-import type { HistoryPeelingInfoListCodeResult } from "../models"
+import type { HistoryPeelingInfo } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
 import type { OrderItemCheckInDetailReq } from "../models"
-import type { OrderItemCheckInDetailResCodeResult } from "../models"
-import type { OrderItemCodeListCodeResult } from "../models"
+import type { OrderItemCheckInDetailRes } from "../models"
+import type { OrderItemCode } from "../models"
 import type { OrderItemPriceInfo } from "../models"
 import type { OrderItemQgpInfo } from "../models"
 import type { StockInAddFromDeepReq } from "../models"
@@ -19,7 +17,7 @@ import type { StockInAddReq2 } from "../models"
 import type { StockInItemModify } from "../models"
 import type { StockInItemModifyMaterialType } from "../models"
 import type { StockInRatingInfo } from "../models"
-import type { StockInSummaryInfoCodeResult } from "../models"
+import type { StockInSummaryInfo } from "../models"
 import type { UpdateAfterStockImagesReq } from "../models"
 
 /**
@@ -55,7 +53,7 @@ export class SchoolStockInApi {
      * @param string? materialSpecId 
      * @param string? stockInItemId 
      */
-    public stockHistoryPeelingsPost(materialSpecId?: string, stockInItemId?: string): Promise<HistoryPeelingInfoListCodeResult> {
+    public stockHistoryPeelingsPost(materialSpecId?: string, stockInItemId?: string): Promise<Array<HistoryPeelingInfo>> {
         return send({
             url: '/stock/history-peelings',
             method: 'POST',
@@ -70,7 +68,7 @@ export class SchoolStockInApi {
      * @summary 入库图片更新
      * @param ImageBindInfo? imageBindInfo 
      */
-    public stockInBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
+    public stockInBindImagePost(imageBindInfo?: ImageBindInfo): Promise<boolean> {
         return send({
             url: '/stock/in/bind-image',
             method: 'POST',
@@ -82,7 +80,7 @@ export class SchoolStockInApi {
      * @summary 软件版入库
      * @param StockInAddReq2? stockInAddReq2 
      */
-    public stockInBySoftPost(stockInAddReq2?: StockInAddReq2): Promise<GuidCodeResult> {
+    public stockInBySoftPost(stockInAddReq2?: StockInAddReq2): Promise<string> {
         return send({
             url: '/stock/in-by-soft',
             method: 'POST',
@@ -94,7 +92,7 @@ export class SchoolStockInApi {
      * @summary 删除入库检查
      * @param string id 
      */
-    public stockInChecksIdDelete(id: string): Promise<BooleanCodeResult> {
+    public stockInChecksIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/stock/in/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -106,7 +104,7 @@ export class SchoolStockInApi {
      * @summary 入库检查
      * @param OrderItemCheckInDetailReq? orderItemCheckInDetailReq 
      */
-    public stockInChecksPost(orderItemCheckInDetailReq?: OrderItemCheckInDetailReq): Promise<OrderItemCheckInDetailResCodeResult> {
+    public stockInChecksPost(orderItemCheckInDetailReq?: OrderItemCheckInDetailReq): Promise<OrderItemCheckInDetailRes> {
         return send({
             url: '/stock/in/checks',
             method: 'POST',
@@ -118,7 +116,7 @@ export class SchoolStockInApi {
      * @summary 入库详情
      * @param string? orderId 
      */
-    public stockInDetailsGet(orderId?: string): Promise<OrderItemCodeListCodeResult> {
+    public stockInDetailsGet(orderId?: string): Promise<Array<OrderItemCode>> {
         return send({
             url: '/stock/in/details',
             method: 'GET',
@@ -132,7 +130,7 @@ export class SchoolStockInApi {
      * @summary 深加工入库新增
      * @param StockInAddFromDeepReq? stockInAddFromDeepReq 
      */
-    public stockInFormDeepPost(stockInAddFromDeepReq?: StockInAddFromDeepReq): Promise<GuidCodeResult> {
+    public stockInFormDeepPost(stockInAddFromDeepReq?: StockInAddFromDeepReq): Promise<string> {
         return send({
             url: '/stock/in-form-deep',
             method: 'POST',
@@ -144,7 +142,7 @@ export class SchoolStockInApi {
      * @summary 深加工入库新增
      * @param StockInAddFromDeepReq? stockInAddFromDeepReq 
      */
-    public stockInFromDeepPost(stockInAddFromDeepReq?: StockInAddFromDeepReq): Promise<GuidCodeResult> {
+    public stockInFromDeepPost(stockInAddFromDeepReq?: StockInAddFromDeepReq): Promise<string> {
         return send({
             url: '/stock/in-from-deep',
             method: 'POST',
@@ -195,7 +193,7 @@ export class SchoolStockInApi {
      * @summary 新增入库
      * @param StockInAddReq? stockInAddReq 
      */
-    public stockInPost(stockInAddReq?: StockInAddReq): Promise<GuidCodeResult> {
+    public stockInPost(stockInAddReq?: StockInAddReq): Promise<string> {
         return send({
             url: '/stock/in',
             method: 'POST',
@@ -207,7 +205,7 @@ export class SchoolStockInApi {
      * @summary 入库数量统计
      * @param string id 
      */
-    public stockInSummaryIdGet(id: string): Promise<StockInSummaryInfoCodeResult> {
+    public stockInSummaryIdGet(id: string): Promise<StockInSummaryInfo> {
         return send({
             url: '/stock/in/summary/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -243,7 +241,7 @@ export class SchoolStockInApi {
      * @summary 更新入库入库后照片
      * @param UpdateAfterStockImagesReq? updateAfterStockImagesReq 
      */
-    public stockStockImagesPost(updateAfterStockImagesReq?: UpdateAfterStockImagesReq): Promise<BooleanCodeResult> {
+    public stockStockImagesPost(updateAfterStockImagesReq?: UpdateAfterStockImagesReq): Promise<boolean> {
         return send({
             url: '/stock/stock_images',
             method: 'POST',
@@ -255,7 +253,7 @@ export class SchoolStockInApi {
      * @summary 更新单价
      * @param OrderItemPriceInfo? orderItemPriceInfo 
      */
-    public stockUpdatePricePost(orderItemPriceInfo?: OrderItemPriceInfo): Promise<BooleanCodeResult> {
+    public stockUpdatePricePost(orderItemPriceInfo?: OrderItemPriceInfo): Promise<boolean> {
         return send({
             url: '/stock/update-price',
             method: 'POST',
@@ -267,7 +265,7 @@ export class SchoolStockInApi {
      * @summary 更新保质期
      * @param OrderItemQgpInfo? orderItemQgpInfo 
      */
-    public stockUpdateQgpPost(orderItemQgpInfo?: OrderItemQgpInfo): Promise<BooleanCodeResult> {
+    public stockUpdateQgpPost(orderItemQgpInfo?: OrderItemQgpInfo): Promise<boolean> {
         return send({
             url: '/stock/update-qgp',
             method: 'POST',

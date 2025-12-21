@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { AppResourceInfoPagedListCodeResult } from "../models"
+import type { AppResourceInfoPagedList } from "../models"
 
 /**
  * AppResourceApi - API class
@@ -19,7 +19,7 @@ export class AppResourceApi {
      * @param string? select 
      * @param boolean? distinct 
      */
-    public appResourceGroupGet(group: string | null, offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoPagedListCodeResult> {
+    public appResourceGroupGet(group: string | null, offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<AppResourceInfoPagedList> {
         return send({
             url: '/app-resource/{group}'
                 .replace(`{${"group"}}`, encodeURIComponent(String(group))),

@@ -2,12 +2,10 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
-import type { ClassDtoListCodeResult } from "../models"
-import type { DinnerDtoListCodeResult } from "../models"
+import type { ClassDto } from "../models"
+import type { DinnerDto } from "../models"
 import type { StudentDinningDto1 } from "../models"
-import type { StudentDinningDtoListCodeResult } from "../models"
-import type { StudentDtoListCodeResult } from "../models"
+import type { StudentDto } from "../models"
 
 /**
  * SchoolStudentDinningForAccompanyUserApi - API class
@@ -19,7 +17,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      * @param string? date 
      * @param string? schoolCode 
      */
-    public studentDinningClassesGet(date?: string, schoolCode?: string | null): Promise<ClassDtoListCodeResult> {
+    public studentDinningClassesGet(date?: string, schoolCode?: string | null): Promise<Array<ClassDto>> {
         return send({
             url: '/student-dinning/classes',
             method: 'GET',
@@ -36,7 +34,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      * @param string? endDate 
      * @param string? schoolCode 
      */
-    public studentDinningDinnersGet(startDate?: string, endDate?: string, schoolCode?: string | null): Promise<DinnerDtoListCodeResult> {
+    public studentDinningDinnersGet(startDate?: string, endDate?: string, schoolCode?: string | null): Promise<Array<DinnerDto>> {
         return send({
             url: '/student-dinning/dinners',
             method: 'GET',
@@ -55,7 +53,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      * @param string? classId 
      * @param string? schoolCode 
      */
-    public studentDinningListGet(startDate?: string, endDate?: string, classId?: string, schoolCode?: string | null): Promise<StudentDinningDtoListCodeResult> {
+    public studentDinningListGet(startDate?: string, endDate?: string, classId?: string, schoolCode?: string | null): Promise<Array<StudentDinningDto1>> {
         return send({
             url: '/student-dinning/list',
             method: 'GET',
@@ -76,7 +74,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      * @param string? schoolCode 
      * @param Array<StudentDinningDto1>? studentDinningDto1 
      */
-    public studentDinningSavePost(startDate?: string, endDate?: string, classId?: string, schoolCode?: string | null, studentDinningDto1?: Array<StudentDinningDto1> | null): Promise<BooleanCodeResult> {
+    public studentDinningSavePost(startDate?: string, endDate?: string, classId?: string, schoolCode?: string | null, studentDinningDto1?: Array<StudentDinningDto1> | null): Promise<boolean> {
         return send({
             url: '/student-dinning/save',
             method: 'POST',
@@ -95,7 +93,7 @@ export class SchoolStudentDinningForAccompanyUserApi {
      * @param string? classId 
      * @param string? schoolCode 
      */
-    public studentDinningStudentsGet(classId?: string, schoolCode?: string | null): Promise<StudentDtoListCodeResult> {
+    public studentDinningStudentsGet(classId?: string, schoolCode?: string | null): Promise<Array<StudentDto>> {
         return send({
             url: '/student-dinning/students',
             method: 'GET',

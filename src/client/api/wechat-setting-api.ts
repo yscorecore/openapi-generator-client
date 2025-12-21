@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { CodeResult } from "../models"
-import type { ObjectCodeResult } from "../models"
 import type { StringObjectKeyValuePair } from "../models"
 
 /**
@@ -25,7 +24,7 @@ export class WechatSettingApi {
      * 
      * @param string key 
      */
-    public apiWechatSettingKeyGet(key: string | null): Promise<ObjectCodeResult> {
+    public apiWechatSettingKeyGet(key: string | null): Promise<any> {
         return send({
             url: '/api/WechatSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),

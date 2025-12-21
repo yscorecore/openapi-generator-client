@@ -2,8 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { MetadataInfoCodeResult } from "../models"
-import type { StringListCodeResult } from "../models"
+import type { MetadataInfo } from "../models"
 
 /**
  * MetadataApi - API class
@@ -12,7 +11,7 @@ export class MetadataApi {
     /**
      * 
      */
-    public apiMetadataListAllGet(): Promise<StringListCodeResult> {
+    public apiMetadataListAllGet(): Promise<Array<string>> {
         return send({
             url: '/api/Metadata/list-all',
             method: 'GET',
@@ -22,7 +21,7 @@ export class MetadataApi {
      * 
      * @param string name 
      */
-    public apiMetadataNameGet(name: string | null): Promise<MetadataInfoCodeResult> {
+    public apiMetadataNameGet(name: string | null): Promise<MetadataInfo> {
         return send({
             url: '/api/Metadata/{name}'
                 .replace(`{${"name"}}`, encodeURIComponent(String(name))),

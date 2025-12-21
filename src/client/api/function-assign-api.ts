@@ -4,9 +4,8 @@
 import { send } from "../base"
 import type { AssignByRoleInfo } from "../models"
 import type { CodeResult } from "../models"
-import type { FunctionMockTreeInfoCodeResult } from "../models"
-import type { StringFunctionAssignObjectInfoDictionaryCodeResult } from "../models"
-import type { StringListCodeResult } from "../models"
+import type { FunctionAssignObjectInfo } from "../models"
+import type { FunctionMockTreeInfo } from "../models"
 
 /**
  * FunctionAssignApi - API class
@@ -28,7 +27,7 @@ export class FunctionAssignApi {
      * @param string appId 
      * @param Array<string>? roleCode 
      */
-    public functionsMockAppIdGet(appId: string | null, roleCode?: Array<string> | null): Promise<FunctionMockTreeInfoCodeResult> {
+    public functionsMockAppIdGet(appId: string | null, roleCode?: Array<string> | null): Promise<FunctionMockTreeInfo> {
         return send({
             url: '/functions/mock/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),
@@ -43,7 +42,7 @@ export class FunctionAssignApi {
      * @param string appId 
      * @param string? roleCode 
      */
-    public functionsQueryAssignByRoleAppIdGet(appId: string | null, roleCode?: string | null): Promise<StringFunctionAssignObjectInfoDictionaryCodeResult> {
+    public functionsQueryAssignByRoleAppIdGet(appId: string | null, roleCode?: string | null): Promise<{ [key: string]: FunctionAssignObjectInfo; }> {
         return send({
             url: '/functions/query-assign-by-role/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),
@@ -58,7 +57,7 @@ export class FunctionAssignApi {
      * @param string appId 
      * @param string? roleCode 
      */
-    public functionsQueryAssignFunctionsByRoleAppIdGet(appId: string | null, roleCode?: string | null): Promise<StringListCodeResult> {
+    public functionsQueryAssignFunctionsByRoleAppIdGet(appId: string | null, roleCode?: string | null): Promise<Array<string>> {
         return send({
             url: '/functions/query-assign-functions-by-role/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),

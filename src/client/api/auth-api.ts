@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { Code2SessionDtoCodeResult } from "../models"
+import type { Code2SessionDto } from "../models"
 
 /**
  * AuthApi - API class
@@ -13,7 +13,7 @@ export class AuthApi {
      * @summary 获取微信Session
      * @param string code 
      */
-    public authCode2sessionGet(code: string): Promise<Code2SessionDtoCodeResult> {
+    public authCode2sessionGet(code: string): Promise<Code2SessionDto> {
         return send({
             url: '/auth/code2session',
             method: 'GET',

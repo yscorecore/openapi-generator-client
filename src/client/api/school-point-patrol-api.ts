@@ -4,10 +4,9 @@
 import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { CreatePatrolRecordDto } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { ModifyPatrolRecordDto } from "../models"
-import type { PointPatrolRecordDtoPaginationDataCodeResult } from "../models"
-import type { PointPatrolTypeDtoPaginationDataCodeResult } from "../models"
+import type { PointPatrolRecordDtoPaginationData } from "../models"
+import type { PointPatrolTypeDtoPaginationData } from "../models"
 
 /**
  * SchoolPointPatrolApi - API class
@@ -42,7 +41,7 @@ export class SchoolPointPatrolApi {
      * @summary 提交打卡
      * @param CreatePatrolRecordDto? createPatrolRecordDto 
      */
-    public pointPatrolPost(createPatrolRecordDto?: CreatePatrolRecordDto): Promise<GuidCodeResult> {
+    public pointPatrolPost(createPatrolRecordDto?: CreatePatrolRecordDto): Promise<string> {
         return send({
             url: '/point-patrol',
             method: 'POST',
@@ -70,7 +69,7 @@ export class SchoolPointPatrolApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public pointPatrolRecordsGet(type?: number | null, startTime?: string | null, endTime?: string | null, offset?: number, limit?: number): Promise<PointPatrolRecordDtoPaginationDataCodeResult> {
+    public pointPatrolRecordsGet(type?: number | null, startTime?: string | null, endTime?: string | null, offset?: number, limit?: number): Promise<PointPatrolRecordDtoPaginationData> {
         return send({
             url: '/point-patrol/records',
             method: 'GET',
@@ -89,7 +88,7 @@ export class SchoolPointPatrolApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public pointPatrolTypesGet(offset?: number, limit?: number): Promise<PointPatrolTypeDtoPaginationDataCodeResult> {
+    public pointPatrolTypesGet(offset?: number, limit?: number): Promise<PointPatrolTypeDtoPaginationData> {
         return send({
             url: '/point-patrol/types',
             method: 'GET',

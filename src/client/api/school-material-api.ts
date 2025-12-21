@@ -2,21 +2,19 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
 import type { EditConfig } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { MaterialAddDto } from "../models"
-import type { MaterialDetailDtoCodeResult } from "../models"
-import type { MaterialDetailDtoPaginationResCodeResult } from "../models"
+import type { MaterialDetailDto } from "../models"
+import type { MaterialDetailDtoPaginationRes } from "../models"
 import type { MaterialEditDto } from "../models"
-import type { MaterialLifecycleDtoListCodeResult } from "../models"
-import type { MaterialSpecListDtoListCodeResult } from "../models"
-import type { MaterialTypeDtoListCodeResult } from "../models"
-import type { SchoolUsualMaterialDtoListCodeResult } from "../models"
-import type { SchoolUsualMaterialSpecDtoListCodeResult } from "../models"
+import type { MaterialLifecycleDto } from "../models"
+import type { MaterialSpecListDto } from "../models"
+import type { MaterialTypeDto } from "../models"
+import type { SchoolUsualMaterialDto } from "../models"
+import type { SchoolUsualMaterialSpecDto } from "../models"
 import type { StockWarningReq } from "../models"
-import type { StockWarningResponsePaginationDataCodeResult } from "../models"
+import type { StockWarningResponsePaginationData } from "../models"
 
 /**
  * SchoolMaterialApi - API class
@@ -53,7 +51,7 @@ export class SchoolMaterialApi {
      * @param number? page 
      * @param number? size 
      */
-    public materialGet(type?: number | null, name?: string | null, isManaged?: boolean | null, page?: number, size?: number): Promise<MaterialDetailDtoPaginationResCodeResult> {
+    public materialGet(type?: number | null, name?: string | null, isManaged?: boolean | null, page?: number, size?: number): Promise<MaterialDetailDtoPaginationRes> {
         return send({
             url: '/material',
             method: 'GET',
@@ -71,7 +69,7 @@ export class SchoolMaterialApi {
      * @summary 根据ID删除原材料
      * @param string id 原材料ID
      */
-    public materialIdDelete(id: string): Promise<BooleanCodeResult> {
+    public materialIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/material/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -83,7 +81,7 @@ export class SchoolMaterialApi {
      * @summary 获取原材料详情
      * @param string id 
      */
-    public materialIdGet(id: string): Promise<MaterialDetailDtoCodeResult> {
+    public materialIdGet(id: string): Promise<MaterialDetailDto> {
         return send({
             url: '/material/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -95,7 +93,7 @@ export class SchoolMaterialApi {
      * @summary 新增原材料
      * @param MaterialAddDto? materialAddDto 待新增的原材料信息
      */
-    public materialPost(materialAddDto?: MaterialAddDto): Promise<GuidCodeResult> {
+    public materialPost(materialAddDto?: MaterialAddDto): Promise<string> {
         return send({
             url: '/material',
             method: 'POST',
@@ -107,7 +105,7 @@ export class SchoolMaterialApi {
      * @summary 修改原材料
      * @param MaterialEditDto? materialEditDto 需更新的原材料
      */
-    public materialPut(materialEditDto?: MaterialEditDto): Promise<BooleanCodeResult> {
+    public materialPut(materialEditDto?: MaterialEditDto): Promise<boolean> {
         return send({
             url: '/material',
             method: 'PUT',
@@ -122,7 +120,7 @@ export class SchoolMaterialApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public materialQueryWarningConfigGet(isMaterial?: boolean | null, enabled?: boolean | null, name?: string | null, offset?: number, limit?: number): Promise<StockWarningResponsePaginationDataCodeResult> {
+    public materialQueryWarningConfigGet(isMaterial?: boolean | null, enabled?: boolean | null, name?: string | null, offset?: number, limit?: number): Promise<StockWarningResponsePaginationData> {
         return send({
             url: '/material/query-warning-config',
             method: 'GET',
@@ -141,7 +139,7 @@ export class SchoolMaterialApi {
      * @param boolean? isDeep 
      * @param boolean? isMain 
      */
-    public materialSpecGet(isDeep?: boolean | null, isMain?: boolean | null): Promise<MaterialSpecListDtoListCodeResult> {
+    public materialSpecGet(isDeep?: boolean | null, isMain?: boolean | null): Promise<Array<MaterialSpecListDto>> {
         return send({
             url: '/material/spec',
             method: 'GET',
@@ -156,7 +154,7 @@ export class SchoolMaterialApi {
      * @summary 删除原材料规格
      * @param string id 
      */
-    public materialSpecIdDelete(id: string): Promise<BooleanCodeResult> {
+    public materialSpecIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/material/spec/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -168,7 +166,7 @@ export class SchoolMaterialApi {
      * @summary 获取食材溯源
      * @param string stockInItemCode 
      */
-    public materialStockInItemCodeLifecycleGet(stockInItemCode: string | null): Promise<MaterialLifecycleDtoListCodeResult> {
+    public materialStockInItemCodeLifecycleGet(stockInItemCode: string | null): Promise<Array<MaterialLifecycleDto>> {
         return send({
             url: '/material/{stockInItemCode}/lifecycle'
                 .replace(`{${"stockInItemCode"}}`, encodeURIComponent(String(stockInItemCode))),
@@ -179,7 +177,7 @@ export class SchoolMaterialApi {
      * 
      * @summary 获取所有的食材分类
      */
-    public materialTypesGet(): Promise<MaterialTypeDtoListCodeResult> {
+    public materialTypesGet(): Promise<Array<MaterialTypeDto>> {
         return send({
             url: '/material/types',
             method: 'GET',
@@ -199,7 +197,7 @@ export class SchoolMaterialApi {
     /**
      * 
      */
-    public materialUsualGet(): Promise<SchoolUsualMaterialDtoListCodeResult> {
+    public materialUsualGet(): Promise<Array<SchoolUsualMaterialDto>> {
         return send({
             url: '/material/usual',
             method: 'GET',
@@ -208,7 +206,7 @@ export class SchoolMaterialApi {
     /**
      * 
      */
-    public materialUsualSpecGet(): Promise<SchoolUsualMaterialSpecDtoListCodeResult> {
+    public materialUsualSpecGet(): Promise<Array<SchoolUsualMaterialSpecDto>> {
         return send({
             url: '/material/usual-spec',
             method: 'GET',

@@ -6,9 +6,8 @@ import type { AddParentAccompanyDto } from "../models"
 import type { AuditRequestDto } from "../models"
 import type { CodeResult } from "../models"
 import type { EditParentAccompanyDto } from "../models"
-import type { GuidCodeResult } from "../models"
-import type { ParentAccompanyPlanDetailDtoCodeResult } from "../models"
-import type { ParentAccompanyPlanDtoPaginationDataCodeResult } from "../models"
+import type { ParentAccompanyPlanDetailDto } from "../models"
+import type { ParentAccompanyPlanDtoPaginationData } from "../models"
 
 /**
  * SchoolParentAccompanyApi - API class
@@ -31,7 +30,7 @@ export class SchoolParentAccompanyApi {
      * @summary 获取家长陪餐详情
      * @param string id 
      */
-    public parentAccompanyPlanIdGet(id: string): Promise<ParentAccompanyPlanDetailDtoCodeResult> {
+    public parentAccompanyPlanIdGet(id: string): Promise<ParentAccompanyPlanDetailDto> {
         return send({
             url: '/parent-accompany/plan/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -45,7 +44,7 @@ export class SchoolParentAccompanyApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public parentAccompanyPlanListGet(startTime?: string | null, offset?: number, limit?: number): Promise<ParentAccompanyPlanDtoPaginationDataCodeResult> {
+    public parentAccompanyPlanListGet(startTime?: string | null, offset?: number, limit?: number): Promise<ParentAccompanyPlanDtoPaginationData> {
         return send({
             url: '/parent-accompany/plan/list',
             method: 'GET',
@@ -61,7 +60,7 @@ export class SchoolParentAccompanyApi {
      * @summary 创建陪餐计划
      * @param AddParentAccompanyDto? addParentAccompanyDto 
      */
-    public parentAccompanyPlanPost(addParentAccompanyDto?: AddParentAccompanyDto): Promise<GuidCodeResult> {
+    public parentAccompanyPlanPost(addParentAccompanyDto?: AddParentAccompanyDto): Promise<string> {
         return send({
             url: '/parent-accompany/plan',
             method: 'POST',

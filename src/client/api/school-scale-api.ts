@@ -3,9 +3,9 @@
 
 import { send } from "../base"
 import type { OrderType } from "../models"
-import type { StockDtoCodeResult } from "../models"
-import type { StockInItemModelInfoStockInItemModelSummaryPaginationDataCodeResult } from "../models"
-import type { StockSummaryDtoListCodeResult } from "../models"
+import type { StockDto } from "../models"
+import type { StockInItemModelInfoStockInItemModelSummaryPaginationData } from "../models"
+import type { StockSummaryDto } from "../models"
 
 /**
  * SchoolScaleApi - API class
@@ -17,7 +17,7 @@ export class SchoolScaleApi {
      * @param boolean? onlyStock 是否只显示有存量的入库单
      * @param OrderType? orderType 订单类型，null:全部，0：混合，1：营养餐，2：非营养餐
      */
-    public scaleStockAllListGet(onlyStock?: boolean, orderType?: OrderType): Promise<StockSummaryDtoListCodeResult> {
+    public scaleStockAllListGet(onlyStock?: boolean, orderType?: OrderType): Promise<Array<StockSummaryDto>> {
         return send({
             url: '/Scale/stock/all_list',
             method: 'GET',
@@ -32,7 +32,7 @@ export class SchoolScaleApi {
      * @summary 获取某个入库的详细库存数据
      * @param string? stockInId 
      */
-    public scaleStockDetailGet(stockInId?: string): Promise<StockDtoCodeResult> {
+    public scaleStockDetailGet(stockInId?: string): Promise<StockDto> {
         return send({
             url: '/Scale/stock/detail',
             method: 'GET',
@@ -53,7 +53,7 @@ export class SchoolScaleApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public scaleStockinitemInfoGet(startDate?: string | null, endDate?: string | null, supplier?: Array<string> | null, orderType?: OrderType, materialName?: string | null, isSupplerNameNull?: boolean, offset?: number, limit?: number): Promise<StockInItemModelInfoStockInItemModelSummaryPaginationDataCodeResult> {
+    public scaleStockinitemInfoGet(startDate?: string | null, endDate?: string | null, supplier?: Array<string> | null, orderType?: OrderType, materialName?: string | null, isSupplerNameNull?: boolean, offset?: number, limit?: number): Promise<StockInItemModelInfoStockInItemModelSummaryPaginationData> {
         return send({
             url: '/Scale/stockinitem_info',
             method: 'GET',

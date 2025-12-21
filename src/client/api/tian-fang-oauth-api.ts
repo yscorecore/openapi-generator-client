@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { RootObjectCodeResult } from "../models"
+import type { RootObject } from "../models"
 
 /**
  * TianFangOAuthApi - API class
@@ -25,7 +25,7 @@ export class TianFangOAuthApi {
      * 
      * @param string? session 
      */
-    public oauthTianfangLoginPost(session?: string | null): Promise<RootObjectCodeResult> {
+    public oauthTianfangLoginPost(session?: string | null): Promise<RootObject> {
         return send({
             url: '/oauth/tianfang/login',
             method: 'POST',

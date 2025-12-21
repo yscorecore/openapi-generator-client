@@ -3,15 +3,12 @@
 
 import { send } from "../base"
 import type { AddCarryOverReq } from "../models"
-import type { BooleanCodeResult } from "../models"
 import type { CheckDetailReq } from "../models"
-import type { CheckDetailResCodeResult } from "../models"
-import type { CheckDetailResListCodeResult } from "../models"
+import type { CheckDetailRes } from "../models"
 import type { CodeResult } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
-import type { StockInForReturnDtoListCodeResult } from "../models"
+import type { StockInForReturnDto } from "../models"
 import type { StockReturnAddBySoftReq } from "../models"
 import type { StockReturnAddReq } from "../models"
 
@@ -23,7 +20,7 @@ export class AndroidStockReturnApi {
      * 
      * @param ImageBindInfo? imageBindInfo 
      */
-    public scaleReturnBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
+    public scaleReturnBindImagePost(imageBindInfo?: ImageBindInfo): Promise<boolean> {
         return send({
             url: '/scale/return/bind-image',
             method: 'POST',
@@ -35,7 +32,7 @@ export class AndroidStockReturnApi {
      * @summary 增加退货
      * @param StockReturnAddBySoftReq? stockReturnAddBySoftReq 
      */
-    public scaleReturnBySoftPost(stockReturnAddBySoftReq?: StockReturnAddBySoftReq): Promise<GuidCodeResult> {
+    public scaleReturnBySoftPost(stockReturnAddBySoftReq?: StockReturnAddBySoftReq): Promise<string> {
         return send({
             url: '/scale/return-by-soft',
             method: 'POST',
@@ -57,7 +54,7 @@ export class AndroidStockReturnApi {
      * 
      * @param string? stockInId 
      */
-    public scaleReturnChecksGet(stockInId?: string): Promise<CheckDetailResListCodeResult> {
+    public scaleReturnChecksGet(stockInId?: string): Promise<Array<CheckDetailRes>> {
         return send({
             url: '/scale/return/checks',
             method: 'GET',
@@ -71,7 +68,7 @@ export class AndroidStockReturnApi {
      * @summary 删除单次验收
      * @param string id 
      */
-    public scaleReturnChecksIdDelete(id: string): Promise<BooleanCodeResult> {
+    public scaleReturnChecksIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/scale/return/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -82,7 +79,7 @@ export class AndroidStockReturnApi {
      * 
      * @param CheckDetailReq? checkDetailReq 
      */
-    public scaleReturnChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailResCodeResult> {
+    public scaleReturnChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailRes> {
         return send({
             url: '/scale/return/checks',
             method: 'POST',
@@ -103,7 +100,7 @@ export class AndroidStockReturnApi {
     /**
      * 
      */
-    public scaleReturnOrdersGet(): Promise<StockInForReturnDtoListCodeResult> {
+    public scaleReturnOrdersGet(): Promise<Array<StockInForReturnDto>> {
         return send({
             url: '/scale/return_orders',
             method: 'GET',
@@ -114,7 +111,7 @@ export class AndroidStockReturnApi {
      * @summary 增加退货
      * @param StockReturnAddReq? stockReturnAddReq 
      */
-    public scaleReturnPost(stockReturnAddReq?: StockReturnAddReq): Promise<GuidCodeResult> {
+    public scaleReturnPost(stockReturnAddReq?: StockReturnAddReq): Promise<string> {
         return send({
             url: '/scale/return',
             method: 'POST',

@@ -1,0 +1,174 @@
+const fs = require('fs');
+const https = require('https');
+const path = require('path');
+
+// 下载swagger文件
+async function downloadSwagger(url, outputPath) {
+    return new Promise((resolve, reject) => {
+        https.get(url, (response) => {
+            let data = '';
+            
+            response.on('data', (chunk) => {
+                data += chunk;
+            });
+            
+            response.on('end', () => {
+                fs.writeFileSync(outputPath, data, 'utf8');
+                console.log(`Swagger文件已下载到: ${outputPath}`);
+                resolve(JSON.parse(data));
+            });
+            
+            response.on('error', (error) => {
+                reject(error);
+            });
+        }).on('error', (error) => {
+            reject(error);
+        });
+    });
+}
+
+// 过滤路径函数
+function filterPaths(paths, includePaths) {
+    if (!includePaths || includePaths.length === 0) {
+        return paths;
+    }
+    
+    const filteredPaths = {};
+    
+    // 将通配符路径转换为正则表达式
+    const pathPatterns = includePaths.map(pattern => {
+        // 将 * 转换为正则表达式的 .* 并转义其他特殊字符
+        const regexPattern = pattern.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*');
+        return new RegExp(`^${regexPattern}$`);
+    });
+    
+    Object.keys(paths).forEach(path => {
+        // 检查路径是否匹配任何一个模式
+        if (pathPatterns.some(pattern => pattern.test(path))) {
+            filteredPaths[path] = paths[path];
+        }
+    });
+    
+    return filteredPaths;
+}
+
+// 处理swagger文件
+function processSwagger(swaggerData, includePaths) {
+    // 过滤路径
+    const filteredPaths = filterPaths(swaggerData.paths, includePaths);
+    
+    // 更新swagger数据中的路径
+    swaggerData.paths = filteredPaths;
+    
+    // 处理CodeResult相关类型
+    if (swaggerData.components && swaggerData.components.schemas) {
+        const schemas = swaggerData.components.schemas;
+        
+        // 1. 遍历所有路径，将响应中的CodeResult类型替换为实际的数据类型
+        Object.keys(swaggerData.paths).forEach(path => {
+            const methods = swaggerData.paths[path];
+            Object.keys(methods).forEach(method => {
+                const operation = methods[method];
+                if (operation.responses) {
+                    Object.keys(operation.responses).forEach(status => {
+                        const response = operation.responses[status];
+                        if (response.content) {
+                            Object.keys(response.content).forEach(mediaType => {
+                                const content = response.content[mediaType];
+                                if (content.schema && content.schema.$ref) {
+                                    const ref = content.schema.$ref;
+                                    // 提取schema名称
+                                    const schemaName = ref.split('/').pop();
+                                    
+                                    // 检查是否是CodeResult类型且不是基础的CodeResult
+                if (schemaName !== 'CodeResult' && /CodeResult(\d+)?$/.test(schemaName)) {
+                                        const codeResultSchema = schemas[schemaName];
+                                        if (codeResultSchema && codeResultSchema.properties && codeResultSchema.properties.data) {
+                                            // 将响应直接指向data属性的类型
+                                            content.schema = codeResultSchema.properties.data;
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+        
+        // 2. 删除所有带有data属性的CodeResult相关的schema定义（保留基础的CodeResult）
+        Object.keys(schemas).forEach(schemaName => {
+            if (schemaName !== 'CodeResult' && /CodeResult(\d+)?$/.test(schemaName)) {
+                const schema = schemas[schemaName];
+                if (schema && schema.properties && schema.properties.data) {
+                    delete schemas[schemaName];
+                }
+            }
+        });
+    }
+    
+    return swaggerData;
+}
+
+// 主函数
+async function main() {
+    try {
+        // 读取配置文件路径（从命令行参数获取，默认值为./src/client/config.json）
+        const configPath = process.argv[2] || './src/client/config.json';
+        const configData = fs.readFileSync(configPath, 'utf8');
+        const config = JSON.parse(configData);
+        
+        const { swagger, filter, openapiGenerator } = config;
+        
+        // 获取config.json所在的目录
+        const configDir = path.dirname(configPath);
+        
+        // 解析swagger文件的路径（相对于config.json所在目录）
+        const originalSwaggerPath = path.resolve(configDir, swagger.originalPath);
+        const processedSwaggerPath = path.resolve(configDir, swagger.processedPath);
+        
+        // 下载原始swagger文件
+        const swaggerData = await downloadSwagger(swagger.url, originalSwaggerPath);
+        
+        // 处理swagger文件（包含路径过滤）
+        const processedData = processSwagger(swaggerData, filter.includePaths);
+        
+        // 保存处理后的swagger文件
+        fs.writeFileSync(processedSwaggerPath, JSON.stringify(processedData, null, 2), 'utf8');
+        console.log(`处理后的swagger文件已保存到: ${processedSwaggerPath}`);
+        
+        // 更新Docker输入文件路径，指向正确的位置
+        const dockerInputPath = `/local/src/client/${swagger.processedPath.replace('./', '')}`;
+        
+        // 调用生成命令
+        console.log('\n开始生成客户端代码...');
+        const { spawn } = require('child_process');
+        const generateProcess = spawn('docker', [
+            'run', '--rm', '-v', openapiGenerator.dockerVolumes,
+            openapiGenerator.generatorImage, 'generate',
+            '-i', dockerInputPath,
+            '-g', openapiGenerator.generator,
+            '-o', openapiGenerator.outputDir,
+            '-t', openapiGenerator.templatesDir,
+            '-p', openapiGenerator.additionalProperties
+        ], {
+            shell: true,
+            stdio: 'inherit'
+        });
+        
+        generateProcess.on('close', (code) => {
+            if (code === 0) {
+                console.log('\n客户端代码生成成功!');
+            } else {
+                console.error(`\n客户端代码生成失败，退出码: ${code}`);
+            }
+        });
+        
+    } catch (error) {
+        console.error('处理swagger文件失败:', error);
+        process.exit(1);
+    }
+}
+
+// 执行主函数
+main();

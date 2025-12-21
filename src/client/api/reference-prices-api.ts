@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { ReferencePriceDtoListCodeResult } from "../models"
+import type { ReferencePriceDto } from "../models"
 
 /**
  * ReferencePricesApi - API class
@@ -16,7 +16,7 @@ export class ReferencePricesApi {
      * @param boolean? isWholesale 
      * @param Array<string>? materialPriceIds 
      */
-    public referencepricePriceGet(materialName?: string | null, date?: string, isWholesale?: boolean, materialPriceIds?: Array<string> | null): Promise<ReferencePriceDtoListCodeResult> {
+    public referencepricePriceGet(materialName?: string | null, date?: string, isWholesale?: boolean, materialPriceIds?: Array<string> | null): Promise<Array<ReferencePriceDto>> {
         return send({
             url: '/referenceprice/price',
             method: 'GET',

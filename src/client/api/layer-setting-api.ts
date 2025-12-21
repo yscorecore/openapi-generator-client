@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { StringObjectDictionaryCodeResult } from "../models"
 
 /**
  * LayerSettingApi - API class
@@ -12,7 +11,7 @@ export class LayerSettingApi {
      * 
      * @param string group 
      */
-    public layerSettingsValueGroupGet(group: string | null): Promise<StringObjectDictionaryCodeResult> {
+    public layerSettingsValueGroupGet(group: string | null): Promise<{ [key: string]: any; }> {
         return send({
             url: '/layer-settings/value/{group}'
                 .replace(`{${"group"}}`, encodeURIComponent(String(group))),

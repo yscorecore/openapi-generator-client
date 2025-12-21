@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { CodeResult } from "../models"
-import type { GuidArrayCodeResult } from "../models"
 import type { GuidCreateFileDto } from "../models"
 import type { GuidCreateFolderDto } from "../models"
 import type { GuidRenameFileDto } from "../models"
@@ -27,7 +26,7 @@ export class CloudFileApi {
      * 
      * @param Array<GuidCreateFolderDto>? guidCreateFolderDto 
      */
-    public apiCloudFileFoldersPost(guidCreateFolderDto?: Array<GuidCreateFolderDto> | null): Promise<GuidArrayCodeResult> {
+    public apiCloudFileFoldersPost(guidCreateFolderDto?: Array<GuidCreateFolderDto> | null): Promise<Array<string>> {
         return send({
             url: '/api/CloudFile/folders',
             method: 'POST',
@@ -38,7 +37,7 @@ export class CloudFileApi {
      * 
      * @param Array<GuidCreateFileDto>? guidCreateFileDto 
      */
-    public apiCloudFilePost(guidCreateFileDto?: Array<GuidCreateFileDto> | null): Promise<GuidArrayCodeResult> {
+    public apiCloudFilePost(guidCreateFileDto?: Array<GuidCreateFileDto> | null): Promise<Array<string>> {
         return send({
             url: '/api/CloudFile',
             method: 'POST',

@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { StockItemInfoPaginationDataCodeResult } from "../models"
+import type { StockItemInfoPaginationData } from "../models"
 
 /**
  * SchoolStockApi - API class
@@ -15,7 +15,7 @@ export class SchoolStockApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public stockinListGet(materialSpecId?: string | null, offset?: number, limit?: number): Promise<StockItemInfoPaginationDataCodeResult> {
+    public stockinListGet(materialSpecId?: string | null, offset?: number, limit?: number): Promise<StockItemInfoPaginationData> {
         return send({
             url: '/stockin/list',
             method: 'GET',

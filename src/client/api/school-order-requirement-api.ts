@@ -3,13 +3,11 @@
 
 import { send } from "../base"
 import type { BatchCreateOrderRequirementReq } from "../models"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
 import type { CreateOrderRequirementReq } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { ModifyOrderRequirementReq } from "../models"
-import type { OrderRequirementDetailResCodeResult } from "../models"
-import type { OrderRequirementResPaginationDataCodeResult } from "../models"
+import type { OrderRequirementDetailRes } from "../models"
+import type { OrderRequirementResPaginationData } from "../models"
 import type { OrderRequirementStatus } from "../models"
 import type { RejectRequirement } from "../models"
 import type { UploadRequirementReq } from "../models"
@@ -39,7 +37,7 @@ export class SchoolOrderRequirementApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public orderRequirementGet(status?: OrderRequirementStatus, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<OrderRequirementResPaginationDataCodeResult> {
+    public orderRequirementGet(status?: OrderRequirementStatus, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<OrderRequirementResPaginationData> {
         return send({
             url: '/order-requirement',
             method: 'GET',
@@ -69,7 +67,7 @@ export class SchoolOrderRequirementApi {
      * @summary 获取需求单详情-
      * @param string id 
      */
-    public orderRequirementIdGet(id: string): Promise<OrderRequirementDetailResCodeResult> {
+    public orderRequirementIdGet(id: string): Promise<OrderRequirementDetailRes> {
         return send({
             url: '/order-requirement/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -81,7 +79,7 @@ export class SchoolOrderRequirementApi {
      * @summary 创建需求单
      * @param CreateOrderRequirementReq? createOrderRequirementReq 
      */
-    public orderRequirementPost(createOrderRequirementReq?: CreateOrderRequirementReq): Promise<GuidCodeResult> {
+    public orderRequirementPost(createOrderRequirementReq?: CreateOrderRequirementReq): Promise<string> {
         return send({
             url: '/order-requirement',
             method: 'POST',
@@ -93,7 +91,7 @@ export class SchoolOrderRequirementApi {
      * @summary 更新需求单
      * @param ModifyOrderRequirementReq? modifyOrderRequirementReq 
      */
-    public orderRequirementPut(modifyOrderRequirementReq?: ModifyOrderRequirementReq): Promise<BooleanCodeResult> {
+    public orderRequirementPut(modifyOrderRequirementReq?: ModifyOrderRequirementReq): Promise<boolean> {
         return send({
             url: '/order-requirement',
             method: 'PUT',

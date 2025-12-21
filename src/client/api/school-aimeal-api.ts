@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { DishInfoListCodeResult } from "../models"
+import type { DishInfo } from "../models"
 import type { DishRequestInfo } from "../models"
 
 /**
@@ -13,7 +13,7 @@ export class SchoolAIMealApi {
      * 
      * @param DishRequestInfo? dishRequestInfo 
      */
-    public smartrecipesGetPost(dishRequestInfo?: DishRequestInfo): Promise<DishInfoListCodeResult> {
+    public smartrecipesGetPost(dishRequestInfo?: DishRequestInfo): Promise<Array<DishInfo>> {
         return send({
             url: '/smartrecipes/get',
             method: 'POST',

@@ -2,10 +2,8 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
 import type { CreateOrderReqV3 } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { OrderItemCerificateUrl } from "../models"
 import type { UpdateBeforeStockImagesReq } from "../models"
 
@@ -18,7 +16,7 @@ export class SchoolOrderApi {
      * @summary 创建补录单 v3
      * @param CreateOrderReqV3? createOrderReqV3 
      */
-    public ordersMendCreateV3Post(createOrderReqV3?: CreateOrderReqV3): Promise<GuidCodeResult> {
+    public ordersMendCreateV3Post(createOrderReqV3?: CreateOrderReqV3): Promise<string> {
         return send({
             url: '/orders/mend/create/v3',
             method: 'POST',
@@ -41,7 +39,7 @@ export class SchoolOrderApi {
      * @summary 删除未入库订单
      * @param Array<string>? id Id
      */
-    public ordersOrderDeleteDelete(id?: Array<string> | null): Promise<BooleanCodeResult> {
+    public ordersOrderDeleteDelete(id?: Array<string> | null): Promise<boolean> {
         return send({
             url: '/orders/order/delete',
             method: 'DELETE',
@@ -75,7 +73,7 @@ export class SchoolOrderApi {
      * @summary 更新入库前图片
      * @param UpdateBeforeStockImagesReq? updateBeforeStockImagesReq 
      */
-    public ordersStockImagesPost(updateBeforeStockImagesReq?: UpdateBeforeStockImagesReq): Promise<BooleanCodeResult> {
+    public ordersStockImagesPost(updateBeforeStockImagesReq?: UpdateBeforeStockImagesReq): Promise<boolean> {
         return send({
             url: '/orders/stock_images',
             method: 'POST',

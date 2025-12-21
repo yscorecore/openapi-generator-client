@@ -2,12 +2,11 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
 import type { MenuCreateInfo } from "../models"
 import type { MenuImageInfo } from "../models"
 import type { MenuPlanedCountInfo } from "../models"
-import type { MenuSummaryPagedListCodeResult } from "../models"
+import type { MenuSummaryPagedList } from "../models"
 import type { MenuVisibleInfo } from "../models"
 
 /**
@@ -19,7 +18,7 @@ export class SchoolMenu2Api {
      * @summary 判断菜品是否被菜谱引用（只判断当天之后的菜谱，不包含当天的）
      * @param string? mealId 
      */
-    public menuCheckReferencedMealGet(mealId?: string): Promise<BooleanCodeResult> {
+    public menuCheckReferencedMealGet(mealId?: string): Promise<boolean> {
         return send({
             url: '/menu/check-referenced-meal',
             method: 'GET',
@@ -38,7 +37,7 @@ export class SchoolMenu2Api {
      * @param string? select 
      * @param boolean? distinct 
      */
-    public menuQueryMenuSummaryGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<MenuSummaryPagedListCodeResult> {
+    public menuQueryMenuSummaryGet(offset?: number, limit?: number, agg?: string | null, filter?: string | null, orderBy?: string | null, select?: string | null, distinct?: boolean): Promise<MenuSummaryPagedList> {
         return send({
             url: '/menu/query-menu-summary',
             method: 'GET',
@@ -59,7 +58,7 @@ export class SchoolMenu2Api {
      * @param boolean? mergeOnly 
      * @param Array<MenuCreateInfo>? menuCreateInfo 
      */
-    public menuSavePost(mergeOnly?: boolean, menuCreateInfo?: Array<MenuCreateInfo> | null): Promise<BooleanCodeResult> {
+    public menuSavePost(mergeOnly?: boolean, menuCreateInfo?: Array<MenuCreateInfo> | null): Promise<boolean> {
         return send({
             url: '/menu/save',
             method: 'POST',
@@ -86,7 +85,7 @@ export class SchoolMenu2Api {
      * @summary 将菜品的信息同步给菜谱，如果带量信息修改了，则同步给菜谱
      * @param string? mealId 
      */
-    public menuSyncMealToMenusPost(mealId?: string): Promise<BooleanCodeResult> {
+    public menuSyncMealToMenusPost(mealId?: string): Promise<boolean> {
         return send({
             url: '/menu/sync-meal-to-menus',
             method: 'POST',
@@ -112,7 +111,7 @@ export class SchoolMenu2Api {
      * @summary 上传或是删除配餐图
      * @param MenuImageInfo? menuImageInfo 
      */
-    public menuUpdatePut(menuImageInfo?: MenuImageInfo): Promise<BooleanCodeResult> {
+    public menuUpdatePut(menuImageInfo?: MenuImageInfo): Promise<boolean> {
         return send({
             url: '/menu/update',
             method: 'PUT',

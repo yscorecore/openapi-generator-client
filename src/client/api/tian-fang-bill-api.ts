@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BillItemListCodeResult } from "../models"
+import type { BillItem } from "../models"
 import type { CodeResult } from "../models"
 import type { UploadBillDto } from "../models"
 
@@ -16,7 +16,7 @@ export class TianFangBillApi {
      * @param string? startDate 
      * @param string? endDate 
      */
-    public tianfangGetBillGet(startDate?: string, endDate?: string): Promise<BillItemListCodeResult> {
+    public tianfangGetBillGet(startDate?: string, endDate?: string): Promise<Array<BillItem>> {
         return send({
             url: '/tianfang/get-bill',
             method: 'GET',

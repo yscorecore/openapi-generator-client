@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { TextSpeechResCodeResult } from "../models"
+import type { TextSpeechRes } from "../models"
 
 /**
  * TtsApi - API class
@@ -25,7 +25,7 @@ export class TtsApi {
      * 
      * @param string? text 
      */
-    public ttsGet(text?: string | null): Promise<TextSpeechResCodeResult> {
+    public ttsGet(text?: string | null): Promise<TextSpeechRes> {
         return send({
             url: '/Tts',
             method: 'GET',

@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { CodeResult } from "../models"
-import type { ObjectListCodeResult } from "../models"
 import type { QueryFilter } from "../models"
 
 /**
@@ -15,7 +14,7 @@ export class JiuQiBillApi {
      * @param string? startDate 
      * @param string? endDate 
      */
-    public jiuqiGetBillGet(startDate?: string, endDate?: string): Promise<ObjectListCodeResult> {
+    public jiuqiGetBillGet(startDate?: string, endDate?: string): Promise<Array<any>> {
         return send({
             url: '/jiuqi/get-bill',
             method: 'GET',

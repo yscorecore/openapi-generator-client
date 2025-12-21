@@ -2,8 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
-import type { FunctionTreeInfoCodeResult } from "../models"
+import type { FunctionTreeInfo } from "../models"
 
 /**
  * FunctionPermissionApi - API class
@@ -14,7 +13,7 @@ export class FunctionPermissionApi {
      * @param string appId 
      * @param string functionCode 
      */
-    public functionsAppIdCheckFunctionCodeGet(appId: string | null, functionCode: string | null): Promise<BooleanCodeResult> {
+    public functionsAppIdCheckFunctionCodeGet(appId: string | null, functionCode: string | null): Promise<boolean> {
         return send({
             url: '/functions/{appId}/check/{functionCode}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId)))
@@ -27,7 +26,7 @@ export class FunctionPermissionApi {
      * @param string appId 
      * @param string? functionCode 
      */
-    public functionsAppIdGet(appId: string | null, functionCode?: string | null): Promise<FunctionTreeInfoCodeResult> {
+    public functionsAppIdGet(appId: string | null, functionCode?: string | null): Promise<FunctionTreeInfo> {
         return send({
             url: '/functions/{appId}'
                 .replace(`{${"appId"}}`, encodeURIComponent(String(appId))),

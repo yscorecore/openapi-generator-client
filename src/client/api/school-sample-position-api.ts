@@ -6,10 +6,9 @@ import type { AddMenuSampleDto1 } from "../models"
 import type { CodeResult } from "../models"
 import type { EventInfo } from "../models"
 import type { ForceUnLockInfo } from "../models"
-import type { Int32MenuSampleTemplateListDictionaryCodeResult1 } from "../models"
-import type { MenuSampleTemplateCodeResult1 } from "../models"
-import type { SamplePositionInfoListCodeResult } from "../models"
-import type { UserInfoListCodeResult } from "../models"
+import type { MenuSampleTemplate1 } from "../models"
+import type { SamplePositionInfo } from "../models"
+import type { UserInfo } from "../models"
 
 /**
  * SchoolSamplePositionApi - API class
@@ -20,7 +19,7 @@ export class SchoolSamplePositionApi {
      * @summary 留样菜品
      * @param AddMenuSampleDto1? addMenuSampleDto1 
      */
-    public samplePositionAddSamplePost(addMenuSampleDto1?: AddMenuSampleDto1): Promise<MenuSampleTemplateCodeResult1> {
+    public samplePositionAddSamplePost(addMenuSampleDto1?: AddMenuSampleDto1): Promise<MenuSampleTemplate1> {
         return send({
             url: '/sample-position/add-sample',
             method: 'POST',
@@ -55,7 +54,7 @@ export class SchoolSamplePositionApi {
      * 
      * @summary 获取所有的仓位
      */
-    public samplePositionListAllGet(): Promise<SamplePositionInfoListCodeResult> {
+    public samplePositionListAllGet(): Promise<Array<SamplePositionInfo>> {
         return send({
             url: '/sample-position/list-all',
             method: 'GET',
@@ -65,7 +64,7 @@ export class SchoolSamplePositionApi {
      * 
      * @summary 获取所有的用户
      */
-    public samplePositionListUsersGet(): Promise<UserInfoListCodeResult> {
+    public samplePositionListUsersGet(): Promise<Array<UserInfo>> {
         return send({
             url: '/sample-position/list-users',
             method: 'GET',
@@ -87,7 +86,7 @@ export class SchoolSamplePositionApi {
      * 
      * @summary 查询当天的菜品
      */
-    public samplePositionQueryTodayGet(): Promise<Int32MenuSampleTemplateListDictionaryCodeResult1> {
+    public samplePositionQueryTodayGet(): Promise<{ [key: string]: Array<MenuSampleTemplate1>; }> {
         return send({
             url: '/sample-position/query-today',
             method: 'GET',

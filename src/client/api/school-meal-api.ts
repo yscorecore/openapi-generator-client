@@ -3,15 +3,13 @@
 
 import { send } from "../base"
 import type { AddMealDto } from "../models"
-import type { BooleanCodeResult } from "../models"
 import type { CodeResult } from "../models"
 import type { EditMealDto } from "../models"
-import type { GuidCodeResult } from "../models"
-import type { MealDtoPaginationDataCodeResult } from "../models"
-import type { MealDtoPaginationResCodeResult } from "../models"
+import type { MealDtoPaginationData } from "../models"
+import type { MealDtoPaginationRes } from "../models"
 import type { MealKind } from "../models"
-import type { MealWithSummaryListCodeResult } from "../models"
-import type { MenuItemDetailListCodeResult } from "../models"
+import type { MealWithSummary } from "../models"
+import type { MenuItemDetail } from "../models"
 
 /**
  * SchoolMealApi - API class
@@ -36,7 +34,7 @@ export class SchoolMealApi {
      * @param number? page 
      * @param number? size 
      */
-    public mealGet(mealKind?: MealKind, page?: number, size?: number): Promise<MealDtoPaginationResCodeResult> {
+    public mealGet(mealKind?: MealKind, page?: number, size?: number): Promise<MealDtoPaginationRes> {
         return send({
             url: '/meal',
             method: 'GET',
@@ -54,7 +52,7 @@ export class SchoolMealApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public mealGetMealsGet(mealKind?: MealKind, offset?: number, limit?: number): Promise<MealDtoPaginationDataCodeResult> {
+    public mealGetMealsGet(mealKind?: MealKind, offset?: number, limit?: number): Promise<MealDtoPaginationData> {
         return send({
             url: '/meal/getMeals',
             method: 'GET',
@@ -70,7 +68,7 @@ export class SchoolMealApi {
      * @summary 根据ID删除菜品
      * @param string id 菜品Id
      */
-    public mealIdDelete(id: string): Promise<BooleanCodeResult> {
+    public mealIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/meal/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -82,7 +80,7 @@ export class SchoolMealApi {
      * @summary 新增菜品
      * @param AddMealDto? addMealDto 需新增的菜品
      */
-    public mealPost(addMealDto?: AddMealDto): Promise<GuidCodeResult> {
+    public mealPost(addMealDto?: AddMealDto): Promise<string> {
         return send({
             url: '/meal',
             method: 'POST',
@@ -94,7 +92,7 @@ export class SchoolMealApi {
      * @summary 修改菜品
      * @param EditMealDto? editMealDto 待修改的菜品
      */
-    public mealPut(editMealDto?: EditMealDto): Promise<BooleanCodeResult> {
+    public mealPut(editMealDto?: EditMealDto): Promise<boolean> {
         return send({
             url: '/meal',
             method: 'PUT',
@@ -105,7 +103,7 @@ export class SchoolMealApi {
      * 
      * @param string id 
      */
-    public mealQueryMealDetailsIdGet(id: string): Promise<MenuItemDetailListCodeResult> {
+    public mealQueryMealDetailsIdGet(id: string): Promise<Array<MenuItemDetail>> {
         return send({
             url: '/meal/query-meal-details/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
@@ -117,7 +115,7 @@ export class SchoolMealApi {
      * @summary 菜品统计
      * @param boolean? hasPrice 
      */
-    public mealSummaryGet(hasPrice?: boolean): Promise<MealWithSummaryListCodeResult> {
+    public mealSummaryGet(hasPrice?: boolean): Promise<Array<MealWithSummary>> {
         return send({
             url: '/meal/summary',
             method: 'GET',

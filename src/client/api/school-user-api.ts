@@ -5,14 +5,11 @@ import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { EditUserDto } from "../models"
 import type { EditUserInfo } from "../models"
-import type { EmptySchoolInfoListCodeResult } from "../models"
+import type { EmptySchoolInfo } from "../models"
 import type { FirstUserInfo } from "../models"
-import type { GuidCodeResult } from "../models"
-import type { QrCodeImageCodeResult } from "../models"
+import type { QrCodeImage } from "../models"
 import type { RegisterUserDto } from "../models"
-import type { StringCodeResult } from "../models"
 import type { UserInfo1 } from "../models"
-import type { UserInfoListCodeResult1 } from "../models"
 
 /**
  * SchoolUserApi - API class
@@ -23,7 +20,7 @@ export class SchoolUserApi {
      * @summary 添加收个用户
      * @param FirstUserInfo? firstUserInfo 
      */
-    public schooluserAddFirstUserPost(firstUserInfo?: FirstUserInfo): Promise<GuidCodeResult> {
+    public schooluserAddFirstUserPost(firstUserInfo?: FirstUserInfo): Promise<string> {
         return send({
             url: '/schooluser/add-first-user',
             method: 'POST',
@@ -46,7 +43,7 @@ export class SchoolUserApi {
      * @summary 获取三月内创建的新学校
      * @param string areaCode 
      */
-    public schooluserEmptySchoolsGet(areaCode: string): Promise<EmptySchoolInfoListCodeResult> {
+    public schooluserEmptySchoolsGet(areaCode: string): Promise<Array<EmptySchoolInfo>> {
         return send({
             url: '/schooluser/empty-schools',
             method: 'GET',
@@ -63,7 +60,7 @@ export class SchoolUserApi {
      * @param string? userNo 
      * @param number? userRole 
      */
-    public schooluserFinanceSystemGet(currentSchoolCode?: string | null, currentSchoolName?: string | null, userName?: string | null, userNo?: string | null, userRole?: number): Promise<StringCodeResult> {
+    public schooluserFinanceSystemGet(currentSchoolCode?: string | null, currentSchoolName?: string | null, userName?: string | null, userNo?: string | null, userRole?: number): Promise<string> {
         return send({
             url: '/schooluser/financeSystem',
             method: 'GET',
@@ -106,7 +103,7 @@ export class SchoolUserApi {
      * 
      * @summary 获取所有的用户
      */
-    public schooluserListGet(): Promise<UserInfoListCodeResult1> {
+    public schooluserListGet(): Promise<Array<UserInfo1>> {
         return send({
             url: '/schooluser/list',
             method: 'GET',
@@ -117,7 +114,7 @@ export class SchoolUserApi {
      * @summary 获取新申请的用户
      * @param string? sence 
      */
-    public schooluserNewusersGet(sence?: string | null): Promise<UserInfoListCodeResult1> {
+    public schooluserNewusersGet(sence?: string | null): Promise<Array<UserInfo1>> {
         return send({
             url: '/schooluser/newusers',
             method: 'GET',
@@ -131,7 +128,7 @@ export class SchoolUserApi {
      * @summary 增加用户，在电子秤端调用
      * @param UserInfo1? userInfo1 
      */
-    public schooluserPost(userInfo1?: UserInfo1): Promise<GuidCodeResult> {
+    public schooluserPost(userInfo1?: UserInfo1): Promise<string> {
         return send({
             url: '/schooluser',
             method: 'POST',
@@ -178,7 +175,7 @@ export class SchoolUserApi {
      * 
      * @summary 获取添加用户的二维码
      */
-    public schooluserShowcodeGet(): Promise<QrCodeImageCodeResult> {
+    public schooluserShowcodeGet(): Promise<QrCodeImage> {
         return send({
             url: '/schooluser/showcode',
             method: 'GET',

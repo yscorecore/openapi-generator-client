@@ -3,14 +3,11 @@
 
 import { send } from "../base"
 import type { AddMenuSampleDto } from "../models"
-import type { BooleanCodeResult } from "../models"
 import type { EditSample } from "../models"
 import type { ImageBindInfo } from "../models"
-import type { Int32CodeResult } from "../models"
-import type { Int32MenuSampleTemplateListDictionaryCodeResult } from "../models"
 import type { MealKind } from "../models"
-import type { MenuSampleDtoPaginationDataCodeResult } from "../models"
-import type { MenuSampleTemplateCodeResult } from "../models"
+import type { MenuSampleDtoPaginationData } from "../models"
+import type { MenuSampleTemplate } from "../models"
 
 /**
  * SchoolMenuSampleApi - API class
@@ -21,7 +18,7 @@ export class SchoolMenuSampleApi {
      * @summary 添加成品留样
      * @param AddMenuSampleDto? addMenuSampleDto 
      */
-    public menuSamplesAddPost(addMenuSampleDto?: AddMenuSampleDto): Promise<MenuSampleTemplateCodeResult> {
+    public menuSamplesAddPost(addMenuSampleDto?: AddMenuSampleDto): Promise<MenuSampleTemplate> {
         return send({
             url: '/menu/samples/add',
             method: 'POST',
@@ -33,7 +30,7 @@ export class SchoolMenuSampleApi {
      * @summary 设置留样图
      * @param ImageBindInfo? imageBindInfo 
      */
-    public menuSamplesBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
+    public menuSamplesBindImagePost(imageBindInfo?: ImageBindInfo): Promise<boolean> {
         return send({
             url: '/menu/samples/bind-image',
             method: 'POST',
@@ -44,7 +41,7 @@ export class SchoolMenuSampleApi {
      * 
      * @param EditSample? editSample 
      */
-    public menuSamplesEditPost(editSample?: EditSample): Promise<BooleanCodeResult> {
+    public menuSamplesEditPost(editSample?: EditSample): Promise<boolean> {
         return send({
             url: '/menu/samples/edit',
             method: 'POST',
@@ -56,7 +53,7 @@ export class SchoolMenuSampleApi {
      * @summary 重置成品留样
      * @param string id 
      */
-    public menuSamplesIdDelete(id: string): Promise<Int32CodeResult> {
+    public menuSamplesIdDelete(id: string): Promise<number> {
         return send({
             url: '/menu/samples/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -74,7 +71,7 @@ export class SchoolMenuSampleApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public menuSamplesListGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, materialName?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<MenuSampleDtoPaginationDataCodeResult> {
+    public menuSamplesListGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, materialName?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<MenuSampleDtoPaginationData> {
         return send({
             url: '/menu/samples/list',
             method: 'GET',
@@ -94,7 +91,7 @@ export class SchoolMenuSampleApi {
      * @summary 获取今日留样
      * @param string? date 
      */
-    public menuSamplesTemplatesGet(date?: string | null): Promise<Int32MenuSampleTemplateListDictionaryCodeResult> {
+    public menuSamplesTemplatesGet(date?: string | null): Promise<{ [key: string]: Array<MenuSampleTemplate>; }> {
         return send({
             url: '/menu/samples/templates',
             method: 'GET',
@@ -107,7 +104,7 @@ export class SchoolMenuSampleApi {
      * 
      * @summary 获取今日留样
      */
-    public menuSamplesTodayGet(): Promise<Int32MenuSampleTemplateListDictionaryCodeResult> {
+    public menuSamplesTodayGet(): Promise<{ [key: string]: Array<MenuSampleTemplate>; }> {
         return send({
             url: '/menu/samples/today',
             method: 'GET',

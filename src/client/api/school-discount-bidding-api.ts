@@ -5,9 +5,8 @@ import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { ConfirmReplyReq } from "../models"
 import type { CreateDiscountBiddingPlanDto } from "../models"
-import type { DiscountBiddingPlanDetailDtoCodeResult } from "../models"
-import type { DiscountBiddingPlanDtoPaginationDataCodeResult } from "../models"
-import type { GuidCodeResult } from "../models"
+import type { DiscountBiddingPlanDetailDto } from "../models"
+import type { DiscountBiddingPlanDtoPaginationData } from "../models"
 
 /**
  * SchoolDiscountBiddingApi - API class
@@ -18,7 +17,7 @@ export class SchoolDiscountBiddingApi {
      * @summary 确认竞价
      * @param ConfirmReplyReq? confirmReplyReq 
      */
-    public discountBiddingConfirmPost(confirmReplyReq?: ConfirmReplyReq): Promise<GuidCodeResult> {
+    public discountBiddingConfirmPost(confirmReplyReq?: ConfirmReplyReq): Promise<string> {
         return send({
             url: '/discount-bidding/confirm',
             method: 'POST',
@@ -42,7 +41,7 @@ export class SchoolDiscountBiddingApi {
      * @summary 获取竞价详情
      * @param string id 
      */
-    public discountBiddingIdGet(id: string): Promise<DiscountBiddingPlanDetailDtoCodeResult> {
+    public discountBiddingIdGet(id: string): Promise<DiscountBiddingPlanDetailDto> {
         return send({
             url: '/discount-bidding/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -55,7 +54,7 @@ export class SchoolDiscountBiddingApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public discountBiddingListGet(offset?: number, limit?: number): Promise<DiscountBiddingPlanDtoPaginationDataCodeResult> {
+    public discountBiddingListGet(offset?: number, limit?: number): Promise<DiscountBiddingPlanDtoPaginationData> {
         return send({
             url: '/discount-bidding/list',
             method: 'GET',
@@ -70,7 +69,7 @@ export class SchoolDiscountBiddingApi {
      * @summary 创建折扣竞价
      * @param CreateDiscountBiddingPlanDto? createDiscountBiddingPlanDto 
      */
-    public discountBiddingPost(createDiscountBiddingPlanDto?: CreateDiscountBiddingPlanDto): Promise<GuidCodeResult> {
+    public discountBiddingPost(createDiscountBiddingPlanDto?: CreateDiscountBiddingPlanDto): Promise<string> {
         return send({
             url: '/discount-bidding',
             method: 'POST',

@@ -2,8 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { DateTimeCodeResult } from "../models"
-import type { StockEventItemDtoListCodeResult } from "../models"
+import type { StockEventItemDto } from "../models"
 
 /**
  * SchoolStockVideoApi - API class
@@ -13,7 +12,7 @@ export class SchoolStockVideoApi {
      * 
      * @param string? startTime 
      */
-    public stockVideoEarliestTimeGet(startTime?: string): Promise<DateTimeCodeResult> {
+    public stockVideoEarliestTimeGet(startTime?: string): Promise<string> {
         return send({
             url: '/stock/video/earliest-time',
             method: 'GET',
@@ -27,7 +26,7 @@ export class SchoolStockVideoApi {
      * @summary 获取各个步骤的视频信息
      * @param string? startTime 
      */
-    public stockVideoNewGet(startTime?: string): Promise<StockEventItemDtoListCodeResult> {
+    public stockVideoNewGet(startTime?: string): Promise<Array<StockEventItemDto>> {
         return send({
             url: '/stock/video/new',
             method: 'GET',

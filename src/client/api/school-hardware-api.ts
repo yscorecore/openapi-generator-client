@@ -2,14 +2,11 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CaremaControl } from "../models"
 import type { CodeResult } from "../models"
-import type { NvrChannelDtoListCodeResult } from "../models"
+import type { NvrChannelDto } from "../models"
 import type { StreamProtocol } from "../models"
 import type { StreamType } from "../models"
-import type { StringCodeResult } from "../models"
-import type { StringObjectDictionaryCodeResult } from "../models"
 
 /**
  * SchoolHardwareApi - API class
@@ -19,7 +16,7 @@ export class SchoolHardwareApi {
      * 
      * @summary 获取所有硬件的配置信息
      */
-    public hardwareConfigGet(): Promise<StringObjectDictionaryCodeResult> {
+    public hardwareConfigGet(): Promise<{ [key: string]: any; }> {
         return send({
             url: '/hardware/config',
             method: 'GET',
@@ -30,7 +27,7 @@ export class SchoolHardwareApi {
      * @summary 更新配置信息
      * @param { [key: string]: any; } requestBody 
      */
-    public hardwareConfigPost(requestBody: { [key: string]: any; }): Promise<BooleanCodeResult> {
+    public hardwareConfigPost(requestBody: { [key: string]: any; }): Promise<boolean> {
         return send({
             url: '/hardware/config',
             method: 'POST',
@@ -53,7 +50,7 @@ export class SchoolHardwareApi {
      * 
      * @summary 获取所有通道
      */
-    public hardwareNvrChannelsGet(): Promise<NvrChannelDtoListCodeResult> {
+    public hardwareNvrChannelsGet(): Promise<Array<NvrChannelDto>> {
         return send({
             url: '/hardware/nvr/channels',
             method: 'GET',
@@ -67,7 +64,7 @@ export class SchoolHardwareApi {
      * @param StreamProtocol? protocal 
      * @param StreamType? type 
      */
-    public hardwareNvrPlayurlSnChannelGet(sn: string | null, channel: number, protocal?: StreamProtocol, type?: StreamType): Promise<StringCodeResult> {
+    public hardwareNvrPlayurlSnChannelGet(sn: string | null, channel: number, protocal?: StreamProtocol, type?: StreamType): Promise<string> {
         return send({
             url: '/hardware/nvr/playurl/{sn}/{channel}'
                 .replace(`{${"sn"}}`, encodeURIComponent(String(sn)))
@@ -84,7 +81,7 @@ export class SchoolHardwareApi {
      * @summary 获取nvr的所有通道
      * @param string sn 
      */
-    public hardwareNvrSnGet(sn: string | null): Promise<NvrChannelDtoListCodeResult> {
+    public hardwareNvrSnGet(sn: string | null): Promise<Array<NvrChannelDto>> {
         return send({
             url: '/hardware/nvr/{sn}'
                 .replace(`{${"sn"}}`, encodeURIComponent(String(sn))),
@@ -96,7 +93,7 @@ export class SchoolHardwareApi {
      * @summary 获取对讲的Url(仅限海康)
      * @param string? indexCode 
      */
-    public hardwareTalkUrlsGet(indexCode?: string | null): Promise<StringCodeResult> {
+    public hardwareTalkUrlsGet(indexCode?: string | null): Promise<string> {
         return send({
             url: '/hardware/talkUrls',
             method: 'GET',

@@ -4,9 +4,9 @@
 import { send } from "../base"
 import type { CodeResult } from "../models"
 import type { ConfirmLoginInfo } from "../models"
-import type { QrCodeImageCodeResult } from "../models"
+import type { QrCodeImage } from "../models"
 import type { SyncWechatInfo } from "../models"
-import type { UserLoginInfoCodeResult } from "../models"
+import type { UserLoginInfo } from "../models"
 
 /**
  * SchoolLoginApi - API class
@@ -16,7 +16,7 @@ export class SchoolLoginApi {
      * 
      * @summary 获取login的二维码
      */
-    public schoolLoginBeginGet(): Promise<QrCodeImageCodeResult> {
+    public schoolLoginBeginGet(): Promise<QrCodeImage> {
         return send({
             url: '/schoolLogin/begin',
             method: 'GET',
@@ -47,7 +47,7 @@ export class SchoolLoginApi {
      * 
      * @summary 查询login的信息
      */
-    public schoolLoginMeGet(): Promise<UserLoginInfoCodeResult> {
+    public schoolLoginMeGet(): Promise<UserLoginInfo> {
         return send({
             url: '/schoolLogin/me',
             method: 'GET',
@@ -58,7 +58,7 @@ export class SchoolLoginApi {
      * @summary 查询login的信息
      * @param string? scene 
      */
-    public schoolLoginQueryGet(scene?: string | null): Promise<UserLoginInfoCodeResult> {
+    public schoolLoginQueryGet(scene?: string | null): Promise<UserLoginInfo> {
         return send({
             url: '/schoolLogin/query',
             method: 'GET',

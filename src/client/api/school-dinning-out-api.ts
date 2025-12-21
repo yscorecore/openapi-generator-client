@@ -4,12 +4,11 @@
 import { send } from "../base"
 import type { BatchStudentDiningDto } from "../models"
 import type { CodeResult } from "../models"
-import type { DiningCostDtoByOrderTypePaginationDataCodeResult } from "../models"
-import type { DiningOutDetailsDtoCodeResult } from "../models"
-import type { DiningOutDetailsDtoListCodeResult } from "../models"
-import type { DiningOutDtoPaginationDataCodeResult } from "../models"
+import type { DiningCostDtoByOrderTypePaginationData } from "../models"
+import type { DiningOutDetailsDto } from "../models"
+import type { DiningOutDtoPaginationData } from "../models"
 import type { MealKind } from "../models"
-import type { MealkindDinerListCodeResult } from "../models"
+import type { MealkindDiner } from "../models"
 import type { ModifyTotalCountReq } from "../models"
 import type { OrderType } from "../models"
 import type { ReportReq } from "../models"
@@ -23,7 +22,7 @@ export class SchoolDinningOutApi {
      * 
      * @summary 
      */
-    public dinningoutAvailableDinneroutsGet(): Promise<MealkindDinerListCodeResult> {
+    public dinningoutAvailableDinneroutsGet(): Promise<Array<MealkindDiner>> {
         return send({
             url: '/dinningout/available-dinnerouts',
             method: 'GET',
@@ -34,7 +33,7 @@ export class SchoolDinningOutApi {
      * @summary 批量查询出餐记录
      * @param Array<string>? requestBody 
      */
-    public dinningoutBatchDetailsPost(requestBody?: Array<string> | null): Promise<DiningOutDetailsDtoListCodeResult> {
+    public dinningoutBatchDetailsPost(requestBody?: Array<string> | null): Promise<Array<DiningOutDetailsDto>> {
         return send({
             url: '/dinningout/batch-details',
             method: 'POST',
@@ -57,7 +56,7 @@ export class SchoolDinningOutApi {
      * @summary 根据ID查询出餐记录
      * @param string? id 
      */
-    public dinningoutDetailsGet(id?: string): Promise<DiningOutDetailsDtoCodeResult> {
+    public dinningoutDetailsGet(id?: string): Promise<DiningOutDetailsDto> {
         return send({
             url: '/dinningout/details',
             method: 'GET',
@@ -89,7 +88,7 @@ export class SchoolDinningOutApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public dinningoutListByOrderTypeGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, orderType?: OrderType, schoolId?: string | null, offset?: number, limit?: number): Promise<DiningCostDtoByOrderTypePaginationDataCodeResult> {
+    public dinningoutListByOrderTypeGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, orderType?: OrderType, schoolId?: string | null, offset?: number, limit?: number): Promise<DiningCostDtoByOrderTypePaginationData> {
         return send({
             url: '/dinningout/listByOrderType',
             method: 'GET',
@@ -114,7 +113,7 @@ export class SchoolDinningOutApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public dinningoutListGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, schoolId?: string | null, offset?: number, limit?: number): Promise<DiningOutDtoPaginationDataCodeResult> {
+    public dinningoutListGet(startDate?: string | null, endDate?: string | null, kind?: MealKind, schoolId?: string | null, offset?: number, limit?: number): Promise<DiningOutDtoPaginationData> {
         return send({
             url: '/dinningout/list',
             method: 'GET',

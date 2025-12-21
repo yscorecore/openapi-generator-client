@@ -1,0 +1,19 @@
+{
+  "swagger": {
+    "url": "https://test-global.xueshengxiaocanan.cn/swagger/StudentMeal.GlobalService/swagger.json",
+    "originalPath": "./swagger-original.json",
+    "processedPath": "./swagger-processed.json"
+  },
+  "filter": {
+    "includePaths": []
+  },
+  "openapiGenerator": {
+    "dockerVolumes": "c:/Users/Lenovo/Documents/trae_projects/openapitest:/local",
+    "generatorImage": "openapitools/openapi-generator-cli",
+    "inputFile": "/local/swagger-processed.json",
+    "generator": "typescript-axios",
+    "outputDir": "/local/src/client",
+    "templatesDir": "/local/templates",
+    "additionalProperties": "withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api,skipFormModel=true"
+  }
+}

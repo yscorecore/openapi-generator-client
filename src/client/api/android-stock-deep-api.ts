@@ -2,17 +2,14 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CheckDetailReq } from "../models"
-import type { CheckDetailResCodeResult } from "../models"
-import type { CheckDetailResListCodeResult } from "../models"
+import type { CheckDetailRes } from "../models"
 import type { CodeResult } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
 import type { StockDeepAddReq } from "../models"
 import type { StockDeepAddReq2 } from "../models"
-import type { StockInItemCodesListCodeResult } from "../models"
+import type { StockInItemCodes } from "../models"
 
 /**
  * AndroidStockDeepApi - API class
@@ -21,7 +18,7 @@ export class AndroidStockDeepApi {
     /**
      * 
      */
-    public scaleDeepAllstockitemsGet(): Promise<StockInItemCodesListCodeResult> {
+    public scaleDeepAllstockitemsGet(): Promise<Array<StockInItemCodes>> {
         return send({
             url: '/scale/deep/allstockitems',
             method: 'GET',
@@ -31,7 +28,7 @@ export class AndroidStockDeepApi {
      * 
      * @param ImageBindInfo? imageBindInfo 
      */
-    public scaleDeepBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
+    public scaleDeepBindImagePost(imageBindInfo?: ImageBindInfo): Promise<boolean> {
         return send({
             url: '/scale/deep/bind-image',
             method: 'POST',
@@ -41,7 +38,7 @@ export class AndroidStockDeepApi {
     /**
      * 
      */
-    public scaleDeepChecksGet(): Promise<CheckDetailResListCodeResult> {
+    public scaleDeepChecksGet(): Promise<Array<CheckDetailRes>> {
         return send({
             url: '/scale/deep/checks',
             method: 'GET',
@@ -51,7 +48,7 @@ export class AndroidStockDeepApi {
      * 
      * @param string id 
      */
-    public scaleDeepChecksIdDelete(id: string): Promise<BooleanCodeResult> {
+    public scaleDeepChecksIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/scale/deep/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -62,7 +59,7 @@ export class AndroidStockDeepApi {
      * 
      * @param CheckDetailReq? checkDetailReq 
      */
-    public scaleDeepChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailResCodeResult> {
+    public scaleDeepChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailRes> {
         return send({
             url: '/scale/deep/checks',
             method: 'POST',
@@ -84,7 +81,7 @@ export class AndroidStockDeepApi {
      * 
      * @param StockDeepAddReq? stockDeepAddReq 
      */
-    public scaleDeepPost(stockDeepAddReq?: StockDeepAddReq): Promise<GuidCodeResult> {
+    public scaleDeepPost(stockDeepAddReq?: StockDeepAddReq): Promise<string> {
         return send({
             url: '/scale/deep',
             method: 'POST',
@@ -95,7 +92,7 @@ export class AndroidStockDeepApi {
      * 
      * @param StockDeepAddReq2? stockDeepAddReq2 
      */
-    public scaleDeepSoftPost(stockDeepAddReq2?: StockDeepAddReq2): Promise<GuidCodeResult> {
+    public scaleDeepSoftPost(stockDeepAddReq2?: StockDeepAddReq2): Promise<string> {
         return send({
             url: '/scale/deep/soft',
             method: 'POST',

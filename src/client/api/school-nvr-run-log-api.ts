@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { SchoolNvrRunLogPaginationDataCodeResult } from "../models"
+import type { SchoolNvrRunLogPaginationData } from "../models"
 
 /**
  * SchoolNvrRunLogApi - API class
@@ -17,7 +17,7 @@ export class SchoolNvrRunLogApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public nvrrunlogSchoolNvrrunlogGet(nvrCode?: string | null, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<SchoolNvrRunLogPaginationDataCodeResult> {
+    public nvrrunlogSchoolNvrrunlogGet(nvrCode?: string | null, startDate?: string | null, endDate?: string | null, offset?: number, limit?: number): Promise<SchoolNvrRunLogPaginationData> {
         return send({
             url: '/nvrrunlog/school/nvrrunlog',
             method: 'GET',

@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { ScoreDtoCodeResult } from "../models"
+import type { ScoreDto } from "../models"
 
 /**
  * ScoreApi - API class
@@ -12,7 +12,7 @@ export class ScoreApi {
      * 
      * @summary 获取所有打分
      */
-    public scoreGet(): Promise<ScoreDtoCodeResult> {
+    public scoreGet(): Promise<ScoreDto> {
         return send({
             url: '/score',
             method: 'GET',

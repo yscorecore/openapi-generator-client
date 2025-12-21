@@ -4,10 +4,10 @@
 import { send } from "../base"
 import type { OrderCategory } from "../models"
 import type { OrderChannel } from "../models"
-import type { OrderPlanDetailDtoCodeResult } from "../models"
-import type { OrderPlanListDtoPaginationDataCodeResult } from "../models"
+import type { OrderPlanDetailDto } from "../models"
+import type { OrderPlanListDtoPaginationData } from "../models"
 import type { OrderPlanStatus } from "../models"
-import type { OrderPlanSummaryDtoCodeResult } from "../models"
+import type { OrderPlanSummaryDto } from "../models"
 import type { OrderType } from "../models"
 
 /**
@@ -19,7 +19,7 @@ export class SchoolOrderFlowApi {
      * @summary 根据订单编号获取采购单详情
      * @param string code 
      */
-    public orderFlowsDetailsCodeGet(code: string | null): Promise<OrderPlanDetailDtoCodeResult> {
+    public orderFlowsDetailsCodeGet(code: string | null): Promise<OrderPlanDetailDto> {
         return send({
             url: '/order-flows/details/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
@@ -40,7 +40,7 @@ export class SchoolOrderFlowApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public orderFlowsListGet(startDate?: string | null, endDate?: string | null, orderType?: OrderType, category?: OrderCategory, channel?: OrderChannel, status?: OrderPlanStatus, orderCode?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<OrderPlanListDtoPaginationDataCodeResult> {
+    public orderFlowsListGet(startDate?: string | null, endDate?: string | null, orderType?: OrderType, category?: OrderCategory, channel?: OrderChannel, status?: OrderPlanStatus, orderCode?: string | null, schoolId?: string | null, offset?: number, limit?: number): Promise<OrderPlanListDtoPaginationData> {
         return send({
             url: '/order-flows/list',
             method: 'GET',
@@ -63,7 +63,7 @@ export class SchoolOrderFlowApi {
      * @summary 统计采购单数据
      * @param string code 
      */
-    public orderFlowsSummaryCodeGet(code: string | null): Promise<OrderPlanSummaryDtoCodeResult> {
+    public orderFlowsSummaryCodeGet(code: string | null): Promise<OrderPlanSummaryDto> {
         return send({
             url: '/order-flows/summary/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),

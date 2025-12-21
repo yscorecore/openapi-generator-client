@@ -3,10 +3,9 @@
 
 import { send } from "../base"
 import type { AuditState } from "../models"
-import type { BooleanCodeResult } from "../models"
 import type { OperationAuditDto } from "../models"
 import type { OperationAuditInfo } from "../models"
-import type { OperationAuditResPaginationDataCodeResult } from "../models"
+import type { OperationAuditResPaginationData } from "../models"
 
 /**
  * SchoolOperationAuditApi - API class
@@ -21,7 +20,7 @@ export class SchoolOperationAuditApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public operationauditGetGet(startTime?: string | null, endTime?: string | null, state?: AuditState, offset?: number, limit?: number): Promise<OperationAuditResPaginationDataCodeResult> {
+    public operationauditGetGet(startTime?: string | null, endTime?: string | null, state?: AuditState, offset?: number, limit?: number): Promise<OperationAuditResPaginationData> {
         return send({
             url: '/operationaudit/get',
             method: 'GET',
@@ -39,7 +38,7 @@ export class SchoolOperationAuditApi {
      * @summary 删除数据审核
      * @param string id 
      */
-    public operationauditIdDelete(id: string): Promise<BooleanCodeResult> {
+    public operationauditIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/operationaudit/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -51,7 +50,7 @@ export class SchoolOperationAuditApi {
      * @summary 添加数据审核
      * @param OperationAuditDto? operationAuditDto 
      */
-    public operationauditPostPost(operationAuditDto?: OperationAuditDto): Promise<BooleanCodeResult> {
+    public operationauditPostPost(operationAuditDto?: OperationAuditDto): Promise<boolean> {
         return send({
             url: '/operationaudit/post',
             method: 'POST',
@@ -63,7 +62,7 @@ export class SchoolOperationAuditApi {
      * @summary 更新数据审核
      * @param OperationAuditInfo? operationAuditInfo 
      */
-    public operationauditUpdateoperationauditPut(operationAuditInfo?: OperationAuditInfo): Promise<BooleanCodeResult> {
+    public operationauditUpdateoperationauditPut(operationAuditInfo?: OperationAuditInfo): Promise<boolean> {
         return send({
             url: '/operationaudit/updateoperationaudit',
             method: 'PUT',

@@ -2,8 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { LabelTemplateDtoPaginationDataCodeResult } from "../models"
-import type { StringCodeResult } from "../models"
+import type { LabelTemplateDtoPaginationData } from "../models"
 
 /**
  * SchoolLabelPrinterTemplateApi - API class
@@ -19,7 +18,7 @@ export class SchoolLabelPrinterTemplateApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public labelTemplatesListGet(type?: string | null, size?: string | null, brand?: string | null, name?: string | null, offset?: number, limit?: number): Promise<LabelTemplateDtoPaginationDataCodeResult> {
+    public labelTemplatesListGet(type?: string | null, size?: string | null, brand?: string | null, name?: string | null, offset?: number, limit?: number): Promise<LabelTemplateDtoPaginationData> {
         return send({
             url: '/label-templates/list',
             method: 'GET',
@@ -38,7 +37,7 @@ export class SchoolLabelPrinterTemplateApi {
      * @summary 标签模板下载
      * @param string name 
      */
-    public labelTemplatesNameGet(name: string | null): Promise<StringCodeResult> {
+    public labelTemplatesNameGet(name: string | null): Promise<string> {
         return send({
             url: '/label-templates/{name}'
                 .replace(`{${"name"}}`, encodeURIComponent(String(name))),

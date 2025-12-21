@@ -2,22 +2,19 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CheckDetailReq } from "../models"
-import type { CheckDetailResCodeResult } from "../models"
-import type { CheckDetailResListCodeResult } from "../models"
+import type { CheckDetailRes } from "../models"
 import type { CodeResult } from "../models"
-import type { GuidCodeResult } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { MealKindWithDate } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
-import type { StockInItemCodesListCodeResult } from "../models"
+import type { StockInItemCodes } from "../models"
 import type { StockOutAddReq } from "../models"
 import type { StockOutAddReq2 } from "../models"
 import type { StockOutFromStockInAddReq } from "../models"
 import type { StockOutFromStockInAddReq2 } from "../models"
 import type { StockOutFromStockInAddReq3 } from "../models"
-import type { StockOutItemInfoListCodeResult } from "../models"
+import type { StockOutItemInfo } from "../models"
 
 /**
  * AndroidStockOutApi - API class
@@ -28,7 +25,7 @@ export class AndroidStockOutApi {
      * @param string? stockInId 
      * @param string? stockInItemId 
      */
-    public scaleOutAllstockitemsGet(stockInId?: string | null, stockInItemId?: string | null): Promise<StockInItemCodesListCodeResult> {
+    public scaleOutAllstockitemsGet(stockInId?: string | null, stockInItemId?: string | null): Promise<Array<StockInItemCodes>> {
         return send({
             url: '/scale/out/allstockitems',
             method: 'GET',
@@ -42,7 +39,7 @@ export class AndroidStockOutApi {
      * 
      * @param ImageBindInfo? imageBindInfo 
      */
-    public scaleOutBindImagePost(imageBindInfo?: ImageBindInfo): Promise<BooleanCodeResult> {
+    public scaleOutBindImagePost(imageBindInfo?: ImageBindInfo): Promise<boolean> {
         return send({
             url: '/scale/out/bind-image',
             method: 'POST',
@@ -53,7 +50,7 @@ export class AndroidStockOutApi {
      * 
      * @param StockOutAddReq2? stockOutAddReq2 
      */
-    public scaleOutBySoftPost(stockOutAddReq2?: StockOutAddReq2): Promise<GuidCodeResult> {
+    public scaleOutBySoftPost(stockOutAddReq2?: StockOutAddReq2): Promise<string> {
         return send({
             url: '/scale/out-by-soft',
             method: 'POST',
@@ -63,7 +60,7 @@ export class AndroidStockOutApi {
     /**
      * 
      */
-    public scaleOutChecksGet(): Promise<CheckDetailResListCodeResult> {
+    public scaleOutChecksGet(): Promise<Array<CheckDetailRes>> {
         return send({
             url: '/scale/out/checks',
             method: 'GET',
@@ -73,7 +70,7 @@ export class AndroidStockOutApi {
      * 
      * @param string id 
      */
-    public scaleOutChecksIdDelete(id: string): Promise<BooleanCodeResult> {
+    public scaleOutChecksIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/scale/out/checks/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -84,7 +81,7 @@ export class AndroidStockOutApi {
      * 
      * @param CheckDetailReq? checkDetailReq 
      */
-    public scaleOutChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailResCodeResult> {
+    public scaleOutChecksPost(checkDetailReq?: CheckDetailReq): Promise<CheckDetailRes> {
         return send({
             url: '/scale/out/checks',
             method: 'POST',
@@ -95,7 +92,7 @@ export class AndroidStockOutApi {
      * 
      * @param StockOutFromStockInAddReq? stockOutFromStockInAddReq 
      */
-    public scaleOutFromInPost(stockOutFromStockInAddReq?: StockOutFromStockInAddReq): Promise<GuidCodeResult> {
+    public scaleOutFromInPost(stockOutFromStockInAddReq?: StockOutFromStockInAddReq): Promise<string> {
         return send({
             url: '/scale/out-from-in',
             method: 'POST',
@@ -128,7 +125,7 @@ export class AndroidStockOutApi {
      * 
      * @param StockOutAddReq? stockOutAddReq 
      */
-    public scaleOutPost(stockOutAddReq?: StockOutAddReq): Promise<GuidCodeResult> {
+    public scaleOutPost(stockOutAddReq?: StockOutAddReq): Promise<string> {
         return send({
             url: '/scale/out',
             method: 'POST',
@@ -139,7 +136,7 @@ export class AndroidStockOutApi {
      * 
      * @param Array<MealKindWithDate>? mealKindWithDate 
      */
-    public scaleOutSummaryAmountPost(mealKindWithDate?: Array<MealKindWithDate> | null): Promise<StockOutItemInfoListCodeResult> {
+    public scaleOutSummaryAmountPost(mealKindWithDate?: Array<MealKindWithDate> | null): Promise<Array<StockOutItemInfo>> {
         return send({
             url: '/scale/out/summary-amount',
             method: 'POST',

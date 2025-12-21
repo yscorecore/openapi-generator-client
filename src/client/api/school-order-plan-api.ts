@@ -2,29 +2,25 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
-import type { CompletedStockInInfoCodeResult } from "../models"
-import type { CompletedStockInInfoListCodeResult } from "../models"
-import type { CompletedStockInInfoPaginationDataCodeResult } from "../models"
-import type { ConfirmDetailsCodeResult } from "../models"
+import type { CompletedStockInInfo } from "../models"
+import type { CompletedStockInInfoPaginationData } from "../models"
+import type { ConfirmDetails } from "../models"
 import type { ConfirmReplyInfo } from "../models"
-import type { ConfirmedOrderInfoCodeResult } from "../models"
-import type { ConfirmedOrderInfoListCodeResult } from "../models"
-import type { ConfirmedOrderInfoPaginationDataCodeResult } from "../models"
+import type { ConfirmedOrderInfo } from "../models"
+import type { ConfirmedOrderInfoPaginationData } from "../models"
 import type { CreateOrderPlanFromRequirementReq } from "../models"
 import type { CreateOrderPlanReq } from "../models"
 import type { CreateOrderPlanReqV3 } from "../models"
 import type { ModifyOrderTimeReq } from "../models"
 import type { ModifyRemark } from "../models"
 import type { ModifyRequirementReq } from "../models"
-import type { NewOrderPlanInfoCodeResult } from "../models"
-import type { NewOrderPlanInfoListCodeResult } from "../models"
-import type { NewOrderPlanInfoPaginationDataCodeResult } from "../models"
-import type { OrderPlanCreatedDto2CodeResult } from "../models"
-import type { OrderPlanCreatedDtoV4CodeResult } from "../models"
+import type { NewOrderPlanInfo } from "../models"
+import type { NewOrderPlanInfoPaginationData } from "../models"
+import type { OrderPlanCreatedDto2 } from "../models"
+import type { OrderPlanCreatedDtoV4 } from "../models"
 import type { OrderSource } from "../models"
 import type { OrderType } from "../models"
-import type { QrCodeImageCodeResult } from "../models"
+import type { QrCodeImage } from "../models"
 
 /**
  * SchoolOrderPlanApi - API class
@@ -39,7 +35,7 @@ export class SchoolOrderPlanApi {
      * @param string? endTime 
      * @param OrderSource? orderSource 
      */
-    public ordersCompletedGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<CompletedStockInInfoListCodeResult> {
+    public ordersCompletedGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<Array<CompletedStockInInfo>> {
         return send({
             url: '/orders/completed',
             method: 'GET',
@@ -57,7 +53,7 @@ export class SchoolOrderPlanApi {
      * @summary 已完成详情
      * @param string id 
      */
-    public ordersCompletedIdGet(id: string): Promise<CompletedStockInInfoCodeResult> {
+    public ordersCompletedIdGet(id: string): Promise<CompletedStockInInfo> {
         return send({
             url: '/orders/completed/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -73,7 +69,7 @@ export class SchoolOrderPlanApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public ordersCompletedPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<CompletedStockInInfoPaginationDataCodeResult> {
+    public ordersCompletedPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<CompletedStockInInfoPaginationData> {
         return send({
             url: '/orders/completed/page',
             method: 'GET',
@@ -91,7 +87,7 @@ export class SchoolOrderPlanApi {
      * @summary 确认采购单报价
      * @param ConfirmReplyInfo? confirmReplyInfo 
      */
-    public ordersConfirmPost(confirmReplyInfo?: ConfirmReplyInfo): Promise<BooleanCodeResult> {
+    public ordersConfirmPost(confirmReplyInfo?: ConfirmReplyInfo): Promise<boolean> {
         return send({
             url: '/orders/confirm',
             method: 'POST',
@@ -107,7 +103,7 @@ export class SchoolOrderPlanApi {
      * @param string? endTime 
      * @param OrderSource? orderSource 
      */
-    public ordersConfirmedGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<ConfirmedOrderInfoListCodeResult> {
+    public ordersConfirmedGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<Array<ConfirmedOrderInfo>> {
         return send({
             url: '/orders/confirmed',
             method: 'GET',
@@ -125,7 +121,7 @@ export class SchoolOrderPlanApi {
      * @summary 待入库详情
      * @param string id 
      */
-    public ordersConfirmedIdGet(id: string): Promise<ConfirmedOrderInfoCodeResult> {
+    public ordersConfirmedIdGet(id: string): Promise<ConfirmedOrderInfo> {
         return send({
             url: '/orders/confirmed/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -141,7 +137,7 @@ export class SchoolOrderPlanApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public ordersConfirmedPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<ConfirmedOrderInfoPaginationDataCodeResult> {
+    public ordersConfirmedPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<ConfirmedOrderInfoPaginationData> {
         return send({
             url: '/orders/confirmed/page',
             method: 'GET',
@@ -159,7 +155,7 @@ export class SchoolOrderPlanApi {
      * @summary 发送需求单
      * @param CreateOrderPlanFromRequirementReq? createOrderPlanFromRequirementReq 
      */
-    public ordersCreateFromRequirementPost(createOrderPlanFromRequirementReq?: CreateOrderPlanFromRequirementReq): Promise<OrderPlanCreatedDto2CodeResult> {
+    public ordersCreateFromRequirementPost(createOrderPlanFromRequirementReq?: CreateOrderPlanFromRequirementReq): Promise<OrderPlanCreatedDto2> {
         return send({
             url: '/orders/create-from-requirement',
             method: 'POST',
@@ -171,7 +167,7 @@ export class SchoolOrderPlanApi {
      * @summary 创建采购单
      * @param CreateOrderPlanReq? createOrderPlanReq 
      */
-    public ordersCreatePost(createOrderPlanReq?: CreateOrderPlanReq): Promise<OrderPlanCreatedDto2CodeResult> {
+    public ordersCreatePost(createOrderPlanReq?: CreateOrderPlanReq): Promise<OrderPlanCreatedDto2> {
         return send({
             url: '/orders/create',
             method: 'POST',
@@ -183,7 +179,7 @@ export class SchoolOrderPlanApi {
      * @summary 创建采购单v3
      * @param CreateOrderPlanReqV3? createOrderPlanReqV3 
      */
-    public ordersCreateV3Post(createOrderPlanReqV3?: CreateOrderPlanReqV3): Promise<OrderPlanCreatedDtoV4CodeResult> {
+    public ordersCreateV3Post(createOrderPlanReqV3?: CreateOrderPlanReqV3): Promise<OrderPlanCreatedDtoV4> {
         return send({
             url: '/orders/create/v3',
             method: 'POST',
@@ -195,7 +191,7 @@ export class SchoolOrderPlanApi {
      * @summary 创建采购单v4
      * @param Array<CreateOrderPlanReqV3>? createOrderPlanReqV3 
      */
-    public ordersCreateV4Post(createOrderPlanReqV3?: Array<CreateOrderPlanReqV3> | null): Promise<OrderPlanCreatedDtoV4CodeResult> {
+    public ordersCreateV4Post(createOrderPlanReqV3?: Array<CreateOrderPlanReqV3> | null): Promise<OrderPlanCreatedDtoV4> {
         return send({
             url: '/orders/create/v4',
             method: 'POST',
@@ -207,7 +203,7 @@ export class SchoolOrderPlanApi {
      * @summary 获取采购单详情
      * @param string orderCode 
      */
-    public ordersDetailForSupplierByOrderCodeOrderCodeGet(orderCode: string | null): Promise<NewOrderPlanInfoCodeResult> {
+    public ordersDetailForSupplierByOrderCodeOrderCodeGet(orderCode: string | null): Promise<NewOrderPlanInfo> {
         return send({
             url: '/orders/detail_for_supplier_by_orderCode/{orderCode}'
                 .replace(`{${"orderCode"}}`, encodeURIComponent(String(orderCode))),
@@ -219,7 +215,7 @@ export class SchoolOrderPlanApi {
      * @summary 获取采购单的供货商
      * @param string orderPlanId 
      */
-    public ordersDetailForSupplierOrderPlanIdGet(orderPlanId: string): Promise<NewOrderPlanInfoCodeResult> {
+    public ordersDetailForSupplierOrderPlanIdGet(orderPlanId: string): Promise<NewOrderPlanInfo> {
         return send({
             url: '/orders/detail_for_supplier/{orderPlanId}'
                 .replace(`{${"orderPlanId"}}`, encodeURIComponent(String(orderPlanId))),
@@ -231,7 +227,7 @@ export class SchoolOrderPlanApi {
      * @summary 删除采购单食材
      * @param string orderPlanItemId 
      */
-    public ordersItemDeleteOrderPlanItemIdDelete(orderPlanItemId: string): Promise<BooleanCodeResult> {
+    public ordersItemDeleteOrderPlanItemIdDelete(orderPlanItemId: string): Promise<boolean> {
         return send({
             url: '/orders/item/delete/{orderPlanItemId}'
                 .replace(`{${"orderPlanItemId"}}`, encodeURIComponent(String(orderPlanItemId))),
@@ -242,7 +238,7 @@ export class SchoolOrderPlanApi {
      * 
      * @param Array<ModifyRemark>? modifyRemark 
      */
-    public ordersModifyOrderplanItemRemarkPost(modifyRemark?: Array<ModifyRemark> | null): Promise<BooleanCodeResult> {
+    public ordersModifyOrderplanItemRemarkPost(modifyRemark?: Array<ModifyRemark> | null): Promise<boolean> {
         return send({
             url: '/orders/modify-orderplan-item-remark',
             method: 'POST',
@@ -253,7 +249,7 @@ export class SchoolOrderPlanApi {
      * 
      * @param ModifyRequirementReq? modifyRequirementReq 
      */
-    public ordersModifyOrderplanItemRequirementPost(modifyRequirementReq?: ModifyRequirementReq): Promise<BooleanCodeResult> {
+    public ordersModifyOrderplanItemRequirementPost(modifyRequirementReq?: ModifyRequirementReq): Promise<boolean> {
         return send({
             url: '/orders/modify-orderplan-item-requirement',
             method: 'POST',
@@ -265,7 +261,7 @@ export class SchoolOrderPlanApi {
      * @summary 更改送货配送时间
      * @param ModifyOrderTimeReq? modifyOrderTimeReq 
      */
-    public ordersModifyTimePost(modifyOrderTimeReq?: ModifyOrderTimeReq): Promise<BooleanCodeResult> {
+    public ordersModifyTimePost(modifyOrderTimeReq?: ModifyOrderTimeReq): Promise<boolean> {
         return send({
             url: '/orders/modify-time',
             method: 'POST',
@@ -277,7 +273,7 @@ export class SchoolOrderPlanApi {
      * @summary 是否需要分享
      * @param Array<string>? ids 
      */
-    public ordersNeedShareGet(ids?: Array<string> | null): Promise<BooleanCodeResult> {
+    public ordersNeedShareGet(ids?: Array<string> | null): Promise<boolean> {
         return send({
             url: '/orders/need-share',
             method: 'GET',
@@ -295,7 +291,7 @@ export class SchoolOrderPlanApi {
      * @param string? endTime 
      * @param OrderSource? orderSource 
      */
-    public ordersNewGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<NewOrderPlanInfoListCodeResult> {
+    public ordersNewGet(lastOrderCode?: string | null, limit?: number, startTime?: string | null, endTime?: string | null, orderSource?: OrderSource): Promise<Array<NewOrderPlanInfo>> {
         return send({
             url: '/orders/new',
             method: 'GET',
@@ -313,7 +309,7 @@ export class SchoolOrderPlanApi {
      * @summary 根据ID获取待采购
      * @param string id 
      */
-    public ordersNewIdGet(id: string): Promise<NewOrderPlanInfoCodeResult> {
+    public ordersNewIdGet(id: string): Promise<NewOrderPlanInfo> {
         return send({
             url: '/orders/new/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -329,7 +325,7 @@ export class SchoolOrderPlanApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public ordersNewPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<NewOrderPlanInfoPaginationDataCodeResult> {
+    public ordersNewPageGet(startTime?: string | null, endTime?: string | null, orderType?: OrderType, offset?: number, limit?: number): Promise<NewOrderPlanInfoPaginationData> {
         return send({
             url: '/orders/new/page',
             method: 'GET',
@@ -347,7 +343,7 @@ export class SchoolOrderPlanApi {
      * @summary 删除采购单
      * @param string orderPlanId 
      */
-    public ordersOrderPlanDeleteOrderPlanIdDelete(orderPlanId: string): Promise<BooleanCodeResult> {
+    public ordersOrderPlanDeleteOrderPlanIdDelete(orderPlanId: string): Promise<boolean> {
         return send({
             url: '/orders/orderPlan/delete/{orderPlanId}'
                 .replace(`{${"orderPlanId"}}`, encodeURIComponent(String(orderPlanId))),
@@ -359,7 +355,7 @@ export class SchoolOrderPlanApi {
      * @summary 获取供货商报价
      * @param string orderPlanId 
      */
-    public ordersReplyDetailsOrderPlanIdGet(orderPlanId: string): Promise<ConfirmDetailsCodeResult> {
+    public ordersReplyDetailsOrderPlanIdGet(orderPlanId: string): Promise<ConfirmDetails> {
         return send({
             url: '/orders/reply-details/{orderPlanId}'
                 .replace(`{${"orderPlanId"}}`, encodeURIComponent(String(orderPlanId))),
@@ -371,7 +367,7 @@ export class SchoolOrderPlanApi {
      * @summary 分享采购单的二维码
      * @param string orderCode 
      */
-    public ordersShareOrderPlanOrderCodeGet(orderCode: string | null): Promise<QrCodeImageCodeResult> {
+    public ordersShareOrderPlanOrderCodeGet(orderCode: string | null): Promise<QrCodeImage> {
         return send({
             url: '/orders/share/orderPlan/{orderCode}'
                 .replace(`{${"orderCode"}}`, encodeURIComponent(String(orderCode))),

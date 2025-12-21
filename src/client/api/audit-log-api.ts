@@ -2,8 +2,8 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { AuditLogDtoPaginationDataCodeResult } from "../models"
-import type { ParamsOfAuditLogIEnumerableCodeResult } from "../models"
+import type { AuditLogDtoPaginationData } from "../models"
+import type { ParamsOfAuditLog } from "../models"
 
 /**
  * AuditLogApi - API class
@@ -13,7 +13,7 @@ export class AuditLogApi {
      * 
      * @summary 获取所有的操作日志类型
      */
-    public auditlogGettypenamesGet(): Promise<ParamsOfAuditLogIEnumerableCodeResult> {
+    public auditlogGettypenamesGet(): Promise<Array<ParamsOfAuditLog>> {
         return send({
             url: '/auditlog/gettypenames',
             method: 'GET',
@@ -32,7 +32,7 @@ export class AuditLogApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public auditlogSchoolauditlogGet(startDate?: string | null, endDate?: string | null, typeName?: string | null, requestIP?: string | null, desciptipn?: string | null, createUser?: string | null, success?: boolean | null, offset?: number, limit?: number): Promise<AuditLogDtoPaginationDataCodeResult> {
+    public auditlogSchoolauditlogGet(startDate?: string | null, endDate?: string | null, typeName?: string | null, requestIP?: string | null, desciptipn?: string | null, createUser?: string | null, success?: boolean | null, offset?: number, limit?: number): Promise<AuditLogDtoPaginationData> {
         return send({
             url: '/auditlog/schoolauditlog',
             method: 'GET',

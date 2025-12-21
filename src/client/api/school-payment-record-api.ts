@@ -2,10 +2,9 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { BooleanCodeResult } from "../models"
 import type { CreatePaymentRecordReq } from "../models"
-import type { PaymentRecordDtoCodeResult } from "../models"
-import type { PaymentRecordWithTotalAmountCodeResult } from "../models"
+import type { PaymentRecordDto } from "../models"
+import type { PaymentRecordWithTotalAmount } from "../models"
 import type { PaymentType } from "../models"
 import type { UpdatePaymentRecordReq } from "../models"
 
@@ -24,7 +23,7 @@ export class SchoolPaymentRecordApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public paymentRecordGet(startDate?: string | null, endDate?: string | null, supplierName?: string | null, paymentType?: PaymentType, schoolId?: string | null, offset?: number, limit?: number): Promise<PaymentRecordWithTotalAmountCodeResult> {
+    public paymentRecordGet(startDate?: string | null, endDate?: string | null, supplierName?: string | null, paymentType?: PaymentType, schoolId?: string | null, offset?: number, limit?: number): Promise<PaymentRecordWithTotalAmount> {
         return send({
             url: '/payment_record',
             method: 'GET',
@@ -44,7 +43,7 @@ export class SchoolPaymentRecordApi {
      * @summary 删除付款记录
      * @param string id 
      */
-    public paymentRecordIdDelete(id: string): Promise<BooleanCodeResult> {
+    public paymentRecordIdDelete(id: string): Promise<boolean> {
         return send({
             url: '/payment_record/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -56,7 +55,7 @@ export class SchoolPaymentRecordApi {
      * @summary 获取付款记录详情
      * @param string id 
      */
-    public paymentRecordIdGet(id: string): Promise<PaymentRecordDtoCodeResult> {
+    public paymentRecordIdGet(id: string): Promise<PaymentRecordDto> {
         return send({
             url: '/payment_record/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -68,7 +67,7 @@ export class SchoolPaymentRecordApi {
      * @summary 添加付款记录
      * @param CreatePaymentRecordReq? createPaymentRecordReq 
      */
-    public paymentRecordPost(createPaymentRecordReq?: CreatePaymentRecordReq): Promise<BooleanCodeResult> {
+    public paymentRecordPost(createPaymentRecordReq?: CreatePaymentRecordReq): Promise<boolean> {
         return send({
             url: '/payment_record',
             method: 'POST',
@@ -80,7 +79,7 @@ export class SchoolPaymentRecordApi {
      * @summary 更新付款记录
      * @param UpdatePaymentRecordReq? updatePaymentRecordReq 
      */
-    public paymentRecordPut(updatePaymentRecordReq?: UpdatePaymentRecordReq): Promise<BooleanCodeResult> {
+    public paymentRecordPut(updatePaymentRecordReq?: UpdatePaymentRecordReq): Promise<boolean> {
         return send({
             url: '/payment_record',
             method: 'PUT',

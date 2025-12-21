@@ -6,7 +6,7 @@ import type { BuinessReportStatus } from "../models"
 import type { CodeResult } from "../models"
 import type { CreateReport } from "../models"
 import type { EditReport } from "../models"
-import type { QueryReportDtoPaginationDataCodeResult } from "../models"
+import type { QueryReportDtoPaginationData } from "../models"
 
 /**
  * SchoolBuinessReportApi - API class
@@ -21,7 +21,7 @@ export class SchoolBuinessReportApi {
      * @param number? offset 
      * @param number? limit 
      */
-    public apiSchoolBuinessReportGet(status?: BuinessReportStatus, startDate?: string | null, endDate?: string | null, typeName?: string | null, offset?: number, limit?: number): Promise<QueryReportDtoPaginationDataCodeResult> {
+    public apiSchoolBuinessReportGet(status?: BuinessReportStatus, startDate?: string | null, endDate?: string | null, typeName?: string | null, offset?: number, limit?: number): Promise<QueryReportDtoPaginationData> {
         return send({
             url: '/api/SchoolBuinessReport',
             method: 'GET',
