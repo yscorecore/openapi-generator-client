@@ -4682,6 +4682,2603 @@
         }
       }
     },
+    "/api/DataSource/QuerySchoolShoppingCart/load-data": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySchoolShoppingCart/agg": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySchoolShoppingCart/list-all": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShoppingCartDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShoppingCartDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShoppingCartDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShoppingCartDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShoppingCartDto"
+                  },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySchoolShoppingCart/count": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySchoolShoppingCart/find-by-{key}/{value}": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDto"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDto"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShoppingCartDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySupplierGoods/load-data": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDtoPagedList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDtoPagedList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDtoPagedList"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDtoPagedList"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDtoPagedList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySupplierGoods/agg": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySupplierGoods/list-all": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GoodsDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GoodsDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GoodsDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GoodsDto"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GoodsDto"
+                  },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySupplierGoods/count": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/QuerySupplierGoods/find-by-{key}/{value}": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDto"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDto"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/DailyReports/load-data": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/MonthReports/load-data": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerReports/load-data": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerBigScreen/load-data": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/DailyReports/agg": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/MonthReports/agg": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerReports/agg": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerBigScreen/agg": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/DailyReports/list-all": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/MonthReports/list-all": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerReports/list-all": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerBigScreen/list-all": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppResourceInfo"
+                  },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/DailyReports/count": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/MonthReports/count": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerReports/count": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerBigScreen/count": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/DailyReports/find-by-{key}/{value}": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/MonthReports/find-by-{key}/{value}": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerReports/find-by-{key}/{value}": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/ManagerBigScreen/find-by-{key}/{value}": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppResourceInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/StockOutItem/load-data": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/StockOutItem/agg": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Agg",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/StockOutItem/list-all": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "Filter",
+            "in": "query",
+            "schema": {
+              "maxLength": 4096,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Distinct",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StockOutItemDtoV2"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StockOutItemDtoV2"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StockOutItemDtoV2"
+                  },
+                  "nullable": true
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StockOutItemDtoV2"
+                  },
+                  "nullable": true
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StockOutItemDtoV2"
+                  },
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/StockOutItem/count": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DataSource/StockOutItem/find-by-{key}/{value}": {
+      "get": {
+        "tags": [
+          "DataSource"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockOutItemDtoV2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/DataSource/cloud-files/load-data": {
       "get": {
         "tags": [
@@ -5417,2603 +8014,6 @@
               "text/xml": {
                 "schema": {
                   "$ref": "#/components/schemas/GuidFileDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/MonthReports/load-data": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 10000,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerReports/load-data": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 10000,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerBigScreen/load-data": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 10000,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/DailyReports/load-data": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 10000,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfoPagedList"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/MonthReports/agg": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerReports/agg": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerBigScreen/agg": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/DailyReports/agg": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/MonthReports/list-all": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerReports/list-all": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerBigScreen/list-all": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/DailyReports/list-all": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AppResourceInfo"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/MonthReports/count": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerReports/count": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerBigScreen/count": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/DailyReports/count": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/MonthReports/find-by-{key}/{value}": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "key",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "value",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerReports/find-by-{key}/{value}": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "key",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "value",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/ManagerBigScreen/find-by-{key}/{value}": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "key",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "value",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/DailyReports/find-by-{key}/{value}": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "key",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "value",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/AppResourceInfo"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySupplierGoods/load-data": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 10000,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDtoPagedList"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDtoPagedList"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDtoPagedList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDtoPagedList"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDtoPagedList"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySupplierGoods/agg": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySupplierGoods/list-all": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GoodsDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GoodsDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GoodsDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GoodsDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GoodsDto"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySupplierGoods/count": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySupplierGoods/find-by-{key}/{value}": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "key",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "value",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDto"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDto"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoodsDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/StockOutItem/load-data": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 10000,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2PagedList"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/StockOutItem/agg": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/StockOutItem/list-all": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StockOutItemDtoV2"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StockOutItemDtoV2"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StockOutItemDtoV2"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StockOutItemDtoV2"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StockOutItemDtoV2"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/StockOutItem/count": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/StockOutItem/find-by-{key}/{value}": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "key",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "value",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/StockOutItemDtoV2"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySchoolShoppingCart/load-data": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 10000,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDtoPagedList"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySchoolShoppingCart/agg": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Agg",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySchoolShoppingCart/list-all": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "Filter",
-            "in": "query",
-            "schema": {
-              "maxLength": 4096,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Select",
-            "in": "query",
-            "schema": {
-              "maxLength": 1024,
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Distinct",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ShoppingCartDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ShoppingCartDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ShoppingCartDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ShoppingCartDto"
-                  },
-                  "nullable": true
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ShoppingCartDto"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySchoolShoppingCart/count": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/DataSource/QuerySchoolShoppingCart/find-by-{key}/{value}": {
-      "get": {
-        "tags": [
-          "DataSource"
-        ],
-        "parameters": [
-          {
-            "name": "key",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "value",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDto"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDto"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShoppingCartDto"
                 }
               }
             }
@@ -21435,7 +21435,7 @@
         "tags": [
           "SchoolMenuSample"
         ],
-        "summary": "设置留样图",
+        "summary": "设置���样图",
         "requestBody": {
           "description": "",
           "content": {
@@ -39391,87 +39391,6 @@
         },
         "additionalProperties": false
       },
-      "GuidFileDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "createTime": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "createUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "key": {
-            "type": "string",
-            "nullable": true
-          },
-          "url": {
-            "type": "string",
-            "nullable": true
-          },
-          "size": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "owner": {
-            "type": "string",
-            "nullable": true
-          },
-          "parentId": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
-          },
-          "isFolder": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "GuidFileDtoPagedList": {
-        "type": "object",
-        "properties": {
-          "hasNext": {
-            "type": "boolean",
-            "readOnly": true
-          },
-          "limit": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GuidFileDto"
-            },
-            "nullable": true
-          },
-          "offset": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalCount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "aggs": {
-            "type": "object",
-            "additionalProperties": {},
-            "nullable": true,
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
       "MainSupplierDto1": {
         "type": "object",
         "properties": {
@@ -39653,6 +39572,73 @@
         },
         "additionalProperties": false
       },
+      "ShoppingCartDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "goods": {
+            "$ref": "#/components/schemas/GoodsDto"
+          },
+          "goodsId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "remark": {
+            "type": "string",
+            "nullable": true
+          },
+          "batch": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderType": {
+            "$ref": "#/components/schemas/OrderType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShoppingCartDtoPagedList": {
+        "type": "object",
+        "properties": {
+          "hasNext": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShoppingCartDto"
+            },
+            "nullable": true
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "aggs": {
+            "type": "object",
+            "additionalProperties": {},
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GoodsDtoPagedList": {
         "type": "object",
         "properties": {
@@ -39825,39 +39811,53 @@
         },
         "additionalProperties": false
       },
-      "ShoppingCartDto": {
+      "GuidFileDto": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "format": "uuid"
           },
-          "goods": {
-            "$ref": "#/components/schemas/GoodsDto"
-          },
-          "goodsId": {
+          "createTime": {
             "type": "string",
-            "format": "uuid"
+            "format": "date-time"
           },
-          "amount": {
-            "type": "number",
-            "format": "double"
-          },
-          "remark": {
+          "createUser": {
             "type": "string",
             "nullable": true
           },
-          "batch": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "orderType": {
-            "$ref": "#/components/schemas/OrderType"
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "owner": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "isFolder": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
       },
-      "ShoppingCartDtoPagedList": {
+      "GuidFileDtoPagedList": {
         "type": "object",
         "properties": {
           "hasNext": {
@@ -39871,7 +39871,7 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ShoppingCartDto"
+              "$ref": "#/components/schemas/GuidFileDto"
             },
             "nullable": true
           },

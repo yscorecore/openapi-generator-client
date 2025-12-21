@@ -2,6 +2,17 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
+ const defaultConfig = {
+            swagger: {
+                url:'./swagger.json',
+                originalPath: './swagger-original.json',
+                processedPath: './swagger-processed.json'
+            },
+            filter: {
+                includePaths: []
+            }
+        };
+
 // 下载swagger文件或读取本地文件
 async function downloadSwagger(url, outputPath, configDir) {
     return new Promise((resolve, reject) => {
@@ -132,35 +143,30 @@ function processSwagger(swaggerData, includePaths) {
 // 主函数
 async function main() {
     try {
+        const workDir = path.resolve(process.cwd(), process.argv[2]);
         // 读取配置文件路径（从命令行参数获取，默认值为./src/client/config.json）
-        const configPath = process.argv[2] || './src/client/config.json';
+        const configPath =  path.resolve(workDir, './config.json');  
         const configData = fs.readFileSync(configPath, 'utf8');
         const config = JSON.parse(configData);
         
         // 默认配置
-        const defaultConfig = {
-            swagger: {
-                originalPath: './swagger-original.json',
-                processedPath: './swagger-processed.json'
-            },
-            filter: {
-                includePaths: []
-            },
-            openapiGenerator: {
-                dockerVolumes: `${process.cwd()}:/local`,
+        const dockerRootDir = '/local';
+        // 直接构造Linux格式的Docker工作目录路径
+        const dockerWorkerDir = `${dockerRootDir}/${process.argv[2].replace('./', '')}`;
+         const  defaultOpenapiGenerator= {
+                dockerVolumes: `${process.cwd()}:${dockerRootDir}`,
                 generatorImage: 'openapitools/openapi-generator-cli',
                 generator: 'typescript-axios',
-                outputDir: '/local/src/client',
+                outputDir: dockerWorkerDir,
                 templatesDir: '/local/templates',
                 additionalProperties: 'withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api,skipFormModel=true'
-            }
-        };
+            };
         
         // 合并配置，实际配置覆盖默认配置
         const mergedConfig = {
             swagger: { ...defaultConfig.swagger, ...config.swagger },
             filter: { ...defaultConfig.filter, ...config.filter },
-            openapiGenerator: { ...defaultConfig.openapiGenerator, ...config.openapiGenerator }
+            openapiGenerator: { ...defaultOpenapiGenerator, ...config.openapiGenerator }
         };
         
         const { swagger, filter, openapiGenerator } = mergedConfig;
@@ -183,7 +189,7 @@ async function main() {
         console.log(`处理后的swagger文件已保存到: ${processedSwaggerPath}`);
         
         // 更新Docker输入文件路径，指向正确的位置
-        const dockerInputPath = `/local/src/client/${swagger.processedPath.replace('./', '')}`;
+        const dockerInputPath = `${dockerWorkerDir}/${swagger.processedPath.replace('./', '')}`;
         
         // 调用生成命令
         console.log('\n开始生成客户端代码...');
@@ -206,11 +212,11 @@ async function main() {
                 console.log('\n客户端代码生成成功!');
             } else {
                 console.error(`\n客户端代码生成失败，退出码: ${code}`);
+                process.exit(1);
             }
         });
-        
     } catch (error) {
-        console.error('处理swagger文件失败:', error);
+        console.error('错误:', error);
         process.exit(1);
     }
 }
