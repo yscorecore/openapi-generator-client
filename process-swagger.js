@@ -2,28 +2,42 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
-// 下载swagger文件
-async function downloadSwagger(url, outputPath) {
+// 下载swagger文件或读取本地文件
+async function downloadSwagger(url, outputPath, configDir) {
     return new Promise((resolve, reject) => {
-        https.get(url, (response) => {
-            let data = '';
-            
-            response.on('data', (chunk) => {
-                data += chunk;
-            });
-            
-            response.on('end', () => {
+        try {
+            if (url.startsWith('http://') || url.startsWith('https://')) {
+                // 远程URL，使用https.get下载
+                https.get(url, (response) => {
+                    let data = '';
+                    
+                    response.on('data', (chunk) => {
+                        data += chunk;
+                    });
+                    
+                    response.on('end', () => {
+                        fs.writeFileSync(outputPath, data, 'utf8');
+                        console.log(`Swagger文件已下载到: ${outputPath}`);
+                        resolve(JSON.parse(data));
+                    });
+                    
+                    response.on('error', (error) => {
+                        reject(error);
+                    });
+                }).on('error', (error) => {
+                    reject(error);
+                });
+            } else {
+                // 本地文件，直接读取
+                const localFilePath = path.resolve(configDir, url);
+                const data = fs.readFileSync(localFilePath, 'utf8');
                 fs.writeFileSync(outputPath, data, 'utf8');
-                console.log(`Swagger文件已下载到: ${outputPath}`);
+                console.log(`Swagger文件已从本地读取并保存到: ${outputPath}`);
                 resolve(JSON.parse(data));
-            });
-            
-            response.on('error', (error) => {
-                reject(error);
-            });
-        }).on('error', (error) => {
+            }
+        } catch (error) {
             reject(error);
-        });
+        }
     });
 }
 
@@ -127,8 +141,8 @@ async function main() {
         const originalSwaggerPath = path.resolve(configDir, swagger.originalPath);
         const processedSwaggerPath = path.resolve(configDir, swagger.processedPath);
         
-        // 下载原始swagger文件
-        const swaggerData = await downloadSwagger(swagger.url, originalSwaggerPath);
+        // 下载原始swagger文件或读取本地文件
+        const swaggerData = await downloadSwagger(swagger.url, originalSwaggerPath, configDir);
         
         // 处理swagger文件（包含路径过滤）
         const processedData = processSwagger(swaggerData, filter.includePaths);
