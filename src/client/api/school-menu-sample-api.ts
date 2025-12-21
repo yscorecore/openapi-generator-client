@@ -27,7 +27,7 @@ export class SchoolMenuSampleApi {
     }
     /**
      * 
-     * @summary 设置���样图
+     * @summary 设置留样图
      * @param ImageBindInfo? imageBindInfo 
      */
     public menuSamplesBindImagePost(imageBindInfo?: ImageBindInfo): Promise<boolean> {

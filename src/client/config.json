@@ -8,6 +8,7 @@
     "includePaths": []
   },
   "openapiGenerator": {
-       "generator": "typescript-axios"
+       "generator": "typescript-axios",
+       "useDocker": true
   }
 }

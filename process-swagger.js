@@ -10,6 +10,10 @@ const path = require('path');
             },
             filter: {
                 includePaths: []
+            },
+            openapiGenerator: {
+                generator: "typescript-axios",
+                useDocker: true
             }
         };
 
@@ -156,7 +160,6 @@ async function main() {
          const  defaultOpenapiGenerator= {
                 dockerVolumes: `${process.cwd()}:${dockerRootDir}`,
                 generatorImage: 'openapitools/openapi-generator-cli',
-                generator: 'typescript-axios',
                 outputDir: dockerWorkerDir,
                 templatesDir: '/local/templates',
                 additionalProperties: 'withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api,skipFormModel=true'
@@ -166,7 +169,7 @@ async function main() {
         const mergedConfig = {
             swagger: { ...defaultConfig.swagger, ...config.swagger },
             filter: { ...defaultConfig.filter, ...config.filter },
-            openapiGenerator: { ...defaultOpenapiGenerator, ...config.openapiGenerator }
+            openapiGenerator: { ...defaultConfig.openapiGenerator, ...config.openapiGenerator,...defaultOpenapiGenerator }
         };
         
         const { swagger, filter, openapiGenerator } = mergedConfig;
@@ -188,21 +191,42 @@ async function main() {
         fs.writeFileSync(processedSwaggerPath, JSON.stringify(processedData, null, 2), 'utf8');
         console.log(`处理后的swagger文件已保存到: ${processedSwaggerPath}`);
         
-        // 更新Docker输入文件路径，指向正确的位置
-        const dockerInputPath = `${dockerWorkerDir}/${swagger.processedPath.replace('./', '')}`;
+        // 根据useDocker选项选择执行方式
+        let command, args;
+        
+        if (openapiGenerator.useDocker) {
+            // 使用Docker模式
+            // 更新Docker输入文件路径，指向正确的位置
+            const dockerInputPath = `${dockerWorkerDir}/${swagger.processedPath.replace('./', '')}`;
+            
+            command = 'docker';
+            args = [
+                'run', '--rm', '-v', openapiGenerator.dockerVolumes,
+                openapiGenerator.generatorImage, 'generate',
+                '-i', dockerInputPath,
+                '-g', openapiGenerator.generator,
+                '-o', openapiGenerator.outputDir,
+                '-t', openapiGenerator.templatesDir,
+                '-p', openapiGenerator.additionalProperties
+            ];
+        } else {
+            // 不使用Docker模式，直接调用openapi-generator-cli
+            command = 'openapi-generator-cli';
+            args = [
+                'generate',
+                '-i', processedSwaggerPath,
+                '-g', openapiGenerator.generator,
+                '-o', workDir,
+                '-t', path.resolve(process.cwd(), 'templates'),
+                '-p', openapiGenerator.additionalProperties
+            ];
+        }
         
         // 调用生成命令
         console.log('\n开始生成客户端代码...');
+        console.log(`执行命令: ${command} ${args.join(' ')}`);
         const { spawn } = require('child_process');
-        const generateProcess = spawn('docker', [
-            'run', '--rm', '-v', openapiGenerator.dockerVolumes,
-            openapiGenerator.generatorImage, 'generate',
-            '-i', dockerInputPath,
-            '-g', openapiGenerator.generator,
-            '-o', openapiGenerator.outputDir,
-            '-t', openapiGenerator.templatesDir,
-            '-p', openapiGenerator.additionalProperties
-        ], {
+        const generateProcess = spawn(command, args, {
             shell: true,
             stdio: 'inherit'
         });
@@ -210,6 +234,15 @@ async function main() {
         generateProcess.on('close', (code) => {
             if (code === 0) {
                 console.log('\n客户端代码生成成功!');
+                
+                // 删除临时swagger文件
+                try {
+                    fs.unlinkSync(originalSwaggerPath);
+                    fs.unlinkSync(processedSwaggerPath);
+                    console.log('临时swagger文件已删除');
+                } catch (error) {
+                    console.error('删除临时文件时出错:', error);
+                }
             } else {
                 console.error(`\n客户端代码生成失败，退出码: ${code}`);
                 process.exit(1);
