@@ -9,7 +9,11 @@ const defaultConfig = {
         processedPath: '__swagger-processed.json'
     },
     filter: {
-        includePaths: []
+        includePaths: [],
+        extractCodeResult: true,
+        codeFieldName:'code',
+        messageFieldName:'message',
+        dataFieldName:'data',
     },
     openapiGenerator: {
         generator: "typescript-axios",
@@ -87,61 +91,98 @@ function filterPaths(paths, includePaths) {
     return filteredPaths;
 }
 
-// 处理swagger文件
-function processSwagger(swaggerData, includePaths) {
+// 过滤swagger路径
+function filterSwaggerPaths(swaggerData, includePaths) {
     // 过滤路径
     const filteredPaths = filterPaths(swaggerData.paths, includePaths);
 
     // 更新swagger数据中的路径
     swaggerData.paths = filteredPaths;
+    return swaggerData;
+}
 
-    // 处理CodeResult相关类型
-    if (swaggerData.components && swaggerData.components.schemas) {
-        const schemas = swaggerData.components.schemas;
-
-        // 1. 遍历所有路径，将响应中的CodeResult类型替换为实际的数据类型
-        Object.keys(swaggerData.paths).forEach(path => {
-            const methods = swaggerData.paths[path];
-            Object.keys(methods).forEach(method => {
-                const operation = methods[method];
-                if (operation.responses) {
-                    Object.keys(operation.responses).forEach(status => {
-                        const response = operation.responses[status];
-                        if (response.content) {
-                            Object.keys(response.content).forEach(mediaType => {
-                                const content = response.content[mediaType];
-                                if (content.schema && content.schema.$ref) {
-                                    const ref = content.schema.$ref;
-                                    // 提取schema名称
-                                    const schemaName = ref.split('/').pop();
-
-                                    // 检查是否是CodeResult类型且不是基础的CodeResult
-                                    if (schemaName !== 'CodeResult' && /CodeResult(\d+)?$/.test(schemaName)) {
-                                        const codeResultSchema = schemas[schemaName];
-                                        if (codeResultSchema && codeResultSchema.properties && codeResultSchema.properties.data) {
-                                            // 将响应直接指向data属性的类型
-                                            content.schema = codeResultSchema.properties.data;
-                                        }
-                                    }
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+// 处理CodeResult相关类型
+function processCodeResult(swaggerData, filterConfig) {
+    if(!filterConfig.extractCodeResult) {
+        return swaggerData;
+    }
+    if (!swaggerData.components?.schemas || !swaggerData.paths) {
+        return swaggerData;
+    }
+    
+    const schemas = swaggerData.components.schemas;
+    
+    // 内部辅助函数：检查是否是需要处理的CodeResult类型
+    function isProcessableCodeResult(schemaName) {
+        const schema = schemas[schemaName];
+        if (!schema || !schema.properties) return false;
+        
+        // 检查schema是否包含配置中指定的code和message字段
+        return (schema.properties[filterConfig.codeFieldName] && 
+                schema.properties[filterConfig.messageFieldName]);
+    }
+    
+    // 内部辅助函数：处理单个响应内容的schema引用
+    function processResponseContent(content) {
+        if (!content.schema || !content.schema.$ref) return;
+        
+        const schemaName = content.schema.$ref.split('/').pop();
+        
+        if (isProcessableCodeResult(schemaName)) {
+            const codeResultSchema = schemas[schemaName];
+            if (codeResultSchema?.properties?.data) {
+                content.schema = codeResultSchema.properties.data;
+            }else{
+                delete content.schema;
+            }
+        }
+    }
+    
+    // 内部辅助函数：处理单个响应的所有媒体类型
+    function processResponse(response) {
+        if (!response.content) return;
+        
+        Object.values(response.content).forEach(content => {
+            processResponseContent(content);
         });
-
-        // 2. 删除所有带有data属性的CodeResult相关的schema定义（保留基础的CodeResult）
+    }
+    
+    // 内部辅助函数：处理单个操作的所有响应
+    function processOperation(operation) {
+        if (!operation.responses) return;
+        
+        Object.values(operation.responses).forEach(response => {
+            processResponse(response);
+        });
+    }
+    
+    // 内部辅助函数：处理单个路径的所有方法
+    function processPath(path) {
+        Object.values(path).forEach(operation => {
+            processOperation(operation);
+        });
+    }
+    
+    // 内部辅助函数：删除不需要的CodeResult schema定义
+    function cleanupCodeResultSchemas() {
         Object.keys(schemas).forEach(schemaName => {
-            if (schemaName !== 'CodeResult' && /CodeResult(\d+)?$/.test(schemaName)) {
+            if (isProcessableCodeResult(schemaName)) {
                 const schema = schemas[schemaName];
-                if (schema && schema.properties && schema.properties.data) {
+                if (schema?.properties?.data) {
                     delete schemas[schemaName];
                 }
             }
         });
     }
-
+    
+    // 1. 遍历所有路径，将响应中的CodeResult类型替换为实际的数据类型
+    Object.values(swaggerData.paths).forEach(path => {
+        processPath(path);
+    });
+    
+    // 2. 删除所有带有data属性的CodeResult相关的schema定义（保留基础的CodeResult）
+    cleanupCodeResultSchemas();
+    
     return swaggerData;
 }
 
@@ -159,39 +200,7 @@ function getConfig(workDir) {
 
 
 
-// 生成命令：Docker模式
-function generateWithDocker(config, inputDir) {
-    const openapiGenerator = config.openapiGenerator;
-    const rootDir ="/local";
-    const dockerWorkDir = path.posix.join(rootDir,inputDir);
-    return {
-        command: 'docker',
-        args: [
-            'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
-            'openapitools/openapi-generator-cli', 'generate',
-            '-i',  path.posix.join(dockerWorkDir,config.swagger.processedPath),
-            '-g', openapiGenerator.generator,
-            '-o', dockerWorkDir,
-            '-t',  '/local/templates',
-            '-p', openapiGenerator.additionalProperties
-        ]
-    };
-}
 
-// 生成命令：本地模式
-function generateLocal(openapiGenerator, processedSwaggerPath, workDir) {
-    return {
-        command: 'openapi-generator-cli',
-        args: [
-            'generate',
-            '-i', processedSwaggerPath,
-            '-g', openapiGenerator.generator,
-            '-o', workDir,
-            '-t', path.resolve(process.cwd(), 'templates'),
-            '-p', openapiGenerator.additionalProperties
-        ]
-    };
-}
 function tryDeleteFile(filePath) {
     try {
         if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
@@ -205,6 +214,40 @@ function tryDeleteFile(filePath) {
 
 // 主函数
 async function main() {
+    // 生成命令：Docker模式
+    function generateWithDocker(config, inputDir) {
+        const openapiGenerator = config.openapiGenerator;
+        const rootDir = "/local";
+        const dockerWorkDir = path.posix.join(rootDir, inputDir);
+        return {
+            command: 'docker',
+            args: [
+                'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
+                'openapitools/openapi-generator-cli', 'generate',
+                '-i', path.posix.join(dockerWorkDir, config.swagger.processedPath),
+                '-g', openapiGenerator.generator,
+                '-o', dockerWorkDir,
+                '-t', '/local/templates',
+                '-p', openapiGenerator.additionalProperties
+            ]
+        };
+    }
+
+    // 生成命令：本地模式
+    function generateLocal(config, processedSwaggerPath, workDir) {
+        return {
+            command: 'openapi-generator-cli',
+            args: [
+                'generate',
+                '-i', processedSwaggerPath,
+                '-g', config.openapiGenerator.generator,
+                '-o', workDir,
+                '-t', path.resolve(process.cwd(), 'templates'),
+                '-p', config.openapiGenerator.additionalProperties
+            ]
+        };
+    }
+
     try {
         const rootDir = path.resolve(process.cwd());
         const relativeInputDir = process.argv[2];
@@ -214,23 +257,22 @@ async function main() {
 
         // 解析swagger文件的路径（相对于config.json所在目录）
         const originalSwaggerPath = path.resolve(workDir, config.swagger.originalPath);
-        const processedSwaggerPath = path.resolve(workDir,  config.swagger.processedPath);
+        const processedSwaggerPath = path.resolve(workDir, config.swagger.processedPath);
 
         // 下载原始swagger文件或读取本地文件
-        const swaggerData = await downloadSwagger(config.swagger.url, originalSwaggerPath, workDir);
-
-        // 处理swagger文件（包含路径过滤）
-        const processedData = processSwagger(swaggerData, config.filter.includePaths);
+        let swaggerData = await downloadSwagger(config.swagger.url, originalSwaggerPath, workDir);
+        // 过滤swagger路径
+        swaggerData = filterSwaggerPaths(swaggerData, config.filter.includePaths);
+        //处理CodeResult
+        swaggerData = processCodeResult(swaggerData, config.filter);
 
         // 保存处理后的swagger文件
-        fs.writeFileSync(processedSwaggerPath, JSON.stringify(processedData, null, 2), 'utf8');
+        fs.writeFileSync(processedSwaggerPath, JSON.stringify(swaggerData, null, 2), 'utf8');
         console.log(`处理后的swagger文件已保存到: ${processedSwaggerPath}`);
-
-
 
         const { command, args } = config.openapiGenerator.useDocker ?
             generateWithDocker(config, relativeInputDir) :
-            generateLocal(config, workDir);
+            generateLocal(config, processedSwaggerPath, workDir);
 
         // 调用生成命令
         console.log('\n开始生成客户端代码...');
@@ -242,8 +284,8 @@ async function main() {
         });
 
         generateProcess.on('close', (code) => {
-            tryDeleteFile(processedSwaggerPath);
-            tryDeleteFile(originalSwaggerPath);
+           // tryDeleteFile(processedSwaggerPath);
+           // tryDeleteFile(originalSwaggerPath);
             if (code === 0) {
                 console.log('\n客户端代码生成成功!');
             } else {

@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { ConfirmLoginInfo } from "../models"
 import type { QrCodeImage } from "../models"
 import type { UserLoginInfo } from "../models"
@@ -26,7 +25,7 @@ export class LoginApi {
      * @summary 确认登录
      * @param ConfirmLoginInfo confirmLoginInfo 
      */
-    public loginConfirmPost(confirmLoginInfo: ConfirmLoginInfo): Promise<CodeResult> {
+    public loginConfirmPost(confirmLoginInfo: ConfirmLoginInfo): Promise<void> {
         return send({
             url: '/login/confirm',
             method: 'POST',

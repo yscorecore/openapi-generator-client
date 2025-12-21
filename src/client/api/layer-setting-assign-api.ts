@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { GroupValueInfo } from "../models"
 import type { LayerValueInfo } from "../models"
 
@@ -14,7 +13,7 @@ export class LayerSettingAssignApi {
      * 
      * @param GroupValueInfo? groupValueInfo 
      */
-    public layerSettingsAssignPost(groupValueInfo?: GroupValueInfo): Promise<CodeResult> {
+    public layerSettingsAssignPost(groupValueInfo?: GroupValueInfo): Promise<void> {
         return send({
             url: '/layer-settings/assign',
             method: 'POST',

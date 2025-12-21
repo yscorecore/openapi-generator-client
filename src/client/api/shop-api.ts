@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { AddShoppingCart } from "../models"
-import type { CodeResult } from "../models"
 import type { ShopCarOrder } from "../models"
 import type { ShoppingCartDto } from "../models"
 import type { UpdateShoppingCart } from "../models"
@@ -38,7 +37,7 @@ export class ShopApi {
      * 
      * @param ShopCarOrder? shopCarOrder 
      */
-    public apiShopCreateShopOrderPost(shopCarOrder?: ShopCarOrder): Promise<CodeResult> {
+    public apiShopCreateShopOrderPost(shopCarOrder?: ShopCarOrder): Promise<void> {
         return send({
             url: '/api/Shop/createShopOrder',
             method: 'POST',
@@ -60,7 +59,7 @@ export class ShopApi {
      * 
      * @param UpdateShoppingCart? updateShoppingCart 
      */
-    public apiShopEditPost(updateShoppingCart?: UpdateShoppingCart): Promise<CodeResult> {
+    public apiShopEditPost(updateShoppingCart?: UpdateShoppingCart): Promise<void> {
         return send({
             url: '/api/Shop/edit',
             method: 'POST',

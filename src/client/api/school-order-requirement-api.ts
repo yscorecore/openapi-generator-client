@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { BatchCreateOrderRequirementReq } from "../models"
-import type { CodeResult } from "../models"
 import type { CreateOrderRequirementReq } from "../models"
 import type { ModifyOrderRequirementReq } from "../models"
 import type { OrderRequirementDetailRes } from "../models"
@@ -21,7 +20,7 @@ export class SchoolOrderRequirementApi {
      * @summary 批量创建需求单
      * @param BatchCreateOrderRequirementReq? batchCreateOrderRequirementReq 
      */
-    public orderRequirementBatchPost(batchCreateOrderRequirementReq?: BatchCreateOrderRequirementReq): Promise<CodeResult> {
+    public orderRequirementBatchPost(batchCreateOrderRequirementReq?: BatchCreateOrderRequirementReq): Promise<void> {
         return send({
             url: '/order-requirement/batch',
             method: 'POST',
@@ -55,7 +54,7 @@ export class SchoolOrderRequirementApi {
      * @summary 删除需求单
      * @param string id 
      */
-    public orderRequirementIdDelete(id: string): Promise<CodeResult> {
+    public orderRequirementIdDelete(id: string): Promise<void> {
         return send({
             url: '/order-requirement/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -103,7 +102,7 @@ export class SchoolOrderRequirementApi {
      * @summary 驳回
      * @param RejectRequirement? rejectRequirement 
      */
-    public orderRequirementRejectedPost(rejectRequirement?: RejectRequirement): Promise<CodeResult> {
+    public orderRequirementRejectedPost(rejectRequirement?: RejectRequirement): Promise<void> {
         return send({
             url: '/order-requirement/rejected',
             method: 'POST',
@@ -115,7 +114,7 @@ export class SchoolOrderRequirementApi {
      * @summary 需求单上报
      * @param UploadRequirementReq? uploadRequirementReq 
      */
-    public orderRequirementUploadRequirementPost(uploadRequirementReq?: UploadRequirementReq): Promise<CodeResult> {
+    public orderRequirementUploadRequirementPost(uploadRequirementReq?: UploadRequirementReq): Promise<void> {
         return send({
             url: '/order-requirement/uploadRequirement',
             method: 'POST',

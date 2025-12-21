@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { AddMenuSampleDto1 } from "../models"
-import type { CodeResult } from "../models"
 import type { EventInfo } from "../models"
 import type { ForceUnLockInfo } from "../models"
 import type { MenuSampleTemplate1 } from "../models"
@@ -31,7 +30,7 @@ export class SchoolSamplePositionApi {
      * @summary 撤销留样
      * @param string id 
      */
-    public samplePositionDeleteSampleIdDelete(id: string): Promise<CodeResult> {
+    public samplePositionDeleteSampleIdDelete(id: string): Promise<void> {
         return send({
             url: '/sample-position/delete-sample/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -43,7 +42,7 @@ export class SchoolSamplePositionApi {
      * @summary 强制打开柜子
      * @param ForceUnLockInfo? forceUnLockInfo 
      */
-    public samplePositionForceUnlockPost(forceUnLockInfo?: ForceUnLockInfo): Promise<CodeResult> {
+    public samplePositionForceUnlockPost(forceUnLockInfo?: ForceUnLockInfo): Promise<void> {
         return send({
             url: '/sample-position/force-unlock',
             method: 'POST',
@@ -75,7 +74,7 @@ export class SchoolSamplePositionApi {
      * @summary 锁柜并开始留样
      * @param EventInfo? eventInfo 
      */
-    public samplePositionLockPost(eventInfo?: EventInfo): Promise<CodeResult> {
+    public samplePositionLockPost(eventInfo?: EventInfo): Promise<void> {
         return send({
             url: '/sample-position/lock',
             method: 'POST',
@@ -97,7 +96,7 @@ export class SchoolSamplePositionApi {
      * @summary 开柜并弃样
      * @param EventInfo? eventInfo 
      */
-    public samplePositionUnlockPost(eventInfo?: EventInfo): Promise<CodeResult> {
+    public samplePositionUnlockPost(eventInfo?: EventInfo): Promise<void> {
         return send({
             url: '/sample-position/unlock',
             method: 'POST',

@@ -5,7 +5,6 @@ import { send } from "../base"
 import type { AlarmEventDto } from "../models"
 import type { AlarmEventDtoPaginationData } from "../models"
 import type { AlarmType } from "../models"
-import type { CodeResult } from "../models"
 import type { UploadAlarmEventReq } from "../models"
 
 /**
@@ -57,7 +56,7 @@ export class SchoolAlarmApi {
      * @summary 异常上报
      * @param UploadAlarmEventReq? uploadAlarmEventReq 
      */
-    public alarmPost(uploadAlarmEventReq?: UploadAlarmEventReq): Promise<CodeResult> {
+    public alarmPost(uploadAlarmEventReq?: UploadAlarmEventReq): Promise<void> {
         return send({
             url: '/alarm',
             method: 'POST',

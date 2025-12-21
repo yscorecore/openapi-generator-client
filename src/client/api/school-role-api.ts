@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { AddRoleInfo } from "../models"
-import type { CodeResult } from "../models"
 import type { RoleInfo } from "../models"
 import type { RoleInfoPaginationData } from "../models"
 import type { UpdateRoleInfo } from "../models"
@@ -35,7 +34,7 @@ export class SchoolRoleApi {
      * @summary 删除岗位
      * @param string id 
      */
-    public schoolrolesIdDelete(id: string): Promise<CodeResult> {
+    public schoolrolesIdDelete(id: string): Promise<void> {
         return send({
             url: '/schoolroles/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -60,7 +59,7 @@ export class SchoolRoleApi {
      * @param string id 
      * @param UpdateRoleInfo? updateRoleInfo 
      */
-    public schoolrolesIdPut(id: string, updateRoleInfo?: UpdateRoleInfo): Promise<CodeResult> {
+    public schoolrolesIdPut(id: string, updateRoleInfo?: UpdateRoleInfo): Promise<void> {
         return send({
             url: '/schoolroles/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),

@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { AddMealDto } from "../models"
-import type { CodeResult } from "../models"
 import type { EditMealDto } from "../models"
 import type { MealDtoPaginationData } from "../models"
 import type { MealDtoPaginationRes } from "../models"
@@ -20,7 +19,7 @@ export class SchoolMealApi {
      * @summary 批量添加菜品
      * @param Array<AddMealDto>? addMealDto 
      */
-    public mealBatchAddMealPost(addMealDto?: Array<AddMealDto> | null): Promise<CodeResult> {
+    public mealBatchAddMealPost(addMealDto?: Array<AddMealDto> | null): Promise<void> {
         return send({
             url: '/meal/batchAddMeal',
             method: 'POST',

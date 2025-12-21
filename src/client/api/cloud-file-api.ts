@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { GuidCreateFileDto } from "../models"
 import type { GuidCreateFolderDto } from "../models"
 import type { GuidRenameFileDto } from "../models"
@@ -15,7 +14,7 @@ export class CloudFileApi {
      * 
      * @param Array<string>? requestBody 
      */
-    public apiCloudFileDelete(requestBody?: Array<string> | null): Promise<CodeResult> {
+    public apiCloudFileDelete(requestBody?: Array<string> | null): Promise<void> {
         return send({
             url: '/api/CloudFile',
             method: 'DELETE',
@@ -48,7 +47,7 @@ export class CloudFileApi {
      * 
      * @param GuidRenameFileDto? guidRenameFileDto 
      */
-    public apiCloudFileRenamePost(guidRenameFileDto?: GuidRenameFileDto): Promise<CodeResult> {
+    public apiCloudFileRenamePost(guidRenameFileDto?: GuidRenameFileDto): Promise<void> {
         return send({
             url: '/api/CloudFile/rename',
             method: 'POST',

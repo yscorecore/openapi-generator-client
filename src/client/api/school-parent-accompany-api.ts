@@ -4,7 +4,6 @@
 import { send } from "../base"
 import type { AddParentAccompanyDto } from "../models"
 import type { AuditRequestDto } from "../models"
-import type { CodeResult } from "../models"
 import type { EditParentAccompanyDto } from "../models"
 import type { ParentAccompanyPlanDetailDto } from "../models"
 import type { ParentAccompanyPlanDtoPaginationData } from "../models"
@@ -18,7 +17,7 @@ export class SchoolParentAccompanyApi {
      * @summary 家长陪餐审核
      * @param AuditRequestDto? auditRequestDto 
      */
-    public parentAccompanyAuditPost(auditRequestDto?: AuditRequestDto): Promise<CodeResult> {
+    public parentAccompanyAuditPost(auditRequestDto?: AuditRequestDto): Promise<void> {
         return send({
             url: '/parent-accompany/audit',
             method: 'POST',
@@ -72,7 +71,7 @@ export class SchoolParentAccompanyApi {
      * @summary 更改家长陪餐
      * @param EditParentAccompanyDto? editParentAccompanyDto 
      */
-    public parentAccompanyPlanPut(editParentAccompanyDto?: EditParentAccompanyDto): Promise<CodeResult> {
+    public parentAccompanyPlanPut(editParentAccompanyDto?: EditParentAccompanyDto): Promise<void> {
         return send({
             url: '/parent-accompany/plan',
             method: 'PUT',

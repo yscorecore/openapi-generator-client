@@ -7,7 +7,6 @@ import type { AccompanyRecordDto } from "../models"
 import type { AccompanyRecordDtoPaginationData } from "../models"
 import type { AccompanyUserDto } from "../models"
 import type { BatchCreateAccompanyDto } from "../models"
-import type { CodeResult } from "../models"
 import type { CreateAccompanyDto } from "../models"
 import type { CreatePublicAccompanyDto } from "../models"
 import type { LeaderMealComment } from "../models"
@@ -24,7 +23,7 @@ export class SchoolAccompanyApi {
      * @summary 批量陪餐导入
      * @param Array<CreateAccompanyDto>? createAccompanyDto 
      */
-    public accompanyBatchCreateAccompanyPost(createAccompanyDto?: Array<CreateAccompanyDto> | null): Promise<CodeResult> {
+    public accompanyBatchCreateAccompanyPost(createAccompanyDto?: Array<CreateAccompanyDto> | null): Promise<void> {
         return send({
             url: '/accompany/batch-create-accompany',
             method: 'POST',
@@ -37,7 +36,7 @@ export class SchoolAccompanyApi {
      * @param UpdateMode? mode 
      * @param Array<BatchCreateAccompanyDto>? batchCreateAccompanyDto 
      */
-    public accompanyBatchCreatePost(mode?: UpdateMode, batchCreateAccompanyDto?: Array<BatchCreateAccompanyDto> | null): Promise<CodeResult> {
+    public accompanyBatchCreatePost(mode?: UpdateMode, batchCreateAccompanyDto?: Array<BatchCreateAccompanyDto> | null): Promise<void> {
         return send({
             url: '/accompany/batch-create',
             method: 'POST',

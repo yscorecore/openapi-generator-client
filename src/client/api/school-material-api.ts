@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { EditConfig } from "../models"
 import type { MaterialAddDto } from "../models"
 import type { MaterialDetailDto } from "../models"
@@ -24,7 +23,7 @@ export class SchoolMaterialApi {
      * 
      * @param Array<StockWarningReq>? stockWarningReq 
      */
-    public materialBatchSetMaterialWarningThresholdPost(stockWarningReq?: Array<StockWarningReq> | null): Promise<CodeResult> {
+    public materialBatchSetMaterialWarningThresholdPost(stockWarningReq?: Array<StockWarningReq> | null): Promise<void> {
         return send({
             url: '/material/batch-set-material-warning-threshold',
             method: 'POST',
@@ -35,7 +34,7 @@ export class SchoolMaterialApi {
      * 
      * @param string id 
      */
-    public materialDeleteWarningConfigIdDelete(id: string): Promise<CodeResult> {
+    public materialDeleteWarningConfigIdDelete(id: string): Promise<void> {
         return send({
             url: '/material/delete-warning-config/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),
@@ -187,7 +186,7 @@ export class SchoolMaterialApi {
      * 
      * @param EditConfig? editConfig 
      */
-    public materialUpdateWarningConfigPost(editConfig?: EditConfig): Promise<CodeResult> {
+    public materialUpdateWarningConfigPost(editConfig?: EditConfig): Promise<void> {
         return send({
             url: '/material/update-warning-config',
             method: 'POST',

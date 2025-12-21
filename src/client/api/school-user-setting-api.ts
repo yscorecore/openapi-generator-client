@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { StringObjectKeyValuePair } from "../models"
 
 /**
@@ -13,7 +12,7 @@ export class SchoolUserSettingApi {
      * 
      * @param string key 
      */
-    public apiSchoolUserSettingKeyDelete(key: string | null): Promise<CodeResult> {
+    public apiSchoolUserSettingKeyDelete(key: string | null): Promise<void> {
         return send({
             url: '/api/SchoolUserSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
@@ -36,7 +35,7 @@ export class SchoolUserSettingApi {
      * @param boolean? keepstring 
      * @param StringObjectKeyValuePair? stringObjectKeyValuePair 
      */
-    public apiSchoolUserSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<CodeResult> {
+    public apiSchoolUserSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<void> {
         return send({
             url: '/api/SchoolUserSetting',
             method: 'POST',

@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { StringObjectKeyValuePair } from "../models"
 import type { StringStringKeyValuePair } from "../models"
 
@@ -14,7 +13,7 @@ export class SchoolSettingApi {
      * 
      * @param string key 
      */
-    public apiSchoolSettingKeyDelete(key: string | null): Promise<CodeResult> {
+    public apiSchoolSettingKeyDelete(key: string | null): Promise<void> {
         return send({
             url: '/api/SchoolSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
@@ -37,7 +36,7 @@ export class SchoolSettingApi {
      * @param boolean? keepstring 
      * @param StringObjectKeyValuePair? stringObjectKeyValuePair 
      */
-    public apiSchoolSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<CodeResult> {
+    public apiSchoolSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<void> {
         return send({
             url: '/api/SchoolSetting',
             method: 'POST',
@@ -52,7 +51,7 @@ export class SchoolSettingApi {
      * @summary 删除配置
      * @param string key 
      */
-    public schoolsettingKeyDelete(key: string | null): Promise<CodeResult> {
+    public schoolsettingKeyDelete(key: string | null): Promise<void> {
         return send({
             url: '/schoolsetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
@@ -76,7 +75,7 @@ export class SchoolSettingApi {
      * @summary 新增配置
      * @param StringStringKeyValuePair? stringStringKeyValuePair 
      */
-    public schoolsettingPost(stringStringKeyValuePair?: StringStringKeyValuePair): Promise<CodeResult> {
+    public schoolsettingPost(stringStringKeyValuePair?: StringStringKeyValuePair): Promise<void> {
         return send({
             url: '/schoolsetting',
             method: 'POST',

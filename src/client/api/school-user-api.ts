@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { EditUserDto } from "../models"
 import type { EditUserInfo } from "../models"
 import type { EmptySchoolInfo } from "../models"
@@ -31,7 +30,7 @@ export class SchoolUserApi {
      * 
      * @param EditUserInfo? editUserInfo 
      */
-    public schooluserChangeChildrenOrgVisiblePost(editUserInfo?: EditUserInfo): Promise<CodeResult> {
+    public schooluserChangeChildrenOrgVisiblePost(editUserInfo?: EditUserInfo): Promise<void> {
         return send({
             url: '/schooluser/changeChildrenOrgVisible',
             method: 'POST',
@@ -78,7 +77,7 @@ export class SchoolUserApi {
      * @summary 验货机删除用户
      * @param string id 
      */
-    public schooluserIdDelete(id: string): Promise<CodeResult> {
+    public schooluserIdDelete(id: string): Promise<void> {
         return send({
             url: '/schooluser/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -91,7 +90,7 @@ export class SchoolUserApi {
      * @param string id 
      * @param EditUserDto? editUserDto 
      */
-    public schooluserIdPut(id: string, editUserDto?: EditUserDto): Promise<CodeResult> {
+    public schooluserIdPut(id: string, editUserDto?: EditUserDto): Promise<void> {
         return send({
             url: '/schooluser/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -140,7 +139,7 @@ export class SchoolUserApi {
      * @summary 注册用户，小程序管理端调用
      * @param RegisterUserDto registerUserDto 用户信息
      */
-    public schooluserRegisterPost(registerUserDto: RegisterUserDto): Promise<CodeResult> {
+    public schooluserRegisterPost(registerUserDto: RegisterUserDto): Promise<void> {
         return send({
             url: '/schooluser/register',
             method: 'POST',

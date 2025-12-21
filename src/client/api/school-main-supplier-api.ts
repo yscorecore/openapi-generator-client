@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { AreaMainSupplierDtoPaginationData } from "../models"
-import type { CodeResult } from "../models"
 import type { MainSupplierMaterialTypeCrossConfigDtoPaginationData } from "../models"
 import type { MainSupplierMaterialTypeCrossConfigSaveDto } from "../models"
 
@@ -30,7 +29,7 @@ export class SchoolMainSupplierApi {
      * 
      * @param Array<MainSupplierMaterialTypeCrossConfigSaveDto>? mainSupplierMaterialTypeCrossConfigSaveDto 
      */
-    public mainSupplierCrossConfigsPost(mainSupplierMaterialTypeCrossConfigSaveDto?: Array<MainSupplierMaterialTypeCrossConfigSaveDto> | null): Promise<CodeResult> {
+    public mainSupplierCrossConfigsPost(mainSupplierMaterialTypeCrossConfigSaveDto?: Array<MainSupplierMaterialTypeCrossConfigSaveDto> | null): Promise<void> {
         return send({
             url: '/main-supplier/cross-configs',
             method: 'POST',

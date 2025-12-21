@@ -5,7 +5,6 @@ import { send } from "../base"
 import type { AddCarryOverReq } from "../models"
 import type { CheckDetailReq } from "../models"
 import type { CheckDetailRes } from "../models"
-import type { CodeResult } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
 import type { StockInForReturnDto } from "../models"
@@ -43,7 +42,7 @@ export class AndroidStockReturnApi {
      * 
      * @param AddCarryOverReq? addCarryOverReq 
      */
-    public scaleReturnCarryOverPost(addCarryOverReq?: AddCarryOverReq): Promise<CodeResult> {
+    public scaleReturnCarryOverPost(addCarryOverReq?: AddCarryOverReq): Promise<void> {
         return send({
             url: '/scale/return/carry-over',
             method: 'POST',
@@ -90,7 +89,7 @@ export class AndroidStockReturnApi {
      * 
      * @param ModifyCheckMultipleReq? modifyCheckMultipleReq 
      */
-    public scaleReturnModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
+    public scaleReturnModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<void> {
         return send({
             url: '/scale/return/modifyCheckMultiple',
             method: 'POST',

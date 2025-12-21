@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { ChildrenSchoolDto } from "../models"
-import type { CodeResult } from "../models"
 import type { Detail } from "../models"
 import type { SchoolConfigForAreaSchoolDto } from "../models"
 import type { UserLoginInfo } from "../models"
@@ -59,7 +58,7 @@ export class SchoolApi {
      * @summary 保存学校详情
      * @param Detail? detail 
      */
-    public schoolDetailPost(detail?: Detail): Promise<CodeResult> {
+    public schoolDetailPost(detail?: Detail): Promise<void> {
         return send({
             url: '/school/detail',
             method: 'POST',

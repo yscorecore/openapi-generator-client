@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { BatchStudentDiningDto } from "../models"
-import type { CodeResult } from "../models"
 import type { DiningCostDtoByOrderTypePaginationData } from "../models"
 import type { DiningOutDetailsDto } from "../models"
 import type { DiningOutDtoPaginationData } from "../models"
@@ -44,7 +43,7 @@ export class SchoolDinningOutApi {
      * 
      * @param Array<BatchStudentDiningDto>? batchStudentDiningDto 
      */
-    public dinningoutBatchSaveStudentDiningPost(batchStudentDiningDto?: Array<BatchStudentDiningDto> | null): Promise<CodeResult> {
+    public dinningoutBatchSaveStudentDiningPost(batchStudentDiningDto?: Array<BatchStudentDiningDto> | null): Promise<void> {
         return send({
             url: '/dinningout/batch-save-student-dining',
             method: 'POST',
@@ -70,7 +69,7 @@ export class SchoolDinningOutApi {
      * @summary 删除出餐记录
      * @param string id 
      */
-    public dinningoutIdDelete(id: string): Promise<CodeResult> {
+    public dinningoutIdDelete(id: string): Promise<void> {
         return send({
             url: '/dinningout/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -132,7 +131,7 @@ export class SchoolDinningOutApi {
      * @summary 修改出餐人数
      * @param ModifyTotalCountReq? modifyTotalCountReq 
      */
-    public dinningoutModifyCountPost(modifyTotalCountReq?: ModifyTotalCountReq): Promise<CodeResult> {
+    public dinningoutModifyCountPost(modifyTotalCountReq?: ModifyTotalCountReq): Promise<void> {
         return send({
             url: '/dinningout/modify-count',
             method: 'POST',
@@ -144,7 +143,7 @@ export class SchoolDinningOutApi {
      * @summary 人数上报
      * @param ReportReq? reportReq 
      */
-    public dinningoutReportTo3rdPost(reportReq?: ReportReq): Promise<CodeResult> {
+    public dinningoutReportTo3rdPost(reportReq?: ReportReq): Promise<void> {
         return send({
             url: '/dinningout/report-to-3rd',
             method: 'POST',
@@ -156,7 +155,7 @@ export class SchoolDinningOutApi {
      * @summary 保存学生出餐
      * @param SaveStudentDinningDto? saveStudentDinningDto 
      */
-    public dinningoutSaveStudentDinningPost(saveStudentDinningDto?: SaveStudentDinningDto): Promise<CodeResult> {
+    public dinningoutSaveStudentDinningPost(saveStudentDinningDto?: SaveStudentDinningDto): Promise<void> {
         return send({
             url: '/dinningout/save-student-dinning',
             method: 'POST',

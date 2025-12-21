@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { CompleteInfo } from "../models"
 import type { DinnerOutDto } from "../models"
 import type { InventoryStatus } from "../models"
@@ -28,7 +27,7 @@ export class SchoolInventoryApi {
      * @summary 人工盘点
      * @param Array<CompleteInfo>? completeInfo 
      */
-    public inventoryCompletePost(completeInfo?: Array<CompleteInfo> | null): Promise<CodeResult> {
+    public inventoryCompletePost(completeInfo?: Array<CompleteInfo> | null): Promise<void> {
         return send({
             url: '/inventory/complete',
             method: 'POST',
@@ -65,7 +64,7 @@ export class SchoolInventoryApi {
      * @summary 撤销盘点
      * @param string id 
      */
-    public inventoryRevertIdPost(id: string): Promise<CodeResult> {
+    public inventoryRevertIdPost(id: string): Promise<void> {
         return send({
             url: '/inventory/revert/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),

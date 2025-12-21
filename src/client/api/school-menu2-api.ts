@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { MenuCreateInfo } from "../models"
 import type { MenuImageInfo } from "../models"
 import type { MenuPlanedCountInfo } from "../models"
@@ -73,7 +72,7 @@ export class SchoolMenu2Api {
      * @summary 设置对公示端可见
      * @param MenuVisibleInfo? menuVisibleInfo 
      */
-    public menuSetVisiblePut(menuVisibleInfo?: MenuVisibleInfo): Promise<CodeResult> {
+    public menuSetVisiblePut(menuVisibleInfo?: MenuVisibleInfo): Promise<void> {
         return send({
             url: '/menu/set-visible',
             method: 'PUT',
@@ -99,7 +98,7 @@ export class SchoolMenu2Api {
      * @summary 修改计划数量
      * @param MenuPlanedCountInfo? menuPlanedCountInfo 
      */
-    public menuUpdatePlanedCountPut(menuPlanedCountInfo?: MenuPlanedCountInfo): Promise<CodeResult> {
+    public menuUpdatePlanedCountPut(menuPlanedCountInfo?: MenuPlanedCountInfo): Promise<void> {
         return send({
             url: '/menu/update-planed-count',
             method: 'PUT',

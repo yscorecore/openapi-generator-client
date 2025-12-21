@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { BillItem } from "../models"
-import type { CodeResult } from "../models"
 import type { UploadBillDto } from "../models"
 
 /**
@@ -31,7 +30,7 @@ export class TianFangBillApi {
      * @summary 天方系统报账上报
      * @param UploadBillDto? uploadBillDto 
      */
-    public tianfangUploadBillPost(uploadBillDto?: UploadBillDto): Promise<CodeResult> {
+    public tianfangUploadBillPost(uploadBillDto?: UploadBillDto): Promise<void> {
         return send({
             url: '/tianfang/upload-bill',
             method: 'POST',

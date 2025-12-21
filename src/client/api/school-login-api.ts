@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { ConfirmLoginInfo } from "../models"
 import type { QrCodeImage } from "../models"
 import type { SyncWechatInfo } from "../models"
@@ -27,7 +26,7 @@ export class SchoolLoginApi {
      * @summary 微信管理端确认登录
      * @param ConfirmLoginInfo confirmLoginInfo 
      */
-    public schoolLoginConfirmPost(confirmLoginInfo: ConfirmLoginInfo): Promise<CodeResult> {
+    public schoolLoginConfirmPost(confirmLoginInfo: ConfirmLoginInfo): Promise<void> {
         return send({
             url: '/schoolLogin/confirm',
             method: 'POST',
@@ -37,7 +36,7 @@ export class SchoolLoginApi {
     /**
      * 
      */
-    public schoolLoginLogoutPost(): Promise<CodeResult> {
+    public schoolLoginLogoutPost(): Promise<void> {
         return send({
             url: '/schoolLogin/logout',
             method: 'POST',
@@ -86,7 +85,7 @@ export class SchoolLoginApi {
      * 
      * @param SyncWechatInfo? syncWechatInfo 
      */
-    public schoolLoginSyncOpenIdPost(syncWechatInfo?: SyncWechatInfo): Promise<CodeResult> {
+    public schoolLoginSyncOpenIdPost(syncWechatInfo?: SyncWechatInfo): Promise<void> {
         return send({
             url: '/schoolLogin/syncOpenId',
             method: 'POST',

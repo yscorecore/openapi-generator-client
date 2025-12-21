@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { CaremaControl } from "../models"
-import type { CodeResult } from "../models"
 import type { NvrChannelDto } from "../models"
 import type { StreamProtocol } from "../models"
 import type { StreamType } from "../models"
@@ -39,7 +38,7 @@ export class SchoolHardwareApi {
      * @summary 云台控制（仅限海康）
      * @param CaremaControl? caremaControl 
      */
-    public hardwareControllingCaremaPost(caremaControl?: CaremaControl): Promise<CodeResult> {
+    public hardwareControllingCaremaPost(caremaControl?: CaremaControl): Promise<void> {
         return send({
             url: '/hardware/controllingCarema',
             method: 'POST',

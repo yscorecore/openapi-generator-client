@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { BuinessReportStatus } from "../models"
-import type { CodeResult } from "../models"
 import type { CreateReport } from "../models"
 import type { EditReport } from "../models"
 import type { QueryReportDtoPaginationData } from "../models"
@@ -39,7 +38,7 @@ export class SchoolBuinessReportApi {
      * 
      * @param CreateReport? createReport 
      */
-    public apiSchoolBuinessReportPost(createReport?: CreateReport): Promise<CodeResult> {
+    public apiSchoolBuinessReportPost(createReport?: CreateReport): Promise<void> {
         return send({
             url: '/api/SchoolBuinessReport',
             method: 'POST',
@@ -50,7 +49,7 @@ export class SchoolBuinessReportApi {
      * 
      * @param EditReport? editReport 
      */
-    public apiSchoolBuinessReportPut(editReport?: EditReport): Promise<CodeResult> {
+    public apiSchoolBuinessReportPut(editReport?: EditReport): Promise<void> {
         return send({
             url: '/api/SchoolBuinessReport',
             method: 'PUT',

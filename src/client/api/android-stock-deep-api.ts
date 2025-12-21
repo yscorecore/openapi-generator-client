@@ -4,7 +4,6 @@
 import { send } from "../base"
 import type { CheckDetailReq } from "../models"
 import type { CheckDetailRes } from "../models"
-import type { CodeResult } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
 import type { StockDeepAddReq } from "../models"
@@ -70,7 +69,7 @@ export class AndroidStockDeepApi {
      * 
      * @param ModifyCheckMultipleReq? modifyCheckMultipleReq 
      */
-    public scaleDeepModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
+    public scaleDeepModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<void> {
         return send({
             url: '/scale/deep/modifyCheckMultiple',
             method: 'POST',

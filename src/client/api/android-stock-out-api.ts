@@ -4,7 +4,6 @@
 import { send } from "../base"
 import type { CheckDetailReq } from "../models"
 import type { CheckDetailRes } from "../models"
-import type { CodeResult } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { MealKindWithDate } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
@@ -103,7 +102,7 @@ export class AndroidStockOutApi {
      * 
      * @param StockOutFromStockInAddReq2? stockOutFromStockInAddReq2 
      */
-    public scaleOutFromInV2Post(stockOutFromStockInAddReq2?: StockOutFromStockInAddReq2): Promise<CodeResult> {
+    public scaleOutFromInV2Post(stockOutFromStockInAddReq2?: StockOutFromStockInAddReq2): Promise<void> {
         return send({
             url: '/scale/out-from-in/v2',
             method: 'POST',
@@ -114,7 +113,7 @@ export class AndroidStockOutApi {
      * 
      * @param ModifyCheckMultipleReq? modifyCheckMultipleReq 
      */
-    public scaleOutModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
+    public scaleOutModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<void> {
         return send({
             url: '/scale/out/modifyCheckMultiple',
             method: 'POST',
@@ -147,7 +146,7 @@ export class AndroidStockOutApi {
      * 
      * @param StockOutFromStockInAddReq3? stockOutFromStockInAddReq3 
      */
-    public scaleOutV3Post(stockOutFromStockInAddReq3?: StockOutFromStockInAddReq3): Promise<CodeResult> {
+    public scaleOutV3Post(stockOutFromStockInAddReq3?: StockOutFromStockInAddReq3): Promise<void> {
         return send({
             url: '/scale/out/v3',
             method: 'POST',

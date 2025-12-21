@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { ConfirmReplyReq } from "../models"
 import type { CreateDiscountBiddingPlanDto } from "../models"
 import type { DiscountBiddingPlanDetailDto } from "../models"
@@ -29,7 +28,7 @@ export class SchoolDiscountBiddingApi {
      * @summary 删除折扣竞价
      * @param string id 
      */
-    public discountBiddingIdDelete(id: string): Promise<CodeResult> {
+    public discountBiddingIdDelete(id: string): Promise<void> {
         return send({
             url: '/discount-bidding/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),

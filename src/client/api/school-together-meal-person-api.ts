@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { TogetherMealPersonCreateDto } from "../models"
 import type { TogetherMealPersonDto } from "../models"
 import type { TogetherMealPersonDtoPaginationData } from "../models"
@@ -17,7 +16,7 @@ export class SchoolTogetherMealPersonApi {
      * @summary 创建共餐人
      * @param TogetherPersonByAnonymous? togetherPersonByAnonymous 
      */
-    public togetherMealPersonsAnonymousCreatePost(togetherPersonByAnonymous?: TogetherPersonByAnonymous): Promise<CodeResult> {
+    public togetherMealPersonsAnonymousCreatePost(togetherPersonByAnonymous?: TogetherPersonByAnonymous): Promise<void> {
         return send({
             url: '/TogetherMealPersons/anonymous/create',
             method: 'POST',
@@ -29,7 +28,7 @@ export class SchoolTogetherMealPersonApi {
      * @summary 批量添加共餐人员
      * @param Array<TogetherMealPersonCreateDto>? togetherMealPersonCreateDto 
      */
-    public togetherMealPersonsBatchCreatePost(togetherMealPersonCreateDto?: Array<TogetherMealPersonCreateDto> | null): Promise<CodeResult> {
+    public togetherMealPersonsBatchCreatePost(togetherMealPersonCreateDto?: Array<TogetherMealPersonCreateDto> | null): Promise<void> {
         return send({
             url: '/TogetherMealPersons/batch-create',
             method: 'POST',
@@ -95,7 +94,7 @@ export class SchoolTogetherMealPersonApi {
      * @summary 更新共餐人信息
      * @param TogetherMealPersonDto? togetherMealPersonDto 
      */
-    public togetherMealPersonsPut(togetherMealPersonDto?: TogetherMealPersonDto): Promise<CodeResult> {
+    public togetherMealPersonsPut(togetherMealPersonDto?: TogetherMealPersonDto): Promise<void> {
         return send({
             url: '/TogetherMealPersons',
             method: 'PUT',

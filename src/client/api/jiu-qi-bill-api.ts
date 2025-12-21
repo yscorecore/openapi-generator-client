@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { QueryFilter } from "../models"
 
 /**
@@ -28,7 +27,7 @@ export class JiuQiBillApi {
      * 
      * @param QueryFilter? queryFilter 
      */
-    public jiuqiUploadBillPost(queryFilter?: QueryFilter): Promise<CodeResult> {
+    public jiuqiUploadBillPost(queryFilter?: QueryFilter): Promise<void> {
         return send({
             url: '/jiuqi/upload-bill',
             method: 'POST',

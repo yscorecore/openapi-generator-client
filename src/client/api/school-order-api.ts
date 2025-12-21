@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { CreateOrderReqV3 } from "../models"
 import type { OrderItemCerificateUrl } from "../models"
 import type { UpdateBeforeStockImagesReq } from "../models"
@@ -27,7 +26,7 @@ export class SchoolOrderApi {
      * 
      * @param OrderItemCerificateUrl? orderItemCerificateUrl 
      */
-    public ordersModifyCerificateUrlPost(orderItemCerificateUrl?: OrderItemCerificateUrl): Promise<CodeResult> {
+    public ordersModifyCerificateUrlPost(orderItemCerificateUrl?: OrderItemCerificateUrl): Promise<void> {
         return send({
             url: '/orders/modifyCerificateUrl',
             method: 'POST',

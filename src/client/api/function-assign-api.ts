@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { AssignByRoleInfo } from "../models"
-import type { CodeResult } from "../models"
 import type { FunctionAssignObjectInfo } from "../models"
 import type { FunctionMockTreeInfo } from "../models"
 
@@ -15,7 +14,7 @@ export class FunctionAssignApi {
      * 
      * @param AssignByRoleInfo? assignByRoleInfo 
      */
-    public functionsAssignPost(assignByRoleInfo?: AssignByRoleInfo): Promise<CodeResult> {
+    public functionsAssignPost(assignByRoleInfo?: AssignByRoleInfo): Promise<void> {
         return send({
             url: '/functions/assign',
             method: 'POST',

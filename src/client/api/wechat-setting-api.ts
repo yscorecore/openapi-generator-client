@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { StringObjectKeyValuePair } from "../models"
 
 /**
@@ -13,7 +12,7 @@ export class WechatSettingApi {
      * 
      * @param string key 
      */
-    public apiWechatSettingKeyDelete(key: string | null): Promise<CodeResult> {
+    public apiWechatSettingKeyDelete(key: string | null): Promise<void> {
         return send({
             url: '/api/WechatSetting/{key}'
                 .replace(`{${"key"}}`, encodeURIComponent(String(key))),
@@ -36,7 +35,7 @@ export class WechatSettingApi {
      * @param boolean? keepstring 
      * @param StringObjectKeyValuePair? stringObjectKeyValuePair 
      */
-    public apiWechatSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<CodeResult> {
+    public apiWechatSettingPost(keepstring?: boolean, stringObjectKeyValuePair?: StringObjectKeyValuePair): Promise<void> {
         return send({
             url: '/api/WechatSetting',
             method: 'POST',

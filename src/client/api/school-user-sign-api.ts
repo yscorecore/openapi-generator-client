@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { CodeImage } from "../models"
-import type { CodeResult } from "../models"
 import type { CodeUser } from "../models"
 
 /**
@@ -26,7 +25,7 @@ export class SchoolUserSignApi {
      * 
      * @param string code 
      */
-    public usersignReleaseCodeCodePost(code: string | null): Promise<CodeResult> {
+    public usersignReleaseCodeCodePost(code: string | null): Promise<void> {
         return send({
             url: '/usersign/release-code/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),
@@ -46,7 +45,7 @@ export class SchoolUserSignApi {
      * 
      * @param string code 
      */
-    public usersignSignCodePost(code: string | null): Promise<CodeResult> {
+    public usersignSignCodePost(code: string | null): Promise<void> {
         return send({
             url: '/usersign/sign/{code}'
                 .replace(`{${"code"}}`, encodeURIComponent(String(code))),

@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { CreatePatrolRecordDto } from "../models"
 import type { ModifyPatrolRecordDto } from "../models"
 import type { PointPatrolRecordDtoPaginationData } from "../models"
@@ -17,7 +16,7 @@ export class SchoolPointPatrolApi {
      * @summary 审核记录
      * @param string id 
      */
-    public pointPatrolAuditIdPost(id: string): Promise<CodeResult> {
+    public pointPatrolAuditIdPost(id: string): Promise<void> {
         return send({
             url: '/point-patrol/audit/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -29,7 +28,7 @@ export class SchoolPointPatrolApi {
      * @summary 删除打卡
      * @param string id 
      */
-    public pointPatrolIdDelete(id: string): Promise<CodeResult> {
+    public pointPatrolIdDelete(id: string): Promise<void> {
         return send({
             url: '/point-patrol/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -53,7 +52,7 @@ export class SchoolPointPatrolApi {
      * @summary 更新打卡记录
      * @param ModifyPatrolRecordDto? modifyPatrolRecordDto 
      */
-    public pointPatrolPut(modifyPatrolRecordDto?: ModifyPatrolRecordDto): Promise<CodeResult> {
+    public pointPatrolPut(modifyPatrolRecordDto?: ModifyPatrolRecordDto): Promise<void> {
         return send({
             url: '/point-patrol',
             method: 'PUT',

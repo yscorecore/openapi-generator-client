@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { HistoryPeelingInfo } from "../models"
 import type { ImageBindInfo } from "../models"
 import type { ModifyCheckMultipleReq } from "../models"
@@ -29,7 +28,7 @@ export class SchoolStockInApi {
      * @summary 清空索证
      * @param string id 
      */
-    public stockCerificateUrlIdDelete(id: string): Promise<CodeResult> {
+    public stockCerificateUrlIdDelete(id: string): Promise<void> {
         return send({
             url: '/stock/cerificateUrl/{id}'
                 .replace(`{${"id"}}`, encodeURIComponent(String(id))),
@@ -41,7 +40,7 @@ export class SchoolStockInApi {
      * @summary 根据入库单更新供货商评分
      * @param StockInRatingInfo? stockInRatingInfo 
      */
-    public stockEvaluatePost(stockInRatingInfo?: StockInRatingInfo): Promise<CodeResult> {
+    public stockEvaluatePost(stockInRatingInfo?: StockInRatingInfo): Promise<void> {
         return send({
             url: '/stock/evaluate',
             method: 'POST',
@@ -153,7 +152,7 @@ export class SchoolStockInApi {
      * 
      * @param ModifyCheckMultipleReq? modifyCheckMultipleReq 
      */
-    public stockInModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<CodeResult> {
+    public stockInModifyCheckMultiplePost(modifyCheckMultipleReq?: ModifyCheckMultipleReq): Promise<void> {
         return send({
             url: '/stock/in/modifyCheckMultiple',
             method: 'POST',
@@ -165,7 +164,7 @@ export class SchoolStockInApi {
      * @summary 缺货标记
      * @param string? orderItemId 
      */
-    public stockInOrderitemMarkOutOfStockPost(orderItemId?: string): Promise<CodeResult> {
+    public stockInOrderitemMarkOutOfStockPost(orderItemId?: string): Promise<void> {
         return send({
             url: '/stock/in/orderitem/mark-out-of-stock',
             method: 'POST',
@@ -179,7 +178,7 @@ export class SchoolStockInApi {
      * @summary 取消缺货标记
      * @param string? orderItemId 
      */
-    public stockInOrderitemResetOutOfStockPost(orderItemId?: string): Promise<CodeResult> {
+    public stockInOrderitemResetOutOfStockPost(orderItemId?: string): Promise<void> {
         return send({
             url: '/stock/in/orderitem/reset-out-of-stock',
             method: 'POST',
@@ -217,7 +216,7 @@ export class SchoolStockInApi {
      * @summary 修改索证
      * @param StockInItemModify? stockInItemModify 
      */
-    public stockModifyCerificateUrlPost(stockInItemModify?: StockInItemModify): Promise<CodeResult> {
+    public stockModifyCerificateUrlPost(stockInItemModify?: StockInItemModify): Promise<void> {
         return send({
             url: '/stock/modifyCerificateUrl',
             method: 'POST',
@@ -229,7 +228,7 @@ export class SchoolStockInApi {
      * @summary 修改入库的食材分类
      * @param StockInItemModifyMaterialType? stockInItemModifyMaterialType 
      */
-    public stockModifyMaterialTypePost(stockInItemModifyMaterialType?: StockInItemModifyMaterialType): Promise<CodeResult> {
+    public stockModifyMaterialTypePost(stockInItemModifyMaterialType?: StockInItemModifyMaterialType): Promise<void> {
         return send({
             url: '/stock/modifyMaterialType',
             method: 'POST',

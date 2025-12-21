@@ -3,7 +3,6 @@
 
 import { send } from "../base"
 import type { CertExpiredDetails } from "../models"
-import type { CodeResult } from "../models"
 import type { DataExceptionDetails } from "../models"
 import type { ExceptionType } from "../models"
 import type { OperationExceptionDetails } from "../models"
@@ -111,7 +110,7 @@ export class SchoolEventApi {
      * @summary 设置学校异常通知消息为已完成
      * @param SchoolEventProcessDto? schoolEventProcessDto 
      */
-    public schooleventProcessPost(schoolEventProcessDto?: SchoolEventProcessDto): Promise<CodeResult> {
+    public schooleventProcessPost(schoolEventProcessDto?: SchoolEventProcessDto): Promise<void> {
         return send({
             url: '/schoolevent/process',
             method: 'POST',

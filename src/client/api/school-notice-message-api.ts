@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { NoticeMessageDetailDtoPaginationData } from "../models"
 import type { NoticeMessageDto } from "../models"
 import type { NoticeMessageType } from "../models"
@@ -64,7 +63,7 @@ export class SchoolNoticeMessageApi {
      * 
      * @param ReplyMessageDetail? replyMessageDetail 
      */
-    public noticeMessageReplyMessagePost(replyMessageDetail?: ReplyMessageDetail): Promise<CodeResult> {
+    public noticeMessageReplyMessagePost(replyMessageDetail?: ReplyMessageDetail): Promise<void> {
         return send({
             url: '/notice-message/replyMessage',
             method: 'POST',
@@ -76,7 +75,7 @@ export class SchoolNoticeMessageApi {
      * @summary 设置已读
      * @param string id 
      */
-    public noticeMessageSetReadIdPost(id: string): Promise<CodeResult> {
+    public noticeMessageSetReadIdPost(id: string): Promise<void> {
         return send({
             url: '/notice-message/setRead/{Id}'
                 .replace(`{${"Id"}}`, encodeURIComponent(String(id))),

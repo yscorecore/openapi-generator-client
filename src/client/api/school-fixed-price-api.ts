@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { FixSpecPriceReq } from "../models"
 import type { FixedPriceSpecDtoPaginationData } from "../models"
 
@@ -35,7 +34,7 @@ export class SchoolFixedPriceApi {
      * @summary 设置固定价格
      * @param Array<FixSpecPriceReq>? fixSpecPriceReq 
      */
-    public schoolFixedPricePost(fixSpecPriceReq?: Array<FixSpecPriceReq> | null): Promise<CodeResult> {
+    public schoolFixedPricePost(fixSpecPriceReq?: Array<FixSpecPriceReq> | null): Promise<void> {
         return send({
             url: '/SchoolFixedPrice',
             method: 'POST',

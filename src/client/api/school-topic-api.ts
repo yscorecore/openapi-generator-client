@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { CodeResult } from "../models"
 import type { CompleteTopicDto } from "../models"
 import type { RejectTopicDto } from "../models"
 import type { TopicDto } from "../models"
@@ -17,7 +16,7 @@ export class SchoolTopicApi {
      * @summary 处理建议
      * @param string? topicId 
      */
-    public topicAcceptPost(topicId?: string): Promise<CodeResult> {
+    public topicAcceptPost(topicId?: string): Promise<void> {
         return send({
             url: '/topic/accept',
             method: 'POST',
@@ -31,7 +30,7 @@ export class SchoolTopicApi {
      * @summary 完成建议
      * @param CompleteTopicDto? completeTopicDto 
      */
-    public topicCompletePost(completeTopicDto?: CompleteTopicDto): Promise<CodeResult> {
+    public topicCompletePost(completeTopicDto?: CompleteTopicDto): Promise<void> {
         return send({
             url: '/topic/complete',
             method: 'POST',
@@ -75,7 +74,7 @@ export class SchoolTopicApi {
      * @summary \'拒绝
      * @param RejectTopicDto? rejectTopicDto 
      */
-    public topicRejectPost(rejectTopicDto?: RejectTopicDto): Promise<CodeResult> {
+    public topicRejectPost(rejectTopicDto?: RejectTopicDto): Promise<void> {
         return send({
             url: '/topic/reject',
             method: 'POST',
