@@ -91,6 +91,90 @@ function filterPaths(paths, includePaths) {
     return filteredPaths;
 }
 
+// 收集引用的Schema
+function collectReferencedSchemas(swaggerData) {
+    const referencedSchemas = new Set();
+    
+    // 内部辅助函数：处理Schema引用
+    function processSchemaRef(ref) {
+        const schemaName = ref.split('/').pop();
+        if (schemaName) {
+            referencedSchemas.add(schemaName);
+            // 如果这个schema还没有被处理过，继续处理它的属性
+            const schema = swaggerData.components?.schemas?.[schemaName];
+            if (schema) {
+                processSchema(schema);
+            }
+        }
+    }
+    
+    // 内部辅助函数：递归处理Schema
+    function processSchema(schema) {
+        if (!schema) return;
+        
+        if (schema.$ref) {
+            processSchemaRef(schema.$ref);
+        } else if (schema.type === 'array' && schema.items) {
+            processSchema(schema.items);
+        } else if (schema.type === 'object' && schema.properties) {
+            Object.values(schema.properties).forEach(processSchema);
+        } else if (schema.anyOf) {
+            schema.anyOf.forEach(processSchema);
+        } else if (schema.oneOf) {
+            schema.oneOf.forEach(processSchema);
+        } else if (schema.allOf) {
+            schema.allOf.forEach(processSchema);
+        } else if (schema.type === 'object' && schema.additionalProperties) {
+            processSchema(schema.additionalProperties);
+        } else if (schema.type === 'object' && schema.patternProperties) {
+            Object.values(schema.patternProperties).forEach(processSchema);
+        }
+    }
+    
+    // 遍历所有路径项
+    Object.values(swaggerData.paths).forEach(pathItem => {
+        // 遍历路径项的所有操作
+        Object.values(pathItem).forEach(operation => {
+            // 处理参数
+            (operation.parameters || []).forEach(param => {
+                if (param.schema) {
+                    processSchema(param.schema);
+                } else if (param.content) {
+                    Object.values(param.content).forEach(mediaType => {
+                        if (mediaType.schema) {
+                            processSchema(mediaType.schema);
+                        }
+                    });
+                }
+            });
+            
+            // 处理请求体
+            if (operation.requestBody?.content) {
+                Object.values(operation.requestBody.content).forEach(mediaType => {
+                    if (mediaType.schema) {
+                        processSchema(mediaType.schema);
+                    }
+                });
+            }
+            
+            // 处理响应
+            if (operation.responses) {
+                Object.values(operation.responses).forEach(response => {
+                    if (response.content) {
+                        Object.values(response.content).forEach(mediaType => {
+                            if (mediaType.schema) {
+                                processSchema(mediaType.schema);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+    
+    return referencedSchemas;
+}
+
 // 过滤swagger路径
 function filterSwaggerPaths(swaggerData, includePaths) {
     // 过滤路径
@@ -98,6 +182,30 @@ function filterSwaggerPaths(swaggerData, includePaths) {
 
     // 更新swagger数据中的路径
     swaggerData.paths = filteredPaths;
+    
+    // 如果没有设置includePaths或者includePaths为空，不需要过滤Schema
+    if (!includePaths || includePaths.length === 0) {
+        return swaggerData;
+    }
+    
+    // 如果没有components或schemas，直接返回
+    if (!swaggerData.components?.schemas) {
+        return swaggerData;
+    }
+    
+    // 保存原始schemas
+    const originalSchemas = { ...swaggerData.components.schemas };
+    
+    // 收集引用的Schema
+    const referencedSchemas = collectReferencedSchemas(swaggerData);
+    
+    // 过滤components.schemas，仅保留引用的Schema
+    swaggerData.components.schemas = Object.fromEntries(
+        Object.entries(originalSchemas).filter(([name]) => 
+            referencedSchemas.has(name)
+        )
+    );
+    
     return swaggerData;
 }
 
