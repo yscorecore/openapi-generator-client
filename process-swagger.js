@@ -18,8 +18,8 @@ const defaultConfig = {
     openapiGenerator: {
         generator: "typescript-axios",
         useDocker: true,
-        apiOutputDir: 'api',
-        modelOutputDir: 'models',
+        apiPackage: 'api',
+        modelPackage: 'models',
         additionalProperties: 'withSeparateModelsAndApi=true,skipFormModel=true'
     }
 };
@@ -330,9 +330,7 @@ async function main() {
         const rootDir = "/local";
         const dockerWorkDir = path.posix.join(rootDir, inputDir);
         // 动态生成additionalProperties，包含api和model输出目录
-        const apiPackage = openapiGenerator.apiOutputDir;
-        const modelPackage = openapiGenerator.modelOutputDir;
-        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${modelPackage},apiPackage=${apiPackage}`;
+        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
         return {
             command: 'docker',
             args: [
@@ -351,9 +349,7 @@ async function main() {
     function generateLocal(config, processedSwaggerPath, workDir) {
         const openapiGenerator = config.openapiGenerator;
         // 动态生成additionalProperties，包含api和model输出目录
-        const apiPackage = openapiGenerator.apiOutputDir;
-        const modelPackage = openapiGenerator.modelOutputDir;
-        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${modelPackage},apiPackage=${apiPackage}`;
+        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
         return {
             command: 'openapi-generator-cli',
             args: [

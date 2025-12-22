@@ -8,7 +8,7 @@
   "openapiGenerator": {
        "generator": "typescript-axios",
        "useDocker": false,
-       "apiOutputDir": "api",
-       "modelOutputDir": "models"
+       "apiPackage": "api",
+       "modelPackage": "models"
   }
 }
