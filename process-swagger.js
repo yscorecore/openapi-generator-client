@@ -403,8 +403,8 @@ async function main() {
         });
 
         generateProcess.on('close', (code) => {
-           // tryDeleteFile(processedSwaggerPath);
-           // tryDeleteFile(originalSwaggerPath);
+            tryDeleteFile(processedSwaggerPath);
+            tryDeleteFile(originalSwaggerPath);
             if (code === 0) {
                 console.log('\n客户端代码生成成功!');
             } else {
