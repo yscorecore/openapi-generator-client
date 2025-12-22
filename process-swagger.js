@@ -322,6 +322,21 @@ function tryDeleteFile(filePath) {
     }
 }
 
+// 清空目录函数
+function cleanDirectory(directoryPath) {
+    try {
+        if (fs.existsSync(directoryPath)) {
+            // 递归删除目录及其内容
+            fs.rmSync(directoryPath, { recursive: true, force: true });
+            console.log(`成功清空目录: ${directoryPath}`);
+        }
+        // 重新创建空目录
+        fs.mkdirSync(directoryPath, { recursive: true });
+    } catch (err) {
+        console.error(`清空目录 ${directoryPath} 时出错: ${err.message}`);
+    }
+}
+
 // 主函数
 async function main() {
     // 生成命令：Docker模式
@@ -384,6 +399,12 @@ async function main() {
         // 保存处理后的swagger文件
         fs.writeFileSync(processedSwaggerPath, JSON.stringify(swaggerData, null, 2), 'utf8');
         console.log(`处理后的swagger文件已保存到: ${processedSwaggerPath}`);
+
+        // 清空api和model目录
+        const apiDir = path.resolve(workDir, config.openapiGenerator.apiPackage);
+        const modelDir = path.resolve(workDir, config.openapiGenerator.modelPackage);
+        cleanDirectory(apiDir);
+        cleanDirectory(modelDir);
 
         const { command, args } = config.openapiGenerator.useDocker ?
             generateWithDocker(config, relativeInputDir) :
