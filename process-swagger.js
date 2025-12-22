@@ -18,7 +18,9 @@ const defaultConfig = {
     openapiGenerator: {
         generator: "typescript-axios",
         useDocker: true,
-        additionalProperties: 'withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api,skipFormModel=true'
+        apiOutputDir: 'api',
+        modelOutputDir: 'models',
+        additionalProperties: 'withSeparateModelsAndApi=true,skipFormModel=true'
     }
 };
 
@@ -327,6 +329,10 @@ async function main() {
         const openapiGenerator = config.openapiGenerator;
         const rootDir = "/local";
         const dockerWorkDir = path.posix.join(rootDir, inputDir);
+        // 动态生成additionalProperties，包含api和model输出目录
+        const apiPackage = openapiGenerator.apiOutputDir;
+        const modelPackage = openapiGenerator.modelOutputDir;
+        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${modelPackage},apiPackage=${apiPackage}`;
         return {
             command: 'docker',
             args: [
@@ -336,13 +342,18 @@ async function main() {
                 '-g', openapiGenerator.generator,
                 '-o', dockerWorkDir,
                 '-t', '/local/templates',
-                '-p', openapiGenerator.additionalProperties
+                '-p', additionalProperties
             ]
         };
     }
 
     // 生成命令：本地模式
     function generateLocal(config, processedSwaggerPath, workDir) {
+        const openapiGenerator = config.openapiGenerator;
+        // 动态生成additionalProperties，包含api和model输出目录
+        const apiPackage = openapiGenerator.apiOutputDir;
+        const modelPackage = openapiGenerator.modelOutputDir;
+        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${modelPackage},apiPackage=${apiPackage}`;
         return {
             command: 'openapi-generator-cli',
             args: [
@@ -351,7 +362,7 @@ async function main() {
                 '-g', config.openapiGenerator.generator,
                 '-o', workDir,
                 '-t', path.resolve(process.cwd(), 'templates'),
-                '-p', config.openapiGenerator.additionalProperties
+                '-p', additionalProperties
             ]
         };
     }
