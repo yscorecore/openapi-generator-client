@@ -111,7 +111,7 @@ export class SchoolOrderRequirementApi {
     }
     /**
      * 
-     * @summary 需求���上报
+     * @summary 需求单上报
      * @param UploadRequirementReq? uploadRequirementReq 
      */
     public orderRequirementUploadRequirementPost(uploadRequirementReq?: UploadRequirementReq): Promise<void> {

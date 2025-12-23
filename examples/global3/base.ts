@@ -9,8 +9,7 @@ export interface RestInfo {
     body?: any,
 }
 
-axios.defaults.baseURL = 'http://localhost:5077';
-axios.defaults.timeout = 100000;
+
 
 const multipartFormDataHeader = { 'Content-type': 'multipart/form-data' };
 const applicationJsonDataHeader = { 'Content-type': 'application/json' }

@@ -4,7 +4,7 @@
 
 import { send } from "../base"
 {{#imports}}
-import type { {{classname}} } from "../models"
+import type { {{classname}} } from "{{modelImportPath}}"
 {{/imports}}
 
 {{#operations}}
