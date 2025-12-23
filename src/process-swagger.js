@@ -21,7 +21,7 @@ const defaultConfig = {
         apiPackage: 'api',
         modelPackage: 'models',
         additionalProperties: 'withSeparateModelsAndApi=true,skipFormModel=true',
-        ignoreList:[
+        ignoreList: [
             "docs/",
             "git_push.sh",
             "index.ts",
@@ -319,6 +319,14 @@ function getConfig(workDir) {
         filter: { ...defaultConfig.filter, ...config.filter },
         openapiGenerator: { ...defaultConfig.openapiGenerator, ...config.openapiGenerator }
     };
+
+    // 确保base.ts总是被添加到ignoreList中
+    if (!mergedConfig.openapiGenerator.ignoreList) {
+        mergedConfig.openapiGenerator.ignoreList = [];
+    }
+    if (fs.existsSync(path.resolve(workDir, 'base.ts'))) {
+        mergedConfig.openapiGenerator.ignoreList.push('base.ts');
+    }
     return mergedConfig;
 }
 
@@ -333,6 +341,16 @@ function tryDeleteFile(filePath) {
         }
     } catch (err) {
         console.error(`删除文件 ${filePath} 时出错: ${err.message}`);
+    }
+}
+function tryDeleteFolder(folder) {
+    try {
+        if (fs.existsSync(folder) && fs.statSync(filePath).isDirectory()) {
+            fs.rmSync(folder, { recursive: true, force: true });
+            console.log(`成功删除目录: ${folder}`);
+        }
+    } catch (err) {
+        console.error(`删除目录 ${folder} 时出错: ${err.message}`);
     }
 }
 
@@ -354,56 +372,46 @@ function cleanDirectory(directoryPath) {
 // 主函数
 async function main() {
     // 生成命令：Docker模式
-        function generateWithDocker(config, inputDir) {
-            const openapiGenerator = config.openapiGenerator;
-            const rootDir = "/local";
-            const dockerWorkDir = path.posix.join(rootDir, inputDir);
-            
-            // 计算从API文件到models目录的相对路径
-            const apiPackageParts = openapiGenerator.apiPackage.split('/');
-            const modelPackageParts = openapiGenerator.modelPackage.split('/');
-            const relativePath = '../'.repeat(apiPackageParts.length);
-            const modelImportPath = `${relativePath}${modelPackageParts.join('/')}`;
-            
-            // 动态生成additionalProperties，包含api和model输出目录
-            const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage},modelImportPath=${modelImportPath}`;
-            
-            const args = [
-                'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
-                'openapitools/openapi-generator-cli', 'generate',
-                '-i', path.posix.join(dockerWorkDir, config.swagger.processedPath),
-                '-g', openapiGenerator.generator,
-                '-o', dockerWorkDir,
-                '-t', '/local/templates',
-                '-p', additionalProperties
-            ];
-            
-            // 添加ignoreList参数
-            if (openapiGenerator.ignoreList && openapiGenerator.ignoreList.length > 0) {
-                openapiGenerator.ignoreList.forEach(item => {
-                    args.push('--openapi-generator-ignore-list', item);
-                });
-            }
-            
-            return {
-                command: 'docker',
-                args: args
-            };
+    function generateWithDocker(config, inputDir) {
+        const openapiGenerator = config.openapiGenerator;
+        const rootDir = "/local";
+        const dockerWorkDir = path.posix.join(rootDir, inputDir);
+
+
+
+        // 动态生成additionalProperties，包含api和model输出目录
+        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
+
+        const args = [
+            'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
+            'openapitools/openapi-generator-cli', 'generate',
+            '-i', path.posix.join(dockerWorkDir, config.swagger.processedPath),
+            '-g', openapiGenerator.generator,
+            '-o', dockerWorkDir,
+            '-t', '/local/templates',
+            '-p', additionalProperties
+        ];
+
+        // 添加ignoreList参数
+        if (openapiGenerator.ignoreList && openapiGenerator.ignoreList.length > 0) {
+            openapiGenerator.ignoreList.forEach(item => {
+                args.push('--openapi-generator-ignore-list', item);
+            });
         }
+
+        return {
+            command: 'docker',
+            args: args
+        };
+    }
 
     // 生成命令：本地模式
     function generateLocal(config, processedSwaggerPath, workDir) {
         const openapiGenerator = config.openapiGenerator;
-        
-        // 计算从API文件到models目录的相对路径
-        const apiPackageParts = openapiGenerator.apiPackage.split('/');
-        const modelPackageParts = openapiGenerator.modelPackage.split('/');
-        const relativePath = '../'.repeat(apiPackageParts.length);
-        const modelImportPath = `${relativePath}${modelPackageParts.join('/')}`;
-        
+
         // 动态生成additionalProperties，包含api和model输出目录
-        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage},modelImportPath=${modelImportPath}`;
-        
+        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
+
         const args = [
             'generate',
             '-i', processedSwaggerPath,
@@ -412,14 +420,14 @@ async function main() {
             '-t', path.resolve(process.cwd(), 'templates'),
             '-p', additionalProperties
         ];
-        
+
         // 添加ignoreList参数
         if (openapiGenerator.ignoreList && openapiGenerator.ignoreList.length > 0) {
             openapiGenerator.ignoreList.forEach(item => {
                 args.push('--openapi-generator-ignore-list', item);
             });
         }
-        
+
         return {
             command: 'openapi-generator-cli',
             args: args
@@ -469,22 +477,9 @@ async function main() {
 
         generateProcess.on('close', (code) => {
             // 删除.openapi-generator目录
-            const openapiGeneratorDir = path.resolve(workDir, '.openapi-generator');
-            if (fs.existsSync(openapiGeneratorDir)) {
-                fs.rmSync(openapiGeneratorDir, { recursive: true, force: true });
-                console.log(`
-已删除.openapi-generator目录: ${openapiGeneratorDir}`);
-            }
-            
+            tryDeleteFolder(path.resolve(workDir, '.openapi-generator'))
             // 删除.openapi-generator-ignore文件
-            const openapiGeneratorIgnoreFile = path.resolve(workDir, '.openapi-generator-ignore');
-            if (fs.existsSync(openapiGeneratorIgnoreFile)) {
-               // fs.unlinkSync(openapiGeneratorIgnoreFile);
-                console.log(`已删除.openapi-generator-ignore文件: ${openapiGeneratorIgnoreFile}`);
-            }
-            
-            // 由于使用了--openapi-generator-ignore-list参数，不再需要手动删除ignoreList文件
-            
+            tryDeleteFile(path.resolve(workDir, '.openapi-generator-ignore'));
             tryDeleteFile(processedSwaggerPath);
             tryDeleteFile(originalSwaggerPath);
             if (code === 0) {
