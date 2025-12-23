@@ -471,10 +471,12 @@ async function main(relativeInputDir) {
             generateWithDocker(config, relativeInputDir) :
             generateLocal(config, processedSwaggerPath, workDir);
 
+        // 保存执行命令时的当前工作目录
+        const commandCwd = process.cwd();
         // 调用生成命令
         console.log('\n开始生成客户端代码...');
         console.log(`执行命令: ${command} ${args.join(' ')}`);
-        console.log(`当前工作目录: ${process.cwd()}`);
+        console.log(`当前工作目录: ${commandCwd}`);
         console.log(`处理后的swagger路径: ${processedSwaggerPath}`);
         console.log(`输出目录: ${workDir}`);
         const { spawn } = require('child_process');
@@ -488,7 +490,8 @@ async function main(relativeInputDir) {
             tryDeleteFolder(path.resolve(workDir, '.openapi-generator'))
             // 删除.openapi-generator-ignore文件
             tryDeleteFile(path.resolve(workDir, '.openapi-generator-ignore'));
-            // 删除openapitools.json文件
+            // 删除openapitools.json文件（可能生成在命令执行的工作目录或输出目录）
+            tryDeleteFile(path.resolve(commandCwd, 'openapitools.json'));
             tryDeleteFile(path.resolve(workDir, 'openapitools.json'));
             tryDeleteFile(processedSwaggerPath);
             tryDeleteFile(originalSwaggerPath);
