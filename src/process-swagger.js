@@ -27,7 +27,6 @@ const defaultConfig = {
             "index.ts",
             "common.ts",
             "configuration.ts",
-            "api.ts",
             ".gitignore",
             ".npmignore"
         ]
@@ -345,7 +344,7 @@ function tryDeleteFile(filePath) {
 }
 function tryDeleteFolder(folder) {
     try {
-        if (fs.existsSync(folder) && fs.statSync(filePath).isDirectory()) {
+        if (fs.existsSync(folder) && fs.statSync(folder).isDirectory()) {
             fs.rmSync(folder, { recursive: true, force: true });
             console.log(`成功删除目录: ${folder}`);
         }
