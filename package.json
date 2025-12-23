@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "description": "OpenAPI test monorepo",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.25.2"
   }
 }
