@@ -1,0 +1,8 @@
+{
+  "swagger": {
+    "url": "./swagger.json"
+  },  
+    "openapiGenerator": {
+       "useDocker": true
+  }
+}

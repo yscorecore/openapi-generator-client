@@ -2,9 +2,10 @@
   "name": "openapitest",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": {
+    "openapitest": "index.js"
+  },
   "workspaces": [
-    "examples/client",
-    "examples/global",
     "examples/global2",
     "examples/global3"
   ],
@@ -17,9 +18,7 @@
   "description": "OpenAPI test monorepo",
   "dependencies": {
     "@nestjs/common": "^11.1.10",
-    "axios": "^1.13.2"
-  },
-  "devDependencies": {
+    "axios": "^1.13.2",
     "@openapitools/openapi-generator-cli": "^2.25.2"
   }
 }

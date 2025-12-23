@@ -25,6 +25,7 @@ const defaultConfig = {
             "docs/",
             "git_push.sh",
             "index.ts",
+            "api.ts",
             "common.ts",
             "configuration.ts",
             ".gitignore",
@@ -369,26 +370,26 @@ function cleanDirectory(directoryPath) {
 }
 
 // 主函数
-async function main() {
+async function main(relativeInputDir) {
     // 生成命令：Docker模式
     function generateWithDocker(config, inputDir) {
         const openapiGenerator = config.openapiGenerator;
         const rootDir = "/local";
         const dockerWorkDir = path.posix.join(rootDir, inputDir);
 
-
-
+        const templateFolder =  path.resolve(__dirname, '../templates');
         // 动态生成additionalProperties，包含api和model输出目录
         const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
-
+        console.info("当前目录:"+ process.cwd() );
         const args = [
             'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
+            '-v', `${templateFolder}:/templates`,
             'openapitools/openapi-generator-cli', 'generate',
-            '-i', path.posix.join(dockerWorkDir, config.swagger.processedPath),
+            '--input-spec', path.posix.join(dockerWorkDir, config.swagger.processedPath),
             '-g', openapiGenerator.generator,
             '-o', dockerWorkDir,
-            '-t', '/local/templates',
-            '-p', additionalProperties
+            '-t', '/templates',
+            '-p', `"${additionalProperties}"`
         ];
 
         // 添加ignoreList参数
@@ -411,13 +412,15 @@ async function main() {
         // 动态生成additionalProperties，包含api和model输出目录
         const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
 
+        // 使用 __dirname 确保模板目录路径始终相对于当前脚本文件
+        const templatesDir = path.resolve(__dirname, '../templates');
         const args = [
             'generate',
-            '-i', processedSwaggerPath,
+            '--input-spec', processedSwaggerPath,
             '-g', config.openapiGenerator.generator,
             '-o', workDir,
-            '-t', path.resolve(process.cwd(), 'templates'),
-            '-p', additionalProperties
+            '-t', templatesDir,
+            '-p', `"${additionalProperties}"`
         ];
 
         // 添加ignoreList参数
@@ -435,7 +438,10 @@ async function main() {
 
     try {
         const rootDir = path.resolve(process.cwd());
-        const relativeInputDir = process.argv[2];
+        // 如果没有传入参数，则尝试从命令行获取
+        if (!relativeInputDir) {
+            relativeInputDir = process.argv[2];
+        }
         const workDir = path.resolve(rootDir, relativeInputDir);
         // 合并配置，实际配置覆盖默认配置
         const config = getConfig(workDir);
@@ -468,6 +474,9 @@ async function main() {
         // 调用生成命令
         console.log('\n开始生成客户端代码...');
         console.log(`执行命令: ${command} ${args.join(' ')}`);
+        console.log(`当前工作目录: ${process.cwd()}`);
+        console.log(`处理后的swagger路径: ${processedSwaggerPath}`);
+        console.log(`输出目录: ${workDir}`);
         const { spawn } = require('child_process');
         const generateProcess = spawn(command, args, {
             shell: true,
@@ -479,6 +488,8 @@ async function main() {
             tryDeleteFolder(path.resolve(workDir, '.openapi-generator'))
             // 删除.openapi-generator-ignore文件
             tryDeleteFile(path.resolve(workDir, '.openapi-generator-ignore'));
+            // 删除openapitools.json文件
+            tryDeleteFile(path.resolve(workDir, 'openapitools.json'));
             tryDeleteFile(processedSwaggerPath);
             tryDeleteFile(originalSwaggerPath);
             if (code === 0) {
@@ -494,5 +505,12 @@ async function main() {
     }
 }
 
-// 执行主函数
-main();
+// 导出main函数供其他模块使用
+module.exports = {
+    main
+};
+
+// 如果直接运行该文件，则执行主函数
+if (require.main === module) {
+    main();
+}
