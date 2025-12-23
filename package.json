@@ -2,23 +2,24 @@
   "name": "openapitest",
   "version": "1.0.0",
   "main": "index.js",
+  "workspaces": [
+    "examples/client",
+    "examples/global",
+    "examples/global2",
+    "examples/global3"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:client": "node src/process-swagger.js ./examples/client/",
-    "generate:global": "node src/process-swagger.js ./examples/global/",
-    "generate:global2": "node src/process-swagger.js ./examples/global2",
-    "generate:global3": "node src/process-swagger.js ./examples/global3"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "OpenAPI test monorepo",
   "dependencies": {
     "@nestjs/common": "^11.1.10",
     "axios": "^1.13.2"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.25.2",
-    "typescript": "^5.9.3"
+    "@openapitools/openapi-generator-cli": "^2.25.2"
   }
 }

@@ -1,9 +1,0 @@
-{
-  "swagger": {
-    "url": "https://test-global.xueshengxiaocanan.cn/swagger/StudentMeal.GlobalService/swagger.json"
-  },
-    "openapiGenerator": {
-       "generator": "typescript-axios",
-       "useDocker": false
-  }
-}
