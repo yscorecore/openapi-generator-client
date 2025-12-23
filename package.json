@@ -17,8 +17,6 @@
   "license": "ISC",
   "description": "OpenAPI test monorepo",
   "dependencies": {
-    "@nestjs/common": "^11.1.10",
-    "axios": "^1.13.2",
     "@openapitools/openapi-generator-cli": "^2.25.2"
   }
 }
