@@ -370,7 +370,7 @@ function cleanDirectory(directoryPath) {
 }
 
 // 主函数
-async function main(relativeInputDir) {
+async function run(relativeInputDir) {
     // 生成命令：Docker模式
     function generateWithDocker(config, inputDir) {
         const openapiGenerator = config.openapiGenerator;
@@ -414,7 +414,7 @@ async function main(relativeInputDir) {
 
         // 使用 __dirname 确保模板目录路径始终相对于当前脚本文件
         const templatesDir = path.resolve(__dirname, '../templates');
-        const openapiToolsJson = path.resolve(__dirname, '../openapitools.json');
+        const openapiToolsJson = path.resolve(__dirname, './openapitools.json');
         const args = [
             'generate',
             '--input-spec', processedSwaggerPath,
@@ -510,10 +510,10 @@ async function main(relativeInputDir) {
 
 // 导出main函数供其他模块使用
 module.exports = {
-    main
+    run
 };
 
 // 如果直接运行该文件，则执行主函数
 if (require.main === module) {
-    main();
+    run();
 }

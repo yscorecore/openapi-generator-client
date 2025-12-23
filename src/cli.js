@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Import the main processing function
-const processSwagger = require('./src/process-swagger');
+const processSwagger = require('./process-swagger');
 
 // Parse command line arguments
 const args = process.argv.slice(2);
@@ -35,4 +35,4 @@ if (args.length < 1) {
 }
 
 // Call the main function with the provided directory
-processSwagger.main(args[0]);
+processSwagger.run(args[0]);

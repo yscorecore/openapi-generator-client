@@ -1,9 +1,9 @@
 {
   "name": "openapitest",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/cli.js",
   "bin": {
-    "openapitest": "index.js"
+    "openapitest": "src/cli.js"
   },
   "workspaces": [
     "examples/global2",
