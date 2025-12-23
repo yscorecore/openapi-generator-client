@@ -10,7 +10,7 @@ import type { AppversionInfo } from "../models"
 export class UpgradeApi {
     /**
      * 
-     * @summary 获取最近一次的��级的版本信息
+     * @summary 获取最近一次的���级的版本信息
      * @param string appName 
      * @param string hwcode 
      * @param boolean? manual 

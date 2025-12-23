@@ -11,13 +11,13 @@ const defaultConfig = {
     filter: {
         includePaths: [],
         extractCodeResult: true,
-        codeFieldName:'code',
-        messageFieldName:'message',
-        dataFieldName:'data',
+        codeFieldName: 'code',
+        messageFieldName: 'message',
+        dataFieldName: 'data',
     },
     openapiGenerator: {
         generator: "typescript-axios",
-        useDocker: true,
+        useDocker: false,
         apiPackage: 'api',
         modelPackage: 'models',
         additionalProperties: 'withSeparateModelsAndApi=true,skipFormModel=true'
@@ -96,7 +96,7 @@ function filterPaths(paths, includePaths) {
 // 收集引用的Schema
 function collectReferencedSchemas(swaggerData) {
     const referencedSchemas = new Set();
-    
+
     // 内部辅助函数：处理Schema引用
     function processSchemaRef(ref) {
         const schemaName = ref.split('/').pop();
@@ -109,11 +109,11 @@ function collectReferencedSchemas(swaggerData) {
             }
         }
     }
-    
+
     // 内部辅助函数：递归处理Schema
     function processSchema(schema) {
         if (!schema) return;
-        
+
         if (schema.$ref) {
             processSchemaRef(schema.$ref);
         } else if (schema.type === 'array' && schema.items) {
@@ -132,7 +132,7 @@ function collectReferencedSchemas(swaggerData) {
             Object.values(schema.patternProperties).forEach(processSchema);
         }
     }
-    
+
     // 遍历所有路径项
     Object.values(swaggerData.paths).forEach(pathItem => {
         // 遍历路径项的所有操作
@@ -149,7 +149,7 @@ function collectReferencedSchemas(swaggerData) {
                     });
                 }
             });
-            
+
             // 处理请求体
             if (operation.requestBody?.content) {
                 Object.values(operation.requestBody.content).forEach(mediaType => {
@@ -158,7 +158,7 @@ function collectReferencedSchemas(swaggerData) {
                     }
                 });
             }
-            
+
             // 处理响应
             if (operation.responses) {
                 Object.values(operation.responses).forEach(response => {
@@ -173,7 +173,7 @@ function collectReferencedSchemas(swaggerData) {
             }
         });
     });
-    
+
     return referencedSchemas;
 }
 
@@ -184,95 +184,95 @@ function filterSwaggerPaths(swaggerData, includePaths) {
 
     // 更新swagger数据中的路径
     swaggerData.paths = filteredPaths;
-    
+
     // 如果没有设置includePaths或者includePaths为空，不需要过滤Schema
     if (!includePaths || includePaths.length === 0) {
         return swaggerData;
     }
-    
+
     // 如果没有components或schemas，直接返回
     if (!swaggerData.components?.schemas) {
         return swaggerData;
     }
-    
+
     // 保存原始schemas
     const originalSchemas = { ...swaggerData.components.schemas };
-    
+
     // 收集引用的Schema
     const referencedSchemas = collectReferencedSchemas(swaggerData);
-    
+
     // 过滤components.schemas，仅保留引用的Schema
     swaggerData.components.schemas = Object.fromEntries(
-        Object.entries(originalSchemas).filter(([name]) => 
+        Object.entries(originalSchemas).filter(([name]) =>
             referencedSchemas.has(name)
         )
     );
-    
+
     return swaggerData;
 }
 
 // 处理CodeResult相关类型
 function processCodeResult(swaggerData, filterConfig) {
-    if(!filterConfig.extractCodeResult) {
+    if (!filterConfig.extractCodeResult) {
         return swaggerData;
     }
     if (!swaggerData.components?.schemas || !swaggerData.paths) {
         return swaggerData;
     }
-    
+
     const schemas = swaggerData.components.schemas;
-    
+
     // 内部辅助函数：检查是否是需要处理的CodeResult类型
     function isProcessableCodeResult(schemaName) {
         const schema = schemas[schemaName];
         if (!schema || !schema.properties) return false;
-        
+
         // 检查schema是否包含配置中指定的code和message字段
-        return (schema.properties[filterConfig.codeFieldName] && 
-                schema.properties[filterConfig.messageFieldName]);
+        return (schema.properties[filterConfig.codeFieldName] &&
+            schema.properties[filterConfig.messageFieldName]);
     }
-    
+
     // 内部辅助函数：处理单个响应内容的schema引用
     function processResponseContent(content) {
         if (!content.schema || !content.schema.$ref) return;
-        
+
         const schemaName = content.schema.$ref.split('/').pop();
-        
+
         if (isProcessableCodeResult(schemaName)) {
             const codeResultSchema = schemas[schemaName];
             if (codeResultSchema?.properties?.data) {
                 content.schema = codeResultSchema.properties.data;
-            }else{
+            } else {
                 delete content.schema;
             }
         }
     }
-    
+
     // 内部辅助函数：处理单个响应的所有媒体类型
     function processResponse(response) {
         if (!response.content) return;
-        
+
         Object.values(response.content).forEach(content => {
             processResponseContent(content);
         });
     }
-    
+
     // 内部辅助函数：处理单个操作的所有响应
     function processOperation(operation) {
         if (!operation.responses) return;
-        
+
         Object.values(operation.responses).forEach(response => {
             processResponse(response);
         });
     }
-    
+
     // 内部辅助函数：处理单个路径的所有方法
     function processPath(path) {
         Object.values(path).forEach(operation => {
             processOperation(operation);
         });
     }
-    
+
     // 内部辅助函数：删除不需要的CodeResult schema定义
     function cleanupCodeResultSchemas() {
         Object.keys(schemas).forEach(schemaName => {
@@ -284,22 +284,26 @@ function processCodeResult(swaggerData, filterConfig) {
             }
         });
     }
-    
+
     // 1. 遍历所有路径，将响应中的CodeResult类型替换为实际的数据类型
     Object.values(swaggerData.paths).forEach(path => {
         processPath(path);
     });
-    
+
     // 2. 删除所有带有data属性的CodeResult相关的schema定义（保留基础的CodeResult）
     cleanupCodeResultSchemas();
-    
+
     return swaggerData;
 }
 
 function getConfig(workDir) {
-    const configPath = path.resolve(workDir, './config.json');
-    const configData = fs.readFileSync(configPath, 'utf8');
-    const config = JSON.parse(configData);
+    const configPath = path.resolve(workDir, './openapiconfig.json');
+    let config = {};
+    if (fs.existsSync(configPath)) {
+        const configData = fs.readFileSync(configPath, 'utf8');
+        config = JSON.parse(configData);
+    }
+
     const mergedConfig = {
         swagger: { ...defaultConfig.swagger, ...config.swagger },
         filter: { ...defaultConfig.filter, ...config.filter },

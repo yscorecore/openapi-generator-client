@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:client": "node process-swagger.js ./src/client/",
-    "generate:global": "node process-swagger.js ./src/global/"
+    "generate:client": "node src/process-swagger.js ./examples/client/",
+    "generate:global": "node src/process-swagger.js ./examples/global/",
+    "generate:global2": "node src/process-swagger.js ./examples/global2"
   },
   "keywords": [],
   "author": "",
