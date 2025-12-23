@@ -1,8 +1,0 @@
-api/config-api.ts
-api/heart-beat-api.ts
-api/route-api.ts
-api/upgrade-api.ts
-base.ts
-models/appversion-info.ts
-models/index.ts
-models/route-info.ts

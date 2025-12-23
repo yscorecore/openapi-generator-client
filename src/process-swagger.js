@@ -5,7 +5,7 @@ const path = require('path');
 const defaultConfig = {
     swagger: {
         url: './swagger.json',
-        originalPath: '__swagger-original.json',
+        originalPath: '__swagger-download.json',
         processedPath: '__swagger-processed.json'
     },
     filter: {

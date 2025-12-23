@@ -14,9 +14,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@nestjs/common": "^11.1.10",
     "axios": "^1.13.2"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.25.2",
     "typescript": "^5.9.3"
   }
 }
