@@ -1,10 +1,10 @@
 {
-  "name": "@openapitest/global3",
+  "name": "global3",
   "version": "1.0.0",
   "description": "Global3 example for OpenAPI test",
   "main": "index.js",
   "scripts": {
-    "generate": "npx openapitest ./src/client",
+    "generate": "npx openapi-generator-ts ./src/client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,6 +14,6 @@
     "axios": "^1.13.2"
   },
    "devDependencies": {
-    "openapitest": "workspace:*"
+    "openapi-generator-ts": "workspace:*"
   }
 }

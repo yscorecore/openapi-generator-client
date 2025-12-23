@@ -1,23 +1,18 @@
 {
-  "name": "openapitest",
+  "name": "openapi-generator-ts",
   "version": "0.0.1",
   "main": "src/cli.js",
   "bin": {
-    "openapitest": "src/cli.js"
+    "openapi-generator-ts": "src/cli.js"
   },
-  "workspaces": [
-    "examples/global2",
-    "examples/global3"
-  ],
+  "keywords": ["openapi", "swagger", "generator", "typescript", "client"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "OpenAPI test monorepo",
-  "dependencies": {},
-  "devDependencies": {
+  "description": "OpenAPI TypeScript client generator based on openapi-generator-cli",
+  "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.25.2"
   }
 }
