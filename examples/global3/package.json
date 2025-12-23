@@ -4,14 +4,16 @@
   "description": "Global3 example for OpenAPI test",
   "main": "index.js",
   "scripts": {
-    "generate": "pnpx openapitest ./src/client",
+    "generate": "npx openapitest ./src/client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.13.2",
+    "axios": "^1.13.2"
+  },
+   "devDependencies": {
     "openapitest": "workspace:*"
   }
 }

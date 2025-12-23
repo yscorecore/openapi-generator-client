@@ -414,13 +414,15 @@ async function main(relativeInputDir) {
 
         // 使用 __dirname 确保模板目录路径始终相对于当前脚本文件
         const templatesDir = path.resolve(__dirname, '../templates');
+        const openapiToolsJson = path.resolve(__dirname, '../openapitools.json');
         const args = [
             'generate',
             '--input-spec', processedSwaggerPath,
             '-g', config.openapiGenerator.generator,
             '-o', workDir,
             '-t', templatesDir,
-            '-p', `"${additionalProperties}"`
+            '-p', `"${additionalProperties}"`,
+            '--openapitools',openapiToolsJson
         ];
 
         // 添加ignoreList参数
@@ -491,8 +493,6 @@ async function main(relativeInputDir) {
             // 删除.openapi-generator-ignore文件
             tryDeleteFile(path.resolve(workDir, '.openapi-generator-ignore'));
             // 删除openapitools.json文件（可能生成在命令执行的工作目录或输出目录）
-            tryDeleteFile(path.resolve(commandCwd, 'openapitools.json'));
-            tryDeleteFile(path.resolve(workDir, 'openapitools.json'));
             tryDeleteFile(processedSwaggerPath);
             tryDeleteFile(originalSwaggerPath);
             if (code === 0) {
