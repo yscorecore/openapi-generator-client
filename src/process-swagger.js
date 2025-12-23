@@ -344,25 +344,25 @@ function cleanDirectory(directoryPath) {
 // 主函数
 async function main() {
     // 生成命令：Docker模式
-    function generateWithDocker(config, inputDir) {
-        const openapiGenerator = config.openapiGenerator;
-        const rootDir = "/local";
-        const dockerWorkDir = path.posix.join(rootDir, inputDir);
-        // 动态生成additionalProperties，包含api和model输出目录
-        const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
-        return {
-            command: 'docker',
-            args: [
-                'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
-                'openapitools/openapi-generator-cli', 'generate',
-                '-i', path.posix.join(dockerWorkDir, config.swagger.processedPath),
-                '-g', openapiGenerator.generator,
-                '-o', dockerWorkDir,
-                '-t', '/local/templates',
-                '-p', additionalProperties
-            ]
-        };
-    }
+        function generateWithDocker(config, inputDir) {
+            const openapiGenerator = config.openapiGenerator;
+            const rootDir = "/local";
+            const dockerWorkDir = path.posix.join(rootDir, inputDir);
+            // 动态生成additionalProperties，包含api和model输出目录
+            const additionalProperties = `${openapiGenerator.additionalProperties},modelPackage=${openapiGenerator.modelPackage},apiPackage=${openapiGenerator.apiPackage}`;
+            return {
+                command: 'docker',
+                args: [
+                    'run', '--rm', '-v', `${process.cwd()}:${rootDir}`,
+                    'openapitools/openapi-generator-cli', 'generate',
+                    '-i', path.posix.join(dockerWorkDir, config.swagger.processedPath),
+                    '-g', openapiGenerator.generator,
+                    '-o', dockerWorkDir,
+                    '-t', '/local/templates',
+                    '-p', additionalProperties
+                ]
+            };
+        }
 
     // 生成命令：本地模式
     function generateLocal(config, processedSwaggerPath, workDir) {
@@ -424,6 +424,13 @@ async function main() {
         });
 
         generateProcess.on('close', (code) => {
+            // 删除.openapi-generator目录
+            const openapiGeneratorDir = path.resolve(workDir, '.openapi-generator');
+            if (fs.existsSync(openapiGeneratorDir)) {
+                fs.rmSync(openapiGeneratorDir, { recursive: true, force: true });
+                console.log(`\n已删除.openapi-generator目录: ${openapiGeneratorDir}`);
+            }
+            
             tryDeleteFile(processedSwaggerPath);
             tryDeleteFile(originalSwaggerPath);
             if (code === 0) {
