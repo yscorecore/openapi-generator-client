@@ -1,0 +1,36 @@
+# 统一使用 CRLF 换行符
+
+# 文本文件
+txt text eol=crlf
+md text eol=crlf
+json text eol=crlf
+yml text eol=crlf
+yaml text eol=crlf
+ini text eol=crlf
+conf text eol=crlf
+
+# JavaScript/TypeScript
+js text eol=crlf
+ts text eol=crlf
+jsx text eol=crlf
+tsx text eol=crlf
+
+# HTML/CSS
+html text eol=crlf
+css text eol=crlf
+scss text eol=crlf
+
+# 配置文件
+package.json text eol=crlf
+template text eol=crlf
+mustache text eol=crlf
+
+# 忽略二进制文件
+bin binary
+png binary
+jpg binary
+gif binary
+zip binary
+tgz binary
+dll binary
+executable binary
