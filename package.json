@@ -12,7 +12,12 @@
   "author": "",
   "license": "ISC",
   "description": "OpenAPI TypeScript client generator based on openapi-generator-cli",
-  "dependencies": {
+  "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.25.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "provenance": false
   }
 }

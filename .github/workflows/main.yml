@@ -1,0 +1,60 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ v* ]
+permissions:
+    id-token: write # id-token 的权限是必须的
+    packages: write
+    contents: write
+    issues: write
+    pull-requests: write
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/')
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24.x'
+        registry-url: 'https://registry.npmjs.org/'
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
+    - name: Install dependencies
+      run: pnpm install
+    
+    - name: Run lint
+      run: pnpm run lint
+    
+    - name: Run test
+      run: pnpm run test
+
+    - name: Run build
+      run: pnpm run build     
+
+  publish:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24.x'
+        registry-url: 'https://registry.npmjs.org/'
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    
+    - name: Install dependencies
+      run: pnpm install
+    
+    - name: Publish to npm
+      run: pnpm publish --no-git-checks
