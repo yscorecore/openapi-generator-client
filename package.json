@@ -1,6 +1,6 @@
 {
   "name": "openapi-generator-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "src/cli.js",
   "bin": {
     "openapi-generator-client": "src/cli.js"
