@@ -1,11 +1,17 @@
 {
   "name": "openapi-generator-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "src/cli.js",
   "bin": {
     "openapi-generator-client": "src/cli.js"
   },
-  "keywords": ["openapi", "swagger", "generator", "typescript", "client"],
+  "keywords": [
+    "openapi",
+    "swagger",
+    "generator",
+    "typescript",
+    "client"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
