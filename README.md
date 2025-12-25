@@ -15,13 +15,13 @@ A powerful CLI tool to generate TypeScript API client code from OpenAPI/Swagger 
 ### Global installation
 
 ```bash
-npm install -g openapi-generator-ts
+npm install -g openapi-generator-client
 ```
 
 ### Local installation
 
 ```bash
-npm install --save-dev openapi-generator-ts
+npm install --save-dev openapi-generator-client
 ```
 
 ## Usage
@@ -29,23 +29,23 @@ npm install --save-dev openapi-generator-ts
 ### Basic usage
 
 ```bash
-openapi-generator-ts <directory-path>
+openapi-generator-client <directory-path>
 ```
 
 ### Example
 
 ```bash
 # Process OpenAPI in the current directory
-openapi-generator-ts .
+openapi-generator-client .
 
 # Process OpenAPI in a specific directory
-openapi-generator-ts ./src/api
+openapi-generator-client ./src/api
 ```
 
 ### Help
 
 ```bash
-openapi-generator-ts --help
+openapi-generator-client --help
 ```
 
 ## Configuration
@@ -97,7 +97,7 @@ The tool expects the following structure in the target directory:
 ## Project Structure
 
 ```
-openapi-generator-ts/
+openapi-generator-client/
 ├── src/
 │   ├── cli.js          # CLI entry point
 │   └── generate.js     # Core generation logic
