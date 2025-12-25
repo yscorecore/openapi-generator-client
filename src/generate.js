@@ -495,7 +495,27 @@ async function run(relativeInputDir) {
             // 删除openapitools.json文件（可能生成在命令执行的工作目录或输出目录）
             tryDeleteFile(processedSwaggerPath);
             tryDeleteFile(originalSwaggerPath);
+            
             if (code === 0) {
+                // 修复生成的API文件中的实例名称
+                const apiDir = path.resolve(workDir, config.openapiGenerator.apiPackage);
+                fs.readdirSync(apiDir).forEach(file => {
+                    if (file.endsWith('-api.ts')) {
+                        const filePath = path.resolve(apiDir, file);
+                        let content = fs.readFileSync(filePath, 'utf8');
+                        
+                        // 查找并修复实例名称
+                        content = content.replace(/export const\s+ = new (\w+)\(\);/g, (match, className) => {
+                            // 将类名首字母转为小写作为实例名称
+                            const instanceName = className.charAt(0).toLowerCase() + className.slice(1);
+                            return `export const ${instanceName} = new ${className}();`;
+                        });
+                        
+                        fs.writeFileSync(filePath, content, 'utf8');
+                        console.log(`已修复 ${file} 中的实例名称`);
+                    }
+                });
+                
                 console.log('\n客户端代码生成成功!');
             } else {
                 console.error(`\n客户端代码生成失败，退出码: ${code}`);

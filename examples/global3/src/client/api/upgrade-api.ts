@@ -31,5 +31,5 @@ export class UpgradeApi {
 /**
  * UpgradeApi - instance
  */
-export const UpgradeApiInstance = new UpgradeApi();
+export const upgradeApi = new UpgradeApi();
 

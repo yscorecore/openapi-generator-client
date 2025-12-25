@@ -27,5 +27,5 @@ export class RouteApi {
 /**
  * RouteApi - instance
  */
-export const RouteApiInstance = new RouteApi();
+export const routeApi = new RouteApi();
 

@@ -26,5 +26,5 @@ export class HeartBeatApi {
 /**
  * HeartBeatApi - instance
  */
-export const HeartBeatApiInstance = new HeartBeatApi();
+export const heartBeatApi = new HeartBeatApi();
 

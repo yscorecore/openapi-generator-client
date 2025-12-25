@@ -26,5 +26,5 @@ export class ConfigApi {
 /**
  * ConfigApi - instance
  */
-export const ConfigApiInstance = new ConfigApi();
+export const configApi = new ConfigApi();
 

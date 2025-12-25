@@ -59,6 +59,6 @@ export class {{classname}} {
 /**
  * {{classname}} - instance
  */
-export const {{classname}}Instance = new {{classname}}();
+export const {{classname.charAt(0).toLowerCase() + classname.slice(1)}} = new {{classname}}();
 
 {{/operations}}{{/withSeparateModelsAndApi}}
