@@ -1,9 +1,9 @@
 {
-  "name": "openapi-generator-ts",
+  "name": "openapi-generator-client",
   "version": "0.0.1",
   "main": "src/cli.js",
   "bin": {
-    "openapi-generator-ts": "src/cli.js"
+    "openapi-generator-client": "src/cli.js"
   },
   "keywords": ["openapi", "swagger", "generator", "typescript", "client"],
   "scripts": {

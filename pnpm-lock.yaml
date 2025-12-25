@@ -8,22 +8,17 @@ importers:
 
   .:
     dependencies:
-      '@nestjs/common':
-        specifier: ^11.1.10
-        version: 11.1.10(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@openapitools/openapi-generator-cli':
         specifier: ^2.25.2
         version: 2.26.0
-      axios:
-        specifier: ^1.13.2
-        version: 1.13.2
 
   examples/global2:
     dependencies:
       axios:
         specifier: ^1.13.2
         version: 1.13.2
-      openapitest:
+    devDependencies:
+      openapi-generator-client:
         specifier: workspace:*
         version: link:../..
 
@@ -32,7 +27,8 @@ importers:
       axios:
         specifier: ^1.13.2
         version: 1.13.2
-      openapitest:
+    devDependencies:
+      openapi-generator-client:
         specifier: workspace:*
         version: link:../..
 

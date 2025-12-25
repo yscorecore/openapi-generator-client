@@ -4,7 +4,7 @@
   "description": "Global2 example for OpenAPI test",
   "main": "index.js",
   "scripts": {
-    "generate": "npx openapi-generator-ts ./client",
+    "generate": "npx openapi-generator-client ./client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,6 +14,6 @@
     "axios": "^1.13.2"
   },
   "devDependencies": {
-    "openapi-generator-ts": "workspace:*"
+    "openapi-generator-client": "workspace:*"
   }
 }
