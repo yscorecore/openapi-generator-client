@@ -12,6 +12,10 @@
     "typescript",
     "client"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yscorecore/openapi-generator-client"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postversion": "git push && git push --tags"
