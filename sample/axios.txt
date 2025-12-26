@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
+
 
 export interface RestInfo {
     url: string,
@@ -9,7 +10,17 @@ export interface RestInfo {
     body?: any,
 }
 
+export class ApiCodeError extends Error {
+    public code: string;
+    constructor(code: string, message: string) {
+        super(message);
+        this.code = code;
+        this.name = this.constructor.name; 
+        Object.setPrototypeOf(this, ApiCodeError.prototype);
+    }
+}
 
+export const axiosInstance: AxiosInstance = axios.create();
 
 const multipartFormDataHeader = { 'Content-type': 'multipart/form-data' };
 const applicationJsonDataHeader = { 'Content-type': 'application/json' }
@@ -17,10 +28,15 @@ const formUrlEncodedHeader = { 'Content-type': 'application/x-www-form-urlencode
 
 function paramsSerializer(params: any): string {
     let entries = Object.entries(params || {}).flatMap(([k, v]) => {
+        // 跳过undefined的参数
+        if (v === undefined) {
+            return [];
+        }
+
         if (Array.isArray(v)) {
             return v.map(t => [k, t]);
         } else if (v instanceof Object) {
-           return Object.entries(v);
+            return Object.entries(v);
         } else {
             return [[k, v]];
         }
@@ -28,26 +44,6 @@ function paramsSerializer(params: any): string {
     );
     let segments = entries.map(p => `${p[0]}=${encodeURIComponent(p[1] ?? '')}`);
     return segments.join('&');
-}
-function buildFormData(forms: any) {
-    let formData = new FormData();
-    Object.entries(forms).forEach(([k, v]) => {
-        if (v instanceof Blob) {
-            formData.append(k, v);
-        } else {
-            formData.append(k, String(v));
-        }
-    });
-    return formData;
-}
-
-export async function send<T>(req: RestInfo): Promise<T> {
-    let reqInfo = req.forms ? (
-        req.method.toLowerCase() === "get" ? buildUrlEncodedFormRequest(req)
-            : buildMultipartFormDataFormRequest(req))
-        : buildCommonRequest(req);
-    const res = await axios.request(reqInfo);
-    return res.data;
 }
 function buildUrlEncodedFormRequest(req: RestInfo): AxiosRequestConfig<any> {
     return {
@@ -83,4 +79,29 @@ function buildCommonRequest(req: RestInfo): AxiosRequestConfig<any> {
             serialize: paramsSerializer
         },
     };
+}
+function isCodeMessageResponse(responseData: any): boolean {
+    return responseData.code !== undefined && responseData.message !== undefined;
+}
+function isSuccessCode(code: any): boolean {
+    return code === '0';
+}
+function extractData(responseData: any): any {
+    if (isCodeMessageResponse(responseData)) {
+        if (isSuccessCode(responseData.code)) {
+            return responseData.data;
+        } else {
+            throw new ApiCodeError(String(responseData.code), String(responseData.message));
+        }
+    } else {
+        return responseData;
+    }
+}
+export async function send<T>(req: RestInfo): Promise<T> {
+    let reqInfo = req.forms ? (
+        req.method.toLowerCase() === "get" ? buildUrlEncodedFormRequest(req)
+            : buildMultipartFormDataFormRequest(req))
+        : buildCommonRequest(req);
+    const res = await axiosInstance.request(reqInfo);
+    return extractData(res.data);
 }
