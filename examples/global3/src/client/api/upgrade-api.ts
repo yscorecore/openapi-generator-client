@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { AppversionInfo } from "../models"
+import type { AppversionInfo } from "../models/appversion-info"
 
 /**
  * UpgradeApi - API class

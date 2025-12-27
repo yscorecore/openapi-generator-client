@@ -25,7 +25,7 @@ const defaultConfig = {
             "docs/",
             "git_push.sh",
             "index.ts",
-            "api.ts",
+            // "api.ts",
             "common.ts",
             "configuration.ts",
             ".gitignore",
@@ -422,7 +422,8 @@ async function run(relativeInputDir) {
             '-o', workDir,
             '-t', templatesDir,
             '-p', `"${additionalProperties}"`,
-            '--openapitools',openapiToolsJson
+            '--openapitools',openapiToolsJson,
+            //'--verbose'
         ];
 
         // 添加ignoreList参数
@@ -497,25 +498,6 @@ async function run(relativeInputDir) {
             tryDeleteFile(originalSwaggerPath);
             
             if (code === 0) {
-                // 修复生成的API文件中的实例名称
-                const apiDir = path.resolve(workDir, config.openapiGenerator.apiPackage);
-                fs.readdirSync(apiDir).forEach(file => {
-                    if (file.endsWith('-api.ts')) {
-                        const filePath = path.resolve(apiDir, file);
-                        let content = fs.readFileSync(filePath, 'utf8');
-                        
-                        // 查找并修复实例名称
-                        content = content.replace(/export const\s+ = new (\w+)\(\);/g, (match, className) => {
-                            // 将类名首字母转为小写作为实例名称
-                            const instanceName = className.charAt(0).toLowerCase() + className.slice(1);
-                            return `export const ${instanceName} = new ${className}();`;
-                        });
-                        
-                        fs.writeFileSync(filePath, content, 'utf8');
-                        console.log(`已修复 ${file} 中的实例名称`);
-                    }
-                });
-                
                 console.log('\n客户端代码生成成功!');
             } else {
                 console.error(`\n客户端代码生成失败，退出码: ${code}`);

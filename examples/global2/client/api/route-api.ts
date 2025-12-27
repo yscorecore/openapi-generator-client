@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import { send } from "../base"
-import type { RouteInfo } from "../models"
+import type { RouteInfo } from "../models/route-info"
 
 /**
  * RouteApi - API class
