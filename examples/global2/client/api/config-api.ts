@@ -6,7 +6,7 @@ import { send } from "../base"
 /**
  * ConfigApi - API class
  */
-export class ConfigApi {
+class ConfigApi {
     /**
      * 
      * @summary 查询配置信息

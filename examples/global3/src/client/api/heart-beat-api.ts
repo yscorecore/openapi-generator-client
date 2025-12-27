@@ -6,7 +6,7 @@ import { send } from "../base"
 /**
  * HeartBeatApi - API class
  */
-export class HeartBeatApi {
+class HeartBeatApi {
     /**
      * 
      * @summary 心跳检查

@@ -7,7 +7,7 @@ import type { RouteInfo } from "../models/route-info"
 /**
  * RouteApi - API class
  */
-export class RouteApi {
+class RouteApi {
     /**
      * 
      * @summary 获取硬件的配置信息

@@ -7,7 +7,7 @@ import type { AppversionInfo } from "../models/appversion-info"
 /**
  * UpgradeApi - API class
  */
-export class UpgradeApi {
+class UpgradeApi {
     /**
      * 
      * @summary 获取最近一次的���级的版本信息
